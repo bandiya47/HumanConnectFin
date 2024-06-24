@@ -13,11 +13,11 @@ import  dc.human.gbnb.humanConnect.vo.MemberVO;
 
 
 /**
- * 회원 관리를 위한 컨트롤러 인터페이스입니다.
+ * 회원 관리를 위한 컨트롤러 인터페이스입니다..
  */
 public interface MemberController {
 	/**
-	 * 회원 목록을 조회합니다.
+	 * 회원 목록을 조회합니다..
 	 *
 	 * @param request HttpServletRequest 객체
 	 * @param response HttpServletResponse 객체

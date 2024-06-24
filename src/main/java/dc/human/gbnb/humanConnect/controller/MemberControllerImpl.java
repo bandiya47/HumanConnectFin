@@ -50,7 +50,7 @@ public class MemberControllerImpl  implements MemberController {
 
 
 	/**
-	 * 새로운 회원을 추가합니다.
+	 * 새로운 회원을 추가합니다..
 	 *
 	 * @param member 회원 정보를 포함한 MemberVO 객체
 	 * @param request HttpServletRequest 객체

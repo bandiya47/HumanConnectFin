@@ -14,7 +14,7 @@ import  dc.human.gbnb.humanConnect.vo.MemberVO;
 public interface MemberService {
 
 	/**
-	 * 모든 회원 목록을 조회합니다.
+	 * 모든 회원 목록을 조회합니다..
 	 *
 	 * @return 회원 목록을 포함한 List 객체
 	 * @throws Exception 작업 중 에러 발생 시 예외 처리

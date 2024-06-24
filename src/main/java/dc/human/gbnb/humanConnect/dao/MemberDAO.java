@@ -22,7 +22,7 @@ public interface MemberDAO {
 	 public List selectAllMemberList() throws DataAccessException;
 
 	/**
-	 * 새로운 회원을 추가합니다.
+	 * 새로운 회원을 추가합니다..
 	 *
 	 * @param memberVO 회원 정보를 포함한 MemberVO 객체
 	 * @return 삽입 결과를 나타내는 정수 값
@@ -34,7 +34,7 @@ public interface MemberDAO {
 	/**
 	 * 기존 회원을 삭제합니다.
 	 *
-	 * @param id 삭제할 회원의 ID
+	 * @param u_id 삭제할 회원의 ID
 	 * @return 삭제 결과를 나타내는 정수 값
 	 * @throws DataAccessException 데이터 접근 중 에러 발생 시 예외 처리
 	 */
