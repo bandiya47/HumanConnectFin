@@ -5,11 +5,11 @@
 <!DOCTYPE html>
 <html>
     <head>
-    
+
         <link rel="stylesheet" type="text/css" href="/css/style.css">
         <style>
-        	
-        
+
+
         </style>
            <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
            <script type="text/javascript">
@@ -18,7 +18,7 @@
 	               var _startDate=$("#startDate").val();
 	               var _endDate=$("#endDate").val();
 	               var _startTime=$("#startTime").val();
-	               var _endTime=$("#endTime").val();       
+	               var _endTime=$("#endTime").val();
 	               var _rStartDate=$("#rStartDate").val();
 	               var _rEndDate=$("#rEndDate").val();
 
@@ -66,8 +66,8 @@
 	               var _serviceCode=$("#serviceCode").val();
 	               var _file=$("#file").val();
 	               var _info=$("#info").val();
-	               
-	               
+
+
 	               if(_title==''){
 	                     alert("제목을 입력하세요");
 	                     return;
@@ -96,13 +96,13 @@
 	            	   }
 	               }else if(_info=='' ){
 	            	   _info="없음";
-	            	  
-	            	   
+
+
 	               }
-	     
+
 	               $.ajax({
 	                   type:"post",
-	                   async:true,  
+	                   async:true,
 	                   url:"${contextPath}/Human_connect/addCenterReg.do",
 	                   dataType:"json",
 	                   data: {
@@ -124,8 +124,8 @@
                              $('#centerRegBtnRM').remove();
                              $( 'h2' ).html( '<h1>'+ii+'</h1>' );
                                 alert(data[0].vTitle);
-	             
-	                   
+
+
 	                   },
 	                   error:function(data,textStatus){
 	                      alert("에러가 발생했습니다.");
@@ -133,7 +133,7 @@
 	                   complete:function(data,textStatus){
 	                   }
 	             });
-            	   
+
          	}
            </script>
     </head>
@@ -141,19 +141,19 @@
 	    <body>
 	    <jsp:include page="neviCenter.jsp" />
 		        <div class="centerRegDiv">
-		                	  
+
             					<h3>모집요강 등록</h3>
-        					
+
 		        <div>
 		        <h2><input class="centerRegTitle" id="title" type="text" name="vTitle" placeholder="제목을 입력해주세요."> <div id="titleCheck"></div></h2>
-		        <table class="cen80terRegTable">
+		        <table class="centerRegTable">
 		            <tr>
 		                <td class="centerRegTd">봉사기간</td>
 		                <td>
 		                    <input id="startDate" class="centerRegDateLeft" type="date" name="vStartDate">
 		                    ~
 		                    <input id="endDate" class="centerRegDateRight" type="date" name="vEndDate">
-		                
+
 		                </td>
 		                <td class="centerRegTd">봉사시간</td>
 		                <td>
