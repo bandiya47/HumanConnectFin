@@ -1,4 +1,4 @@
-package dc.human.gbnb.humanConnect.controller;
+package dc.human.gbnb.humanConnect.volunteer.controller;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import  dc.human.gbnb.humanConnect.vo.MemberVO;
+import  dc.human.gbnb.humanConnect.volunteer.vo.MemberVO;
 
 
 /**

@@ -1,4 +1,4 @@
-package dc.human.gbnb.humanConnect.service;
+package dc.human.gbnb.humanConnect.volunteer.service;
 
 import java.util.List;
 
@@ -9,7 +9,7 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.servlet.ModelAndView;
 
-import  dc.human.gbnb.humanConnect.vo.MemberVO;
+import  dc.human.gbnb.humanConnect.volunteer.vo.MemberVO;
 
 public interface MemberService {
 
