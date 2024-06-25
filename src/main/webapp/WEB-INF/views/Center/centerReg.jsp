@@ -120,9 +120,23 @@
                               vInfo: _info
 	                	 },
 	                   success:function (data,textStatus){
-                            var ii = data[0].vTitle;
+                            var vTitle = data[0].vTitle;
+                            var vStartDate = data[0].vStartDate;
+                            var vEndDate = data[0].vEndDate;
+                            var vStartTime = data[0].vStartTime;
+                            var vLastTime = data[0].vLastTime;
+                            var vRStartDate = data[0].vRStartDate;
+                            var vREndDate = data[0].vREndDate;
+                            var vWorkingDay = data[0].vWorkingDay;
+
+
+
                              $('#centerRegBtnRM').remove();
-                             $( 'h2' ).html( '<h1>'+ii+'</h1>' );
+                             $( 'h2' ).html( '<h1>'+vTitle+'</h1>' );
+                             $('#startTime').remove();
+                             $('#startTimeCheck').text($(data).find(${vStartTime}).text()).addClass("centerRegDateLeftNew");
+
+
                                 alert(data[0].vTitle);
 
 
