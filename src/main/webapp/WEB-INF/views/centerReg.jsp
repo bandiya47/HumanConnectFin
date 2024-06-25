@@ -103,7 +103,7 @@
 	               $.ajax({
 	                   type:"post",
 	                   async:true,
-	                   url:"${contextPath}/Human_connect/addCenterReg.do",
+	                   url:"${contextPath}/addCenterReg.do",
 	                   dataType:"json",
 	                   data: {
                               vTitle: _title,

@@ -1,7 +1,6 @@
 package dc.human.gbnb.humanConnect.center.service;
 
 import dc.human.gbnb.humanConnect.center.vo.CenterRegVO;
-
 import java.util.List;
 
 public interface CenterRegService {

@@ -1,15 +1,14 @@
 package dc.human.gbnb.humanConnect.center.controller;
 
-import dc.human.gbnb.humanConnect.center.service.CenterRegService;
 import dc.human.gbnb.humanConnect.center.vo.CenterRegVO;
+import dc.human.gbnb.humanConnect.center.service.CenterRegService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
 
 import java.util.List;
 
@@ -22,8 +21,8 @@ public class CenterRegControllerImpl implements CenterRegController {
 	
 	@Autowired
 	private CenterRegVO centerRegVO ;
-	
 
+//	private static final String CURR_IMAGE_REPO_PATH = "c:\\spring\\image_repo";
 	
 	@Override
 	@RequestMapping(value= "/centerReg.do", method = RequestMethod.GET)
@@ -43,9 +42,16 @@ public class CenterRegControllerImpl implements CenterRegController {
 	@RequestMapping(value="/addCenterReg.do" ,method = RequestMethod.POST)
 	@ResponseBody
 	public List<CenterRegVO> addCenterReg(@ModelAttribute("centerReg") CenterRegVO centerReg,
-			                  HttpServletRequest request, HttpServletResponse response) throws Exception {
+										  HttpServletRequest request, HttpServletResponse response) throws Exception {
 		request.setCharacterEncoding("utf-8");
 		int insert = 0;
+
+//		MultipartFile mFile = request.getFile(centerReg.getvUploadFilePath());
+//		String originalFileName=mFile.getOriginalFilename();
+//		File file = new File(CURR_IMAGE_REPO_PATH +"\\"+ centerReg.getvUploadFilePath());
+//		file.createNewFile();
+//		mFile.transferTo(new File(CURR_IMAGE_REPO_PATH +"\\"+ originalFileName));
+
 		insert = centerRegService.addCenterReg(centerReg);
 		int v_no = centerRegService.v_noCenterReg();
 		List<CenterRegVO> Result = centerRegService.listCenterReg(v_no);
