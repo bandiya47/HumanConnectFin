@@ -3,7 +3,7 @@
       PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="dc.human.gbnb.humanConnect.dao.CenterRegDAO">
+<mapper namespace="dc.human.gbnb.humanConnect.center.dao.CenterRegDAO">
 	<resultMap id="listCenterRegResult" type="centerRegVO">
 		<result property="vTitle" column="V_TITLE" />
 		<result property="vStartDate" column="V_START_DATE" />
