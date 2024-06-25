@@ -1,0 +1,71 @@
+.volunteerListWholeContainer {
+	text-align: center;
+	margin: auto;
+	width: 980px;
+	border: 1px black solid;
+}
+
+.volunteerListCategoryContainer>button, .filter-btn {
+	margin: 5px;
+	padding: 10px;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+}
+
+.volunteerListCategory-btn {
+	background-color: #ffe282;
+	color: rgb(0, 0, 0);
+}
+
+.filter-btn {
+	background-color: #8b8b8b;
+	color: rgb(22, 22, 22);
+	position: relative;
+}
+
+.remove-btn {
+	background-color: #141414;
+	color: rgb(255, 255, 255);
+	border: none;
+	border-radius: 50%;
+	width: 20px;
+	height: 20px;
+	display: inline-block;
+	text-align: center;
+	line-height: 20px;
+	cursor: pointer;
+	position: absolute;
+	top: -5px;
+	right: -5px;
+}
+
+.voluntteerListFilterInput {
+	font-size: 13px;
+}
+
+.voluntteerListFilterInput input, select {
+	font-size: 11px;
+}
+
+.voluntteerListFilterInput tr td {
+	padding: 0px 45px 0px 0px;
+}
+
+.voluntteerListFilterInput {
+	padding-left: 20px;
+}
+
+.volunteerListvolRecruitList>p {
+	text-align: left;
+	padding: 0px 5px 0px 5px;
+}
+
+.volunteerListvolRecruitList>table {
+	margin: 5px;
+	text-align: center;
+	width: 100%;
+	border: 1px solid;
+	margin: 2px;
+}
+
