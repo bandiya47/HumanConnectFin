@@ -1,0 +1,75 @@
+.joinLogo {
+    align-items: center;
+    margin-left: 25%;
+    margin-right: 25%;
+    margin-top: 5%;
+    margin-bottom: 3%;
+    width: 50%;
+    height: 20%;
+}
+.joinText {
+    width: 60%;
+    height: 30px;
+    margin: 10px;    
+    margin-left: 20%;
+    margin-right: 20%;
+    align-content: center;
+    align-items: center;
+}
+.joinId {
+    width: 60%;
+    height: 30px;
+    margin: 10px;    
+    margin-left: 20%;
+    margin-right: 20%;
+    align-content: center;
+    align-items: center;
+}
+.IdCheck {
+    height: 30px;
+    width: 100px;
+    margin-left: -5px;
+    margin-right: 10%;
+}
+.checkBox {
+    margin: 10px;
+}
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    background-color: #FFC595;
+}
+body.maxWidth {
+    max-width: 500px;
+}
+.container {
+    max-width: 750px;
+    margin: 0 auto;
+}
+h1 {
+    text-align: center;
+}
+.terms {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 10px;
+    height: 200px;
+    overflow-y: scroll;
+}
+.checkbox {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.submit-btn {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+.submit-btn:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
