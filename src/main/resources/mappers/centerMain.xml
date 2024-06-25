@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="dc.human.gbnb.humanConnect.center.dao.CenterMainDAO">
+
+    <resultMap id="centerMainResult" type="dc.human.gbnb.humanConnect.center.vo.CenterMainVO">
+        <result property="userId" column="u_id" />
+        <result property="name" column="u_name" />
+        <result property="phone" column="u_phone" />
+        <result property="status" column="reg_result" />
+        <result property="rejectReason" column="reject_rs" />
+    </resultMap>
+
+    <select id="getRecruitmentList" resultMap="centerMainResult" parameterType="String">
+        SELECT U.U_ID, U.U_NAME, U.U_PHONE, A.REG_RESULT, A.REJECT_RS
+        FROM VOLUNTEER_USER U
+        JOIN VOLUNTEER_REG R ON R.U_ID = U.U_ID
+        JOIN ACCEPTION_RES A ON R.VREG_NO = A.VREG_NO
+        JOIN VOLUNTEER V ON V.V_NO = R.V_NO
+        JOIN CENTER_MNG_TABLE C ON C.C_ID = V.C_ID
+        WHERE V.V_NO = (SELECT V_NO FROM VOLUNTEER
+        WHERE C_ID = #{centerId}
+        ORDER BY CREATED_DATE DESC FETCH FIRST 1 ROWS ONLY)
+        AND R.V_TYPE = 0
+        AND C.C_ID = #{centerId}
+    </select>
+
+    <select id="getVolunteerList" resultMap="centerMainResult" parameterType="String">
+        SELECT U.U_ID, U.U_NAME, U.U_PHONE, A.REG_RESULT, A.REJECT_RS
+        FROM VOLUNTEER_USER U
+        JOIN VOLUNTEER_REG R ON R.U_ID = U.U_ID
+        JOIN ACCEPTION_RES A ON R.VREG_NO = A.VREG_NO
+        WHERE R.V_TYPE = 1
+        AND R.C_ID = #{centerId}
+    </select>
+
+    <select id="getAdoptionList" resultMap="centerMainResult" parameterType="String">
+        SELECT U.U_ID, U.U_NAME, U.U_PHONE
+        FROM VOLUNTEER_USER U
+        JOIN ADOPT_REG A ON A.U_ID = U.U_ID
+        JOIN CENTER_MNG_TABLE C ON A.C_NAME = C.C_NAME
+        WHERE C.C_NAME = (SELECT C_NAME FROM CENTER_MNG_TABLE
+        WHERE C_ID = #{centerId})
+    </select>
+
+    <update id="updateStatus" parameterType="map">
+        UPDATE ACCEPTION_RES SET
+        REG_RESULT = #{status},
+        REJECT_RS = #{rejectReason},
+        UPDATED_DATE = SYSDATE,
+        UPDATED_ID = #{centerId}
+        WHERE U_ID = #{userId}
+    </update>
+
+    <select id="getLatestRecruitmentTitle" resultType="String" parameterType="String">
+        SELECT V_TITLE
+        FROM VOLUNTEER
+        WHERE C_ID = #{centerId}
+        ORDER BY CREATED_DATE DESC
+        FETCH FIRST 1 ROWS ONLY
+    </select>
+
+</mapper>
