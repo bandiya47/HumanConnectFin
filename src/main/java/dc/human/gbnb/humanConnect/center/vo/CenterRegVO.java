@@ -28,7 +28,7 @@ public class CenterRegVO {
 			System.out.println("CenterRegVO 생성자 호출");
 
 	}
-
+	
 //	public CenterRegVO(String vTitle){
 //		this.vTitle = vTitle;
 //		this.vStartDate = vStartDate;
