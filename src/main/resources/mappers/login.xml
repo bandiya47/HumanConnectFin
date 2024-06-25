@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="dc.human.gbnb.humanConnect.login.dao.LoginDAO">
+
+    <resultMap id="userResult" type="dc.human.gbnb.humanConnect.login.vo.UserVO">
+        <result property="userId" column="id" />
+        <result property="name" column="name" />
+        <result property="password" column="pwd" />
+        <result property="addr" column="addr1" />
+        <result property="email" column="email" />
+        <result property="phone" column="phone" />
+    </resultMap>
+
+    <select id="validateUser" parameterType="String">
+        <![CDATA[
+        SELECT 'VOLUNTEER_USER' as login_type
+          FROM volunteer_user
+         WHERE u_id = #{userId}
+           AND u_pwd = #{userPassword}
+        UNION
+        SELECT 'CENTER_MNG_TABLE' as login_type
+          FROM center_mng_table
+         WHERE c_id = #{userId}
+           AND c_pwd = #{userPassword}
+        ]]>
+    </select>
+
+    <select id="getUserDetails" resultMap="userResult">
+        <choose>
+            <when test="tableName == 'VOLUNTEER_USER'">
+                SELECT u_id as id,
+                u_name as name,
+                u_pwd as pwd,
+                u_addr1 as addr1,
+                u_email as email,
+                u_phone as phone
+                FROM volunteer_user
+                WHERE u_id = #{userId}
+            </when>
+            <otherwise>
+                SELECT c_id as id,
+                c_name as name,
+                c_pwd as pwd,
+                c_addr1 as addr1,
+                c_email as email,
+                c_phone as phone
+                FROM CENTER_MNG_TABLE
+                WHERE c_id = #{userId}
+            </otherwise>
+        </choose>
+    </select>
+
+
+</mapper>
