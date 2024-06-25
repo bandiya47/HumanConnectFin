@@ -1,15 +1,13 @@
-package dc.human.gbnb.humanConnect.controller;
+package dc.human.gbnb.humanConnect.center.controller;
 
+import dc.human.gbnb.humanConnect.center.vo.MemberVO;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-import org.springframework.dao.DataAccessException;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
-import  dc.human.gbnb.humanConnect.vo.MemberVO;
 
 
 /**
@@ -35,7 +33,7 @@ public interface MemberController {
 	 * @return 작업 결과를 포함한 ModelAndView 객체
 	 * @throws Exception 작업 중 에러 발생 시 예외 처리
 	 */
-	public ModelAndView addMember(@ModelAttribute("info") MemberVO memberVO,HttpServletRequest request, HttpServletResponse response) throws Exception;
+	public ModelAndView addMember(@ModelAttribute("info") MemberVO memberVO, HttpServletRequest request, HttpServletResponse response) throws Exception;
 
 	/**
 	 * 기존 회원을 삭제합니다.

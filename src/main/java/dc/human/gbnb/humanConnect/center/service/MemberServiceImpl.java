@@ -1,15 +1,14 @@
-package dc.human.gbnb.humanConnect.service;
+package dc.human.gbnb.humanConnect.center.service;
 
 import java.util.List;
 
+import dc.human.gbnb.humanConnect.center.vo.MemberVO;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import dc.human.gbnb.humanConnect.dao.MemberDAO;
-import dc.human.gbnb.humanConnect.vo.MemberVO;
+import dc.human.gbnb.humanConnect.center.dao.MemberDAO;
 
 
 @Service("memberService")

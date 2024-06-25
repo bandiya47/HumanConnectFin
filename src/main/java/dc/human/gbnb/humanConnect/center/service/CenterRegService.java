@@ -1,6 +1,6 @@
-package dc.human.gbnb.humanConnect.service;
+package dc.human.gbnb.humanConnect.center.service;
 
-import dc.human.gbnb.humanConnect.vo.CenterRegVO;
+import dc.human.gbnb.humanConnect.center.vo.CenterRegVO;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package dc.human.gbnb.humanConnect.vo;
+package dc.human.gbnb.humanConnect.center.vo;
 
 import java.sql.Date;
 

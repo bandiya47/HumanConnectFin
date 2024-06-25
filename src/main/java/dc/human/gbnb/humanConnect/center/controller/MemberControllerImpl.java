@@ -1,7 +1,9 @@
-package dc.human.gbnb.humanConnect.controller;
+package dc.human.gbnb.humanConnect.center.controller;
 
 import java.util.List;
 
+import dc.human.gbnb.humanConnect.center.service.MemberService;
+import dc.human.gbnb.humanConnect.center.vo.MemberVO;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
@@ -14,9 +16,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
-import  dc.human.gbnb.humanConnect.service.MemberService;
-import  dc.human.gbnb.humanConnect.vo.MemberVO;
 
 @Controller("memberController")
 public class MemberControllerImpl  implements MemberController {

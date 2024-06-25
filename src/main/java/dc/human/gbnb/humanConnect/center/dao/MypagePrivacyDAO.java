@@ -1,6 +1,6 @@
-package dc.human.gbnb.humanConnect.dao;
+package dc.human.gbnb.humanConnect.center.dao;
 
-import dc.human.gbnb.humanConnect.vo.MemberVO;
+import dc.human.gbnb.humanConnect.center.vo.MemberVO;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Repository;
