@@ -121,7 +121,8 @@
                     </form>
                 </div>
             </div>
-            <form name="recruitmentRegister" method="post" action="${pageContext.request.contextPath}/centerReg.jsp" encType="utf-8">
+            <form name="recruitmentRegister" method="get" action="${pageContext.request.contextPath}/centerReg.do" encType="utf-8">
+                <input type="hidden" name="userId" value="${userId}">
                 <button type="submit" class="centerMainRegisterButton">등 록</button>
             </form>
         </section>

@@ -24,6 +24,7 @@ public class CenterMainControllerImpl implements CenterMainController {
         mav.addObject("recruitmentList", centerMainService.getRecruitmentList(centerId));
         mav.addObject("volunteerList", centerMainService.getVolunteerList(centerId));
         mav.addObject("adoptionList", centerMainService.getAdoptionList(centerId));
+        mav.addObject("userId", userId);
 
         return mav;
     }
