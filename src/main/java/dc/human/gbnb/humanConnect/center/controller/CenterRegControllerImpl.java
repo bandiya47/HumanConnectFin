@@ -57,7 +57,8 @@ public class CenterRegControllerImpl implements CenterRegController {
 
 	@Override
 	@RequestMapping(value="/upload",method = RequestMethod.POST)
-	public ModelAndView upload(MultipartHttpServletRequest multipartRequest,HttpServletResponse response)
+	@ResponseBody
+	public Map upload(MultipartHttpServletRequest multipartRequest,HttpServletResponse response)
 			throws Exception{
 		multipartRequest.setCharacterEncoding("utf-8");
 		Map map = new HashMap();
@@ -71,10 +72,11 @@ public class CenterRegControllerImpl implements CenterRegController {
 
 		List fileList= fileProcess(multipartRequest);
 		map.put("fileList", fileList);
-		ModelAndView mav = new ModelAndView();
-		mav.addObject("map", map);
-		mav.setViewName("result");
-		return mav;
+//		ModelAndView mav = new ModelAndView();
+//		mav.addObject("map", map);
+//		mav.setViewName("result");
+//		return mav;
+		return map;
 	}
 
 

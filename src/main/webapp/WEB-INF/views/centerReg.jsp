@@ -63,7 +63,7 @@
 	               var _vRegAmnt=$("#vRegAmnt").val();
 	               var _serviceCode=$("#serviceCode").val();
 	               var _file=$("#file").val();
-	               var _info=$("#info").val();
+	               var _info=$("#info").val().replace(/\n/g, "<br>");
 
 
 	               if(_title==''){
@@ -111,13 +111,12 @@
                               data: formData,
                               contentType: false,
                               processData: false,
-                              success: function(response) {
-                                console.log("Upload successful:", response);
+                              success:function (data,textStatus){
+                                alert("파일 업로드에 성공했습니다.");
                               },
-                              error: function(jqXHR, textStatus, errorThrown) {
-                                // Handle upload errors (e.g., display error message)
-                                console.error("Upload failed:", textStatus, errorThrown);
-                              }
+                               error:function(data,textStatus){
+                                  alert("파일 업로드에 실패했습니다.");
+                               },
                             });
                         }
 
@@ -183,7 +182,7 @@
                             $( 'file' ).html( '<h1>' + vUploadFilePath + '</h1>' );
 
                             $('#info').remove();
-                            $( 'info' ).html( '<h1>' + vInfo + '</h1>' );
+                            $( 'info' ).html( '<h1 style="text-align : left">' + vInfo + '</h1>' );
 
 	                   },
 	                   error:function(data,textStatus){

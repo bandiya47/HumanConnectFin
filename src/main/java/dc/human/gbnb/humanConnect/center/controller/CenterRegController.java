@@ -9,10 +9,11 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
+import java.util.Map;
 
 
 public interface CenterRegController {
 	public ModelAndView centerReg(HttpServletRequest request, HttpServletResponse response) throws Exception;
 	public List<CenterRegVO> addCenterReg(@ModelAttribute("info") CenterRegVO centerRegVO, HttpServletRequest request, HttpServletResponse response) throws Exception;
-	public ModelAndView upload(MultipartHttpServletRequest multipartRequest,HttpServletResponse response) throws Exception;
+	public Map upload(MultipartHttpServletRequest multipartRequest, HttpServletResponse response) throws Exception;
 }

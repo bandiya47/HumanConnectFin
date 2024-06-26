@@ -22,7 +22,7 @@ public class CenterRegVO {
 	private String vUploadFilePath;
 	private String vInfo;
 	private int v_no;
-
+//
 	public CenterRegVO(){
 
 			System.out.println("CenterRegVO 생성자 호출");
