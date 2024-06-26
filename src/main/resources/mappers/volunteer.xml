@@ -5,6 +5,7 @@
 
 <mapper namespace="dc.human.gbnb.humanConnect.center.dao.CenterRegDAO">
 	<resultMap id="listCenterRegResult" type="centerRegVO">
+		<result property="v_no" column="V_NO" />
 		<result property="vTitle" column="V_TITLE" />
 		<result property="vStartDate" column="V_START_DATE" />
 		<result property="vEndDate" column="V_END_DATE" />
@@ -33,6 +34,7 @@
 	<select id="selectCenterRegList" parameterType="int" resultMap="listCenterRegResult">
 		<![CDATA[
 		   SELECT
+		    v.V_NO,
 			v.V_TITLE,
 			v.V_START_DATE,
 			v.V_END_DATE,

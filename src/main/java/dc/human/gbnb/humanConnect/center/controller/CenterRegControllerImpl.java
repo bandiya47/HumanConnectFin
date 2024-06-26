@@ -25,7 +25,28 @@ public class CenterRegControllerImpl implements CenterRegController {
 	private CenterRegVO centerRegVO ;
 
 	private static final String CURR_IMAGE_REPO_PATH = "c:\\spring\\image_repo";
-	
+
+	@Override
+	@RequestMapping(value= "/viewCenterReg.do", method = RequestMethod.GET)
+	public ModelAndView viewCenterReg(HttpServletRequest request, HttpServletResponse response,
+								  @RequestParam("centerId") String centerId,
+								  @RequestParam("v_no") int v_no) throws Exception {
+
+
+		List<CenterRegVO> Result = centerRegService.listIdCenterReg(centerId);
+		List<CenterRegVO> Result2 = centerRegService.listCenterReg(v_no);
+		ModelAndView mav = new ModelAndView("/centerReg");
+
+		mav.addObject("centerList",Result);
+		mav.addObject("centerList2",Result2);
+		mav.addObject("centerId", centerId);
+		mav.addObject("v_no", v_no);
+		return mav;
+	}
+
+
+
+
 	@Override
 	@RequestMapping(value= "/centerReg.do", method = RequestMethod.GET)
 	public ModelAndView centerReg(HttpServletRequest request, HttpServletResponse response, @RequestParam("centerId") String centerId) throws Exception {

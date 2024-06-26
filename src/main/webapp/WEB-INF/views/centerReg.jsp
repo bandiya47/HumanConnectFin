@@ -13,6 +13,56 @@
         </style>
            <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
            <script type="text/javascript">
+           if(${v_no}){
+
+           var vTitle = centerList2[0].vTitle;
+           var vStartDate = centerList2[0].vStartDate;
+           var vEndDate = centerList2[0].vEndDate;
+           var vStartTime = centerList2[0].vStartTime;
+           var vLastTime = centerList2[0].vLastTime;
+           var vRStartDate = centerList2[0].vRStartDate;
+           var vREndDate = centerList2[0].vREndDate;
+           var vWorkingDay = centerList2[0].vWorkingDay;
+           var vServiceCode = centerList2[0].vServiceType;
+           var vRegAmnt = centerList2[0].vRegAmnt;
+           var vUploadFilePath = centerList2[0].vUploadFilePath;
+           var vInfo = centerList2[0].vInfo;
+
+
+           $('#centerRegBtnRM').remove();
+           $( 'h2' ).html( '<h1>'+vTitle+'</h1>' );
+
+           $('#vDate').remove();
+           $( 'vDate' ).html( '<h1>' + vStartDate + ' ~ ' + vEndDate + '</h1>' );
+
+           $('#vTime').remove();
+           $( 'vTime' ).html( '<h1>' + vStartTime + ' ~ ' + vLastTime + '</h1>' );
+
+           $('#rDate').remove();
+           $( 'rDate' ).html( '<h1>' + vRStartDate + ' ~ ' + vREndDate + '</h1>' );
+
+           $('#work').remove();
+           $( 'work' ).html( '<h1>' + vWorkingDay + '</h1>' );
+
+           $('#vRegAmnt').remove();
+           $( 'vRegAmnt' ).html( '<h1>' + vRegAmnt + '</h1>' );
+
+           $('#serviceCode').remove();
+           $( 'serviceCode' ).html( '<h1>' + vServiceCode + '</h1>' );
+
+           $('#file').remove();
+           $( 'file' ).html( '<h1>' + vUploadFilePath + '</h1>' );
+
+           $('#info').remove();
+           if( vInfo == "없음" ){
+           $( 'info' ).html( '<h1>' + vInfo + '</h1>' );
+           }else{
+           $( 'info' ).html( '<h1 style="text-align : left">' + vInfo + '</h1>' );
+           }
+
+
+           return;
+           }
 	           function fn_process(){
                    var _uId = "${centerId}";
 	               var _title=$("#title").val();
@@ -148,6 +198,7 @@
                               uId: _uId
 	                	 },
 	                   success:function (data,textStatus){
+	                        var v_no = data[0].v_no;
                             var vTitle = data[0].vTitle;
                             var vStartDate = data[0].vStartDate;
                             var vEndDate = data[0].vEndDate;
