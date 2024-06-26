@@ -5,7 +5,7 @@ import org.springframework.stereotype.Component;
 
 @Component("centerRegVO")
 public class CenterRegVO {
-	
+//
 	private String uId;
 	private String vTitle;
 	private String vStartDate;
@@ -28,7 +28,7 @@ public class CenterRegVO {
 			System.out.println("CenterRegVO 생성자 호출");
 
 	}
-	
+
 //	public CenterRegVO(String vTitle){
 //		this.vTitle = vTitle;
 //		this.vStartDate = vStartDate;

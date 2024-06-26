@@ -8,9 +8,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
+import java.io.File;
 
-
-import java.util.List;
+import java.util.*;
 
 
 @Controller("centerRegController")
@@ -22,7 +24,7 @@ public class CenterRegControllerImpl implements CenterRegController {
 	@Autowired
 	private CenterRegVO centerRegVO ;
 
-//	private static final String CURR_IMAGE_REPO_PATH = "c:\\spring\\image_repo";
+	private static final String CURR_IMAGE_REPO_PATH = "c:\\spring\\image_repo";
 	
 	@Override
 	@RequestMapping(value= "/centerReg.do", method = RequestMethod.GET)
@@ -46,90 +48,54 @@ public class CenterRegControllerImpl implements CenterRegController {
 		request.setCharacterEncoding("utf-8");
 		int insert = 0;
 
-//		MultipartFile mFile = request.getFile(centerReg.getvUploadFilePath());
-//		String originalFileName=mFile.getOriginalFilename();
-//		File file = new File(CURR_IMAGE_REPO_PATH +"\\"+ centerReg.getvUploadFilePath());
-//		file.createNewFile();
-//		mFile.transferTo(new File(CURR_IMAGE_REPO_PATH +"\\"+ originalFileName));
 
 		insert = centerRegService.addCenterReg(centerReg);
 		int v_no = centerRegService.v_noCenterReg();
 		List<CenterRegVO> Result = centerRegService.listCenterReg(v_no);
 		return Result;
 	}
-//
-//	@Override
-//	@RequestMapping(value="/member/removeMember.do" ,method = RequestMethod.GET)
-//	public ModelAndView removeMember(@RequestParam("id") String id,
-//			           HttpServletRequest request, HttpServletResponse response) throws Exception{
-//		request.setCharacterEncoding("utf-8");
-//		memberService.removeMember(id);
-//		ModelAndView mav = new ModelAndView("redirect:/member/listMembers.do");
-//		return mav;
-//	}
-//
-//	@Override
-//	@RequestMapping(value = "/member/login.do", method =  RequestMethod.POST)
-//	public ModelAndView login(@ModelAttribute("member") MemberVO member,
-//			                  RedirectAttributes  rAttr,
-//			                  HttpServletRequest request, HttpServletResponse response) throws Exception {
-//		ModelAndView mav = new ModelAndView();
-//		memberVO = memberService.login(member);
-//		if(memberVO != null) {
-//			HttpSession session = request.getSession();
-//			session.setAttribute("member", memberVO);
-//			session.setAttribute("isLogOn", true);
-//
-//			String action = (String)session.getAttribute("action");
-//			session.removeAttribute("action");
-//			if(action!= null) {
-//				mav.setViewName("redirect:"+action);
-//			}else {
-//				mav.setViewName("redirect:/member/listMembers.do");
-//			}
-//
-//		}else {
-//			rAttr.addAttribute("result","loginFailed");
-//			mav.setViewName("redirect:/member/loginForm.do");
-//		}
-//
-//
-//		return mav;
-//	}
-//
-//	@Override
-//	@RequestMapping(value = "/member/logout.do", method =  RequestMethod.GET)
-//	public ModelAndView logout(HttpServletRequest request, HttpServletResponse response) throws Exception {
-//		HttpSession session = request.getSession();
-//		session.removeAttribute("member");
-//		session.setAttribute("isLogOn",false);
-//
-//		ModelAndView mav = new ModelAndView();
-//		mav.setViewName("redirect:/member/listMembers.do");
-//		return mav;
-//	}
-//
-//
-//	@RequestMapping(value = "/member/*Form.do", method =  RequestMethod.GET)
-//	private ModelAndView form(@RequestParam(value= "result", required=false) String result,
-//			                  @RequestParam(value= "action", required=false) String action,
-//			                  HttpServletRequest request,
-//			                  HttpServletResponse response) throws Exception {
-//		String viewName = (String)request.getAttribute("viewName");
-//		HttpSession session = request.getSession();
-//		session.setAttribute("action", action);
-//
-//		ModelAndView mav = new ModelAndView();
-//		mav.addObject("result",result);
-//		mav.setViewName(viewName);
-//		return mav;
-//	}
-//
-//	@RequestMapping(value = { "/","/main.do"}, method = RequestMethod.GET)
-//	private ModelAndView main(HttpServletRequest request, HttpServletResponse response) {
-//		String viewName = (String)request.getAttribute("viewName");
-//		ModelAndView mav = new ModelAndView();
-//		mav.setViewName(viewName);
-//		return mav;
-//	}
-}
+
+	@Override
+	@RequestMapping(value="/upload",method = RequestMethod.POST)
+	public ModelAndView upload(MultipartHttpServletRequest multipartRequest,HttpServletResponse response)
+			throws Exception{
+		multipartRequest.setCharacterEncoding("utf-8");
+		Map map = new HashMap();
+		Enumeration enu=multipartRequest.getParameterNames();
+		while(enu.hasMoreElements()){
+			String name=(String)enu.nextElement();
+			String value=multipartRequest.getParameter(name);
+			//System.out.println(name+", "+value);
+			map.put(name,value);
+		}
+
+		List fileList= fileProcess(multipartRequest);
+		map.put("fileList", fileList);
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("map", map);
+		mav.setViewName("result");
+		return mav;
+	}
+
+
+	private List<String> fileProcess(MultipartHttpServletRequest multipartRequest) throws Exception{
+		List<String> fileList= new ArrayList<String>();
+		Iterator<String> fileNames = multipartRequest.getFileNames();
+		while(fileNames.hasNext()){
+			String fileName = fileNames.next();
+			MultipartFile mFile = multipartRequest.getFile(fileName);
+			String originalFileName=mFile.getOriginalFilename();
+			fileList.add(originalFileName);
+			File file = new File(CURR_IMAGE_REPO_PATH +"\\"+ fileName);
+			if(mFile.getSize()!=0){ //File Null Check
+				if(! file.exists()){ //경로상에 파일이 존재하지 않을 경우
+					if(file.getParentFile().mkdirs()){ //경로에 해당하는 디렉토리들을 생성
+						file.createNewFile(); //이후 파일 생성
+					}
+				}
+				mFile.transferTo(new File(CURR_IMAGE_REPO_PATH +"\\"+ originalFileName)); //임시로 저장된 multipartFile을 실제 파일로 전송
+			}
+		}
+		return fileList;
+	}
+	}

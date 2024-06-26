@@ -60,8 +60,6 @@
                         _vWorkingDay +=" ";
                    }
 
-
-
 	               var _vRegAmnt=$("#vRegAmnt").val();
 	               var _serviceCode=$("#serviceCode").val();
 	               var _file=$("#file").val();
@@ -100,6 +98,32 @@
 
 	               }
 
+	               if(_file){
+                   var formData = new FormData();
+                        var inputFile = $("input[name='vUploadFilePath']");
+                        var files = inputFile[0].files;
+                        formData.append("uploadFile", files[0]);
+
+
+                        $.ajax({
+                              url: "${contextPath}/upload",
+                              type: "POST",
+                              data: formData,
+                              contentType: false,
+                              processData: false,
+                              success: function(response) {
+                                console.log("Upload successful:", response);
+                              },
+                              error: function(jqXHR, textStatus, errorThrown) {
+                                // Handle upload errors (e.g., display error message)
+                                console.error("Upload failed:", textStatus, errorThrown);
+                              }
+                            });
+                        }
+
+
+
+
 	               $.ajax({
 	                   type:"post",
 	                   async:true,
@@ -131,7 +155,7 @@
                             var vServiceCode = data[0].vServiceCode;
                             var vRegAmnt = data[0].vRegAmnt;
                             var vUploadFilePath = data[0].vUploadFilePath;
-                            var vInfo = data[0].vUploadFilePath;
+                            var vInfo = data[0].vInfo;
 
 
                             $('#centerRegBtnRM').remove();
@@ -252,7 +276,7 @@
 		            </tr>
 		            <tr>
 		                <td class="centerRegTd">첨부파일</td>
-		                <td colspan="3"><input id="file" type="file" name="vUploadFilePath"><file></file></td>
+		                <td colspan="3"><input id="file" type="file" name="vUploadFilePath" multiple="multiple"><file></file></td>
 		            </tr>
 		        </table>
 		        <div class="centerRegDiv2">
