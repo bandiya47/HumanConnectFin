@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="dc.human.gbnb.humanConnect.center.dao.CenterRecruitListDAO">
+
+    <resultMap id="recruitmentResultMap" type="dc.human.gbnb.humanConnect.center.vo.CenterRecruitListVO">
+        <result property="rNum" column="V_NO"/>
+        <result property="rTitle" column="V_TITLE"/>
+        <result property="rRegiDate" column="CREATED_DATE"/>
+        <result property="rRegiAmnt" column="V_REG_AMNT"/>
+    </resultMap>
+
+    <select id="getRecruitmentList" resultMap="recruitmentResultMap">
+        <![CDATA[
+        SELECT V_NO,
+               V_TITLE,
+               TO_CHAR(CREATED_DATE, 'YYYY.MM.DD') AS CREATED_DATE,
+               V_REG_AMNT
+          FROM (
+            SELECT V_NO,
+                   V_TITLE,
+                   CREATED_DATE,
+                   V_REG_AMNT,
+                   ROW_NUMBER() OVER (
+                   ORDER BY CREATED_DATE DESC) AS ROW_NUM
+              FROM VOLUNTEER
+             WHERE C_ID = #{centerId})
+             WHERE ROW_NUM BETWEEN #{start} AND #{end}
+        ]]>
+    </select>
+
+    <select id="getTotalRecords" resultType="int">
+        <![CDATA[
+        SELECT COUNT(*) AS total
+          FROM VOLUNTEER
+         WHERE C_ID = #{centerId}
+        ]]>
+    </select>
+</mapper>
