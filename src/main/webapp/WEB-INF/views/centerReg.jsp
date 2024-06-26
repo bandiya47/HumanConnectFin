@@ -14,6 +14,7 @@
            <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
            <script type="text/javascript">
 	           function fn_process(){
+                   var _uId = "${centerId}";
 	               var _title=$("#title").val();
 	               var _startDate=$("#startDate").val();
 	               var _endDate=$("#endDate").val();
@@ -87,6 +88,30 @@
 	               }else if(_serviceCode=='' ){
 	                   alert("봉사분야를 체크하세요");
 	                   return;
+	               }else if(_file){
+	                   var formData = new FormData();
+                       var inputFile = $("input[name='vUploadFilePath']");
+                       var files = inputFile[0].files;
+                       formData.append("uploadFile", files[0]);
+
+                       if(_info=='' ){
+                           _info="없음";
+                       }
+
+                       $.ajax({
+                             url: "${contextPath}/upload",
+                             type: "POST",
+                             data: formData,
+                             contentType: false,
+                             processData: false,
+                             success:function (data,textStatus){
+                               alert("파일 업로드에 성공했습니다.");
+                             },
+                             error:function(data,textStatus){
+                                 alert("파일 업로드에 실패했습니다.");
+                             },
+                       });
+
 	               }else if(_file=='' ){
 	            	   _file="없음";
 	            	   if(_info=='' ){
@@ -94,31 +119,10 @@
 	            	   }
 	               }else if(_info=='' ){
 	            	   _info="없음";
+	            	   }
 
 
-	               }
 
-	               if(_file){
-                   var formData = new FormData();
-                        var inputFile = $("input[name='vUploadFilePath']");
-                        var files = inputFile[0].files;
-                        formData.append("uploadFile", files[0]);
-
-
-                        $.ajax({
-                              url: "${contextPath}/upload",
-                              type: "POST",
-                              data: formData,
-                              contentType: false,
-                              processData: false,
-                              success:function (data,textStatus){
-                                alert("파일 업로드에 성공했습니다.");
-                              },
-                               error:function(data,textStatus){
-                                  alert("파일 업로드에 실패했습니다.");
-                               },
-                            });
-                        }
 
 
 
@@ -140,7 +144,8 @@
                               vRegAmnt: _vRegAmnt,
                               vServiceCode: _serviceCode,
                               vUploadFilePath: _file,
-                              vInfo: _info
+                              vInfo: _info,
+                              uId: _uId
 	                	 },
 	                   success:function (data,textStatus){
                             var vTitle = data[0].vTitle;
@@ -182,7 +187,11 @@
                             $( 'file' ).html( '<h1>' + vUploadFilePath + '</h1>' );
 
                             $('#info').remove();
+                            if( vInfo == "없음" ){
+                            $( 'info' ).html( '<h1>' + vInfo + '</h1>' );
+                            }else{
                             $( 'info' ).html( '<h1 style="text-align : left">' + vInfo + '</h1>' );
+                            }
 
 	                   },
 	                   error:function(data,textStatus){
@@ -266,11 +275,11 @@
 		            <tr>
 		               <td class="centerRegTd">센터명</td>
 		                <td>
-		                    센터명
+		                    ${centerList[0].cName}
 		                </td>
 		                <td class="centerRegTd">봉사장소</td>
 		                <td>
-		                    봉사장소
+		                    ${centerList[0].cAddr1} ${centerList[0].cAddr2}
 		                </td>
 		            </tr>
 		            <tr>

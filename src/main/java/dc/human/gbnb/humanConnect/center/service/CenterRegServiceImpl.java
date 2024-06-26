@@ -38,4 +38,11 @@ public class CenterRegServiceImpl implements CenterRegService {
 		return centerRegList;
 	}
 
+	@Override
+	public List listIdCenterReg(String centerId) throws Exception{
+		List centerRegList = null;
+		centerRegList = centerRegDAO.selectCenterRegIdList(centerId);
+		return centerRegList;
+	}
+
 }

@@ -28,14 +28,13 @@ public class CenterRegControllerImpl implements CenterRegController {
 	
 	@Override
 	@RequestMapping(value= "/centerReg.do", method = RequestMethod.GET)
-	public ModelAndView centerReg(HttpServletRequest request, HttpServletResponse response) throws Exception {
-	//public String listMembers(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		//String viewName = (String)request.getAttribute("viewName");
-//		List membersList = memberService.listMembers();
-		//ModelAndView mav = new ModelAndView(viewName);
+	public ModelAndView centerReg(HttpServletRequest request, HttpServletResponse response, @RequestParam("centerId") String centerId) throws Exception {
+
+
+		List<CenterRegVO> Result = centerRegService.listIdCenterReg(centerId);
 		ModelAndView mav = new ModelAndView("/centerReg");
-		
-//		mav.addObject("membersList", membersList);
+		mav.addObject("centerList",Result);
+		mav.addObject("centerId", centerId);
 		return mav;
 	}
 

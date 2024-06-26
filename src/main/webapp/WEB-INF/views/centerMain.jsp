@@ -1,14 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"
-    isELIgnored="false"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
-<html class="centerHtml" lang="ko">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>센터 메인</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         function showRejectReason(id) {
             document.getElementById('reject-reason-' + id).style.display = 'block';
@@ -60,15 +60,15 @@
                         <c:choose>
                             <c:when test="${empty recruitmentList}">
                                 <tr>
-                                    <td colspan="5" class="centerNoData">표시할 데이터가 없습니다</td>
+                                    <td colspan="4" class="centerNoData">표시할 데이터가 없습니다</td>
                                 </tr>
                             </c:when>
                             <c:otherwise>
                                 <c:forEach var="vo" items="${recruitmentList}">
                                     <tr>
-                                        <td onclick="submitForm('${pageContext.request.contextPath}/RecruitmentMain.jsp', '${vo.userId}')">${vo.userId}</td>
-                                        <td onclick="submitForm('${pageContext.request.contextPath}/RecruitmentMain.jsp', '${vo.userId}')">${vo.name}</td>
-                                        <td onclick="submitForm('${pageContext.request.contextPath}/RecruitmentMain.jsp', '${vo.userId}')">${vo.phone}</td>
+                                        <td>${vo.userId}</td>
+                                        <td>${vo.name}</td>
+                                        <td>${vo.phone}</td>
                                         <td>
                                             <c:choose>
                                                 <c:when test="${vo.status == '0'}">
@@ -76,13 +76,11 @@
                                                         <form method="post" action="${pageContext.request.contextPath}/centerMain">
                                                             <input type="hidden" name="userId" value="${vo.userId}">
                                                             <input type="hidden" name="action" value="approve">
-                                                            <input type="hidden" name="section" value="recruitment">
                                                             <button class="centerMainApprv" type="submit">승인</button>
                                                         </form>
                                                         <form method="post" action="${pageContext.request.contextPath}/centerMain">
                                                             <input type="hidden" name="userId" value="${vo.userId}">
                                                             <input type="hidden" name="action" value="reject">
-                                                            <input type="hidden" name="section" value="recruitment">
                                                             <button class="centerMainRej" type="button" onclick="showRejectReason('${vo.userId}_recruitment')">거절</button>
                                                         </form>
                                                     </div>
@@ -90,7 +88,6 @@
                                                         <form method="post" action="${pageContext.request.contextPath}/centerMain">
                                                             <input type="hidden" name="userId" value="${vo.userId}">
                                                             <input type="hidden" name="action" value="reject">
-                                                            <input type="hidden" name="section" value="recruitment">
                                                             <input class="centerMainRR" type="text" name="rejectReason" placeholder="거절 사유를 입력하세요" />
                                                             <button class="centerRR" type="submit">O</button>
                                                             <button class="centerRR" type="button" onclick="hideRejectReason('${vo.userId}_recruitment')">X</button>
@@ -105,7 +102,7 @@
                                                     </form>
                                                 </c:when>
                                                 <c:when test="${vo.status == '2'}">
-                                                    <div>거절사유: ${vo.rejectReason}</div>
+                                                    <div>거절됨: ${vo.rejectReason}</div>
                                                 </c:when>
                                                 <c:when test="${vo.status == '3'}">
                                                     <div>봉사완료</div>
@@ -124,7 +121,8 @@
                     </form>
                 </div>
             </div>
-            <form name="recruitmentRegister" method="post" action="${pageContext.request.contextPath}/centerReg.jsp" encType="utf-8">
+            <form name="recruitmentRegister" method="get" action="${pageContext.request.contextPath}/centerReg.do" encType="utf-8">
+                <input type="hidden" name="centerId" value="${centerId}">
                 <button type="submit" class="centerMainRegisterButton">등 록</button>
             </form>
         </section>
@@ -220,7 +218,6 @@
                             <th>ID</th>
                             <th>이름</th>
                             <th>전화번호</th>
-                            <th>상세내용보기</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -236,12 +233,6 @@
                                         <td>${vo.userId}</td>
                                         <td>${vo.name}</td>
                                         <td>${vo.phone}</td>
-                                        <td>
-                                            <form method="get" action="${pageContext.request.contextPath}/AdoptionMain.jsp">
-                                                <input type="hidden" name="userId" value="${vo.userId}">
-                                                <button type="submit">상세내용보기</button>
-                                            </form>
-                                        </td>
                                     </tr>
                                 </c:forEach>
                             </c:otherwise>
