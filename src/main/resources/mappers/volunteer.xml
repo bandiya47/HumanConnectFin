@@ -17,6 +17,7 @@
 		<result property="vRegAmnt" column="V_REG_AMNT" />
 		<result property="vUploadFilePath" column="V_UPLOAD_FILE_PATH" />
 		<result property="vInfo" column="V_INFO" />
+		<result property="vServiceType" column="service_type" />
 	</resultMap>
 
 	<resultMap id="vNoCenterRegResult" type="centerRegVO">
@@ -25,8 +26,26 @@
 
 	<select id="selectCenterRegList" parameterType="int" resultMap="listCenterRegResult">
 		<![CDATA[
-        	select V_TITLE, V_START_DATE, V_END_DATE, V_START_TIME, V_LAST_TIME, V_RSTART_DATE, V_REND_DATE, V_WORKING_DAY, SERVICE_CODE, V_MAX_AMNT, V_REG_AMNT, V_UPLOAD_FILE_PATH, V_INFO from volunteer where V_NO =#{v_no}
-      	]]>
+		   SELECT
+			v.V_TITLE,
+			v.V_START_DATE,
+			v.V_END_DATE,
+			v.V_START_TIME,
+			v.V_LAST_TIME,
+			v.V_RSTART_DATE,
+		    v.V_REND_DATE,
+		    v.V_WORKING_DAY,
+			v.SERVICE_CODE,
+			v.V_MAX_AMNT,
+			v.V_REG_AMNT,
+			v.V_UPLOAD_FILE_PATH,
+			v.V_INFO,
+			s.service_type as service_type
+		    FROM volunteer v
+		    INNER JOIN service_type_table s
+			ON s.service_code = v.service_code
+		    WHERE v.V_NO =#{v_no}
+		]]>
 	</select>
 
 	<select id="selectVNoCenterReg" resultMap="vNoCenterRegResult">

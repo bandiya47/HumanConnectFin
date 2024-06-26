@@ -151,7 +151,7 @@
                             var vRStartDate = data[0].vRStartDate;
                             var vREndDate = data[0].vREndDate;
                             var vWorkingDay = data[0].vWorkingDay;
-                            var vServiceCode = data[0].vServiceCode;
+                            var vServiceCode = data[0].vServiceType;
                             var vRegAmnt = data[0].vRegAmnt;
                             var vUploadFilePath = data[0].vUploadFilePath;
                             var vInfo = data[0].vInfo;

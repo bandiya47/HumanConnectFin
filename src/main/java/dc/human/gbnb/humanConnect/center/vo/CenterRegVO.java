@@ -16,6 +16,7 @@ public class CenterRegVO {
 	private String vREndDate;
 	private String vWorkingDay;
 	private int vServiceCode;
+	private String vServiceType;
 	private int vMaxAmnt;
 	private int vRegAmnt;
 	private int vState;
@@ -29,22 +30,13 @@ public class CenterRegVO {
 
 	}
 
-//	public CenterRegVO(String vTitle){
-//		this.vTitle = vTitle;
-//		this.vStartDate = vStartDate;
-//		this.vEndDate = vEndDate;
-//		this. vStartTime = vStartTime;
-//		this. vLastTime = vLastTime;
-//		this. vRStartDate = vRStartDate;
-//		this. vREndDate = vREndDate;
-//		this. vWorkingDay = vWorkingDay;
-//		this. vServiceCode = vServiceCode;
-//		this. vRegAmnt = vRegAmnt;
-//		this. vUploadFilePath = vUploadFilePath;
-//		this. vInfo = vInfo;
-//
-//	}
+	public String getvServiceType() {
+		return vServiceType;
+	}
 
+	public void setvServiceType(String vServiceType) {
+		this.vServiceType = vServiceType;
+	}
 
 	public String getuId() {
 		return uId;
