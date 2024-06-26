@@ -6,60 +6,82 @@
 <mapper namespace="dc.human.gbnb.humanConnect.center.dao.CenterMainDAO">
 
     <resultMap id="centerMainResult" type="dc.human.gbnb.humanConnect.center.vo.CenterMainVO">
-        <result property="userId" column="u_id" />
-        <result property="name" column="u_name" />
-        <result property="phone" column="u_phone" />
-        <result property="status" column="reg_result" />
-        <result property="rejectReason" column="reject_rs" />
+        <result property="userId" column="userId"/>
+        <result property="name" column="name"/>
+        <result property="phone" column="phone"/>
+        <result property="status" column="status"/>
+        <result property="rejectReason" column="rejectReason"/>
     </resultMap>
 
-    <select id="getRecruitmentList" resultMap="centerMainResult" parameterType="String">
-        SELECT U.U_ID, U.U_NAME, U.U_PHONE, A.REG_RESULT, A.REJECT_RS
+    <select id="getRecruitmentList" resultMap="centerMainResult">
+        <![CDATA[
+        SELECT U.U_ID as userId,
+               U.U_NAME as name,
+               U.U_PHONE as phone,
+               A.REG_RESULT as status,
+               A.REJECT_RS as rejectReason
+          FROM VOLUNTEER_USER U
+          JOIN VOLUNTEER_REG R ON R.U_ID = U.U_ID
+          JOIN ACCEPTION_RES A ON R.VREG_NO = A.VREG_NO
+          JOIN VOLUNTEER V ON V.V_NO = R.V_NO
+          JOIN CENTER_MNG_TABLE C ON C.C_ID = V.C_ID
+         WHERE C.C_ID = #{centerId}
+           AND R.V_TYPE = 0
+        ORDER BY V.CREATED_DATE DESC
+        ]]>
+    </select>
+
+    <select id="getVolunteerList" resultMap="centerMainResult">
+        <![CDATA[
+        SELECT U.U_ID AS userId, U.U_NAME AS name, U.U_PHONE AS phone,
+               A.REG_RESULT AS status, A.REJECT_RS AS rejectReason
         FROM VOLUNTEER_USER U
         JOIN VOLUNTEER_REG R ON R.U_ID = U.U_ID
         JOIN ACCEPTION_RES A ON R.VREG_NO = A.VREG_NO
-        JOIN VOLUNTEER V ON V.V_NO = R.V_NO
-        JOIN CENTER_MNG_TABLE C ON C.C_ID = V.C_ID
-        WHERE V.V_NO = (SELECT V_NO FROM VOLUNTEER
-        WHERE C_ID = #{centerId}
-        ORDER BY CREATED_DATE DESC FETCH FIRST 1 ROWS ONLY)
-        AND R.V_TYPE = 0
-        AND C.C_ID = #{centerId}
+        WHERE R.V_TYPE = 1 AND R.C_ID = #{centerId}
+        ]]>
     </select>
 
-    <select id="getVolunteerList" resultMap="centerMainResult" parameterType="String">
-        SELECT U.U_ID, U.U_NAME, U.U_PHONE, A.REG_RESULT, A.REJECT_RS
-        FROM VOLUNTEER_USER U
-        JOIN VOLUNTEER_REG R ON R.U_ID = U.U_ID
-        JOIN ACCEPTION_RES A ON R.VREG_NO = A.VREG_NO
-        WHERE R.V_TYPE = 1
-        AND R.C_ID = #{centerId}
-    </select>
-
-    <select id="getAdoptionList" resultMap="centerMainResult" parameterType="String">
-        SELECT U.U_ID, U.U_NAME, U.U_PHONE
+    <select id="getAdoptionList" resultMap="centerMainResult">
+        <![CDATA[
+        SELECT U.U_ID AS userId, U.U_NAME AS name, U.U_PHONE AS phone
         FROM VOLUNTEER_USER U
         JOIN ADOPT_REG A ON A.U_ID = U.U_ID
         JOIN CENTER_MNG_TABLE C ON A.C_NAME = C.C_NAME
-        WHERE C.C_NAME = (SELECT C_NAME FROM CENTER_MNG_TABLE
-        WHERE C_ID = #{centerId})
+        WHERE C.C_NAME = (SELECT C_NAME FROM CENTER_MNG_TABLE WHERE C_ID = #{centerId})
+        ]]>
     </select>
 
-    <update id="updateStatus" parameterType="map">
+    <select id="getLatestRecruitmentTitle" parameterType="String" resultType="String">
+        <![CDATA[
+        SELECT V_TITLE
+          FROM VOLUNTEER
+         WHERE C_ID = #{centerId}
+        ORDER BY CREATED_DATE DESC
+        FETCH FIRST 1 ROWS ONLY
+        ]]>
+    </select>
+
+    <update id="updateStatus">
+        <![CDATA[
         UPDATE ACCEPTION_RES SET
         REG_RESULT = #{status},
         REJECT_RS = #{rejectReason},
         UPDATED_DATE = SYSDATE,
         UPDATED_ID = #{centerId}
         WHERE U_ID = #{userId}
+        ]]>
     </update>
 
-    <select id="getLatestRecruitmentTitle" resultType="String" parameterType="String">
-        SELECT V_TITLE
-        FROM VOLUNTEER
-        WHERE C_ID = #{centerId}
-        ORDER BY CREATED_DATE DESC
-        FETCH FIRST 1 ROWS ONLY
+    <select id="getTotalRecruitments" resultType="int">
+        <![CDATA[
+        SELECT COUNT(*)
+        FROM VOLUNTEER_USER U
+        JOIN VOLUNTEER_REG R ON R.U_ID = U.U_ID
+        JOIN ACCEPTION_RES A ON R.VREG_NO = A.VREG_NO
+        JOIN VOLUNTEER V ON V.V_NO = R.V_NO
+        JOIN CENTER_MNG_TABLE C ON C.C_ID = V.C_ID
+        WHERE C.C_ID = #{centerId} AND R.V_TYPE = 0
+        ]]>
     </select>
-
 </mapper>

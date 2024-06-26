@@ -1,17 +1,12 @@
 package dc.human.gbnb.humanConnect.center.controller;
 
 import dc.human.gbnb.humanConnect.center.service.CenterMainService;
-import dc.human.gbnb.humanConnect.center.vo.CenterMainVO;
-import dc.human.gbnb.humanConnect.login.vo.UserVO;
-import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
-
-import java.util.List;
 
 @Controller
 public class CenterMainControllerImpl implements CenterMainController {
@@ -21,26 +16,14 @@ public class CenterMainControllerImpl implements CenterMainController {
 
     @Override
     @GetMapping("/centerMain")
-    public ModelAndView showCenterMain(HttpSession session) {
-        UserVO user = (UserVO) session.getAttribute("userVO");
-
-        if (user == null || user.getUserId() == null) {
-            return new ModelAndView("redirect:/login");
-        }
-
-        String centerId = user.getUserId();
+    public ModelAndView showCenterMain(@RequestParam("userId") String userId) {
+        String centerId = userId;
 
         ModelAndView mav = new ModelAndView("centerMain");
-        List<CenterMainVO> recruitmentList = centerMainService.getRecruitmentList(centerId);
-        List<CenterMainVO> volunteerList = centerMainService.getVolunteerList(centerId);
-        List<CenterMainVO> adoptionList = centerMainService.getAdoptionList(centerId);
-
-        System.out.println("리스트: " + recruitmentList);
-
-        mav.addObject("recruitmentList", recruitmentList);
-        mav.addObject("volunteerList", volunteerList);
-        mav.addObject("adoptionList", adoptionList);
         mav.addObject("latestRecruitmentTitle", centerMainService.getLatestRecruitmentTitle(centerId));
+        mav.addObject("recruitmentList", centerMainService.getRecruitmentList(centerId));
+        mav.addObject("volunteerList", centerMainService.getVolunteerList(centerId));
+        mav.addObject("adoptionList", centerMainService.getAdoptionList(centerId));
 
         return mav;
     }
@@ -50,16 +33,9 @@ public class CenterMainControllerImpl implements CenterMainController {
     public ModelAndView handlePostRequest(
             @RequestParam("action") String action,
             @RequestParam("userId") String userId,
-            @RequestParam(value = "rejectReason", required = false) String rejectReason,
-            HttpSession session
+            @RequestParam(value = "rejectReason", required = false) String rejectReason
     ) {
-        UserVO user = (UserVO) session.getAttribute("userVO");
-
-        if (user == null || user.getUserId() == null) {
-            return new ModelAndView("redirect:/login");
-        }
-
-        String centerId = user.getUserId();
+        String centerId = userId;
         int updateRow = 0;
 
         if ("approve".equals(action)) {
@@ -71,6 +47,7 @@ public class CenterMainControllerImpl implements CenterMainController {
         }
 
         ModelAndView mav = new ModelAndView("redirect:/centerMain");
+        mav.addObject("userId", userId);
         if (updateRow > 0) {
             mav.addObject("message", "수정되었습니다");
         } else {
