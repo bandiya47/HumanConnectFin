@@ -13,56 +13,142 @@
         </style>
            <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
            <script type="text/javascript">
-           if(${v_no}){
+           $(document).ready(function() {
+                                var job ="${job}";
 
-           var vTitle = centerList2[0].vTitle;
-           var vStartDate = centerList2[0].vStartDate;
-           var vEndDate = centerList2[0].vEndDate;
-           var vStartTime = centerList2[0].vStartTime;
-           var vLastTime = centerList2[0].vLastTime;
-           var vRStartDate = centerList2[0].vRStartDate;
-           var vREndDate = centerList2[0].vREndDate;
-           var vWorkingDay = centerList2[0].vWorkingDay;
-           var vServiceCode = centerList2[0].vServiceType;
-           var vRegAmnt = centerList2[0].vRegAmnt;
-           var vUploadFilePath = centerList2[0].vUploadFilePath;
-           var vInfo = centerList2[0].vInfo;
+                              if(job == "view"){
 
 
-           $('#centerRegBtnRM').remove();
-           $( 'h2' ).html( '<h1>'+vTitle+'</h1>' );
-
-           $('#vDate').remove();
-           $( 'vDate' ).html( '<h1>' + vStartDate + ' ~ ' + vEndDate + '</h1>' );
-
-           $('#vTime').remove();
-           $( 'vTime' ).html( '<h1>' + vStartTime + ' ~ ' + vLastTime + '</h1>' );
-
-           $('#rDate').remove();
-           $( 'rDate' ).html( '<h1>' + vRStartDate + ' ~ ' + vREndDate + '</h1>' );
-
-           $('#work').remove();
-           $( 'work' ).html( '<h1>' + vWorkingDay + '</h1>' );
-
-           $('#vRegAmnt').remove();
-           $( 'vRegAmnt' ).html( '<h1>' + vRegAmnt + '</h1>' );
-
-           $('#serviceCode').remove();
-           $( 'serviceCode' ).html( '<h1>' + vServiceCode + '</h1>' );
-
-           $('#file').remove();
-           $( 'file' ).html( '<h1>' + vUploadFilePath + '</h1>' );
-
-           $('#info').remove();
-           if( vInfo == "없음" ){
-           $( 'info' ).html( '<h1>' + vInfo + '</h1>' );
-           }else{
-           $( 'info' ).html( '<h1 style="text-align : left">' + vInfo + '</h1>' );
-           }
+                                   var v_no = "${centerList[0].v_no}";
+                                   var vTitle = "${centerList[0].vTitle}";
+                                   var vStartDate = "${centerList[0].vStartDate}";
+                                   var vEndDate = "${centerList[0].vEndDate}";
+                                   var vStartTime = "${centerList[0].vStartTime}";
+                                   var vLastTime = "${centerList[0].vLastTime}";
+                                   var vRStartDate = "${centerList[0].vRStartDate}";
+                                   var vREndDate = "${centerList[0].vREndDate}";
+                                   var vWorkingDay = "${centerList[0].vWorkingDay}";
+                                   var vServiceCode = "${centerList[0].vServiceType}";
+                                   var vServiceCode2 ="${centerList[0].vServiceCode}";
+                                   var vRegAmnt = "${centerList[0].vRegAmnt}";
+                                   var vUploadFilePath = "${centerList[0].vUploadFilePath}";
+                                   var vInfo = "${centerList[0].vInfo}";
 
 
-           return;
-           }
+
+                                   $( 'h2' ).html( '<h1>'+vTitle+'</h1>' );
+
+                                   $('#vDate').remove();
+                                   $( 'vDate' ).html( '<h1>' + vStartDate + ' ~ ' + vEndDate + '</h1>' );
+
+                                   $('#vTime').remove();
+                                   $( 'vTime' ).html( '<h1>' + vStartTime + ' ~ ' + vLastTime + '</h1>' );
+
+                                   $('#rDate').remove();
+                                   $( 'rDate' ).html( '<h1>' + vRStartDate + ' ~ ' + vREndDate + '</h1>' );
+
+                                   $('#work').remove();
+                                   $( 'work' ).html( '<h1>' + vWorkingDay + '</h1>' );
+
+                                   $('#vRegAmnt').remove();
+                                   $( 'vRegAmnt' ).html( '<h1>' + vRegAmnt + '</h1>' );
+
+                                   $('#serviceCode').remove();
+                                   $( 'serviceCode' ).html( '<h1>' + vServiceCode + '</h1>' );
+
+                                   $('#file').remove();
+                                   $( 'file' ).html( '<h1>' + vUploadFilePath + '</h1>' );
+
+                                   $('#info').remove();
+                                   if( vInfo == "없음" ){
+                                   $( 'info' ).html( '<h1>' + vInfo + '</h1>' );
+                                   }else{
+                                   $( 'info' ).html( '<h1 style="text-align : left">' + vInfo + '</h1>' );
+                                   }
+
+
+
+                              }
+
+                              if(job == "modify"){
+
+                                       	                                       var v_no = "${centerList[0].v_no}";
+
+                                                                                 var vTitle = "${centerList[0].vTitle}";
+
+                                                                                 var vStartDate = "${centerList[0].vStartDate}";
+                                                                                 var vEndDate = "${centerList[0].vEndDate}";
+                                                                                 var vStartTime = "${centerList[0].vStartTime}";
+                                                                                 var vLastTime = "${centerList[0].vLastTime}";
+                                                                                 var vRStartDate = "${centerList[0].vRStartDate}";
+                                                                                 var vREndDate = "${centerList[0].vREndDate}";
+                                                                                 var vWorkingDay = "${centerList[0].vWorkingDay}";
+                                                                                 var vServiceCode = "${centerList[0].vServiceType}";
+                                                                                 var vServiceCode2 ="${centerList[0].vServiceCode}";
+                                                                                 var vRegAmnt = "${centerList[0].vRegAmnt}";
+                                                                                 var vUploadFilePath = "${centerList[0].vUploadFilePath}";
+                                                                                 var vInfo = "${centerList[0].vInfo}";
+
+
+                                          	               document.getElementById("title").value = vTitle;
+                                          	               document.getElementById("startDate").value = vStartDate;
+                                          	               document.getElementById("endDate").value = vEndDate;
+                                          	               document.getElementById("startTime").value = vStartTime;
+                                          	               document.getElementById("endTime").value = vLastTime;
+                                          	               document.getElementById("rStartDate").value = vRStartDate;
+                                          	               document.getElementById("rEndDate").value = vREndDate;
+
+
+                                                            var wokr1 = vWorkingDay.indexOf("월");
+                                                            var wokr2 = vWorkingDay.indexOf("화");
+                                                            var wokr3 = vWorkingDay.indexOf("수");
+                                                            var wokr4 = vWorkingDay.indexOf("목");
+                                                            var wokr5 = vWorkingDay.indexOf("금");
+                                                            var wokr6 = vWorkingDay.indexOf("토");
+                                                            var wokr7 = vWorkingDay.indexOf("일");
+
+                                                            if(wokr1!=-1){
+                                                                document.getElementById("work1").checked = true;
+                                                            }
+                                                            if(wokr2!=-1){
+                                                                document.getElementById("work2").checked = true;
+                                                            }
+                                                            if(wokr3!=-1){
+                                                                document.getElementById("work3").checked = true;
+                                                            }
+                                                            if(wokr4!=-1){
+                                                               document.getElementById("work4").checked = true;
+                                                            }
+                                                            if(wokr5!=-1){
+                                                               document.getElementById("work5").checked = true;
+                                                            }
+                                                            if(wokr6!=-1){
+                                                               document.getElementById("work6").checked = true;
+                                                            }
+                                                            if(wokr7!=-1){
+                                                               document.getElementById("work7").checked = true;
+                                                            }
+
+
+                                                            vInfo=vInfo.replace(/<br>/g, "\n");
+
+
+
+                                          	               document.getElementById("vRegAmnt").value = vRegAmnt;
+                                          	               document.getElementById("serviceCode").value = vServiceCode2;
+
+                                          	               document.getElementById("info").value = vInfo;
+
+
+
+                                       	}
+
+                          });
+           </script>
+           <script type="text/javascript">
+
+
+
 	           function fn_process(){
                    var _uId = "${centerId}";
 	               var _title=$("#title").val();
@@ -171,12 +257,6 @@
 	            	   _info="없음";
 	            	   }
 
-
-
-
-
-
-
 	               $.ajax({
 	                   type:"post",
 	                   async:true,
@@ -213,7 +293,12 @@
                             var vInfo = data[0].vInfo;
 
 
-                            $('#centerRegBtnRM').remove();
+                            document.getElementById("centerRegBtnCN").value = "확인";
+                            document.getElementById("centerRegBtnRM").value = "수정";
+                            document.getElementById("centerRegBtnRM").type="submit";
+
+                            $( 'hidden' ).html( '<input type="hidden" name="v_no" value="'+v_no+'"/>' );
+
                             $( 'h2' ).html( '<h1>'+vTitle+'</h1>' );
 
                             $('#vDate').remove();
@@ -253,6 +338,9 @@
 	             });
 
          	}
+
+
+
            </script>
     </head>
     <html>
@@ -326,11 +414,11 @@
 		            <tr>
 		               <td class="centerRegTd">센터명</td>
 		                <td>
-		                    ${centerList[0].cName}
+		                    ${centerList2[0].cName}
 		                </td>
 		                <td class="centerRegTd">봉사장소</td>
 		                <td>
-		                    ${centerList[0].cAddr1} ${centerList[0].cAddr2}
+		                    ${centerList2[0].cAddr1} ${centerList2[0].cAddr2}
 		                </td>
 		            </tr>
 		            <tr>
@@ -342,8 +430,37 @@
 		            <textarea id="info" name="vInfo"  placeholder="자격요건, 주의사항, 상세내용, 등을 입력해주세요."></textarea><info></info>
 		        </div>
 		        </div>
-		        <input id="centerRegBtnRM" class="centerRegBtn" type="button" value="등록" onClick="fn_process()" />
-		       	<input class="centerRegBtn" type="button" value="취소" onClick="location.href='centerMain.jsp'"/>
+
+                    <div class="button-container">
+
+                    <c:set var="v_no" value="${centerList[0].v_no}" />
+                    <c:choose>
+                    <c:when test="${ v_no > 0}">
+                        <form name="recruitmentRegister" method="get" action="${pageContext.request.contextPath}/centerMain" encType="utf-8">
+                            <input type="hidden" name="userId" value="${centerId}">
+                            <input id="centerRegBtnCN" type="submit"  class="centerRegBtn" value="목록" />
+                        </form>
+                        <form name="recruitmentRegister" method="get" action="${pageContext.request.contextPath}/updateCenterReg.do" encType="utf-8">
+                            <input id="centerRegBtnRM" class="centerRegBtn" type="submit" value="수정" />
+                            <input type="hidden" name="centerId" value="${centerId}"/>
+                            <input type="hidden" name="v_no" value="${v_no}"/>
+                        </form>
+                    </c:when>
+                    <c:otherwise>
+                        <form name="recruitmentRegister" method="get" action="${pageContext.request.contextPath}/centerMain" encType="utf-8">
+                            <input type="hidden" name="userId" value="${centerId}">
+                            <input id="centerRegBtnCN" type="submit"  class="centerRegBtn" value="취소" />
+                        </form>
+                        <form name="recruitmentRegister" method="get" action="${pageContext.request.contextPath}/viewCenterReg.do" encType="utf-8">
+                            <input id="centerRegBtnRM" class="centerRegBtn" type="button" value="등록" onClick="fn_process()" />
+                            <input type="hidden" name="centerId" value="${centerId}"/>
+                            <hidden></hidden>
+                        </form>
+                    </c:otherwise>
+
+                    </c:choose>
+                    </div>
+
 		    </div>
 
 		</body>

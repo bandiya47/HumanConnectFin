@@ -1826,7 +1826,6 @@ vertical-align:middle;
             .centerRegBtn{
             	width:200px;
             	height:45px;
-            	margin-bottom:20px;
 			    background-color : #EC9343; 
 			    color: white;
 			    border: none;
@@ -1835,6 +1834,7 @@ vertical-align:middle;
 			    transition: background-color 0.3s ease;
 			    font-size:18px;
 			    font-family: 'MangoDdobak-B';
+
 			            	
             }
             .centerRegBtn:hover{
@@ -1884,6 +1884,11 @@ vertical-align:middle;
 				font-size:18px;
 				font-family: 'MangoDdobak-B';
 			}
+			.button-container {
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+            }
 
 
 /**센터레그 끝~~*****************************************************************************************************************/

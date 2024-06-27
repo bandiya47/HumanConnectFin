@@ -18,4 +18,5 @@ public interface CenterRegController {
 	public ModelAndView centerReg(HttpServletRequest request, HttpServletResponse response, @RequestParam("centerId") String centerId) throws Exception;
 	public List<CenterRegVO> addCenterReg(@ModelAttribute("info") CenterRegVO centerRegVO, HttpServletRequest request, HttpServletResponse response) throws Exception;
 	public Map upload(MultipartHttpServletRequest multipartRequest, HttpServletResponse response) throws Exception;
+	public ModelAndView updateCenterReg(HttpServletRequest request, HttpServletResponse response,@RequestParam("centerId") String centerId, @RequestParam("v_no") int v_no) throws Exception;
 }

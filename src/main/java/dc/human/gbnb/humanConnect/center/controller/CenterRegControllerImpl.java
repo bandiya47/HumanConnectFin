@@ -35,10 +35,13 @@ public class CenterRegControllerImpl implements CenterRegController {
 
 		List<CenterRegVO> Result = centerRegService.listIdCenterReg(centerId);
 		List<CenterRegVO> Result2 = centerRegService.listCenterReg(v_no);
+		System.out.println(Result2.get(0).getvTitle());
 		ModelAndView mav = new ModelAndView("/centerReg");
 
-		mav.addObject("centerList",Result);
-		mav.addObject("centerList2",Result2);
+		String job="view";
+		mav.addObject("job",job);
+		mav.addObject("centerList2",Result);
+		mav.addObject("centerList",Result2);
 		mav.addObject("centerId", centerId);
 		mav.addObject("v_no", v_no);
 		return mav;
@@ -54,8 +57,28 @@ public class CenterRegControllerImpl implements CenterRegController {
 
 		List<CenterRegVO> Result = centerRegService.listIdCenterReg(centerId);
 		ModelAndView mav = new ModelAndView("/centerReg");
-		mav.addObject("centerList",Result);
+		mav.addObject("centerList2",Result);
 		mav.addObject("centerId", centerId);
+		return mav;
+	}
+
+	@Override
+	@RequestMapping(value= "/updateCenterReg.do", method = RequestMethod.GET)
+	public ModelAndView updateCenterReg(HttpServletRequest request, HttpServletResponse response,
+									  @RequestParam("centerId") String centerId,
+									  @RequestParam("v_no") int v_no) throws Exception {
+
+
+		List<CenterRegVO> Result = centerRegService.listIdCenterReg(centerId);
+		List<CenterRegVO> Result2 = centerRegService.listCenterReg(v_no);
+
+		ModelAndView mav = new ModelAndView("/centerReg");
+		String job="modify";
+		mav.addObject("job",job);
+		mav.addObject("centerList2",Result);
+		mav.addObject("centerList",Result2);
+		mav.addObject("centerId", centerId);
+		mav.addObject("v_no", v_no);
 		return mav;
 	}
 
@@ -71,8 +94,8 @@ public class CenterRegControllerImpl implements CenterRegController {
 
 		insert = centerRegService.addCenterReg(centerReg);
 		int v_no = centerRegService.v_noCenterReg();
-		List<CenterRegVO> Result = centerRegService.listCenterReg(v_no);
-		return Result;
+		List<CenterRegVO> centerList = centerRegService.listCenterReg(v_no);
+		return centerList;
 	}
 
 	@Override
