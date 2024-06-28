@@ -13,6 +13,7 @@ import java.util.List;
 public interface CenterRegDAO {
 
 	 public int insertCenterReg(CenterRegVO centerRegVO) throws DataAccessException ;
+	 public int updateCenterReg(CenterRegVO centerRegVO) throws DataAccessException ;
 	 public CenterRegVO selectVNoCenterReg () throws DataAccessException;
 	 public List selectCenterRegList(int v_no) throws DataAccessException;
 	 public List selectCenterRegIdList(String centerId) throws DataAccessException;

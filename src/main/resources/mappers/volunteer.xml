@@ -5,6 +5,7 @@
 
 <mapper namespace="dc.human.gbnb.humanConnect.center.dao.CenterRegDAO">
 	<resultMap id="listCenterRegResult" type="centerRegVO">
+		<result property="uId" column="C_ID" />
 		<result property="v_no" column="V_NO" />
 		<result property="vTitle" column="V_TITLE" />
 		<result property="vStartDate" column="V_START_DATE" />
@@ -34,6 +35,7 @@
 	<select id="selectCenterRegList" parameterType="int" resultMap="listCenterRegResult">
 		<![CDATA[
 		   SELECT
+		    v.C_ID,
 		    v.V_NO,
 			v.V_TITLE,
 			v.V_START_DATE,
@@ -68,6 +70,26 @@
 		 values(#{uId},#{vTitle},#{vStartDate},#{vEndDate},#{vStartTime},#{vLastTime},#{vRStartDate},#{vREndDate},#{vWorkingDay},#{vServiceCode},#{vRegAmnt},0,1,#{vUploadFilePath},#{vInfo},#{uId},SYSDATE)
 		]]>
 	</insert>
+
+	<update id="updateCenterReg" parameterType="centerRegVO">
+		<![CDATA[
+		 update volunteer set
+		 V_TITLE = #{vTitle},
+		 V_START_DATE = #{vStartDate},
+		 V_END_DATE = #{vEndDate},
+		 V_START_TIME = #{vStartTime},
+		 V_LAST_TIME = #{vLastTime},
+		 V_RSTART_DATE = #{vRStartDate},
+		 V_REND_DATE = #{vREndDate},
+		 V_WORKING_DAY = #{vWorkingDay},
+		 SERVICE_CODE = #{vServiceCode},
+		 V_REG_AMNT = #{vRegAmnt},
+		 V_INFO = #{vInfo},
+		 UPDATED_ID = #{uId},
+         UPDATED_DATE = SYSDATE
+         where v_no = #{v_no}
+		]]>
+	</update>
 
 	<select id="selectCenterRegIdList" parameterType="String" resultMap="listIdCenterRegResult">
 		<![CDATA[

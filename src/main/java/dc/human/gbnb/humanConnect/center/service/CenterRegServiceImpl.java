@@ -25,6 +25,11 @@ public class CenterRegServiceImpl implements CenterRegService {
 	}
 
 	@Override
+	public int updateCenterReg(CenterRegVO centerRegVO) throws Exception {
+		return centerRegDAO.updateCenterReg(centerRegVO);
+	}
+
+	@Override
 	public int v_noCenterReg() throws Exception {
 		int v_no =0;
 		v_no=centerRegDAO.selectVNoCenterReg().getV_no();

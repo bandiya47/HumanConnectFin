@@ -72,22 +72,20 @@
 
                               if(job == "modify"){
 
-                                       	                                       var v_no = "${centerList[0].v_no}";
-
-                                                                                 var vTitle = "${centerList[0].vTitle}";
-
-                                                                                 var vStartDate = "${centerList[0].vStartDate}";
-                                                                                 var vEndDate = "${centerList[0].vEndDate}";
-                                                                                 var vStartTime = "${centerList[0].vStartTime}";
-                                                                                 var vLastTime = "${centerList[0].vLastTime}";
-                                                                                 var vRStartDate = "${centerList[0].vRStartDate}";
-                                                                                 var vREndDate = "${centerList[0].vREndDate}";
-                                                                                 var vWorkingDay = "${centerList[0].vWorkingDay}";
-                                                                                 var vServiceCode = "${centerList[0].vServiceType}";
-                                                                                 var vServiceCode2 ="${centerList[0].vServiceCode}";
-                                                                                 var vRegAmnt = "${centerList[0].vRegAmnt}";
-                                                                                 var vUploadFilePath = "${centerList[0].vUploadFilePath}";
-                                                                                 var vInfo = "${centerList[0].vInfo}";
+                                                         var v_no = "${centerList[0].v_no}";
+                                                         var vTitle = "${centerList[0].vTitle}";
+                                                         var vStartDate = "${centerList[0].vStartDate}";
+                                                         var vEndDate = "${centerList[0].vEndDate}";
+                                                         var vStartTime = "${centerList[0].vStartTime}";
+                                                         var vLastTime = "${centerList[0].vLastTime}";
+                                                         var vRStartDate = "${centerList[0].vRStartDate}";
+                                                         var vREndDate = "${centerList[0].vREndDate}";
+                                                         var vWorkingDay = "${centerList[0].vWorkingDay}";
+                                                         var vServiceCode = "${centerList[0].vServiceType}";
+                                                         var vServiceCode2 ="${centerList[0].vServiceCode}";
+                                                         var vRegAmnt = "${centerList[0].vRegAmnt}";
+                                                         var vUploadFilePath = "${centerList[0].vUploadFilePath}";
+                                                         var vInfo = "${centerList[0].vInfo}";
 
 
                                           	               document.getElementById("title").value = vTitle;
@@ -138,14 +136,136 @@
                                           	               document.getElementById("serviceCode").value = vServiceCode2;
 
                                           	               document.getElementById("info").value = vInfo;
+                                          	               document.getElementById("centerRegBtnRM").value="수정 완료";
+                                          	               document.getElementById("centerRegBtnRM").addEventListener("click", fn_modify);
+
 
 
 
                                        	}
 
+
+
                           });
            </script>
            <script type="text/javascript">
+               function fn_modify(){
+                   var _uId = "${centerId}";
+                   var v_no = "${v_no}";
+                   var _title=$("#title").val();
+                   var _startDate=$("#startDate").val();
+                   var _endDate=$("#endDate").val();
+                   var _startTime=$("#startTime").val();
+                   var _endTime=$("#endTime").val();
+                   var _rStartDate=$("#rStartDate").val();
+                   var _rEndDate=$("#rEndDate").val();
+
+
+                   var _vWorkingDay = "";
+                   var _work1=$("#work1").prop("checked");
+                   var _work2=$("#work2").prop("checked");
+                   var _work3=$("#work3").prop("checked");
+                   var _work4=$("#work4").prop("checked");
+                   var _work5=$("#work5").prop("checked");
+                   var _work6=$("#work6").prop("checked");
+                   var _work7=$("#work7").prop("checked");
+                   if(_work1==1){
+                        _vWorkingDay +=$("#work1").val();
+                        _vWorkingDay +=" ";
+                   }
+                   if(_work2==1){
+                        _vWorkingDay +=$("#work2").val();
+                        _vWorkingDay +=" ";
+                   }
+                   if(_work3==1){
+                         _vWorkingDay +=$("#work3").val();
+                         _vWorkingDay +=" ";
+                   }
+                   if(_work4==1){
+                         _vWorkingDay +=$("#work4").val();
+                         _vWorkingDay +=" ";
+                   }
+                   if(_work5==1){
+                         _vWorkingDay +=$("#work5").val();
+                         _vWorkingDay +=" ";
+                   }
+                   if(_work6==1){
+                         _vWorkingDay +=$("#work6").val();
+                         _vWorkingDay +=" ";
+                   }
+                   if(_work7==1){
+                         _vWorkingDay +=$("#work7").val();
+                         _vWorkingDay +=" ";
+                    }
+
+                   var _vRegAmnt=$("#vRegAmnt").val();
+                   var _serviceCode=$("#serviceCode").val();
+                   var _info=$("#info").val().replace(/\n/g, "<br>");
+
+
+                   if(_title==''){
+                         alert("제목을 입력하세요");
+                         return;
+                   }else if(_startDate=='' || _endDate=='' ){
+                       alert("봉사시간을 입력하세요");
+                       return;
+                   }else if(_startTime=='' || _endTime=='' ){
+                       alert("봉사시간을 입력하세요");
+                       return;
+                   }else if(_rStartDate=='' || _rEndDate=='' ){
+                       alert("모집기간을 입력하세요");
+                       return;
+                   }else if(_vWorkingDay==''){
+                       alert("봉사요일을 체크하세요");
+                       return;
+                   }else if(_vRegAmnt=='' ){
+                       alert("모집인원을 입력하세요");
+                       return;
+                   }else if(_serviceCode=='' ){
+                       alert("봉사분야를 체크하세요");
+                       return;
+                   }else if(_info=='' ){
+                       _info="없음";
+                       }
+                    job =null;
+                   $.ajax({
+                       type:"post",
+                       async:false,
+                       url:"${contextPath}/updateCenterReg.do",
+                       data: {
+                               vTitle: _title,
+                               vStartDate: _startDate,
+                               vEndDate: _endDate,
+                               vStartTime: _startTime,
+                               vLastTime: _endTime,
+                               vRStartDate: _rStartDate,
+                               vREndDate: _rEndDate,
+                               vWorkingDay: _vWorkingDay,
+                               vRegAmnt: _vRegAmnt,
+                               vServiceCode: _serviceCode,
+                               vInfo: _info,
+                               uId: _uId,
+                               v_no: v_no
+                         },
+                       success:function (data,textStatus){
+                            alert("업데이트 완료");
+                            var v_no = data[0].v_no;
+                            var uId = data[0].uId;
+
+                            window.open('http://127.0.0.1:18090/viewCenterReg.do?centerId='+uId+ '&v_no='+v_no, '_blank');
+
+
+
+
+                       },
+                       error:function(data,textStatus){
+                          alert("에러가 발생했습니다.");
+                       },
+                       complete:function(data,textStatus){
+                       }
+                 });
+
+            }
 
 
 
@@ -440,7 +560,7 @@
                             <input type="hidden" name="userId" value="${centerId}">
                             <input id="centerRegBtnCN" type="submit"  class="centerRegBtn" value="목록" />
                         </form>
-                        <form name="recruitmentRegister" method="get" action="${pageContext.request.contextPath}/updateCenterReg.do" encType="utf-8">
+                        <form name="recruitmentRegister" method="get" action="${pageContext.request.contextPath}/modifyCenterReg.do" encType="utf-8">
                             <input id="centerRegBtnRM" class="centerRegBtn" type="submit" value="수정" />
                             <input type="hidden" name="centerId" value="${centerId}"/>
                             <input type="hidden" name="v_no" value="${v_no}"/>

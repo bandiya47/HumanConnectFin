@@ -63,8 +63,8 @@ public class CenterRegControllerImpl implements CenterRegController {
 	}
 
 	@Override
-	@RequestMapping(value= "/updateCenterReg.do", method = RequestMethod.GET)
-	public ModelAndView updateCenterReg(HttpServletRequest request, HttpServletResponse response,
+	@RequestMapping(value= "/modifyCenterReg.do", method = RequestMethod.GET)
+	public ModelAndView modifyCenterReg(HttpServletRequest request, HttpServletResponse response,
 									  @RequestParam("centerId") String centerId,
 									  @RequestParam("v_no") int v_no) throws Exception {
 
@@ -96,6 +96,26 @@ public class CenterRegControllerImpl implements CenterRegController {
 		int v_no = centerRegService.v_noCenterReg();
 		List<CenterRegVO> centerList = centerRegService.listCenterReg(v_no);
 		return centerList;
+	}
+
+	@Override
+	@RequestMapping(value="/updateCenterReg.do" ,method = RequestMethod.POST)
+	@ResponseBody
+	public List<CenterRegVO> updateCenterReg(@ModelAttribute("centerReg") CenterRegVO centerReg,
+										  HttpServletRequest request, HttpServletResponse response) throws Exception {
+		request.setCharacterEncoding("utf-8");
+		int insert = 0;
+
+		System.out.println("update");
+		insert = centerRegService.updateCenterReg(centerReg);
+		int v_no = centerReg.getV_no();
+		String centerId = centerReg.getuId();
+
+		List<CenterRegVO> Result2 = centerRegService.listCenterReg(v_no);
+
+
+
+		return Result2;
 	}
 
 	@Override
