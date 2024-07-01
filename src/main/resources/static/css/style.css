@@ -1973,6 +1973,29 @@ vertical-align:middle;
             .volunteerDetailBtn:hover{
             	background-color : #D87A2B ;
             }
+            .volunteerDetailDiv2 textarea {
+                width: 950px;
+                height: 6.25em;
+                border: none;
+                resize: none;
+                background-color:white;
+            }
+            .volunteerDetailDiv2  textarea,input:focus{
+                outline:none;
+            }
+
+            .volunteerDetailDiv2 textarea::placeholder{
+                color:#8B4513;
+                font-size:18px;
+                font-family: 'MangoDdobak-B';
+            }
+            .volunteerDetailDiv input::placeholder{
+                color:#8B4513;
+                font-size: 18px;
+                font-family: 'MangoDdobak-B';
+            }
+
+
 /**봉사상세 끝~~*****************************************************************************************************************/
 /**봉사신청 시작~~*****************************************************************************************************************/
             .volunteerRegDiv{

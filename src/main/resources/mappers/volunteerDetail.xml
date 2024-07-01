@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+      PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="dc.human.gbnb.humanConnect.volunteer.dao.VolunteerDetailDAO">
+	<resultMap id="listResultVolunteerDetail" type="volunteerDetailVO">
+		<result property="cId" column="C_ID" />
+		<result property="v_no" column="V_NO" />
+		<result property="vTitle" column="V_TITLE" />
+		<result property="vStartDate" column="V_START_DATE" />
+		<result property="vEndDate" column="V_END_DATE" />
+		<result property="vStartTime" column="V_START_TIME" />
+		<result property="vLastTime" column="V_LAST_TIME" />
+		<result property="vRStartDate" column="V_RSTART_DATE" />
+		<result property="vREndDate" column="V_REND_DATE" />
+		<result property="vWorkingDay" column="V_WORKING_DAY" />
+		<result property="vServiceCode" column="SERVICE_CODE" />
+		<result property="vMaxAmnt" column="V_MAX_AMNT" />
+		<result property="vRegAmnt" column="V_REG_AMNT" />
+		<result property="vUploadFilePath" column="V_UPLOAD_FILE_PATH" />
+		<result property="vInfo" column="V_INFO" />
+		<result property="vServiceType" column="service_type" />
+		<result property="cName" column="C_NAME" />
+		<result property="cAddr1" column="C_ADDR1" />
+		<result property="cAddr2" column="C_ADDR2" />
+	</resultMap>
+
+	<resultMap id="vRNoVolunteerDetailResult" type="volunteerDetailVO">
+		<result property="vReg_no" column="VREG_NO" />
+	</resultMap>
+
+	<resultMap id="listResultRegVolunteerDetail" type="volunteerDetailVO">
+		<result property="vReg_no" column="VREG_NO" />
+		<result property="cId" column="C_ID" />
+		<result property="v_no" column="V_NO" />
+		<result property="vTitle" column="V_TITLE" />
+		<result property="vStartDate" column="VREG_START_DATE" />
+		<result property="vEndDate" column="VREG_END_DATE" />
+		<result property="vStartTime" column="VREG_START_TIME" />
+		<result property="vLastTime" column="VREG_END_TIME" />
+		<result property="vServiceCode" column="V_TYPE" />
+		<result property="vMaxAmnt" column="VREG_AMNT" />
+		<result property="vRegAmnt" column="V_REG_AMNT" />
+		<result property="vUploadFilePath" column="VREG_UPLOAD_FILE_PATH" />
+		<result property="vInfo" column="VREG_INFO" />
+		<result property="vWorkingDay" column="V_WORKING_DAY" />
+		<result property="vServiceType" column="service_type" />
+		<result property="cName" column="C_NAME" />
+		<result property="cAddr1" column="C_ADDR1" />
+		<result property="cAddr2" column="C_ADDR2" />
+	</resultMap>
+
+	<select id="selectListVolunteerDetail" parameterType="int" resultMap="listResultVolunteerDetail">
+		<![CDATA[
+		SELECT
+			v.C_ID,
+			v.V_NO,
+			v.V_TITLE,
+			v.V_START_DATE,
+			v.V_END_DATE,
+			v.V_START_TIME,
+			v.V_LAST_TIME,
+			v.V_RSTART_DATE,
+			v.V_REND_DATE,
+			v.V_WORKING_DAY,
+			v.SERVICE_CODE,
+			v.V_MAX_AMNT,
+			v.V_REG_AMNT,
+			v.V_UPLOAD_FILE_PATH,
+			v.V_INFO,
+			s.service_type as service_type,
+			C_NAME,
+			C_ADDR1,
+			C_ADDR2
+		FROM volunteer v
+		INNER JOIN service_type_table s
+		ON s.service_code = v.service_code
+		INNER JOIN CENTER_MNG_TABLE C
+		ON C.C_ID = V.C_ID
+		WHERE v.V_NO =#{v_no}
+		]]>
+	</select>
+
+	<insert id="insertVolunteerDetail" parameterType="volunteerDetailVO">
+		<![CDATA[
+		 insert into volunteer_reg(V_NO,U_ID,C_ID,V_TYPE,VREG_AMNT,VREG_UPLOAD_FILE_PATH,VREG_INFO,CREATED_ID,CREATED_DATE)
+		 values(#{v_no},#{uId},#{cId},#{vServiceCode},#{vMaxAmnt},#{vUploadFilePath},#{vInfo},#{uId},SYSDATE)
+		]]>
+	</insert>
+
+	<select id="selectVRNoVolunteerDetail" resultMap="vRNoVolunteerDetailResult">
+		<![CDATA[
+        select max(VREG_NO) as VREG_NO from volunteer_reg
+      ]]>
+	</select>
+
+	<insert id="insertVolunteerDetail2" parameterType="volunteerDetailVO">
+		<![CDATA[
+		 insert into acception_res(VREG_NO, U_ID, REG_RESULT, CREATED_ID, CREATED_DATE)
+		 values(#{vReg_no},#{uId},0,#{uId},SYSDATE)
+		]]>
+	</insert>
+
+	<select id="selectListRegVolunteerDetail" parameterType="int" resultMap="listResultRegVolunteerDetail">
+		<![CDATA[
+		SELECT
+			v.VREG_NO,
+			v.C_ID,
+			v.V_NO,
+			r.V_TITLE,
+			v.VREG_START_DATE,
+			v.VREG_END_DATE,
+			v.VREG_START_TIME,
+			v.VREG_END_TIME,
+			v.V_TYPE,
+			v.VREG_AMNT,
+			r.V_REG_AMNT,
+			v.VREG_UPLOAD_FILE_PATH,
+			v.VREG_INFO,
+			r.V_WORKING_DAY,
+			s.service_type,
+			c.C_NAME,
+			c.C_ADDR1,
+			c.C_ADDR2
+		FROM volunteer_reg v
+		INNER JOIN service_type_table s
+		ON s.service_code = v.V_TYPE
+		INNER JOIN CENTER_MNG_TABLE c
+		ON c.C_ID = V.C_ID
+		INNER JOIN volunteer r
+		ON r.V_NO = V.V_NO
+		WHERE v.VREG_NO =#{vReg_no}
+		]]>
+	</select>
+
+
+
+<!--	<update id="updateMember" parameterType="memberVO">-->
+<!--     <![CDATA[-->
+<!--	     update t_member-->
+<!--	     set pwd=#{pwd}, name=#{name}, email=#{email}-->
+<!--	     where-->
+<!--	     id=#{id}-->
+<!--      ]]>-->
+<!--	</update>-->
+
+<!--	<delete id="deleteMember" parameterType="String">-->
+<!--	<![CDATA[-->
+<!--	   delete from  t_member-->
+<!--	   where-->
+<!--	   id=#{id}-->
+<!--	]]>-->
+<!--	</delete>-->
+<!--	<select id="loginById" resultType="memberVO"-->
+<!--		parameterType="memberVO">-->
+<!--	<![CDATA[-->
+<!--		select * from t_member	-->
+<!--		where id=#{id} and pwd=#{pwd}		-->
+<!--	]]>-->
+<!--	</select>-->
+
+</mapper>
