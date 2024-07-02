@@ -14,40 +14,44 @@
 
                       if(job == "View"){
 
+                            $( 'mmnt' ).html( '<h1>'+"${volunteerList[0].vMaxAmnt}"+'</h1>' );
+                            $( 'file' ).html( '<h1>'+"${volunteerList[0].vUploadFilePath}"+'</h1>' );
+                            $( 'info' ).html( '<h1>'+"${volunteerList[0].vInfo}"+'</h1>' );
 
-                              $( 'mmnt' ).html( '<h1>'+"${volunteerList[0].vMaxAmnt}"+'</h1>' );
-                              $( 'file' ).html( '<h1>'+"${volunteerList[0].vUploadFilePath}"+'</h1>' );
-                              $( 'info' ).html( '<h1>'+"${volunteerList[0].vInfo}"+'</h1>' );
-
-
-
-
-                        }else if(job == "Regist"){
+                      }else if(job == "Regist"){
 
                            document.getElementById("volunteerDetailBtnRM").value="등록하기";
                            document.getElementById("volunteerDetailBtnRM").addEventListener("click", fn_reg);
 
+                        }else if(job == "ViewReg"){
+                            $( 'mmnt' ).html( '<h1>'+"${volunteerList[0].vMaxAmnt}"+'</h1>' );
+                            $( 'file' ).html( '<h1>'+"${volunteerList[0].vUploadFilePath}"+'</h1>' );
+                            $( 'info' ).html( '<h1>'+"${volunteerList[0].vInfo}"+'</h1>' );
+                        }else if(job == "Modify"){
+                            var vInfo="${volunteerList[0].vInfo}";
+                            vInfo = vInfo.replace(/<br>/g, "\n");
+                            document.getElementById("vMaxAmnt").value ="${volunteerList[0].vMaxAmnt}";
+                            document.getElementById("info").value = vInfo;
+                            $( 'file' ).html( '<h1>'+"${volunteerList[0].vUploadFilePath}"+'</h1>' );
+                            document.getElementById("volunteerDetailBtnRM").addEventListener("click", fn_mod);
+
                         }
-                          });
-           </script>
-           <script type="text/javascript">
-           function fn_reg(){
+
+                         function fn_reg(){
+
+                                   var vMaxAmnt=$("#vMaxAmnt").val();
+
+                                   var _file=$("#file").val();
+                                   var _info=$("#info").val().replace(/\n/g, "<br>");
+                                   document.getElementById("info").value=_info;
 
 
-
-
-                	               var vMaxAmnt=$("#vMaxAmnt").val();
-
-                	               var _file=$("#file").val();
-                	               var _info=$("#info").val().replace(/\n/g, "<br>");
-
-
-                	               if(vMaxAmnt=='' ){
-                	                   alert("모집인원을 입력하세요");
-                	                   event.preventDefault();
-                	                   return;
-                	               }else if(_file){
-                	                   var formData = new FormData();
+                                   if(vMaxAmnt=='' ){
+                                       alert("모집인원을 입력하세요");
+                                       event.preventDefault();
+                                       return;
+                                   }else if(_file){
+                                       var formData = new FormData();
                                        var inputFile = $("input[name='vUploadFilePath']");
                                        var files = inputFile[0].files;
                                        formData.append("uploadFile", files[0]);
@@ -70,21 +74,39 @@
                                              },
                                        });
                                         }else if(_file=='' ){
-                                       	            	   _file="없음";
-                                       	            	   if(_info=='' ){
-                                       	            		   _info="없음";
-                                       	            	   }
-                                       	               }else if(_info=='' ){
-                                       	            	   _info="없음";
-                                       	            	   }
-                                 $( 'mmnt' ).html( '<h1>'+"${volunteerList[0].vMaxAmnt}"+'</h1>' );
-                                 $( 'file' ).html( '<h1>'+"${volunteerList[0].vUploadFilePath}"+'</h1>' );
-                                 $( 'info' ).html( '<h1>'+"${volunteerList[0].vInfo}"+'</h1>' );
+                                                           _file="없음";
+                                                           if(_info=='' ){
+                                                               _info="없음";
+                                                           }
+                                                       }else if(_info=='' ){
+                                                           _info="없음";
+                                                           }
+
 
                                          }
+                      function fn_mod(){
+
+                                var vMaxAmnt=$("#vMaxAmnt").val();
+
+                                var _info=$("#info").val().replace(/\n/g, "<br>");
+                                document.getElementById("info").value=_info;
 
 
+                                if(vMaxAmnt=='' ){
+                                    alert("모집인원을 입력하세요");
+                                    event.preventDefault();
+                                    return;
+                                }else if(_info=='' ){
+                                    _info="없음";
+                                    }
+
+
+                      }
+
+
+           });
            </script>
+
 
 
 <!DOCTYPE html>
@@ -99,11 +121,9 @@
     <body>
 	 <jsp:include page="neviCenter.jsp" />
 
-
+     <div class="volunteerDetailDiv">
      <c:if test="${job == 'Regist'}">
      <form name="volunteerDetailInsert" method="post" action="${pageContext.request.contextPath}/insertVolunteerDetail.do" encType="UTF-8">
-     </c:if>
-        <div class="volunteerDetailDiv">
         <input type="hidden" name="v_no" value="${volunteerList[0].v_no}">
         <input type="hidden" name="uId" value="${userId}">
         <input type="hidden" name="cId" value="${volunteerList[0].cId}">
@@ -114,6 +134,13 @@
         <input type="hidden" name="vRStartDate" value="${volunteerList[0].vRStartDate}">
         <input type="hidden" name="vREndDate" value="${volunteerList[0].vREndDate}">
         <input type="hidden" name="vServiceCode" value="${volunteerList[0].vServiceCode}">
+     </c:if>
+     <c:if test="${job == 'ViewReg'}">
+     <form name="volunteerDetailMod" method="post" action="${pageContext.request.contextPath}/modVolunteerDetail.do" encType="UTF-8">
+     </c:if>
+     <c:if test="${job == 'Modify'}">
+     <form name="volunteerDetailMod" method="post" action="${pageContext.request.contextPath}/updateVolunteerDetail.do" encType="UTF-8">
+     </c:if>
 
     <h3>봉사 상세</h3>
     <div>
@@ -158,8 +185,8 @@
         </div>
 
         </div>
-        	    <c:set var="userType" value="${userType}" />
-        	    <c:set var="job" value="${job}" />
+
+
         <c:if test="${userType == 1}">
             <c:if test="${job == 'View'}">
                 <form name="volunteerDetailReg" method="post" action="${pageContext.request.contextPath}/regVolunteerDetail.do" encType="UTF-8">
@@ -170,6 +197,18 @@
             </c:if>
             <c:if test="${job == 'Regist'}">
                 <input id="volunteerDetailBtnRM" class="volunteerDetailBtn" type="submit" value="등록하기">
+                <input type="hidden" name="userId" value="${userId}">
+                </form>
+            </c:if>
+            <c:if test="${job == 'ViewReg'}">
+                <input class="volunteerDetailBtn" type="submit" value="수정하기">
+                <input type="hidden" name="vReg_no" value="${volunteerList[0].vReg_no}">
+                <input type="hidden" name="userId" value="${userId}">
+                </form>
+            </c:if>
+            <c:if test="${job == 'Modify'}">
+                <input id="volunteerDetailBtnRM" class="volunteerDetailBtn" type="submit" value="수정확인">
+                <input type="hidden" name="vReg_no" value="${volunteerList[0].vReg_no}">
                 <input type="hidden" name="userId" value="${userId}">
                 </form>
             </c:if>

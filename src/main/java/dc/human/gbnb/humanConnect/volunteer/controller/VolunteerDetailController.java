@@ -1,5 +1,6 @@
 package dc.human.gbnb.humanConnect.volunteer.controller;
 
+import dc.human.gbnb.humanConnect.center.vo.CenterRegVO;
 import dc.human.gbnb.humanConnect.volunteer.vo.VolunteerDetailVO;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -14,7 +15,10 @@ import java.util.Map;
 
 public interface VolunteerDetailController {
 	public ModelAndView viewVolunteerDetail(HttpServletRequest request, HttpServletResponse response,@RequestParam("userId") String userId, @RequestParam("v_no") int v_no) throws Exception;
+	public ModelAndView viewRegVolunteerDetail(HttpServletRequest request, HttpServletResponse response,@RequestParam("userId") String userId, @RequestParam("vReg_no") int vReg_no) throws Exception;
 	public ModelAndView regVolunteerDetail(HttpServletRequest request, HttpServletResponse response,@RequestParam("userId") String userId, @RequestParam("v_no") int v_no) throws Exception;
 	public ModelAndView insertVolunteerDetail(@ModelAttribute("info") VolunteerDetailVO volunteerDetailVO, HttpServletRequest request, HttpServletResponse response,@RequestParam("userId") String userId) throws Exception;
+	public ModelAndView modVolunteerDetail(HttpServletRequest request, HttpServletResponse response,@RequestParam("userId") String userId, @RequestParam("vReg_no") int vReg_no) throws Exception;
+	public ModelAndView updateVolunteerDetail(@ModelAttribute("info") VolunteerDetailVO volunteerDetailVO, HttpServletRequest request, HttpServletResponse response, @RequestParam("userId") String userId, @RequestParam("vReg_no") int vReg_no) throws Exception;
 	public Map uploadVolunteerDetail(MultipartHttpServletRequest multipartRequest, HttpServletResponse response) throws Exception;
 }

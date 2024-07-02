@@ -47,6 +47,30 @@ public class VolunteerDetailControllerImpl implements VolunteerDetailController 
 	}
 
 	@Override
+	@RequestMapping(value= "/viewRegVolunteerDetail.do", method = RequestMethod.GET)
+	public ModelAndView viewRegVolunteerDetail(HttpServletRequest request, HttpServletResponse response,
+											@RequestParam("userId") String userId,
+											@RequestParam("vReg_no") int vReg_no) throws Exception {
+
+
+		List<VolunteerDetailVO> Result = volunteerDetailService.listRegVolunteerDetail(vReg_no);
+		System.out.println(Result.get(0).getvTitle());
+		System.out.println(Result.get(0).getvReg_no());
+		System.out.println(Result.get(0).getV_no());
+		ModelAndView mav = new ModelAndView("/volunteerDetail");
+
+		String job="ViewReg";
+		int userType =1;
+		mav.addObject("job",job);
+		mav.addObject("userType",userType);
+		mav.addObject("volunteerList",Result);
+		mav.addObject("userId", userId);
+		return mav;
+	}
+
+
+
+	@Override
 	@RequestMapping(value= "/regVolunteerDetail.do", method = RequestMethod.POST)
 	public ModelAndView regVolunteerDetail(HttpServletRequest request, HttpServletResponse response,
 											@RequestParam("userId") String userId,
@@ -82,7 +106,58 @@ public class VolunteerDetailControllerImpl implements VolunteerDetailController 
 		System.out.println(Result.get(0).getvTitle());
 		ModelAndView mav = new ModelAndView("/volunteerDetail");
 
-		String job="View";
+		String job="ViewReg";
+		int userType =1;
+		mav.addObject("job",job);
+		mav.addObject("userType",userType);
+		mav.addObject("volunteerList",Result);
+		mav.addObject("userId", userId);
+		return mav;
+	}
+
+	@Override
+	@RequestMapping(value= "/modVolunteerDetail.do", method = RequestMethod.POST)
+	public ModelAndView modVolunteerDetail(HttpServletRequest request, HttpServletResponse response,
+										@RequestParam("userId") String userId,
+										@RequestParam("vReg_no") int vReg_no) throws Exception {
+
+		List<VolunteerDetailVO> Result = volunteerDetailService.listRegVolunteerDetail(vReg_no);
+		System.out.println(Result.get(0).getvTitle());
+		System.out.println(Result.get(0).getvReg_no());
+		System.out.println(Result.get(0).getV_no());
+		ModelAndView mav = new ModelAndView("/volunteerDetail");
+
+
+
+		String job="Modify";
+		int userType =1;
+		mav.addObject("job",job);
+		mav.addObject("userType",userType);
+		mav.addObject("volunteerList",Result);
+		mav.addObject("userId", userId);
+		return mav;
+	}
+
+	@Override
+	@RequestMapping(value="/updateVolunteerDetail.do" ,method = RequestMethod.POST)
+	@ResponseBody
+	public ModelAndView updateVolunteerDetail(@ModelAttribute("volunteerDetail") VolunteerDetailVO volunteerDetail,
+											 HttpServletRequest request, HttpServletResponse response,
+												   @RequestParam("userId") String userId,
+												   @RequestParam("vReg_no") int vReg_no) throws Exception {
+
+		int insert = 0;
+		volunteerDetail.setuId(userId);
+
+		insert = volunteerDetailService.updateVolunteerDetail(volunteerDetail);
+
+		List<VolunteerDetailVO> Result = volunteerDetailService.listRegVolunteerDetail(vReg_no);
+
+
+
+		ModelAndView mav = new ModelAndView("/volunteerDetail");
+
+		String job="ViewReg";
 		int userType =1;
 		mav.addObject("job",job);
 		mav.addObject("userType",userType);

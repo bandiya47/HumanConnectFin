@@ -1,5 +1,6 @@
 package dc.human.gbnb.humanConnect.volunteer.service;
 
+import dc.human.gbnb.humanConnect.center.vo.CenterRegVO;
 import dc.human.gbnb.humanConnect.volunteer.dao.VolunteerDetailDAO;
 import dc.human.gbnb.humanConnect.volunteer.vo.VolunteerDetailVO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,6 +48,11 @@ public class VolunteerDetailServiceImpl implements VolunteerDetailService {
 		List volunteerDetailList = null;
 		volunteerDetailList = volunteerDetailDAO.selectListRegVolunteerDetail(vReg_no);
 		return volunteerDetailList;
+	}
+
+	@Override
+	public int updateVolunteerDetail(VolunteerDetailVO volunteerDetailVO) throws Exception {
+		return volunteerDetailDAO.updateVolunteerDetail(volunteerDetailVO);
 	}
 
 

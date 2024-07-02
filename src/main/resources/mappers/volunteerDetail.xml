@@ -134,30 +134,16 @@
 		]]>
 	</select>
 
-
-
-<!--	<update id="updateMember" parameterType="memberVO">-->
-<!--     <![CDATA[-->
-<!--	     update t_member-->
-<!--	     set pwd=#{pwd}, name=#{name}, email=#{email}-->
-<!--	     where-->
-<!--	     id=#{id}-->
-<!--      ]]>-->
-<!--	</update>-->
-
-<!--	<delete id="deleteMember" parameterType="String">-->
-<!--	<![CDATA[-->
-<!--	   delete from  t_member-->
-<!--	   where-->
-<!--	   id=#{id}-->
-<!--	]]>-->
-<!--	</delete>-->
-<!--	<select id="loginById" resultType="memberVO"-->
-<!--		parameterType="memberVO">-->
-<!--	<![CDATA[-->
-<!--		select * from t_member	-->
-<!--		where id=#{id} and pwd=#{pwd}		-->
-<!--	]]>-->
-<!--	</select>-->
+	<update id="updateVolunteerDetail" parameterType="volunteerDetailVO">
+		<![CDATA[
+		 update volunteer_reg
+		 set
+			 VREG_AMNT = #{vMaxAmnt},
+			 VREG_INFO = #{vInfo},
+			 UPDATED_ID = #{uId},
+			 UPDATED_DATE = SYSDATE
+         where VREG_NO = #{vReg_no}
+		]]>
+	</update>
 
 </mapper>
