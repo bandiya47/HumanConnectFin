@@ -29,9 +29,9 @@
                    <button type="submit" value="">로그아웃</button>
                 </form>
                  <form action="${pageContext.request.contextPath}/privacyList" method="GET">
-                             <input type="hidden" name="userId" value="${userId}">
-                           <button type="submit" value="">마이페이지</button>
-                  </form>
+                    <input type="hidden" name="userId" value="${userId}">
+                    <button type="submit" value="">마이페이지</button>
+                 </form>
 
 
             </div>
