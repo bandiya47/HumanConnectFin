@@ -1137,7 +1137,8 @@ vertical-align:middle;
 
 
 .mainFirstStack{                          /*1층 봉사신청내역*/
-    display: flex;
+   /* display: flex;*/
+
     
 }
 .mainFirstMiddle{
@@ -1191,7 +1192,7 @@ vertical-align:middle;
 
 
 .mainSecondStack{                          /*2층 입양상담신청내역*/
-    display: flex;
+   /* display: flex;*/
 }
 .mainSecondMiddle{
     width: 820px;

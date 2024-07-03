@@ -19,7 +19,7 @@
 </style>
 </head>
 <body>
-	<form method="post"   action="${contextPath}/member/addMember.do">
+	<form method="post"   action="${contextPath}/addMember.do">
 	<h1  class="text_center">회원 가입창</h1>
 	<table  align="center">
 	   <tr>
@@ -28,7 +28,7 @@
 	   </tr>
 	   <tr>
        	      <td width="200"><p align="right">이름</td>
-       	      <td width="400"><input type="password" name="u_name"></td>
+       	      <td width="400"><input type="text" name="u_name"></td>
        	    </tr>
 	   <tr>
 	      <td width="200"><p align="right">비밀번호</td>

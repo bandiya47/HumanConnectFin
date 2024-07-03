@@ -5,7 +5,7 @@ import java.sql.Date;
 import org.apache.ibatis.type.Alias;
 import org.springframework.stereotype.Component;
 
-@Component("memberVO")
+
 public class MemberVO {
 
 	private String u_id;
@@ -100,15 +100,6 @@ public class MemberVO {
 		this.u_addr2 = u_addr2;
 	}
 
-
-
-
-
-	public MemberVO() {
-		System.out.println("MemberVO 생성자 호출");
-	}
-	
-	
 
 	
 	

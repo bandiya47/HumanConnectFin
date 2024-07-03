@@ -20,7 +20,7 @@
 </style>
 </head>
 <body>
-	<form method="post"   action="${contextPath}/member/modMember.do">
+	<form method="post"   action="${contextPath}/modMember.do">
 	<h1  class="text_center">회원 정보 수정창</h1>
 	<table  align="center">
 	   <tr>
