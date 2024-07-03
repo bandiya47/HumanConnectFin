@@ -13,29 +13,12 @@
     </resultMap>
 
     <select id="getRecruitmentList" resultMap="recruitmentResultMap">
-        <![CDATA[
         SELECT V_NO,
                V_TITLE,
                TO_CHAR(CREATED_DATE, 'YYYY.MM.DD') AS CREATED_DATE,
                V_REG_AMNT
-          FROM (
-            SELECT V_NO,
-                   V_TITLE,
-                   CREATED_DATE,
-                   V_REG_AMNT,
-                   ROW_NUMBER() OVER (
-                   ORDER BY CREATED_DATE DESC) AS ROW_NUM
-              FROM VOLUNTEER
-             WHERE C_ID = #{centerId})
-             WHERE ROW_NUM BETWEEN #{start} AND #{end}
-        ]]>
-    </select>
-
-    <select id="getTotalRecords" resultType="int">
-        <![CDATA[
-        SELECT COUNT(*) AS total
           FROM VOLUNTEER
-         WHERE C_ID = #{centerId}
-        ]]>
+         WHERE CREATED_ID = #{centerId}
+        ORDER BY CREATED_DATE DESC
     </select>
 </mapper>

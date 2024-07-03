@@ -10,7 +10,7 @@ import java.util.List;
 @Mapper
 @Repository
 public interface CenterMainDAO {
-    List<CenterMainVO> getRecruitmentList(String centerId);
+    List<CenterMainVO> getRecruitmentList(@Param("centerId") String centerId, @Param("vTitle") String vTitle);
 
     List<CenterMainVO> getVolunteerList(String centerId);
 
@@ -22,4 +22,7 @@ public interface CenterMainDAO {
                      @Param("status") int status,
                      @Param("rejectReason") String rejectReason,
                      @Param("centerId") String centerId);
+
+    int updateRecruitmentStatus(String userId, int status, String rejectReason, String centerId);
+    int updateVolunteerStatus(String userId, int status, String rejectReason, String centerId);
 }

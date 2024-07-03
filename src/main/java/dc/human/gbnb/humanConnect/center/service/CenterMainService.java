@@ -5,7 +5,7 @@ import dc.human.gbnb.humanConnect.center.vo.CenterMainVO;
 import java.util.List;
 
 public interface CenterMainService {
-    List<CenterMainVO> getRecruitmentList(String centerId);
+    List<CenterMainVO> getRecruitmentList(String centerId, String vTitle);
 
     List<CenterMainVO> getVolunteerList(String centerId);
 
@@ -13,5 +13,7 @@ public interface CenterMainService {
 
     String getLatestRecruitmentTitle(String centerId);
 
-    int updateStatus(String userId, int status, String rejectReason, String centerId);
+    int updateRecruitmentStatus(String userId, int status, String rejectReason, String centerId);
+
+    int updateVolunteerStatus(String userId, int status, String rejectReason, String centerId);
 }

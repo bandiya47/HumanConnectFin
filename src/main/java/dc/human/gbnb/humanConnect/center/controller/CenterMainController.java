@@ -9,6 +9,8 @@ public interface CenterMainController {
     ModelAndView handlePostRequest(
             @RequestParam("action") String action,
             @RequestParam("userId") String userId,
+            @RequestParam("centerId") String centerId,
+            @RequestParam("section") String section,
             @RequestParam(value = "rejectReason", required = false) String rejectReason
     );
 }

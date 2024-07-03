@@ -17,8 +17,8 @@ public class CenterMainServiceImpl implements CenterMainService {
     private CenterMainDAO centerMainDAO;
 
     @Override
-    public List<CenterMainVO> getRecruitmentList(String centerId) {
-        List<CenterMainVO> recruitmentList = centerMainDAO.getRecruitmentList(centerId);
+    public List<CenterMainVO> getRecruitmentList(String centerId, String vTitle) {
+        List<CenterMainVO> recruitmentList = centerMainDAO.getRecruitmentList(centerId, vTitle);
         if (recruitmentList != null && !recruitmentList.isEmpty()) {
             recruitmentList.forEach(vo -> {
                 System.out.println("UserID: " + vo.getUserId());
@@ -49,7 +49,12 @@ public class CenterMainServiceImpl implements CenterMainService {
     }
 
     @Override
-    public int updateStatus(String userId, int status, String rejectReason, String centerId) {
-        return centerMainDAO.updateStatus(userId, status, rejectReason, centerId);
+    public int updateRecruitmentStatus(String userId, int status, String rejectReason, String centerId) {
+        return centerMainDAO.updateRecruitmentStatus(userId, status, rejectReason, centerId);
+    }
+
+    @Override
+    public int updateVolunteerStatus(String userId, int status, String rejectReason, String centerId) {
+        return centerMainDAO.updateVolunteerStatus(userId, status, rejectReason, centerId);
     }
 }

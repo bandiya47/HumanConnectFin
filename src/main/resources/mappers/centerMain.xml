@@ -24,31 +24,41 @@
           JOIN VOLUNTEER_REG R ON R.U_ID = U.U_ID
           JOIN ACCEPTION_RES A ON R.VREG_NO = A.VREG_NO
           JOIN VOLUNTEER V ON V.V_NO = R.V_NO
-          JOIN CENTER_MNG_TABLE C ON C.C_ID = V.C_ID
-         WHERE C.C_ID = #{centerId}
+          JOIN CENTER_MNG_TABLE C ON C.C_ID = V.CREATED_ID
+         WHERE V.CREATED_ID = #{centerId}
            AND R.V_TYPE = 0
+           AND V.V_TITLE = #{vTitle, jdbcType=VARCHAR}
         ORDER BY V.CREATED_DATE DESC
         ]]>
     </select>
 
     <select id="getVolunteerList" resultMap="centerMainResult">
         <![CDATA[
-        SELECT U.U_ID AS userId, U.U_NAME AS name, U.U_PHONE AS phone,
-               A.REG_RESULT AS status, A.REJECT_RS AS rejectReason
-        FROM VOLUNTEER_USER U
-        JOIN VOLUNTEER_REG R ON R.U_ID = U.U_ID
-        JOIN ACCEPTION_RES A ON R.VREG_NO = A.VREG_NO
-        WHERE R.V_TYPE = 1 AND R.C_ID = #{centerId}
+        SELECT U.U_ID AS userId,
+               U.U_NAME AS name,
+               U.U_PHONE AS phone,
+               A.REG_RESULT AS status,
+               A.REJECT_RS AS rejectReason
+          FROM VOLUNTEER_USER U
+          JOIN VOLUNTEER_REG R ON R.U_ID = U.U_ID
+          JOIN ACCEPTION_RES A ON R.VREG_NO = A.VREG_NO
+         WHERE R.V_TYPE = 1
+           AND R.C_ID = #{centerId}
         ]]>
     </select>
 
     <select id="getAdoptionList" resultMap="centerMainResult">
         <![CDATA[
-        SELECT U.U_ID AS userId, U.U_NAME AS name, U.U_PHONE AS phone
-        FROM VOLUNTEER_USER U
-        JOIN ADOPT_REG A ON A.U_ID = U.U_ID
-        JOIN CENTER_MNG_TABLE C ON A.C_NAME = C.C_NAME
-        WHERE C.C_NAME = (SELECT C_NAME FROM CENTER_MNG_TABLE WHERE C_ID = #{centerId})
+        SELECT U.U_ID AS userId,
+               U.U_NAME AS name,
+               U.U_PHONE AS phone
+          FROM VOLUNTEER_USER U
+          JOIN ADOPT_REG A ON A.U_ID = U.U_ID
+          JOIN CENTER_MNG_TABLE C ON A.C_NAME = C.C_NAME
+         WHERE C.C_NAME = (
+        SELECT C_NAME
+          FROM CENTER_MNG_TABLE
+         WHERE C_ID = #{centerId})
         ]]>
     </select>
 
@@ -56,20 +66,39 @@
         <![CDATA[
         SELECT V_TITLE
           FROM VOLUNTEER
-         WHERE C_ID = #{centerId}
+         WHERE CREATED_ID = #{centerId}
         ORDER BY CREATED_DATE DESC
         FETCH FIRST 1 ROWS ONLY
         ]]>
     </select>
 
-    <update id="updateStatus">
+    <update id="updateRecruitmentStatus">
         <![CDATA[
-        UPDATE ACCEPTION_RES SET
-        REG_RESULT = #{status},
-        REJECT_RS = #{rejectReason},
-        UPDATED_DATE = SYSDATE,
-        UPDATED_ID = #{centerId}
-        WHERE U_ID = #{userId}
+        UPDATE ACCEPTION_RES
+           SET REG_RESULT = #{status},
+               REJECT_RS = #{rejectReason, jdbcType=VARCHAR},
+               UPDATED_DATE = SYSDATE,
+               UPDATED_ID = #{centerId}
+         WHERE U_ID = #{userId}
+           AND VREG_NO IN (
+        SELECT R.VREG_NO
+          FROM VOLUNTEER_REG R
+         WHERE R.V_TYPE = 0)
+        ]]>
+    </update>
+
+    <update id="updateVolunteerStatus">
+        <![CDATA[
+        UPDATE ACCEPTION_RES
+           SET REG_RESULT = #{status},
+               REJECT_RS = #{rejectReason, jdbcType=VARCHAR},
+               UPDATED_DATE = SYSDATE,
+               UPDATED_ID = #{centerId}
+         WHERE U_ID = #{userId}
+           AND VREG_NO IN (
+        SELECT R.VREG_NO
+          FROM VOLUNTEER_REG R
+         WHERE R.V_TYPE = 1)
         ]]>
     </update>
 

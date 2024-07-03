@@ -5,22 +5,24 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>내가 올린 모집</title>
+<title>Human_Connect</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
 </head>
 <body class="centerRecBody">
-    <jsp:include page="neviCenter.jsp" />
-    <main class="centerRecMain">
-        <section class="centerRecSection">
-            <h2>내가 올린 모집</h2>
-            <div class="centerRecBox">
+    <jsp:include page="nevi.jsp" />
+    <main class="">
+        <section class="">
+            <h2>입양 정보 검색</h2>
+        </section>
+        <section class="volAnimalListSection">
+            <h2>입양 목록 보기</h2>
+            <div class="">
                 <table>
                     <thead>
                         <tr>
-                            <th width="7%">No</th>
-                            <th width="50%">제목</th>
-                            <th width="20%">신청 인원</th>
-                            <th>등록날짜</th>
+                            <tr>
+
+                            </tr>
                         </tr>
                     </thead>
                     <tbody>
