@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+      PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="dc.human.gbnb.humanConnect.volunteer.dao.CenterListDAO">
+
+	<insert id="insertAdoptCenterList" parameterType="centerListVO">
+		<![CDATA[
+		 insert into ADOPT_REG(U_ID,C_NAME,VISIT_DATE,VISIT_TIME,CREATED_ID,CREATED_DATE)
+		 values(#{u_id},#{c_name},#{visit_date},#{visit_time},#{u_id},SYSDATE)
+		]]>
+	</insert>
+
+
+</mapper>

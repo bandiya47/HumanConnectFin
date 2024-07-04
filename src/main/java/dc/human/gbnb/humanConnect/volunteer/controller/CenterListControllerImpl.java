@@ -1,6 +1,7 @@
 package dc.human.gbnb.humanConnect.volunteer.controller;
 
-import dc.human.gbnb.humanConnect.volunteer.service.VolunteerDetailService;
+import dc.human.gbnb.humanConnect.volunteer.service.CenterListService;
+import dc.human.gbnb.humanConnect.volunteer.vo.CenterListVO;
 import dc.human.gbnb.humanConnect.volunteer.vo.VolunteerDetailVO;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -31,10 +32,10 @@ import java.util.regex.Pattern;
 @Controller("centerListController")
 public class CenterListControllerImpl implements CenterListController {
 	@Autowired
-	private VolunteerDetailService volunteerDetailService;
+	private CenterListService centerListService;
 
 	@Autowired
-	private VolunteerDetailVO volunteerDetailVO ;
+	private CenterListVO centerListVO ;
 
 	private static final String CURR_IMAGE_REPO_PATH = "c:\\spring\\upload_volunteer";
 
@@ -116,6 +117,7 @@ public class CenterListControllerImpl implements CenterListController {
 
 		ModelAndView mav = new ModelAndView("centerList");
 		mav.addObject("careInfo",careInfo);
+		mav.addObject("userId",userId);
 		return mav;
 	}
 
@@ -210,6 +212,23 @@ public class CenterListControllerImpl implements CenterListController {
 
 		ModelAndView mav = new ModelAndView("centerDetail");
 		mav.addObject("careInfo",careInfo);
+		mav.addObject("userId",userId);
+		return mav;
+	}
+
+
+	@Override
+	@RequestMapping(value= "/adoptCenterList.do", method = RequestMethod.POST)
+	public ModelAndView adoptCenterList(HttpServletRequest request, HttpServletResponse response,
+										@ModelAttribute("centerList") CenterListVO centerList,
+										 @RequestParam("userId") String userId) throws Exception {
+		int insert = 0;
+		insert = centerListService.addAdoptCenterList(centerList);
+
+
+
+		ModelAndView mav = new ModelAndView("redirect:/viewCenterList.do");
+		mav.addObject("userId",userId);
 		return mav;
 	}
 

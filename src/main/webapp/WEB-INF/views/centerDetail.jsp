@@ -12,6 +12,16 @@
 <html>
 <head>
     <link rel="stylesheet" type="text/css" href="/css/style.css">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+      <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+      <style>
+      body{
+            background-color: #FDECCB;
+      }
+      </style>
 </head>
 <body>
 <jsp:include page="neviCenter.jsp" />
@@ -42,8 +52,43 @@
         </tr>
         </c:forEach>
     </table>
+    <div class="volunteerDetailDiv2">
+                <div id="map" style="width:930px;height:400px;margin-bottom:20px"></div>
+                <input id="findRoad" style="width:450px;height:45px;" type="text" placeholder=" 출발지 주소를 입력해주세요">
+                <button class="volunteerDetailBtn" id="map-btn">길찾기</button>
+
+
     </div>
-    <div id="map" style="width:500px;height:400px;"></div>
+                    <button class="volunteerDetailBtn" id="map-btn">봉사 신청</button>
+                    <button class="volunteerDetailBtn" data-toggle="modal" data-target="#myModal">입양 상담신청</button>
+    </div>
+
+
+
+  <div class="modal fade" id="myModal">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+
+
+        <div class="modal-header">
+          <h4 class="modal-title">입양상담 신청</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <form method="post" action="${pageContext.request.contextPath}/adoptCenterList.do" encType="UTF-8">
+        <div class="modal-body">
+          방문일자 : <input name="visit_date" type="date"> 시간 : <input name="visit_time" type="time">
+        </div>
+        <div class="modal-footer">
+        <input type="hidden" name="userId" value="${userId}">
+        <input type="hidden" name="u_id" value="${userId}">
+        <input type="hidden" name="c_name" value="${requestScope.careInfo[0].careNm}">
+          <button type="submit" class="btn btn-secondary">신청</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+        <form>
+      </div>
+    </div>
+  </div>
 
 
     	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=28e5917c9e3ed76a6b445116b2d205a7&libraries=services"></script>
@@ -78,12 +123,20 @@
                     var infowindow = new kakao.maps.InfoWindow({
                         content: '<div style="width:150px;text-align:center;padding:6px 0;">${requestScope.careInfo[0].careNm}</div>'
                     });
-                    infowindow.open(map, marker);
+                        infowindow.open(map, marker);
 
 
-                    map.setCenter(coords);
-                }
-            });
+                        map.setCenter(coords);
+                        }
+                    });
+                    		var mapbtn = document.getElementById('map-btn');
+                    		mapbtn.addEventListener("click", function() {
+                    		var findRoad = $("#findRoad").val();
+                    			window.location = "https://map.kakao.com/?target=car&eName=${requestScope.careInfo[0].careAddr}&sName="+findRoad;
+                    		})
+
+
     	</script>
+
 </body>
 </html>
