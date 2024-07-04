@@ -20,9 +20,12 @@
                 <table>
                     <thead>
                         <tr>
-                            <tr>
-
-                            </tr>
+                            <tr>이미지</tr>
+                            <tr>공고번호 : ${공고번호}</tr>
+                            <tr>이름 : ${이름}</tr>
+                            <tr>품종 : ${품종}</tr>
+                            <tr>성별 : ${성별}</tr>
+                            <tr>지역 : ${지역}</tr>
                         </tr>
                     </thead>
                     <tbody>
