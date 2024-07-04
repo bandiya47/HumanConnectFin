@@ -6,21 +6,23 @@ public class VolAnimalListVO {
     private String sexCd;
     private String careAddr;
     private String popfile;
+    private String colorCd;
+    private String uprCd;
+    private String orgCd;
 
-    // 기본 생성자
-    public VolAnimalListVO() {}
-
-    // 매개 변수를 받는 생성자
-    public VolAnimalListVO(String desertionNo, String kindCd, String sexCd, String careAddr, String popfile) {
+    // 생성자 및 getter, setter 추가
+    public VolAnimalListVO(String desertionNo, String kindCd, String sexCd, String careAddr, String popfile, String colorCd, String uprCd, String orgCd) {
         this.desertionNo = desertionNo;
         this.kindCd = kindCd;
         this.sexCd = sexCd;
         this.careAddr = careAddr;
         this.popfile = popfile;
+        this.colorCd = colorCd;
+        this.uprCd = uprCd;
+        this.orgCd = orgCd;
     }
 
-    // Getters and setters
-
+    // getter 및 setter
     public String getDesertionNo() {
         return desertionNo;
     }
@@ -59,5 +61,29 @@ public class VolAnimalListVO {
 
     public void setPopfile(String popfile) {
         this.popfile = popfile;
+    }
+
+    public String getColorCd() {
+        return colorCd;
+    }
+
+    public void setColorCd(String colorCd) {
+        this.colorCd = colorCd;
+    }
+
+    public String getUprCd() {
+        return uprCd;
+    }
+
+    public void setUprCd(String uprCd) {
+        this.uprCd = uprCd;
+    }
+
+    public String getOrgCd() {
+        return orgCd;
+    }
+
+    public void setOrgCd(String orgCd) {
+        this.orgCd = orgCd;
     }
 }

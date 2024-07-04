@@ -9,6 +9,9 @@
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/style.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <style>
+        body {
+            margin: 0 auto;
+        }
         .volAnimalListMain {
             width: 1100px;
             margin: 0 auto;
@@ -59,15 +62,15 @@
             padding: 10px;
             box-sizing: border-box;
             text-align: left;
-            height: 400px; /* 높이를 고정합니다 */
+            height: 350px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
         }
         .volAnimalListAnimal-card img {
-            width: 100%;
-            height: 200px; /* 모든 이미지의 높이를 200px로 고정합니다 */
-            object-fit: cover; /* 이미지를 자르거나 늘려서 카드 크기에 맞춥니다 */
+            max-width: 100%;
+            height: auto;
+            max-height: 200px;
         }
         .volAnimalListPagination {
             display: flex;
@@ -139,13 +142,16 @@
                             <td>
                                 <select id="volAnimalListKind" name="kind">
                                     <option value="">선택</option>
-                                    <option value="417000">개</option>
-                                    <option value="422400">고양이</option>
-                                    <option value="429900">기타</option>
+                                    <option value="개">개</option>
+                                    <option value="고양이">고양이</option>
+                                    <option value="기타">기타</option>
                                 </select>
                             </td>
                         </tr>
                     </table>
+                    <input type="hidden" id="volAnimalListSidoText" name="sidoText">
+                    <input type="hidden" id="volAnimalListSigunguText" name="sigunguText">
+                    <input type="hidden" id="volAnimalListKindText" name="kindText">
                     <input type="hidden" id="volAnimalListPageNo" name="pageNo" value="1">
                 </form>
             </div>
@@ -231,7 +237,9 @@
         // 시군구 목록 로드
         $('#volAnimalListSido').change(function () {
             var uprCd = $(this).val();
-            $('#selectedSido').text($(this).find('option:selected').text());
+            var selectedText = $(this).find('option:selected').text();
+            $('#selectedSido').text(selectedText);
+            $('#volAnimalListSidoText').val(selectedText); // hidden input에 텍스트 값 설정
             $.ajax({
                 url: '/sigunguList',
                 type: 'GET',
@@ -254,11 +262,15 @@
         });
 
         $('#volAnimalListSigungu').change(function () {
-            $('#selectedSigungu').text($(this).find('option:selected').text());
+            var selectedText = $(this).find('option:selected').text();
+            $('#selectedSigungu').text(selectedText);
+            $('#volAnimalListSigunguText').val(selectedText); // hidden input에 텍스트 값 설정
         });
 
         $('#volAnimalListKind').change(function () {
-            $('#selectedKind').text($(this).find('option:selected').text());
+            var selectedText = $(this).find('option:selected').text();
+            $('#selectedKind').text(selectedText);
+            $('#volAnimalListKindText').val(selectedText); // hidden input에 텍스트 값 설정
         });
 
         // 동물 목록 필터 폼 제출
@@ -277,12 +289,12 @@
                     animalList.empty();
                     response.animalList.forEach(function (animal) {
                         var card = '<div class="volAnimalListAnimal-card">' +
-                            '<img src="' + animal.popfile + '" alt="Animal Image" style="width: 100%; height: 200px; object-fit: cover;">' +
-                            '<div>공고번호: ' + animal.desertionNo + '</div>' +
-                            '<div>이름: ' + animal.kindCd + '</div>' +
-                            '<div>품종: ' + animal.kindCd + '</div>' +
-                            '<div>성별: ' + animal.sexCd + '</div>' +
-                            '<div>지역: ' + animal.careAddr + '</div>' +
+                            '<img src="' + animal.popfile + '" alt="Animal Image">' +
+                            '<div>공고번호 : ' + animal.desertionNo + '</div>' +
+                            '<div>품종 : ' + animal.kindCd + '</div>' +
+                            '<div>색상 : ' + animal.colorCd + '</div>' +
+                            '<div>성별 : ' + animal.sexCd + '</div>' +
+                            '<div>지역 : ' + animal.careAddr + '</div>' +
                             '</div>';
                         animalList.append(card);
                     });
@@ -296,11 +308,6 @@
 
         // 초기 데이터 로드
         $('#volAnimalListFilterForm').submit();
-        $('button[type="submit"]').on('click', function (e) {
-            e.preventDefault();
-            $('#volAnimalListPageNo').val(1);
-            $('#volAnimalListFilterForm').submit();
-        });
     });
 </script>
 </body>

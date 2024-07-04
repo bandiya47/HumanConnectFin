@@ -63,7 +63,10 @@ public class VolAnimalListServiceImpl implements VolAnimalListService {
                         (String) item.get("kindCd"),
                         (String) item.get("sexCd"),
                         (String) item.get("careAddr"),
-                        (String) item.get("popfile")
+                        (String) item.get("popfile"),
+                        (String) item.get("colorCd"),
+                        (String) item.get("uprCd"),
+                        (String) item.get("orgCd")
                 );
                 animalList.add(animal);
             }
@@ -73,6 +76,7 @@ public class VolAnimalListServiceImpl implements VolAnimalListService {
             return new ArrayList<>();
         }
     }
+
     @Override
     public int getTotalCount(String uprCd, String orgCd, String kindCd) {
         try {
@@ -109,8 +113,7 @@ public class VolAnimalListServiceImpl implements VolAnimalListService {
     public List<VolAnimalSidoListVO> getSidoList() {
         try {
             String urlStr = "http://apis.data.go.kr/1543061/abandonmentPublicSrvc/sido?"
-                    + "serviceKey=" + serviceKey
-                    + "&_type=json";
+                    + "numOfRows=20&pageNo=1&_type=json&serviceKey=" + serviceKey;
 
             URL url = new URL(urlStr);
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
