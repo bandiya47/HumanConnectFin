@@ -51,6 +51,13 @@ public class VolunteerDetailServiceImpl implements VolunteerDetailService {
 	}
 
 	@Override
+	public List listRegVolunteerDetail2(int vReg_no) throws Exception {
+		List volunteerDetailList = null;
+		volunteerDetailList = volunteerDetailDAO.selectListRegVolunteerDetail2(vReg_no);
+		return volunteerDetailList;
+	}
+
+	@Override
 	public int updateVolunteerDetail(VolunteerDetailVO volunteerDetailVO) throws Exception {
 		return volunteerDetailDAO.updateVolunteerDetail(volunteerDetailVO);
 	}

@@ -59,10 +59,20 @@
 
 
     </div>
-                    <button class="volunteerDetailBtn" id="map-btn">봉사 신청</button>
-                    <button class="volunteerDetailBtn" data-toggle="modal" data-target="#myModal">입양 상담신청</button>
-    </div>
+    <div class="button-container" style="border:none">
+    <c:if test="${disable != 0}">
+    <form method="post" action="${pageContext.request.contextPath}/volCenterList.do" encType="UTF-8">
+        <input type="hidden" name="userId" value="${userId}">
+        <input type="hidden" name="careNm" value="${requestScope.careInfo[0].careNm}">
+        <button type="submit" class="volunteerDetailBtn" style="margin:10px;" >봉사 신청</button></form>
+    </c:if>
+    <c:if test="${disable == 0}">
+        <button class="volunteerDetailBtn" style="background-color:gray;" >봉사 신청</button>
+    </c:if>
+        <button class="volunteerDetailBtn" data-toggle="modal" data-target="#myModal" style="margin:10px;" >입양 상담신청</button>
 
+    </div>
+    </div>
 
 
   <div class="modal fade" id="myModal">
@@ -76,7 +86,7 @@
         </div>
         <form method="post" action="${pageContext.request.contextPath}/adoptCenterList.do" encType="UTF-8">
         <div class="modal-body">
-          방문일자 : <input name="visit_date" type="date"> 시간 : <input name="visit_time" type="time">
+          방문일자 : <input name="visit_date" type="date"> 방문시간 : <input name="visit_time" type="time">
         </div>
         <div class="modal-footer">
         <input type="hidden" name="userId" value="${userId}">
@@ -85,7 +95,7 @@
           <button type="submit" class="btn btn-secondary">신청</button>
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         </div>
-        <form>
+        </form>
       </div>
     </div>
   </div>

@@ -25,6 +25,24 @@ public class CenterListServiceImpl implements CenterListService {
 		return centerListDAO.insertAdoptCenterList(centerListVO);
 	}
 
+	@Override
+	public int addCenterList(CenterListVO centerListVO) throws Exception {
+		return centerListDAO.insertCenterList(centerListVO);
+	}
+
+	public int selectNmCenterList(String name) throws Exception {
+		int no =0;
+		no= centerListDAO.selectNoCenterList(name).getSelect();
+		return no;
+	}
+
+
+	public List listvolCenterList(String careNm) throws Exception {
+		List volCenterList = null;
+		volCenterList = centerListDAO.selectListVolCenterList(careNm);
+		return volCenterList;
+	}
+
 
 
 }

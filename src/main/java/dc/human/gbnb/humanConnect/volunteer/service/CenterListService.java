@@ -7,5 +7,9 @@ import java.util.List;
 public interface CenterListService {
 
 	 public int addAdoptCenterList(CenterListVO centerListVO) throws Exception;
+	 public int addCenterList(CenterListVO centerListVO) throws Exception;
+	 public int selectNmCenterList(String name) throws Exception;
+	 public List listvolCenterList(String careNm) throws Exception;
+
 
 }
