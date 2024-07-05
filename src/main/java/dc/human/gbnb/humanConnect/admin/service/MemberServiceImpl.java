@@ -19,8 +19,24 @@ public class MemberServiceImpl implements MemberService {
 	public List<MemberVO> listMembers() {
 		return memberDAO.selectAllMemberList();
 	}
+
 	@Override
 	public MemberVO getMemberById(String u_id) {
 		return memberDAO.selectMemberById(u_id);
+	}
+
+	@Override
+	public void updateMember(MemberVO memberVO) {
+		memberDAO.updateMember(memberVO);
+	}
+
+	@Override
+	public void deleteMember(String u_id) {
+		memberDAO.deleteMember(u_id);
+	}
+
+	@Override
+	public List<MemberVO> searchMembers(String searchQuery) {
+		return memberDAO.searchMembers(searchQuery);
 	}
 }

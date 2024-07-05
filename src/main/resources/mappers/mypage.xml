@@ -38,8 +38,8 @@
 
     <!-- 회원정보 확인 전 비밀번호를 확인하는 쿼리 -->
     <!-- 아이디는 세션에서 받아오고 비밀번호는 입력받을것. -->
-    <select id="checkPrivacyPw" resultType="mypageVO"
-            parameterType="memberVO">
+    <select id="checkPrivacyPw" resultType="int"
+            parameterType="map">
         <![CDATA[
 		select
 		    count(*)

@@ -124,6 +124,8 @@ public class MypageControllerImpl implements MypageController {
 									   HttpServletRequest request,
 									   HttpServletResponse response) throws Exception {
 		ModelAndView mav = new ModelAndView();
+		System.out.println(userId);
+		System.out.println(u_pwd);
 		try {
 			int privacycount = mypageService.checkPrivacyPw(userId, u_pwd);
 			if (privacycount == 1) {
