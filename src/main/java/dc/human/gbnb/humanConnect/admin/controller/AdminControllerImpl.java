@@ -19,7 +19,6 @@ public class AdminControllerImpl implements AdminController {
     @Autowired
     private CenterMemberService centerMemberService;
 
-
     @Override
     @GetMapping("/adminMain")
     public ModelAndView showMemberList(@RequestParam(value = "searchQuery", required = false) String searchQuery) {
@@ -58,18 +57,24 @@ public class AdminControllerImpl implements AdminController {
 
     @Override
     @GetMapping("/adminCenterMem")
-    public ModelAndView showCenterMemberList(@RequestParam(value = "searchQuery", required = false) String searchQuery) {
+    public ModelAndView showCenterMemberList(@RequestParam(value = "searchQuery", required = false) String searchQuery,
+                                             @RequestParam(value = "page", defaultValue = "1") int page,
+                                             @RequestParam(value = "size", defaultValue = "20") int size) {
         ModelAndView mav = new ModelAndView("adminCenterMem");
         List<CenterMemberVO> centerMemberList;
 
         if (searchQuery == null || searchQuery.isEmpty()) {
-            centerMemberList = centerMemberService.listAllCenterMembers();
+            centerMemberList = centerMemberService.listAllCenterMembers(page, size);
         } else {
-            centerMemberList = centerMemberService.searchCenterMembers(searchQuery);
+            centerMemberList = centerMemberService.searchCenterMembers(searchQuery, page, size);
         }
 
         mav.addObject("centerMemberList", centerMemberList);
         mav.addObject("searchQuery", searchQuery);
+        mav.addObject("currentPage", page);
+        int totalRecords = searchQuery == null || searchQuery.isEmpty() ? centerMemberService.countAllCenterMembers() : centerMemberService.countSearchedCenterMembers(searchQuery);
+        int totalPages = (int) Math.ceil((double) totalRecords / size);
+        mav.addObject("totalPages", totalPages);
         return mav;
     }
 
@@ -81,17 +86,18 @@ public class AdminControllerImpl implements AdminController {
         mav.addObject("centerMember", centerMember);
         return mav;
     }
+
     @Override
     @PostMapping("/updateCenterMember")
     public String updateCenterMember(CenterMemberVO centerMember) {
         centerMemberService.updateCenterMember(centerMember);
-        return "redirect:/centerMember";
+        return "redirect:/adminCenterMem";
     }
 
     @Override
     @PostMapping("/deleteCenterMember")
     public String deleteCenterMember(@RequestParam("c_id") String c_id) {
         centerMemberService.deleteCenterMember(c_id);
-        return "redirect:/centerMember";
+        return "redirect:/adminCenterMem";
     }
 }
