@@ -60,6 +60,7 @@ public class VolAnimalListServiceImpl implements VolAnimalListService {
             for (Map<String, Object> item : itemList) {
                 VolAnimalListVO animal = new VolAnimalListVO(
                         (String) item.get("desertionNo"),
+                        (String) item.get("noticeNo"),
                         (String) item.get("kindCd"),
                         (String) item.get("sexCd"),
                         (String) item.get("careAddr"),

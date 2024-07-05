@@ -2,6 +2,7 @@ package dc.human.gbnb.humanConnect.volunteer.vo;
 
 public class VolAnimalListVO {
     private String desertionNo;
+    private String noticeNo;
     private String kindCd;
     private String sexCd;
     private String careAddr;
@@ -11,8 +12,9 @@ public class VolAnimalListVO {
     private String orgCd;
 
     // 생성자 및 getter, setter 추가
-    public VolAnimalListVO(String desertionNo, String kindCd, String sexCd, String careAddr, String popfile, String colorCd, String uprCd, String orgCd) {
+    public VolAnimalListVO(String desertionNo,String noticeNo, String kindCd, String sexCd, String careAddr, String popfile, String colorCd, String uprCd, String orgCd) {
         this.desertionNo = desertionNo;
+        this.noticeNo = noticeNo;
         this.kindCd = kindCd;
         this.sexCd = sexCd;
         this.careAddr = careAddr;
@@ -29,6 +31,14 @@ public class VolAnimalListVO {
 
     public void setDesertionNo(String desertionNo) {
         this.desertionNo = desertionNo;
+    }
+
+    public String getNoticeNo() {
+        return noticeNo;
+    }
+
+    public void setNoticeNo(String noticeNo) {
+        this.noticeNo = noticeNo;
     }
 
     public String getKindCd() {
