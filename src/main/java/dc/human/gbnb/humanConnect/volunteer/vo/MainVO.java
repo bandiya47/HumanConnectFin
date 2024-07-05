@@ -9,7 +9,7 @@ public class MainVO {
 	private String v_title;
 	private String vreg_start_date;
 	private String vreg_end_date;
-	private String v_state;
+	//private String v_state;
 	private String c_name;
 	private String c_phone;
 	private String service_type;
@@ -54,13 +54,13 @@ public class MainVO {
 		this.vreg_start_date = vreg_start_date;
 	}
 
-	public String getV_state() {
-		return v_state;
-	}
-
-	public void setV_state(String v_state) {
-		this.v_state = v_state;
-	}
+//	public String getV_state() {
+//		return v_state;
+//	}
+//
+//	public void setV_state(String v_state) {
+//		this.v_state = v_state;
+//	}
 
 	public String getC_name() {
 		return c_name;
@@ -86,13 +86,4 @@ public class MainVO {
 	public void setService_type(String service_type) {
 		this.service_type = service_type;
 	}
-
-
-
-
-
-
-
-
-
 }

@@ -18,11 +18,27 @@ public class MainServiceImpl implements MainService {
 
     @Override
     public List<MainVO> getMyVolunteerList(String u_id) {
-        System.out.println(u_id);
+        System.out.println("Service received u_id: " + u_id);
         List<MainVO> myVolunteerList = mainDAO.getMyVolunteerList(u_id);
-        System.out.println("MainServiceImpl Printing **myVolunteerList**: " + myVolunteerList);
+        if (myVolunteerList != null) {
+            for (MainVO vo : myVolunteerList) {
+                if (vo == null) {
+                    System.out.println("vo is null");
+                } else {
+                    System.out.println("u_id: " + vo.getU_id());
+                    System.out.println("v_no: " + vo.getV_no());
+                    System.out.println("v_title: " + vo.getV_title());
+                    System.out.println("vreg_start_date: " + vo.getVreg_start_date());
+                    System.out.println("vreg_end_date: " + vo.getVreg_end_date());
+                    System.out.println("c_name: " + vo.getC_name());
+                    System.out.println("c_phone: " + vo.getC_phone());
+                    System.out.println("service_type: " + vo.getService_type());
+                }
+            }
+        } else {
+            System.out.println("myVolunteerList is null");
+        }
         return myVolunteerList;
-        //return mainDAO.getMyVolunteerList(u_id);
     }
 
 //    @Override

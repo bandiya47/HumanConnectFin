@@ -5,38 +5,37 @@
 
 <mapper namespace="dc.human.gbnb.humanConnect.volunteer.dao.MainDAO">
 
+    <resultMap id="MainVOResultMap" type="dc.human.gbnb.humanConnect.volunteer.vo.MainVO">
+        <result property="u_id" column="U_ID"/>
+        <result property="v_no" column="V_NO"/>
+        <result property="v_title" column="V_TITLE"/>
+        <result property="vreg_start_date" column="VREG_START_DATE"/>
+        <result property="vreg_end_date" column="VREG_END_DATE"/>
+        <result property="service_type" column="SERVICE_TYPE"/>
+        <result property="c_name" column="C_NAME"/>
+        <result property="c_phone" column="C_PHONE"/>
+    </resultMap>
 
-<!--    <select id="getMyVolunteerList" resultType="MainVO"-->
-<!--            parameterType="String">-->
-<!--        SELECT-->
-<!--            v_no, v_title, v_rend_date-->
-<!--        FROM-->
-<!--            VOLUNTEER_REG-->
-<!--        WHERE-->
-<!--            u_id=#{u_id}-->
-<!--    </select>-->
-
-    <select id="getMyVolunteerList" resultType="dc.human.gbnb.humanConnect.volunteer.vo.MainVO"
+    <select id="getMyVolunteerList" resultMap="MainVOResultMap"
             parameterType="String">
         SELECT
-            v.U_ID,
-            v.V_NO,
-            r.V_TITLE,
-            v.VREG_START_DATE,
-            v.VREG_END_DATE,
-            s.service_type,
-            c.C_NAME,
-            c.C_PHONE
+        v.U_ID,
+        v.V_NO,
+        r.V_TITLE,
+        v.VREG_START_DATE,
+        v.VREG_END_DATE,
+        s.service_type,
+        c.C_NAME,
+        c.C_PHONE
         FROM volunteer_reg v
         INNER JOIN CENTER_MNG_TABLE c
-        ON c.C_ID = V.C_ID
+        ON c.C_ID = v.C_ID
         INNER JOIN volunteer r
-        ON r.V_NO = V.V_NO
+        ON r.V_NO = v.V_NO
         INNER JOIN service_type_table s
         ON s.service_code = r.service_code
         WHERE
-            u_id=#{u_id}
+        v.u_id=#{u_id}
     </select>
-
 
 </mapper>
