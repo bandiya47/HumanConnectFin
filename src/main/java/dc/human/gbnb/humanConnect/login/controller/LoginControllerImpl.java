@@ -40,9 +40,9 @@ public class LoginControllerImpl implements LoginController{
                 userVO = loginService.getUserDetails(userId, userType);
 
                 if ("VOLUNTEER_USER".equals(userType)) {
-                    viewName = "main";
+                    viewName = "redirect:/main";
                     //  rdao.getVolList() 추가적으로 작업하세요
-                } else {
+                } else if ("CENTER_MNG_TABLE".equals(userType)) {
                     viewName = "redirect:/centerMain";
                 }
             } else {

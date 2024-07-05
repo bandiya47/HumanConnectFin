@@ -27,7 +27,7 @@
                 <form action="logout" method="post">
                    <button type="submit" value="">로그아웃</button>
                 </form>
-               <form action="${pageContext.request.contextPath}/CenterprivacyList" method="get" >
+               <form action="${pageContext.request.contextPath}/CenterPrivacyList" method="get" >
                        <input type="hidden" name="centerId" value="${centerId}">
                        <button type="submit" value="">마이페이지</button>
                </form>

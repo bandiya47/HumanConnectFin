@@ -16,7 +16,7 @@
 <!--            u_id=#{u_id}-->
 <!--    </select>-->
 
-    <select id="getMyVolunteerList" resultType="MainVO"
+    <select id="getMyVolunteerList" resultType="dc.human.gbnb.humanConnect.volunteer.vo.MainVO"
             parameterType="String">
         SELECT
             v.U_ID,
@@ -27,14 +27,13 @@
             s.service_type,
             c.C_NAME,
             c.C_PHONE
-        FROM
-            volunteer_reg v
-        INNER JOIN service_type_table s
-        ON s.service_code = v.V_TYPE
+        FROM volunteer_reg v
         INNER JOIN CENTER_MNG_TABLE c
         ON c.C_ID = V.C_ID
         INNER JOIN volunteer r
         ON r.V_NO = V.V_NO
+        INNER JOIN service_type_table s
+        ON s.service_code = r.service_code
         WHERE
             u_id=#{u_id}
     </select>

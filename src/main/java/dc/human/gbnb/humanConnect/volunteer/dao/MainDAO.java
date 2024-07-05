@@ -12,8 +12,6 @@ import java.util.List;
 @Repository("mainDAO")
 public interface MainDAO {
 	 List<MainVO> getMyVolunteerList(String u_id) throws DataAccessException;
-
-
 }
 
 
