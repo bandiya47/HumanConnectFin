@@ -41,7 +41,6 @@ public class LoginControllerImpl implements LoginController{
 
                 if ("VOLUNTEER_USER".equals(userType)) {
                     viewName = "redirect:/main";
-                    //  rdao.getVolList() 추가적으로 작업하세요
                 } else if ("CENTER_MNG_TABLE".equals(userType)) {
                     viewName = "redirect:/centerMain";
                 }

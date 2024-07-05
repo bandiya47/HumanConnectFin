@@ -1,9 +1,4 @@
-package dc.human.gbnb.humanConnect.volunteer.vo;
-
-import java.sql.Date;
-
-import org.apache.ibatis.type.Alias;
-import org.springframework.stereotype.Component;
+package dc.human.gbnb.humanConnect.admin.vo;
 
 
 public class MemberVO {

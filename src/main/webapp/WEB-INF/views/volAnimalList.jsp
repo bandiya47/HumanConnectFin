@@ -9,84 +9,7 @@
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/style.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <style>
-        .volAnimalListMain {
-            width: 1100px;
-            margin: 0 auto;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            padding: 20px;
-        }
-        .volAnimalListList {
-            margin-top: 20px;
-        }
-        .volAnimalListList h2 {
-            border-bottom: 1px solid black;
-            padding: 5px;
-            font-size: 40px;
-            font-weight: bold;
-            margin: 10px auto;
-            font-family: 'NEXONFootballGothicBA1';
-        }
-        .volAnimalListAnimal-list {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-        }
-        .volAnimalListAnimal-card {
-            background-color: white;
-            font-family: 'MangoDdobak-B';
-            font-size: 15px;
-            border: 1px solid #000;
-            border-radius: 5px;
-            width: 24%;
-            margin-bottom: 20px;
-            padding: 10px;
-            box-sizing: border-box;
-            text-align: left;
-            height: 350px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-        .volAnimalListAnimal-card img {
-            max-width: 100%;
-            height: 150px;
-            border-radius: 5px;
-        }
-        .volAnimalListPagination {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin: 0 auto;
-            list-style: none;
-            padding: 0;
-        }
-        .volAnimalListPagination li {
-            display: inline-block;
-            margin: 0 5px;
-        }
-        .volAnimalListPagination a {
-            text-decoration: none;
-            color: black;
-            padding: 5px 10px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            display: inline-block;
-            box-sizing: border-box;
-        }
-        .volAnimalListPagination a:hover {
-            background-color: #ddd;
-        }
-        .volAnimalListPagination .active a {
-            background-color: #FEAB82;
-            color: white;
-            border-radius: 5px;
-        }
-        .volAnimalListPagination a.disabled {
-            color: #ddd;
-            pointer-events: none;
-        }
+
     </style>
 </head>
 <body>
@@ -95,9 +18,7 @@
     <main class="volAnimalListMain">
         <section class="volAnimalListList">
             <h2>입양 목록 보기</h2>
-            <div class="volAnimalListAnimal-list" id="animalList">
-                <!-- 입양동물 리스트 -->
-            </div>
+            <div class="volAnimalListAnimal-list" id="animalList"><!-- 입양동물 --></div>
             <ul id="volAnimalListPagination" class="volAnimalListPagination"></ul>
         </section>
     </main>
@@ -107,7 +28,7 @@
         const pagination = $('#volAnimalListPagination');
         pagination.empty();
 
-        const pageLimit = 10; // 한 번에 표시할 페이지 수
+        const pageLimit = 10;
         const startPage = Math.floor((currentPage - 1) / pageLimit) * pageLimit + 1;
         const endPage = Math.min(startPage + pageLimit - 1, totalPage);
 
@@ -123,7 +44,6 @@
             pagination.append('<li class="page-item"><a class="page-link" href="#" data-page="' + (currentPage + 1) + '">&raquo;</a></li>');
         }
 
-        // 페이지 클릭 이벤트 처리
         $('.page-link').on('click', function (e) {
             e.preventDefault();
             const page = $(this).data('page');
@@ -162,7 +82,6 @@
     }
 
     $(document).ready(function () {
-        // 초기 데이터 로드
         loadAnimalList();
     });
 </script>
