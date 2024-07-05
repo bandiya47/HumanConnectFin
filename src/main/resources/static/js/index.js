@@ -48,7 +48,7 @@
             if (expandRadius < Math.max(window.innerWidth, window.innerHeight)*1) {
                 requestAnimationFrame(expandClipPath);
             } else {
-                window.location.href = "loginPage"; // 로그인 화면 URL로 이동
+                window.location.href = "/loginPage"; // 로그인 화면 URL로 이동
             }
         };
         expandClipPath();
