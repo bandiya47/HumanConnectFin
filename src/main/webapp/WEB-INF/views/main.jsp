@@ -16,29 +16,24 @@
 
 
     <div class="main">
-
-
         <div class="mainTitle"><img src="./img/sole.png" alt="" class="">봉사 신청내역</div>
         <div class="mainFirstStack">
             <div class="mainFirstMiddle">
                 <div>
                     <table>
-
                             <tr>
-
                                 <th>보호소</th>
                                 <th>봉사시작일</th>
                                 <th>봉사종료일</th>
                                 <th>역할</th>
                             </tr>
                            <c:choose>
-
                                <c:when test="${empty myVolunteerList}">
-                                   <p>정보가 없습니다.</p>
+                                  <tr>
+                                      <td colspan="4" class="centerNoData">표시할 데이터가 없습니다</td>
+                                  </tr>
                                </c:when>
-
                                <c:otherwise>
-
                                            <c:forEach var="vo" items="${myVolunteerList}">
                                                <tr>
                                                    <td>${vo.c_name}</td>
@@ -47,27 +42,12 @@
                                                    <td>${vo.service_type}</td>
                                                </tr>
                                            </c:forEach>
-
-                               </table>
                            </c:otherwise>
                        </c:choose>
+                       </table>
                 </div>
-
-            </div>
-
-
-            <div class="mainFirstSide">
-                <form action="" name-=>
-                <button type="submit"></button>
-                </form>
             </div>
         </div>
-
-
-
-
-
-
 
 
         <div class="mainAllBtn">
@@ -75,8 +55,6 @@
             <button type="submit" value="">전체보기></button>
             </form>
         </div>
-
-
         <div class="mainTitle"><img src="./img/sole.png" alt="" class="">입양 신청내역</div>
         <div class="mainSecondStack">
             <div class="mainSecondMiddle">
@@ -95,11 +73,7 @@
 
             </div>
             <div>
-                <div class="mainSecondSide">
-                    <form action="">
-                        <button type="submit"></button>
-                    </form>
-                </div>
+
             </div>
         </div>
 
@@ -126,14 +100,7 @@
                     </div>
 
             </div>
-            <div class="mainThirdSide">
-                <form action="">
-                    <button type="submit">
 
-                    </button>
-                </form>
-
-            </div>
         </div>
         <div class="mainAllBtn">
 
@@ -148,52 +115,57 @@
         <div class="mainTitle"><img src="./img/sole.png" alt="" class="">모집마감일이 임박한 봉사정보</div>
         <div class="mainFourthStack">
             <div class="MainFourthMiddle">
-                <div>
-                    <table>
-                        <c:forEach var="volList" items="${volList}" begin="0" end="2">
+
+                <div class="mainVolistContainer">
+                        <c:forEach var="avo" items="${approachVolList}" begin="0" end="2">
                             <form name="main" method="post" action="volunteerDetail" encType="UTF-8">
+                                 <div class="mainVolist">
+                                       <table>
+                                            <input type="hidden" name="v_no" value="${avo.v_no }" />
+                                            <tr>
 
-                                <div class="mainVolist">
-
-                                        <input type="hidden" name="v_no" value="${volList.v_no }" />
-                                        <tr>
-                                            <th>
-                                                <button type="submit">${volList.v_title} </button>
-                                            </th>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                            ${volList.v_rend_date}
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                            ${volList.v_state}
-                                            </td>
-                                        </tr>
-
-
-                                </div>
+                                                <th>
+                                                    글 제목 :
+                                                </th>
+                                                <th>
+                                                    <button type="submit">${avo.v_title} </button>
+                                                </th>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    모집마감일 :
+                                                </td>
+                                                <td>
+                                                    ${avo.v_rend_date}
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    봉사시작일 :
+                                                </td>
+                                                <td>
+                                                    ${avo.vreg_start_date}
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    봉사 장소 :
+                                                </td>
+                                                <td>
+                                                    ${avo.c_addr1}
+                                                </td>
+                                            </tr>
+                                       </table>
+                                 </div>
                             </form>
                         </c:forEach>
-
-
-
-                    </table>
                 </div>
 
-
-            </div>
-            <div class="mainFourthSide">
-                <form action="">
-                    <button type="submit">
-
-                    </button>
-                </form>
             </div>
         </div>
-        <div class="mainAllBtn">
 
+
+        <div class="mainAllBtn">
             <form action="" method="post">
             <button type="submit" value="">전체보기></button>
             </form>

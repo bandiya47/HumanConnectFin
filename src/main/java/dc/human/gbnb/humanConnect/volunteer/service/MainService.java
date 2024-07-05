@@ -8,5 +8,6 @@ public interface MainService {
 
     List<MainVO> getMyVolunteerList(String u_id);
 
-    //String getLatestRecruitmentTitle(String centerId);
+    List<MainVO> getApproachVolList(String u_id);
+
 }

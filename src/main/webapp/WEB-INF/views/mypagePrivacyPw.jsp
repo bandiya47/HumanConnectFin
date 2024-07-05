@@ -26,12 +26,12 @@
     <div class="mypagePrivacyPw">
         <div class="mypagePrivacyPwNoti">
             <div>개인정보 수정을 위해 <br> 비밀번호 확인이 필요합니다.</div>
-            <form action="checkPrivacyPw" method="post" action="${checkPrivacyPw">
-                <input type="hidden" name="u_id" value="${myinfo.u_id}">
+            <form action="checkPrivacyPw" method="post">
+                <input type="hidden" name="userId" value="${userId}">
 
 
                 <div class="mypagePrivacyPwInputPW2">
-                    <input type="password" name="password" required>
+                    <input type="password" name="u_pwd" required>
                     <label>password</label>
                     <span></span>
                 </div>

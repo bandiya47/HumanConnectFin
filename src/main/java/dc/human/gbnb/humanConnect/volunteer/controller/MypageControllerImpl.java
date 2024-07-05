@@ -100,61 +100,69 @@ public class MypageControllerImpl implements MypageController {
 
 
 //	//비밀번호 확인하는 창으로 넘어감
+	@Override
+	@RequestMapping(value = "/showPrivacyPw", method = RequestMethod.POST)
+	public ModelAndView showPrivacyPw(@RequestParam("userId") String userId, HttpServletRequest request, HttpServletResponse response) throws Exception {
+		ModelAndView mav = new ModelAndView();
+		try {
+			mav.setViewName("mypagePrivacyPw");
+			//mypageVO = mypageService.privacyList(userId);
+			//jsp 안에 객체 추가
+			//mav.addObject("myinfo", mypageVO);
+			mav.addObject("userId", userId);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return mav;
+	}
+
+	//비밀번호 입력을 처리해줌
+	@Override
+	@RequestMapping(value = "/checkPrivacyPw", method = RequestMethod.POST)
+	public ModelAndView checkPrivacyPw(@RequestParam(name="userId") String userId,
+									   @RequestParam(name="u_pwd") String u_pwd,
+									   HttpServletRequest request,
+									   HttpServletResponse response) throws Exception {
+		ModelAndView mav = new ModelAndView();
+		try {
+			int privacycount = mypageService.checkPrivacyPw(userId, u_pwd);
+			if (privacycount == 1) {
+				mav.setViewName("mypagePrivacyEdit");
+				mypageVO = mypageService.privacyList(userId);
+				//jsp 안에 객체 추가
+				mav.addObject("myinfo", mypageVO);
+				mav.addObject("userId", userId);
+			} else {
+
+				mav.setViewName("index");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return mav;
+	}
+
+	// 비밀번호 입력을 처리해줌.
 //	@Override
-//	@RequestMapping(value = "/showPrivacyPw", method = RequestMethod.POST)
-//	public ModelAndView showPrivacyPw(@RequestParam("userId") String userId, HttpServletRequest request, HttpServletResponse response) throws Exception {
+//	@RequestMapping(value = "/checkPrivacyPw", method = RequestMethod.POST)
+//	public ModelAndView checkPrivacyPw(@ModelAttribute MypageVO mypageVO, HttpServletRequest request, HttpServletResponse response) throws Exception {
 //		ModelAndView mav = new ModelAndView();
-//		try {
+//
+//		String userId = mypageVO.getU_id();
+//		String password = mypageVO.getU_pwd();
+//
+//		boolean isPasswordCorrect = mypageService.checkPrivacyPw(mypageVO);
+//
+//		if (isPasswordCorrect) {
+//			mav.setViewName("forward:/privacyList"); // 비밀번호가 일치하면 privacyList 페이지로 포워딩
+//		} else {
 //			mav.setViewName("mypagePrivacyPw");
-//			//mypageVO = mypageService.privacyList(userId);
-//			//jsp 안에 객체 추가
-//			//mav.addObject("myinfo", mypageVO);
+//			mav.addObject("error", "비밀번호가 일치하지 않습니다.");
 //			mav.addObject("userId", userId);
-//		} catch (Exception e) {
-//			e.printStackTrace();
 //		}
 //		return mav;
 //	}
-
-	// 비밀번호 확인하는 창으로 넘어감
-	@Override
-	@RequestMapping(value = "/showPrivacyPw", method = RequestMethod.GET)
-	public ModelAndView showPrivacyPw(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		ModelAndView mav = new ModelAndView();
-		String userId = request.getParameter("userId"); // ContextPath를 통해 아이디 받아오기
-		if (userId == null || userId.isEmpty()) {
-			// userId가 없을 경우 처리 (예: 로그인 페이지로 리다이렉트)
-			mav.setViewName("redirect:/login"); // 로그인 페이지로 리다이렉트
-			return mav;
-		}
-
-		mav.setViewName("mypagePrivacyPw");
-		mav.addObject("userId", userId);
-		return mav;
-	}
-
-
-	// 비밀번호 입력을 처리해줌.
-	@Override
-	@RequestMapping(value = "/checkPrivacyPw", method = RequestMethod.POST)
-	public ModelAndView checkPrivacyPw(@ModelAttribute MypageVO mypageVO, HttpServletRequest request, HttpServletResponse response) throws Exception {
-		ModelAndView mav = new ModelAndView();
-
-		String userId = mypageVO.getU_id();
-		String password = mypageVO.getU_pwd();
-
-		boolean isPasswordCorrect = mypageService.checkPrivacyPw(mypageVO);
-
-		if (isPasswordCorrect) {
-			mav.setViewName("forward:/privacyList"); // 비밀번호가 일치하면 privacyList 페이지로 포워딩
-		} else {
-			mav.setViewName("mypagePrivacyPw");
-			mav.addObject("error", "비밀번호가 일치하지 않습니다.");
-			mav.addObject("userId", userId);
-		}
-		return mav;
-	}
-}
+//}
 
 //	@Override
 //	@RequestMapping(value="/goMypage" ,method = RequestMethod.POST)
@@ -164,6 +172,10 @@ public class MypageControllerImpl implements MypageController {
 //		}catch(Exception e){
 //			e.printStackTrace();
 //		}
-//	}
+
+
+
+
+	}
 
 
