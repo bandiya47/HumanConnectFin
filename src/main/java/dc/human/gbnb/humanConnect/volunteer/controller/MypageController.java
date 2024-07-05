@@ -22,10 +22,14 @@ public interface MypageController {
                                    @ModelAttribute() MypageVO mypageVO,
                                     HttpServletRequest request, HttpServletResponse response) throws Exception;
     //비번확인하는 창으로 넘어감
-    //public ModelAndView showPrivacyPw(@RequestParam("userId") String userId, HttpServletRequest request, HttpServletResponse response) throws Exception;
-    public ModelAndView showPrivacyPw(HttpServletRequest request, HttpServletResponse response) throws Exception;
+    public ModelAndView showPrivacyPw(@RequestParam("userId") String userId, HttpServletRequest request, HttpServletResponse response) throws Exception;
+
     //비밀번호 입력을 처리해줌.
-    public ModelAndView checkPrivacyPw(@ModelAttribute MypageVO mypageVO, HttpServletRequest request, HttpServletResponse response) throws Exception;
+    public ModelAndView checkPrivacyPw(@RequestParam("userId") String userId,
+                                       @RequestParam("u_pwd") String u_pwd,
+                                       HttpServletRequest request,
+                                       HttpServletResponse response) throws Exception;
+    //public ModelAndView checkPrivacyPw(@ModelAttribute MypageVO mypageVO, HttpServletRequest request, HttpServletResponse response) throws Exception;
 }
 
 //    public ModelAndView privacyEdit(@RequestParam("u_id") String u_id, HttpServletRequest request, HttpServletResponse response) throws Exception;

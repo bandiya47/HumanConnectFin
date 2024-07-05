@@ -19,8 +19,9 @@ public interface MypageService {
 
 	public int updateUserDetails(MypageVO mypageVO) throws Exception;
 
-	public boolean checkPrivacyPw(MypageVO mypageVO) throws Exception;
 
+
+	public int checkPrivacyPw(String userId, String u_pwd) throws Exception;
 
 }
 

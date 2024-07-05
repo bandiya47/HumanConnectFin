@@ -25,14 +25,14 @@ public class MainServiceImpl implements MainService {
                 if (vo == null) {
                     System.out.println("vo is null");
                 } else {
-                    System.out.println("u_id: " + vo.getU_id());
-                    System.out.println("v_no: " + vo.getV_no());
-                    System.out.println("v_title: " + vo.getV_title());
-                    System.out.println("vreg_start_date: " + vo.getVreg_start_date());
-                    System.out.println("vreg_end_date: " + vo.getVreg_end_date());
-                    System.out.println("c_name: " + vo.getC_name());
-                    System.out.println("c_phone: " + vo.getC_phone());
-                    System.out.println("service_type: " + vo.getService_type());
+                    System.out.println("vo_u_id: " + vo.getU_id());
+                    System.out.println("vo_v_no: " + vo.getV_no());
+                    System.out.println("vo_v_title: " + vo.getV_title());
+                    System.out.println("vo_vreg_start_date: " + vo.getVreg_start_date());
+                    System.out.println("vo_vreg_end_date: " + vo.getVreg_end_date());
+                    System.out.println("vo_c_name: " + vo.getC_name());
+                    System.out.println("vo_c_phone: " + vo.getC_phone());
+                    System.out.println("vo_service_type: " + vo.getService_type());
                 }
             }
         } else {
@@ -41,23 +41,31 @@ public class MainServiceImpl implements MainService {
         return myVolunteerList;
     }
 
-//    @Override
-//    public List<CenterMainVO> getVolunteerList(String centerId) {
-//        return mainDAO.getVolunteerList(centerId);
-//    }
+    @Override
+    public List<MainVO> getApproachVolList(String u_id) {
+        System.out.println("Service received u_id: " + u_id);
+        List<MainVO> approachVolList = mainDAO.getApproachVolList(u_id);
+        if (approachVolList != null) {
+            for (MainVO avo : approachVolList) {
+                if (avo == null) {
+                    System.out.println("vo is null");
+                } else {
+                    System.out.println("avo_u_id: " + avo.getU_id());
+                    System.out.println("avo_v_title: " + avo.getV_title());
+                    System.out.println("avo_vreg_start_date: " + avo.getVreg_start_date());
+                    System.out.println("avo_vreg_end_date: " + avo.getVreg_end_date());
+                    System.out.println("avo_vreg_start_date: " + avo.getVreg_start_date());
+                    System.out.println("avo_vreg_end_date: " + avo.getVreg_end_date());
+                    System.out.println("avo_c_name: " + avo.getC_name());
+                    System.out.println("avo_c_phone: " + avo.getC_phone());
+                    System.out.println("avo_c_addr1: " + avo.getC_addr1());
+                    System.out.println("avo_service_type: " + avo.getService_type());
+                }
+            }
+        } else {
+            System.out.println("approachVolList is null");
+        }
+        return approachVolList;
+    }
 
-//    @Override
-//    public List<CenterMainVO> getAdoptionList(String centerId) {
-//        return mainDAO.getAdoptionList(centerId);
-//    }
-//
-//    @Override
-//    public int updateStatus(String userId, int status, String rejectReason, String centerId) {
-//        return centerMainDAO.updateStatus(userId, status, rejectReason, centerId);
-//    }
-//
-//    @Override
-//    public String getLatestRecruitmentTitle(String centerId) {
-//        return centerMainDAO.getLatestRecruitmentTitle(centerId);
-//    }
 }

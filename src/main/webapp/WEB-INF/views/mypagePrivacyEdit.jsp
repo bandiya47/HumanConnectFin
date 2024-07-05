@@ -12,16 +12,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HumanConnect</title>
     <link rel="stylesheet" type="text/css" href="./css/style.css">
-        <script type="text/javascript">
-            function validatePassword() {
-                var password = document.getElementById("u_pwd").value;
-                var confirmPassword = document.getElementById("confirmPwd").value;
-
-                if (password != confirmPassword) {
-                    alert("비밀번호가 일치하지 않습니다.");
-                    return false;
-                }
-                return true;
+        <script>
+            var msg = '${msg}';
+            if(msg === '비밀번호를 다시 확인해 주세요.') {
+                alert("비밀번호를 다시 확인해 주세요.");
             }
         </script>
 </head>

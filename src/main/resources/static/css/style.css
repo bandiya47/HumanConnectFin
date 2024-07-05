@@ -59,7 +59,7 @@ table {
 }
 
 :root{
-		background-color:#FDECCB;
+		background-color:#FAECC5;
 }
 
 /**리셋끝~~*****************************************************************************************************************/
@@ -491,7 +491,7 @@ header{
     margin: 0;
     padding: 0;
     font-family: 'MangoDdobak-B';
-    background-color: #FDECCB;
+    background-color: ##FAECC5;
 }
 .centerMain {
     width : 1100px;
@@ -1241,20 +1241,20 @@ vertical-align:middle;
 }
 
 
-.mainThirdStack{                          /*2층 입양상담신청내역*/
+.mainThirdStack{                          /*3층 보호동물 목록*/
     display: flex;
 }
 .mainThirdMiddle{
-    width: 820px;
+    width: 820px;                           /*3층 전체너비*/
     border: gray solid 1px;
     border-radius: 5px;
     background-color: white;
 }
-.mainSlideContainer{
+.mainSlideContainer{                          /*컨테이너*/
     display: flex;
     align-items: center;
     justify-content: center;
-    >div{
+    >div{                                       /*안에 div*/
         width: 230px;
         height: 230px;
         border: gray solid 1px;
@@ -1312,24 +1312,22 @@ vertical-align:middle;
 
 
 
+.mainVolistContainer{
+        display: flex;
+       align-items: center;
+       justify-content: center;
 
-
-
-
-
-
-
-.mainVolist{
-    /* display: flex; */
-    display: inline-block;
-    >button{
-        width: 250px;
-        background-color: transparent;
-        border: 1px solid black;
-        cursor: pointer;
-        padding: 10px;
-    }
 }
+
+
+.mainVolist{                                       /*안에 div*/
+          /* display : inline-block;*/
+           width: 230px;
+           height: 230px;
+           border: gray solid 1px;
+           margin: 5px 5px 5px 5px;
+       }
+
 /**메인끝~~*****************************************************************************************************************/
 /**조인 시작~~*****************************************************************************************************************/
 .joinLogo {

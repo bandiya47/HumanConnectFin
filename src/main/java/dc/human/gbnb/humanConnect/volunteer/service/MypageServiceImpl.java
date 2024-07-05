@@ -37,9 +37,8 @@ public class MypageServiceImpl implements MypageService {
 	}
 
 	@Override
-	public boolean checkPrivacyPw(MypageVO mypageVO) throws Exception {
-		int count = mypageDAO.checkPrivacyPw(mypageVO);
-		return count == 1; // 비밀번호가 일치하면 true, 일치하지 않으면 false 반환
+	public int checkPrivacyPw(String userId, String u_pwd) throws Exception {
+		return mypageDAO.checkPrivacyPw(userId, u_pwd);
 	}
 
 

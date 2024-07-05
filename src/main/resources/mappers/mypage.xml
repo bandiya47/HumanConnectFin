@@ -42,7 +42,7 @@
             parameterType="memberVO">
         <![CDATA[
 		select
-		    u_id
+		    count(*)
 		from
 		    volunteer_user
 		where

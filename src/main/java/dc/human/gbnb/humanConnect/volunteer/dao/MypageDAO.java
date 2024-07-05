@@ -16,11 +16,12 @@ public interface MypageDAO {
 
 	 public MypageVO selectAllCenterPrivacyList(String c_id) throws DataAccessException;
 
-
-
 	 public int updateUserDetails(MypageVO mypageVO) throws DataAccessException;
 
-	public int checkPrivacyPw(MypageVO mypageVO) throws DataAccessException;
+
+
+	 public int checkPrivacyPw(@Param("u_id") String u_id, @Param("u_pwd") String u_pwd) throws DataAccessException;
+
 }
 
 
