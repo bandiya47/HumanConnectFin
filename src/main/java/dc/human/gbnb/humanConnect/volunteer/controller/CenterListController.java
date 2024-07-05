@@ -20,4 +20,6 @@ public interface CenterListController {
 	public ModelAndView volCenterList(HttpServletRequest request, HttpServletResponse response,@RequestParam("userId") String userId, @RequestParam("careNm") String careNm) throws Exception;
 	public ModelAndView insertVolCenterList(@ModelAttribute("info") VolunteerDetailVO volunteerDetailVO, HttpServletRequest request, HttpServletResponse response, @RequestParam("userId") String userId) throws Exception;
 	public ModelAndView modVolCenterList(HttpServletRequest request, HttpServletResponse response, @RequestParam("userId") String userId,@RequestParam("vReg_no") int vReg_no) throws Exception;
+	public ModelAndView updateVolCenterList(@ModelAttribute("info") VolunteerDetailVO volunteerDetailVO, HttpServletRequest request, HttpServletResponse response, @RequestParam("userId") String userId, @RequestParam("vReg_no") int vReg_no) throws Exception;
+	public ModelAndView viewVolCenterList(HttpServletRequest request, HttpServletResponse response,@RequestParam("userId") String userId, @RequestParam("vReg_no") int vReg_no) throws Exception;
 }

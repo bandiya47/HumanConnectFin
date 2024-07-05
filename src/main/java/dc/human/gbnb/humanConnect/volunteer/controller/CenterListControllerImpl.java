@@ -365,8 +365,9 @@ public class CenterListControllerImpl implements CenterListController {
 											  HttpServletRequest request, HttpServletResponse response,
 											  @RequestParam("userId") String userId) throws Exception {
 
-
+		int vType = 1;
 		int insert = 0;
+		volunteerDetail.setvType(vType);
 		insert = volunteerDetailService.addVolunteerDetail(volunteerDetail);
 		int vReg_no = volunteerDetailService.v_noVolunteerDetail();
 		volunteerDetail.setvReg_no(vReg_no);
@@ -396,6 +397,54 @@ public class CenterListControllerImpl implements CenterListController {
 
 
 		String job="Modify";
+		int userType =1;
+		mav.addObject("job",job);
+		mav.addObject("userType",userType);
+		mav.addObject("volunteerList",Result);
+		mav.addObject("userId", userId);
+		return mav;
+	}
+
+	@Override
+	@RequestMapping(value="/updateVolCenterList.do" ,method = RequestMethod.POST)
+	@ResponseBody
+	public ModelAndView updateVolCenterList(@ModelAttribute("volunteerDetail") VolunteerDetailVO volunteerDetail,
+											  HttpServletRequest request, HttpServletResponse response,
+											  @RequestParam("userId") String userId,
+											  @RequestParam("vReg_no") int vReg_no) throws Exception {
+
+		int insert = 0;
+		volunteerDetail.setuId(userId);
+
+		insert = volunteerDetailService.updateVolunteerDetail2(volunteerDetail);
+
+		List<VolunteerDetailVO> Result = volunteerDetailService.listRegVolunteerDetail2(vReg_no);
+
+
+
+		ModelAndView mav = new ModelAndView("/volCenterList");
+
+		String job="ViewReg";
+		int userType =1;
+		mav.addObject("job",job);
+		mav.addObject("userType",userType);
+		mav.addObject("volunteerList",Result);
+		mav.addObject("userId", userId);
+		return mav;
+	}
+
+	@Override
+	@RequestMapping(value= "/viewVolCenterList.do", method = RequestMethod.GET)
+	public ModelAndView viewVolCenterList(HttpServletRequest request, HttpServletResponse response,
+											   @RequestParam("userId") String userId,
+											   @RequestParam("vReg_no") int vReg_no) throws Exception {
+
+
+		List<VolunteerDetailVO> Result = volunteerDetailService.listRegVolunteerDetail2(vReg_no);
+
+		ModelAndView mav = new ModelAndView("/volCenterList");
+
+		String job="ViewReg";
 		int userType =1;
 		mav.addObject("job",job);
 		mav.addObject("userType",userType);

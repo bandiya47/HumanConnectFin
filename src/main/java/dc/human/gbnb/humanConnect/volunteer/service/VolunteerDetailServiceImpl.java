@@ -61,6 +61,10 @@ public class VolunteerDetailServiceImpl implements VolunteerDetailService {
 	public int updateVolunteerDetail(VolunteerDetailVO volunteerDetailVO) throws Exception {
 		return volunteerDetailDAO.updateVolunteerDetail(volunteerDetailVO);
 	}
+	@Override
+	public int updateVolunteerDetail2(VolunteerDetailVO volunteerDetailVO) throws Exception {
+		return volunteerDetailDAO.updateVolunteerDetail(volunteerDetailVO);
+	}
 
 
 

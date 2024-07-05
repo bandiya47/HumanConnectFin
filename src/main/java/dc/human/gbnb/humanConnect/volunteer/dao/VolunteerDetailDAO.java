@@ -20,6 +20,7 @@ public interface VolunteerDetailDAO {
 	 public List selectListRegVolunteerDetail(int vReg_no) throws DataAccessException;
 	 public List selectListRegVolunteerDetail2(int vReg_no) throws DataAccessException;
 	 public int updateVolunteerDetail(VolunteerDetailVO volunteerDetailVO) throws DataAccessException ;
+	 public int updateVolunteerDetail2(VolunteerDetailVO volunteerDetailVO) throws DataAccessException ;
 
 
 

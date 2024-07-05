@@ -13,6 +13,7 @@ public interface VolunteerDetailService {
 	 public List listRegVolunteerDetail(int vReg_no) throws Exception;
 	 public List listRegVolunteerDetail2(int vReg_no) throws Exception;
 	 public int updateVolunteerDetail(VolunteerDetailVO volunteerDetailVO) throws Exception;
+	 public int updateVolunteerDetail2(VolunteerDetailVO volunteerDetailVO) throws Exception;
 
 
 

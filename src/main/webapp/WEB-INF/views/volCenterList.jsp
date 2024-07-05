@@ -12,13 +12,7 @@
 
 
 
-                      if(job == "View"){
-
-                            $( 'mmnt' ).html( '<h1>'+"careInfo[0].vMaxAmnt}"+'</h1>' );
-                            $( 'file' ).html( '<h1>'+"careInfo[0].vUploadFilePath}"+'</h1>' );
-                            $( 'info' ).html( '<h1>'+"careInfo[0].vInfo}"+'</h1>' );
-
-                      }else if(job == "Regist"){
+                      if(job == "Regist"){
 
                            document.getElementById("volunteerDetailBtnRM").value="등록하기";
                            document.getElementById("volunteerDetailBtnRM").addEventListener("click", fn_reg);
@@ -26,7 +20,7 @@
                         }else if(job == "ViewReg"){
                             $( 'mmnt' ).html( '<h1>'+"${volunteerList[0].vMaxAmnt}"+'</h1>' );
                             $( 'file' ).html( '<h1>'+"${volunteerList[0].vUploadFilePath}"+'</h1>' );
-                            $( 'info' ).html( '<h1>'+"${volunteerList[0].vInfo}"+'</h1>' );
+                            $( 'info' ).html( '<h1 style="text-align:left;">'+"${volunteerList[0].vInfo}"+'</h1>' );
 
                             $('#vDate').remove();
                             $( 'vDate' ).html( '<h1>${volunteerList[0].vStartDate} ~ ${volunteerList[0].vEndDate}</h1>' );
@@ -37,6 +31,12 @@
                         }else if(job == "Modify"){
                             var vInfo="${volunteerList[0].vInfo}";
                             vInfo = vInfo.replace(/<br>/g, "\n");
+
+                            document.getElementById("startDate").value="${volunteerList[0].vStartDate}";
+                            document.getElementById("endDate").value="${volunteerList[0].vEndDate}";
+                            document.getElementById("startTime").value="${volunteerList[0].vStartTime}";
+                            document.getElementById("endTime").value="${volunteerList[0].vLastTime}";
+
                             document.getElementById("vMaxAmnt").value ="${volunteerList[0].vMaxAmnt}";
                             document.getElementById("info").value = vInfo;
                             $( 'file' ).html( '<h1>'+"${volunteerList[0].vUploadFilePath}"+'</h1>' );
@@ -140,7 +140,7 @@
      <form name="volunteerDetailMod" method="post" action="${pageContext.request.contextPath}/modVolCenterList.do" encType="UTF-8">
      </c:if>
      <c:if test="${job == 'Modify'}">
-     <form name="volunteerDetailMod" method="post" action="${pageContext.request.contextPath}/updateVolunteerDetail.do" encType="UTF-8">
+     <form name="volunteerDetailMod" method="post" action="${pageContext.request.contextPath}/updateVolCenterList.do" encType="UTF-8">
      </c:if>
 
     <h3>보호소 봉사 등록</h3>
@@ -207,7 +207,7 @@
             </c:if>
             <c:if test="${job == 'Modify'}">
                 <input id="volunteerDetailBtnRM" class="volunteerDetailBtn" type="submit" value="수정확인">
-                <input type="hidden" name="vReg_no" value="${careInfo[0].vReg_no}">
+                <input type="hidden" name="vReg_no" value="${volunteerList[0].vReg_no}">
                 <input type="hidden" name="userId" value="${userId}">
                 </form>
             </c:if>

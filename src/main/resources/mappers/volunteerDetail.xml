@@ -102,7 +102,7 @@
 	<insert id="insertVolunteerDetail" parameterType="volunteerDetailVO">
 		<![CDATA[
 		 insert into volunteer_reg(V_NO,U_ID,C_ID,V_TYPE, VREG_START_DATE,VREG_END_DATE,VREG_START_TIME,VREG_END_TIME ,VREG_AMNT,VREG_UPLOAD_FILE_PATH,VREG_INFO,CREATED_ID,CREATED_DATE)
-		 values(#{v_no},#{uId},#{cId},0,#{vStartDate},#{vEndDate},#{vStartTime},#{vLastTime},#{vMaxAmnt},#{vUploadFilePath},#{vInfo},#{uId},SYSDATE)
+		 values(#{v_no},#{uId},#{cId},#{vType},#{vStartDate},#{vEndDate},#{vStartTime},#{vLastTime},#{vMaxAmnt},#{vUploadFilePath},#{vInfo},#{uId},SYSDATE)
 		]]>
 	</insert>
 
@@ -179,6 +179,22 @@
 		<![CDATA[
 		 update volunteer_reg
 		 set
+			 VREG_AMNT = #{vMaxAmnt},
+			 VREG_INFO = #{vInfo},
+			 UPDATED_ID = #{uId},
+			 UPDATED_DATE = SYSDATE
+         where VREG_NO = #{vReg_no}
+		]]>
+	</update>
+
+	<update id="updateVolunteerDetail2" parameterType="volunteerDetailVO">
+		<![CDATA[
+		 update volunteer_reg
+		 set
+		 	 VREG_START_TIME = #{vStartTime},
+			 VREG_END_TIME = #{vLastTime},
+			 VREG_START_DATE = #{vStartDate},
+			 VREG_END_DATE = #{vEndDate},
 			 VREG_AMNT = #{vMaxAmnt},
 			 VREG_INFO = #{vInfo},
 			 UPDATED_ID = #{uId},

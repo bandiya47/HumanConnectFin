@@ -97,7 +97,9 @@ public class VolunteerDetailControllerImpl implements VolunteerDetailController 
 											@RequestParam("userId") String userId) throws Exception {
 
 
+		int vType = 1;
 		int insert = 0;
+		volunteerDetail.setvType(vType);
 		insert = volunteerDetailService.addVolunteerDetail(volunteerDetail);
 		int vReg_no = volunteerDetailService.v_noVolunteerDetail();
 		volunteerDetail.setvReg_no(vReg_no);

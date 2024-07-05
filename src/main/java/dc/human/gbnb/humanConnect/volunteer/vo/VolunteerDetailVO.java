@@ -23,6 +23,7 @@ public class VolunteerDetailVO {
 	private int vMaxAmnt;
 	private int vRegAmnt;
 	private int vState;
+	private int vType;
 	private String vUploadFilePath;
 	private String vInfo;
 	private String cName;
@@ -34,6 +35,15 @@ public class VolunteerDetailVO {
 
 		System.out.println("CenterRegVO 생성자 호출");
 
+	}
+
+
+	public int getvType() {
+		return vType;
+	}
+
+	public void setvType(int vType) {
+		this.vType = vType;
 	}
 
 	public String getcId() {
