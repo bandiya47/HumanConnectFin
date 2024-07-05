@@ -36,21 +36,7 @@ public class MypageControllerImpl implements MypageController {
 		return mav;
 	}
 
-	@Override
-	@RequestMapping(value = "/CenterPrivacyList", method = RequestMethod.GET)/*경로*/
-	public ModelAndView CenterPrivacyList(@RequestParam("centerId") String centerId, HttpServletRequest request, HttpServletResponse response) throws Exception {
-		ModelAndView mav = new ModelAndView();
-		try {
-			mypageVO = mypageService.CenterPrivacyList(centerId);
-			//jsp 안에 객체 추가
-			mav.addObject("myinfo", mypageVO);
-			//jsp 불러옴. jsp는 안써도 됨.
-			mav.setViewName("mypagePrivacyCheck");
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return mav;
-	}
+
 
 	//수정하는 창으로 넘어감
 	@Override
@@ -123,20 +109,21 @@ public class MypageControllerImpl implements MypageController {
 									   @RequestParam(name="u_pwd") String u_pwd,
 									   HttpServletRequest request,
 									   HttpServletResponse response) throws Exception {
+		String u_id=userId;
 		ModelAndView mav = new ModelAndView();
 		System.out.println(userId);
 		System.out.println(u_pwd);
 		try {
 			int privacycount = mypageService.checkPrivacyPw(userId, u_pwd);
 			if (privacycount == 1) {
-				mav.setViewName("mypagePrivacyEdit");
+				mav.setViewName("mypagePrivacyCheck");
 				mypageVO = mypageService.privacyList(userId);
 				//jsp 안에 객체 추가
 				mav.addObject("myinfo", mypageVO);
 				mav.addObject("userId", userId);
 			} else {
 
-				mav.setViewName("index");
+				mav.setViewName("showPrivacyPw");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

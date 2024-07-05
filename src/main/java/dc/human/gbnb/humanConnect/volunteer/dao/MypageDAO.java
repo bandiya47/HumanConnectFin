@@ -14,7 +14,7 @@ import java.util.List;
 public interface MypageDAO {
 	 public MypageVO selectAllPrivacyList(String u_id) throws DataAccessException;
 
-	 public MypageVO selectAllCenterPrivacyList(String c_id) throws DataAccessException;
+
 
 	 public int updateUserDetails(MypageVO mypageVO) throws DataAccessException;
 

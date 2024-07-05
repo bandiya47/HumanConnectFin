@@ -15,7 +15,7 @@ public interface MypageService {
 
 	public MypageVO privacyList(String u_id) throws Exception;
 
-	public MypageVO CenterPrivacyList(String c_id) throws Exception;
+
 
 	public int updateUserDetails(MypageVO mypageVO) throws Exception;
 
