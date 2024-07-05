@@ -14,7 +14,7 @@ public interface MypageController {
     //user 개인정보내역 출력
     public ModelAndView privacyList(@RequestParam("userId") String userId, HttpServletRequest request, HttpServletResponse response) throws Exception;
     //
-    public ModelAndView CenterPrivacyList(@RequestParam("centerId") String userId, HttpServletRequest request, HttpServletResponse response) throws Exception;
+
     //수정하는 창으로 넘어감
     public ModelAndView updatePrivacy(@RequestParam("userId") String userId, HttpServletRequest request, HttpServletResponse response) throws Exception;
     //수정입력을 저장해줌

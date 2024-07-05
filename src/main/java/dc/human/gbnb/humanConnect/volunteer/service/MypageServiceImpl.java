@@ -27,10 +27,6 @@ public class MypageServiceImpl implements MypageService {
 		return mypageDAO.selectAllPrivacyList(u_id);
 	}
 
-	public MypageVO CenterPrivacyList(String c_id) throws Exception {
-		return mypageDAO.selectAllCenterPrivacyList(c_id);
-	}
-
 
 	public int updateUserDetails(MypageVO mypageVO) throws Exception {
 		return mypageDAO.updateUserDetails(mypageVO);
