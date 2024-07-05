@@ -23,15 +23,16 @@ public class MainControllerImpl implements MainController {
 
     @Override
     @GetMapping("/main")
-    public ModelAndView showMain(
-            @RequestParam("userId") String userId,
-            HttpSession session
-    )
-    {
-        //UserVO user = (UserVO) session.getAttribute("userVO");
+    public ModelAndView showMain(@RequestParam("userId") String userId, HttpSession session) {
+        UserVO user = (UserVO) session.getAttribute("userVO");
+
+        if (userId == null) {
+            return new ModelAndView("redirect:/login");
+        }
+
         String u_id = userId;
 
-        //String c_name
+
         ModelAndView mav = new ModelAndView("main");
         List<MainVO> myVolunteerList = mainService.getMyVolunteerList(u_id);
         mav.addObject("myVolunteerList", myVolunteerList);
@@ -47,16 +48,17 @@ public class MainControllerImpl implements MainController {
             @RequestParam("userId") String userId,
             @RequestParam("userVO") UserVO userVO,
             HttpSession session
-            )
-    {
+    ) {
         UserVO user = (UserVO) session.getAttribute("userVO");
 
         if (user == null || user.getUserId() == null) {
             return new ModelAndView("redirect:/login");
         }
+
         String u_id = user.getUserId();
 
         int updateRow = 0;
+
 
         ModelAndView mav = new ModelAndView("/main");
         if (updateRow > 0) {
@@ -64,6 +66,7 @@ public class MainControllerImpl implements MainController {
         } else {
             mav.addObject("message", "다시 확인해주세요");
         }
+
         return mav;
     }
 
