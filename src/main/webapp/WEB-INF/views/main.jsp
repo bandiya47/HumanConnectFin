@@ -42,8 +42,8 @@
                                            <c:forEach var="vo" items="${myVolunteerList}">
                                                <tr>
                                                    <td>${vo.c_name}</td>
-                                                   <td></td>
-                                                   <td></td>
+                                                   <td>${vo.vreg_start_date}</td>
+                                                   <td>${vo.vreg_end_date}</td>
                                                    <td>${vo.service_type}</td>
                                                </tr>
                                            </c:forEach>
