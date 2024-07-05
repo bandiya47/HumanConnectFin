@@ -13,9 +13,14 @@ import  dc.human.gbnb.humanConnect.volunteer.vo.MypageVO;
 
 public interface MypageService {
 
-	 public MypageVO privacyList(String u_id) throws Exception;
+	public MypageVO privacyList(String u_id) throws Exception;
 
-	public int privacyEdit(String u_id) throws Exception;
+	public MypageVO CenterPrivacyList(String c_id) throws Exception;
+
+	public int updateUserDetails(MypageVO mypageVO) throws Exception;
+
+	public boolean checkPrivacyPw(MypageVO mypageVO) throws Exception;
+
 
 }
 

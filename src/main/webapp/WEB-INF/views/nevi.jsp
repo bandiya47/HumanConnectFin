@@ -54,7 +54,8 @@
                     <li>
                         <div>
                             <img src="./img/soleWhite.png" alt="" class="">
-                            <form action="">
+                            <form action="/volAnimalList" method="GET">
+                                <input type="hidden" name="userId" value="${userId}">
                                 <input type="submit" value="보호동물">
                             </form>
                         </div>
@@ -71,8 +72,9 @@
                     <li>
                         <div>
                             <img src="./img/soleWhite.png" alt="" class="">
-                            <form action="">
-                                <input type="submit" value="실종/제보">
+                            <form action="/showPrivacyPw" method="POST">
+                                <input type="hidden" name="userId" value="${userId}">
+                                <input type="submit" value="비번확인마루타">
                             </form>
                         </div>
                     </li>

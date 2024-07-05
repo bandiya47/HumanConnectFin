@@ -27,40 +27,52 @@
 	                <table class="mypagePrivacyCheckTable">
 	                    <tr>
 	                        <th>성명</th>
-	                        <td>${myinfo.u_name}</td>
+	                        <td>${myinfo.u_name}
+	                            ${myinfo.c_name}
+	                        </td>
 	                    </tr>
 	                    <tr>
 	                        <th>아이디</th>
-	                        <td>${myinfo.u_id}</td>
+	                        <td>${myinfo.u_id}
+	                            ${myinfo.c_id}
+	                        </td>
 	                    </tr>
 
 	                    <tr>
 	                       <th rowspan="2">주소</th>
-                           <td>${myinfo.u_addr1}</td>
+                           <td>${myinfo.u_addr1}
+                                ${myinfo.c_addr1}
+                           </td>
 	                    </tr>
 	                    <tr>
 	                         <td>상세주소</td>
 	                    </tr>
 	                    <tr>
 	                       <th>이메일</th>
-                           <td>${myinfo.u_email}</td>
+                           <td>${myinfo.u_email}
+                                ${myinfo.c_email}
+                           </td>
 	                    </tr>
 	                     <tr>
                             <th>전화번호</th>
-                            <td>${myinfo.u_phone}</td>
+                            <td>${myinfo.u_phone}
+                                ${myinfo.c_phone}
+                            </td>
                         </tr>
 	                </table>
 	            </div>
 
 	            <div>
-	            <form name="privacyEdit" method="post" action="${pageContext.request.contextPath}/myprivacyEdit">
+	            <form name="privacyEdit" method="post" action="${pageContext.request.contextPath}/updatePrivacy">
+	                <input type="hidden" name="userId" value="${userId}">
                 	<div class="mypagePrivacyCheckBtnC">
                     	<button type="submit" name="edit" class="mypagePrivacyCheckBtn">
                             <img src="./img/soleWhite.png">
                             수정
                         </button>
                		</div>
-            </form></div>
+            </form>
+            </div>
 	        </div>
 
 	    </div>

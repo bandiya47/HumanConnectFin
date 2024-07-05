@@ -7,10 +7,11 @@ public class MainVO {
 	private String u_id;
 	private String v_no;
 	private String v_title;
-	private String v_rend_date;
+	private String vreg_start_date;
+	private String vreg_end_date;
 	private String v_state;
 	private String c_name;
-	private String c_phone;;
+	private String c_phone;
 	private String service_type;
 
 	public String getU_id() {
@@ -37,12 +38,20 @@ public class MainVO {
 		this.v_title = v_title;
 	}
 
-	public String getV_rend_date() {
-		return v_rend_date;
+	public String getVreg_end_date() {
+		return vreg_end_date;
 	}
 
-	public void setV_rend_date(String v_rend_date) {
-		this.v_rend_date = v_rend_date;
+	public void setVreg_end_date(String vreg_end_date) {
+		this.vreg_end_date = vreg_end_date;
+	}
+
+	public String getVreg_start_date() {
+		return vreg_start_date;
+	}
+
+	public void setVreg_start_date(String vreg_start_date) {
+		this.vreg_start_date = vreg_start_date;
 	}
 
 	public String getV_state() {

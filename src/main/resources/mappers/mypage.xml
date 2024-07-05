@@ -33,15 +33,12 @@
         <result property="c_name" column="c_name" />        <!--신청한 보호소 정보만-->
 
 
-
-
-
-
     </resultMap>
 
+
     <!-- 회원정보 확인 전 비밀번호를 확인하는 쿼리 -->
-    <!-- 아이디는 표출할거고 비밀번호는 입력받을것. -->
-    <select id="loginById" resultType="mypageVO"
+    <!-- 아이디는 세션에서 받아오고 비밀번호는 입력받을것. -->
+    <select id="checkPrivacyPw" resultType="mypageVO"
             parameterType="memberVO">
         <![CDATA[
 		select
@@ -60,6 +57,7 @@
         SELECT
             u_id,
             u_name,
+            u_pwd,
             u_addr1,
             u_addr2,
             u_email,
@@ -71,20 +69,52 @@
       ]]>
     </select>
 
-    <!-- 회원 정보를 업데이트하는 쿼리 -->
-    <update id="updatePrivacy" parameterType="mypageVO">
+    <!-- 회원 정보를 확인하는 쿼리 -->
+    <select id="selectAllCenterPrivacyList" resultMap="privacyResult"><!--참고 원래는 memResult였음-->
         <![CDATA[
-	     update
-	         volunteer_user
-	     set
-	         u_pwd=#{u_pwd},
-	         u_addr1=#{u_addr1},
-	         u_email=#{u_email},
-	         u_phone=#{u_phone}
-	     where
-	         u_id=#{u_id}
+        SELECT
+            c_id,
+            c_name,
+            c_addr1,
+            c_addr2,
+            c_email,
+            c_phone
+        FROM
+            CENTER_MNG_TABLE
+        WHERE
+            c_id=#{c_id}
       ]]>
+    </select>
+
+
+    <!-- 회원 정보를 업데이트하는 쿼리 -->
+    <update id="updateUserDetails" parameterType="dc.human.gbnb.humanConnect.volunteer.vo.MypageVO">
+        <![CDATA[
+            UPDATE
+                volunteer_user
+            SET
+                u_pwd = #{u_pwd},
+                u_addr1 = #{u_addr1},
+                u_phone = #{u_phone},
+                u_email = #{u_email}
+            WHERE
+                u_id = #{u_id}
+    ]]>
     </update>
+
+
+    <!-- 회원을 탈퇴시켜버리는 쿼리 -->
+    <delete id="deletePrivacy" parameterType="String">
+        <![CDATA[
+	   delete
+	   from
+	        volunteer_user
+	   where
+	        u_id=#{u_id}
+	]]>
+    </delete>
+
+
 
 
 

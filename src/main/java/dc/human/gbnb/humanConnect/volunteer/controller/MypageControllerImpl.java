@@ -4,7 +4,6 @@ import dc.human.gbnb.humanConnect.volunteer.service.MypageService;
 import dc.human.gbnb.humanConnect.volunteer.vo.MypageVO;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -12,9 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
-import java.util.List;
 
 @Controller
 public class MypageControllerImpl implements MypageController {
@@ -24,89 +20,141 @@ public class MypageControllerImpl implements MypageController {
 	private MypageVO mypageVO;
 
 	@Override
-	@RequestMapping(value= "/privacyList", method = RequestMethod.GET)/*경로*/
+	@RequestMapping(value = "/privacyList", method = RequestMethod.GET)
 	public ModelAndView privacyList(@RequestParam("userId") String userId, HttpServletRequest request, HttpServletResponse response) throws Exception {
-		ModelAndView mav=new ModelAndView();
-		try{
+		ModelAndView mav = new ModelAndView();
+		try {
+			mypageVO = mypageService.privacyList(userId);
+			//jsp 안에 객체 추가
+			mav.addObject("myinfo", mypageVO);
+			mav.addObject("userId", userId);
+			//jsp 불러옴. jsp는 안써도 됨.
+			mav.setViewName("mypagePrivacyCheck");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return mav;
+	}
 
-			mypageVO=mypageService.privacyList(userId);
+	@Override
+	@RequestMapping(value = "/CenterPrivacyList", method = RequestMethod.GET)/*경로*/
+	public ModelAndView CenterPrivacyList(@RequestParam("centerId") String centerId, HttpServletRequest request, HttpServletResponse response) throws Exception {
+		ModelAndView mav = new ModelAndView();
+		try {
+			mypageVO = mypageService.CenterPrivacyList(centerId);
 			//jsp 안에 객체 추가
 			mav.addObject("myinfo", mypageVO);
 			//jsp 불러옴. jsp는 안써도 됨.
 			mav.setViewName("mypagePrivacyCheck");
-		}catch(Exception e){
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
-
 		return mav;
 	}
+
+	//수정하는 창으로 넘어감
+	@Override
+	@RequestMapping(value = "/updatePrivacy", method = RequestMethod.POST)
+	public ModelAndView updatePrivacy(@RequestParam("userId") String userId, HttpServletRequest request, HttpServletResponse response) throws Exception {
+		ModelAndView mav = new ModelAndView();
+		try {
+			mav.setViewName("mypagePrivacyEdit");
+			mypageVO = mypageService.privacyList(userId);
+			//jsp 안에 객체 추가
+			mav.addObject("myinfo", mypageVO);
+			mav.addObject("userId", userId);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return mav;
+	}
+
+	//수정입력을 저장해줌
+	@Override
+	@RequestMapping(value = "/savePrivacy", method = RequestMethod.POST)
+	public ModelAndView savePrivacy(@ModelAttribute() MypageVO mypageVO,
+									HttpServletRequest request,
+									HttpServletResponse response) throws Exception {
+		ModelAndView mav = new ModelAndView();
+		String userId = mypageVO.getU_id();    //u_id를 useId라고 선언
+		try {
+			int saveResult = 0;
+			saveResult = mypageService.updateUserDetails(mypageVO);
+			if (saveResult == 1) {
+				mypageVO = mypageService.privacyList(userId);
+				mav.addObject("myinfo", mypageVO);
+				mav.addObject("userId", userId);
+				mav.setViewName("mypagePrivacyCheck"); //privacyList 랑 같은
+			} else {
+				mav.setViewName("mypagePrivacyEdit");
+				mypageVO = mypageService.privacyList(userId);
+				//jsp 안에 객체 추가
+				mav.addObject("myinfo", mypageVO);
+				mav.addObject("userId", userId);    //전 페이지 그대로
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return mav;
+	}
+
+
+//	//비밀번호 확인하는 창으로 넘어감
 //	@Override
-//	@RequestMapping(value= "/privacyList", method = RequestMethod.GET)/*경로*/
-//	public ModelAndView privacyList(@RequestParam("userId") String userId, HttpServletRequest request, HttpServletResponse response) throws Exception {
-//		ModelAndView mav=new ModelAndView();
-//		try{
-//
-//			mypageVO=mypageService.privacyList(userId);
-//			String u_name= mypageVO.getU_name();
-//			String u_id = mypageVO.getU_id();
-//			String u_pwd = mypageVO.getU_pwd();
-//			String u_email = mypageVO.getU_email();
-//			String u_phone  = mypageVO.getU_phone();
-//			String u_addr1  = mypageVO.getU_addr1();
-//			String u_addr2 = mypageVO.getU_addr2();
-//
-//
+//	@RequestMapping(value = "/showPrivacyPw", method = RequestMethod.POST)
+//	public ModelAndView showPrivacyPw(@RequestParam("userId") String userId, HttpServletRequest request, HttpServletResponse response) throws Exception {
+//		ModelAndView mav = new ModelAndView();
+//		try {
+//			mav.setViewName("mypagePrivacyPw");
+//			//mypageVO = mypageService.privacyList(userId);
 //			//jsp 안에 객체 추가
-//			mav.addObject("myinfo", mypageVO);
-////			mav.addObject("u_name", u_name);
-////			mav.addObject("u_id", u_id);
-////			mav.addObject("u_pwd", u_pwd);
-////			mav.addObject("u_email", u_email);
-////			mav.addObject("u_phone", u_phone);
-////			mav.addObject("u_addr1", u_addr1);
-////			mav.addObject("u_addr2", u_addr2);
-//
-//
-//
-//			//jsp 불러옴. jsp는 안써도 됨.
-//			mav.setViewName("mypagePrivacyCheck");
-//		}catch(Exception e){
+//			//mav.addObject("myinfo", mypageVO);
+//			mav.addObject("userId", userId);
+//		} catch (Exception e) {
 //			e.printStackTrace();
 //		}
-//
-//
 //		return mav;
 //	}
 
+	// 비밀번호 확인하는 창으로 넘어감
 	@Override
-	@RequestMapping(value= "/CenterprivacyList", method = RequestMethod.GET)/*경로*/
-	public ModelAndView CenterprivacyList(@RequestParam("centerId") String centerId, HttpServletRequest request, HttpServletResponse response) throws Exception {
-		ModelAndView mav=new ModelAndView();
-		try{
-
-			mypageVO=mypageService.privacyList(centerId);
-			//jsp 안에 객체 추가
-			mav.addObject("myinfo", mypageVO);
-			//jsp 불러옴. jsp는 안써도 됨.
-			mav.setViewName("mypagePrivacyCheck");
-		}catch(Exception e){
-			e.printStackTrace();
+	@RequestMapping(value = "/showPrivacyPw", method = RequestMethod.GET)
+	public ModelAndView showPrivacyPw(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		ModelAndView mav = new ModelAndView();
+		String userId = request.getParameter("userId"); // ContextPath를 통해 아이디 받아오기
+		if (userId == null || userId.isEmpty()) {
+			// userId가 없을 경우 처리 (예: 로그인 페이지로 리다이렉트)
+			mav.setViewName("redirect:/login"); // 로그인 페이지로 리다이렉트
+			return mav;
 		}
 
-
+		mav.setViewName("mypagePrivacyPw");
+		mav.addObject("userId", userId);
 		return mav;
 	}
 
+
+	// 비밀번호 입력을 처리해줌.
 	@Override
-	@RequestMapping(value="/privacyEdit.do" ,method = RequestMethod.GET)/*경로*/
-	public ModelAndView privacyEdit(@RequestParam("u_id") String u_id,
-									 HttpServletRequest request, HttpServletResponse response) throws Exception{
-		request.setCharacterEncoding("utf-8");
-		mypageService.privacyEdit(u_id);
-		ModelAndView mav = new ModelAndView("redirect:/mypagePrivacyEdit");/*경로*/
+	@RequestMapping(value = "/checkPrivacyPw", method = RequestMethod.POST)
+	public ModelAndView checkPrivacyPw(@ModelAttribute MypageVO mypageVO, HttpServletRequest request, HttpServletResponse response) throws Exception {
+		ModelAndView mav = new ModelAndView();
+
+		String userId = mypageVO.getU_id();
+		String password = mypageVO.getU_pwd();
+
+		boolean isPasswordCorrect = mypageService.checkPrivacyPw(mypageVO);
+
+		if (isPasswordCorrect) {
+			mav.setViewName("forward:/privacyList"); // 비밀번호가 일치하면 privacyList 페이지로 포워딩
+		} else {
+			mav.setViewName("mypagePrivacyPw");
+			mav.addObject("error", "비밀번호가 일치하지 않습니다.");
+			mav.addObject("userId", userId);
+		}
 		return mav;
 	}
+}
 
 //	@Override
 //	@RequestMapping(value="/goMypage" ,method = RequestMethod.POST)
@@ -116,9 +164,6 @@ public class MypageControllerImpl implements MypageController {
 //		}catch(Exception e){
 //			e.printStackTrace();
 //		}
-//
-//
 //	}
 
 
-}

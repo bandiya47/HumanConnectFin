@@ -18,9 +18,11 @@ public class MainServiceImpl implements MainService {
 
     @Override
     public List<MainVO> getMyVolunteerList(String u_id) {
+        System.out.println(u_id);
         List<MainVO> myVolunteerList = mainDAO.getMyVolunteerList(u_id);
-        System.out.println("MyVolunteer List: " + myVolunteerList);
+        System.out.println("MainServiceImpl Printing **myVolunteerList**: " + myVolunteerList);
         return myVolunteerList;
+        //return mainDAO.getMyVolunteerList(u_id);
     }
 
 //    @Override

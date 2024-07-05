@@ -4,7 +4,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>   
 <%@ page import="jakarta.servlet.http.HttpSession" %>
 <%@ page import="jakarta.servlet.http.HttpServletRequest" %>
-<%@ page import="dc.human.gbnb.humanConnect.dto.UserDTO" %>
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -12,11 +12,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HumanConnect</title>
     <link rel="stylesheet" type="text/css" href="./css/style.css">
-    
+        <script type="text/javascript">
+            function validatePassword() {
+                var password = document.getElementById("u_pwd").value;
+                var confirmPassword = document.getElementById("confirmPwd").value;
+
+                if (password != confirmPassword) {
+                    alert("비밀번호가 일치하지 않습니다.");
+                    return false;
+                }
+                return true;
+            }
+        </script>
 </head>
 <body>
 <jsp:include page="nevi.jsp" />
-    <form name="privacyEdit" method="post" action="${contextPath}/mypagePrivacyCheck.do">
+    <form name="savePrivacy" method="post" action="savePrivacy" onsubmit="return validatePassword()">
+    <input type="hidden" name="u_id" value="${myinfo.u_id}">
     <!--여기부터 아래 내용 메인-->
     <div class="mypage">
         <div><img src="./img/sole.png">개인정보수정</div><!--메뉴마다 수정-->
@@ -36,15 +48,15 @@
                         </tr>
                         <tr>
                             <th>비밀번호</th>
-                            <td><input type="text" name="u_pwd"></td>
+                            <td><input type="password" id="u_pwd" name="u_pwd" value="${myinfo.u_pwd}"</td>
                         </tr>
                         <tr>
                             <th>비밀번호 확인</th>
-                            <td><input type="text" name="u_pwdCheck"></td>
+                            <td><input type="password" id="confirmPwd" name="confirmPwd" value="${myinfo.u_pwd}"></td>
                         </tr>
                         <tr>
-                            <th rowspan="2">주소</th> <!--이거 확인해보기 표 보더 만들어서-->
-                            <td>주소DB</td>                     
+                            <th rowspan="2">주소</th>
+                            <td><input type="text" name="u_addr1" value="${myinfo.u_addr1}"></td>
                         </tr>
     
                         <tr>                        
@@ -52,25 +64,30 @@
                         </tr>
                         <tr>
                             <th>이메일</th>
-                            <td><input type="text" name="u_email" value="${privacyList[0].u_email}"></td>
+                            <td><input type="text" name="u_email" value="${myinfo.u_email}"></td>
                         </tr>
                         <tr>
                             <th>전화번호</th>
-                            <td><input type="text" name="u_phone" value="${privacyList[0].u_phone}"></td>
+                            <td><input type="text" name="u_phone" value="${myinfo.u_phone}"></td>
                         </tr>
                     </table>
                 </div>
-                <div><input type="button" value="탈퇴" name="action" class="mypagePrivacyEditWithdraw"></div>
+
                 <div class="mypagePrivacyEditBtnC">
                     <button type="submit" name="action" class="mypagePrivacyEditBtn">
                         <img src="./img/soleWhite.png">
                         확인
                     </button>
-                </div>   
+                </div>
+                </form>
+                <div>
+
+                    <input type="button" value="탈퇴" name="action" class="mypagePrivacyEditWithdraw">
+                    </div>
             </div>
             
         </div>
     </div>
-    </form>
+
     </body>
     </html>

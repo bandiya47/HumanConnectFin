@@ -1,4 +1,3 @@
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"
     isELIgnored="false" %>
@@ -27,9 +26,9 @@
     <div class="mypagePrivacyPw">
         <div class="mypagePrivacyPwNoti">
             <div>개인정보 수정을 위해 <br> 비밀번호 확인이 필요합니다.</div>
-            <form action="MypagePw" method="post" action="${contextPath}/mypagePrivacyCheck.do">
+            <form action="checkPrivacyPw" method="post" action="${checkPrivacyPw">
+                <input type="hidden" name="u_id" value="${myinfo.u_id}">
 
-                <%-- *********폼 방식 페이지 맵핑: 다음 페이지 : mypagePrivacyCheck.do*********** --%>
 
                 <div class="mypagePrivacyPwInputPW2">
                     <input type="password" name="password" required>
@@ -41,6 +40,10 @@
                     <span>제출</span>
                 </button>
                 <!--맵핑 필요 : myPrivacyCheck-->
+            <c:if test="${not empty error}">
+                <div class="error">${error}</div>
+            </c:if>
+
             </form>
         </div>
 
