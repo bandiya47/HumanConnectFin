@@ -57,9 +57,11 @@
 	<!-- 회원을 삭제하는 쿼리 -->
 	<delete id="deleteMember" parameterType="String">
 	<![CDATA[
-	   delete from  volunteer_user
+	   delete
+	   from
+	   		volunteer_user
 	   where
-	   u_id=#{u_id}
+	   		u_id=#{u_id}
 	]]>
 	</delete>
 

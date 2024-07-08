@@ -15,9 +15,27 @@ public class MainVO {
 	private String c_phone;
 	private String c_addr1;
 	private String service_type;
-
-
+	private String visit_time;
+	private String visit_date;
 	//private String v_state;
+
+	public String getVisit_time() {
+		return visit_time;
+	}
+
+	public void setVisit_time(String visit_time) {
+		this.visit_time = visit_time;
+	}
+
+	public String getVisit_date() {
+		return visit_date;
+	}
+
+	public void setVisit_date(String visit_date) {
+		this.visit_date = visit_date;
+	}
+
+
 	private String u_id;
 
 	public String getV_no() {

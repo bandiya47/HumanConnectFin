@@ -26,11 +26,17 @@ public class MainControllerImpl implements MainController {
             System.out.println("Received userId: " + userId);
             ModelAndView mav = new ModelAndView("main");
             List<MainVO> myVolunteerList = mainService.getMyVolunteerList(userId);
-                List<MainVO> approachVolList = mainService.getApproachVolList(userId);
-                mav.addObject("approachVolList", approachVolList);
             mav.addObject("myVolunteerList", myVolunteerList);
+                List<MainVO> myAdpotList = mainService.getMyAdoptList(userId);
+                mav.addObject("myAdoptList", myAdpotList);
+                    List<MainVO> approachVolList = mainService.getApproachVolList(userId);
+                    mav.addObject("approachVolList", approachVolList);
+
+
             mav.addObject("userId", userId);
-            System.out.println("Main Controller Printing **myVolunteerList**: " + myVolunteerList);
+//            System.out.println("Main Controller Printing **myVolunteerList**: " + myVolunteerList);
+//            System.out.println("Main Controller Printing **myAdpotList**: " + myAdpotList);
+//            System.out.println("Main Controller Printing **approachVolList**: " + approachVolList);
             return mav;
         }
 

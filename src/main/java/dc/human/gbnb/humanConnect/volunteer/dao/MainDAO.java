@@ -15,6 +15,8 @@ public interface MainDAO {
 
 	 List<MainVO> getApproachVolList(String u_id) throws DataAccessException;
 
+	 List<MainVO> getMyAdoptList(String u_id) throws DataAccessException;
+
 }
 
 

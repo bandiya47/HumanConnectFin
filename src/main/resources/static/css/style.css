@@ -1250,16 +1250,18 @@ vertical-align:middle;
     border-radius: 5px;
     background-color: white;
 }
-.mainSlideContainer{                          /*컨테이너*/
+.mainSlideContainer{                          /* 유기동물 목록 슬라이드 컨테이너*/
     display: flex;
     align-items: center;
     justify-content: center;
-    >div{                                       /*안에 div*/
-        width: 230px;
-        height: 230px;
+
+}
+.mainAnimalSlide{
+        display:flex;
+        width: 700px;
         border: gray solid 1px;
         margin: 5px 5px 5px 5px;
-    }
+        overflow:hidden;
 }
 
 

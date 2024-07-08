@@ -129,6 +129,19 @@ public class MypageControllerImpl implements MypageController {
 		return mav;
 	}
 
+	//회원 탈퇴
+	 @Override
+		@RequestMapping(value="/removePrivacy" ,method = RequestMethod.GET)/*경로*/
+		public ModelAndView removePrivacy(@RequestParam("userId") String userId,
+				           HttpServletRequest request, HttpServletResponse response) throws Exception{
+			request.setCharacterEncoding("utf-8");
+			mypageService.removePrivacy(userId);
+			ModelAndView mav = new ModelAndView("redirect:/listMembers.do");/*경로*/
+			return mav;
+		}
+
+
+
 	// 비밀번호 입력을 처리해줌.
 //	@Override
 //	@RequestMapping(value = "/checkPrivacyPw", method = RequestMethod.POST)

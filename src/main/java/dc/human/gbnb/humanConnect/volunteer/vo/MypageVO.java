@@ -15,6 +15,7 @@ public class MypageVO {
 // CENTER_MNG_TABLE
 //  센터개인정보 확인 및 수정
 	private String c_name;
+	private String centerId;
 	private String c_id;
 	private String c_pwd;
 	private String c_email;
@@ -145,18 +146,13 @@ public class MypageVO {
 
 
 
+	public String getCenterId() {
+		return centerId;
+	}
 
-
-
-
-
-
-
-
-
-
-
-
+	public void setCenterId(String centerId) {
+		this.centerId = centerId;
+	}
 
 
 
@@ -164,8 +160,6 @@ public class MypageVO {
 		System.out.println("MemberVO 생성자 호출");
 	}
 	
-	
 
-	
 	
 }

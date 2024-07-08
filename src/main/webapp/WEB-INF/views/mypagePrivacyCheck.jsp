@@ -13,7 +13,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HumanConnect</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
-
+ <script type="text/javascript">
+        function confirmDelete() {
+            return confirm("정말 삭제하시겠습니까?");
+        }
+    </script>
 </head>
 
 
@@ -63,16 +67,25 @@
 	            </div>
 
 	            <div>
-	            <form name="privacyEdit" method="post" action="${pageContext.request.contextPath}/updatePrivacy">
-	                <input type="hidden" name="userId" value="${userId}">
-                	<div class="mypagePrivacyCheckBtnC">
-                    	<button type="submit" name="edit" class="mypagePrivacyCheckBtn">
-                            <img src="./img/soleWhite.png">
-                            수정
-                        </button>
-               		</div>
-            </form>
-            </div>
+                    <form name="privacyEdit" method="post" action="${pageContext.request.contextPath}/updatePrivacy">
+                        <input type="hidden" name="userId" value="${userId}">
+                        <div class="mypagePrivacyCheckBtnC">
+                            <button type="submit" name="edit" class="mypagePrivacyCheckBtn">
+                                <img src="./img/soleWhite.png">
+                                수정
+                            </button>
+                        </div>
+                    </form>
+                    <form name="removePrivacy" method="post" action="${pageContext.request.contextPath}/removePrivacy" onsubmit="return confirmDelete();">
+                        <input type="hidden" name="userId" value="${userId}">
+                        <div class="mypagePrivacyCheckBtnC">
+                            <button type="submit" name="edit" class="mypagePrivacyCheckBtn">
+                                <img src="./img/soleWhite.png">
+                                삭제
+                            </button>
+                        </div>
+                    </form>
+                </div>
 	        </div>
 
 	    </div>

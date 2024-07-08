@@ -41,6 +41,28 @@ public class MainServiceImpl implements MainService {
         return myVolunteerList;
     }
 
+
+    @Override
+    public List<MainVO> getMyAdoptList(String u_id) {
+        System.out.println("Service received u_id: " + u_id);
+        List<MainVO> myAdoptList = mainDAO.getMyAdoptList(u_id);
+        if (myAdoptList != null) {
+            for (MainVO advo : myAdoptList) {
+                if (advo == null) {
+                    System.out.println("advo is null");
+                } else {
+                    System.out.println("advo_u_id: " + advo.getU_id());
+                    System.out.println("advo_c_name: " + advo.getC_name());
+                    System.out.println("advo_visit_date: " + advo.getVisit_date());
+                    System.out.println("advo_visit_time: " + advo.getVisit_time());
+                }
+            }
+        } else {
+            System.out.println("myAdoptList is null");
+        }
+        return myAdoptList;
+    }
+
     @Override
     public List<MainVO> getApproachVolList(String u_id) {
         System.out.println("Service received u_id: " + u_id);
@@ -50,22 +72,23 @@ public class MainServiceImpl implements MainService {
                 if (avo == null) {
                     System.out.println("vo is null");
                 } else {
-                    System.out.println("avo_u_id: " + avo.getU_id());
-                    System.out.println("avo_v_title: " + avo.getV_title());
-                    System.out.println("avo_vreg_start_date: " + avo.getVreg_start_date());
-                    System.out.println("avo_vreg_end_date: " + avo.getVreg_end_date());
-                    System.out.println("avo_vreg_start_date: " + avo.getVreg_start_date());
-                    System.out.println("avo_vreg_end_date: " + avo.getVreg_end_date());
-                    System.out.println("avo_c_name: " + avo.getC_name());
-                    System.out.println("avo_c_phone: " + avo.getC_phone());
-                    System.out.println("avo_c_addr1: " + avo.getC_addr1());
-                    System.out.println("avo_service_type: " + avo.getService_type());
+//                    System.out.println("avo_u_id: " + avo.getU_id());
+//                    System.out.println("avo_v_title: " + avo.getV_title());
+//                    System.out.println("avo_vreg_start_date: " + avo.getVreg_start_date());
+//                    System.out.println("avo_vreg_end_date: " + avo.getVreg_end_date());
+//                    System.out.println("avo_vreg_start_date: " + avo.getVreg_start_date());
+//                    System.out.println("avo_vreg_end_date: " + avo.getVreg_end_date());
+//                    System.out.println("avo_c_name: " + avo.getC_name());
+//                    System.out.println("avo_c_phone: " + avo.getC_phone());
+//                    System.out.println("avo_c_addr1: " + avo.getC_addr1());
+//                    System.out.println("avo_service_type: " + avo.getService_type());
                 }
             }
         } else {
-            System.out.println("approachVolList is null");
+//            System.out.println("approachVolList is null");
         }
         return approachVolList;
     }
+
 
 }

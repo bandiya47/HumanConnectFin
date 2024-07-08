@@ -13,7 +13,7 @@ public interface CenterMypageDAO {
 
 
 
-	 public MypageVO selectAllcenterPrivacyList(String centerId) throws DataAccessException;
+	 public MypageVO selectAllCenterPrivacyList(String centerId) throws DataAccessException;
 
 	 public int updateCenterDetails(MypageVO mypageVO) throws DataAccessException;
 
@@ -22,11 +22,3 @@ public interface CenterMypageDAO {
 	public int checkCenterPrivacyPw(@Param("centerId") String centerId, @Param("c_pwd") String c_pwd) throws DataAccessException;
 
 }
-
-
-
-
-//public interface MemberDAO {
-//	public List<MemberVO> selectAllMemberList() throws DataAccessException;
-//
-//}

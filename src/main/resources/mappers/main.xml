@@ -17,6 +17,10 @@
         <result property="c_name" column="C_NAME"/>
         <result property="c_phone" column="C_PHONE"/>
         <result property="c_addr1" column="C_ADDR1"/>
+
+        <result property="visit_date" column="VISIT_DATE"/>
+        <result property="visit_time" column="VISIT_TIME"/>
+
     </resultMap>
 
     <select id="getMyVolunteerList" resultMap="MainVOResultMap"
@@ -74,6 +78,24 @@
         ORDER BY
             r.V_REND_DATE      <!--봉사모집 마감일 기준 정렬-->
     </select>
+
+
+    <select id="getMyAdoptList" resultMap="MainVOResultMap"
+            parameterType="String">
+        SELECT
+            U_ID,
+            C_NAME,
+            VISIT_DATE,
+            VISIT_TIME
+        FROM
+            adopt_reg
+
+        WHERE
+            u_id=#{userId}
+        ORDER BY
+            VISIT_DATE
+    </select>
+
 
 
 </mapper>

@@ -19,7 +19,7 @@ public class CenterMypageServiceImpl implements CenterMypageService {
 	@Override
 	public MypageVO centerPrivacyList(String centerId) throws Exception {
 		try {
-			return centerMypageDAO.selectAllcenterPrivacyList(centerId);
+			return centerMypageDAO.selectAllCenterPrivacyList(centerId);
 		} catch (DataAccessException e) {
 			e.printStackTrace();
 			return null;
@@ -44,21 +44,5 @@ public class CenterMypageServiceImpl implements CenterMypageService {
 			return 0;
 		}
 	}
-
-
-//	@Service("memberService")
-//	@Transactional(propagation = Propagation.REQUIRED)
-//	public class MemberServiceImpl implements MemberService {
-//		@Autowired
-//		private MemberDAO memberDAO;
-//
-//		@Override
-//		public List listMembers() throws Exception {
-//			List membersList = null;
-//			membersList = memberDAO.selectAllMemberList();
-//			return membersList;
-//		}
-
-
 
 }

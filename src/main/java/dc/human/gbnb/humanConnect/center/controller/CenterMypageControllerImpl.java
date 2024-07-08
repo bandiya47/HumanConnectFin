@@ -67,21 +67,23 @@ public class CenterMypageControllerImpl implements CenterMypageController {
 									HttpServletRequest request,
 									HttpServletResponse response) throws Exception {
 		ModelAndView mav = new ModelAndView();
-		String userId = mypageVO.getC_id();    //u_id를 useId라고 선언
+		String centerId = mypageVO.getC_id();    //c_id를 useId라고 선언
 		try {
-			int saveResult = 0;
-			saveResult = centerMypageService.updateCenterDetails(mypageVO);
-			if (saveResult == 1) {
-				mypageVO = centerMypageService.centerPrivacyList(userId);
-				mav.addObject("centerMyinfo", mypageVO);
-				mav.addObject("userId", userId);
+			int CsaveResult = 0;
+			CsaveResult = centerMypageService.updateCenterDetails(mypageVO);
+			if (CsaveResult == 1) {
+				mypageVO = centerMypageService.centerPrivacyList(centerId);
+				//jsp 안에 객체 추가
+				mav.addObject("CMyinfo", mypageVO);
+				mav.addObject("centerId", centerId);
+				//jsp 불러옴. jsp는 안써도 됨.
 				mav.setViewName("centerMypagePrivacyCheck"); //privacyList 랑 같은
 			} else {
 				mav.setViewName("centerMypagePrivacyEdit");
-				mypageVO = centerMypageService.centerPrivacyList(userId);
+				mypageVO = centerMypageService.centerPrivacyList(centerId);
 				//jsp 안에 객체 추가
 				mav.addObject("CMyinfo", mypageVO);
-				mav.addObject("userId", userId);    //전 페이지 그대로
+				mav.addObject("centerId", centerId);    //전 페이지 그대로
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -118,6 +120,7 @@ public class CenterMypageControllerImpl implements CenterMypageController {
 											   HttpServletResponse response) throws Exception {
 
 		ModelAndView mav = new ModelAndView();
+		//String centerId = mypageVO.getC_id();
 		try {
 			int cprivacycount = centerMypageService.checkCenterPrivacyPw(centerId, c_pwd);
 			if (cprivacycount == 1) {

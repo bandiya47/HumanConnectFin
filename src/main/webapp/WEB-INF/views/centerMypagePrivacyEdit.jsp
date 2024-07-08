@@ -21,7 +21,7 @@
 </head>
 <body>
 <jsp:include page="nevi.jsp" />
-    <form name="saveCenterPrivacy" method="post" action="saveCenterPrivacy" onsubmit="return validatePassword()">
+    <form name="saveCenterPrivacy" method="post" action="centerSavePrivacy" onsubmit="return validatePassword()">
     <input type="hidden" name="centerId" value="${CMyinfo.c_id}">
     <!--여기부터 아래 내용 메인-->
     <div class="mypage">
@@ -42,7 +42,7 @@
                         </tr>
                         <tr>
                             <th>비밀번호</th>
-                            <td><input type="password" id="c_pwd" name="u_pwd" value="${CMyinfo.c_pwd}"</td>
+                            <td><input type="password" id="c_pwd" name="c_pwd" value="${CMyinfo.c_pwd}"</td>
                         </tr>
                         <tr>
                             <th>비밀번호 확인</th>
@@ -76,7 +76,7 @@
                 </form>
                 <div>
 
-                    <input type="button" value="탈퇴" name="action" class="mypagePrivacyEditWithdraw">
+
                     </div>
             </div>
             
