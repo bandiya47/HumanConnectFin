@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+      PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="dc.human.gbnb.humanConnect.volunteer.dao.CenterListDAO">
+
+	<resultMap id="volCenterListResult" type="centerListVO">
+		<result property="c_id" column="C_ID" />
+		<result property="c_name" column="C_NAME" />
+		<result property="c_phone" column="C_PHONE" />
+		<result property="c_addr1" column="C_ADDR1" />
+	</resultMap>
+
+	<resultMap id="vNoCenterListResult" type="centerListVO">
+		<result property="select" column="LL" />
+	</resultMap>
+
+	<insert id="insertAdoptCenterList" parameterType="centerListVO">
+		<![CDATA[
+		 insert into ADOPT_REG(U_ID,C_NAME,VISIT_DATE,VISIT_TIME,CREATED_ID,CREATED_DATE)
+		 values(#{u_id},#{c_name},#{visit_date},#{visit_time},#{u_id},SYSDATE)
+		]]>
+	</insert>
+
+	<insert id="insertCenterList" parameterType="centerListVO">
+		<![CDATA[
+		 insert into CENTER_MNG_TABLE(C_ID,C_NAME,C_PHONE,C_ADDR1,C_PWD,CREATED_ID,CREATED_DATE)
+		 values(#{c_id},#{c_name},#{c_phone},#{c_addr1},'0000','admin',SYSDATE)
+		]]>
+	</insert>
+	<select id="selectNoCenterList"  parameterType="String" resultMap="vNoCenterListResult">
+		<![CDATA[
+        select count(*) as LL from CENTER_MNG_TABLE
+        where c_NAME= #{name}
+      ]]>
+	</select>
+
+	<select id="selectListVolCenterList"  parameterType="String" resultMap="volCenterListResult">
+		<![CDATA[
+        select
+        	C_ID,
+		    C_NAME,
+		    C_PHONE,
+		    C_ADDR1
+ 		from CENTER_MNG_TABLE
+        where c_NAME= #{careNm}
+      ]]>
+	</select>
+
+
+</mapper>

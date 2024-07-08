@@ -1,12 +1,15 @@
-package dc.human.gbnb.humanConnect.center.vo;
+package dc.human.gbnb.humanConnect.volunteer.vo;
 
 import org.springframework.stereotype.Component;
 
 
-@Component("centerRegVO")
-public class CenterRegVO {
+@Component("volunteerDetailVO")
+public class VolunteerDetailVO {
 //
+	private int vReg_no;
+	private int v_no;
 	private String uId;
+	private String cId;
 	private String vTitle;
 	private String vStartDate;
 	private String vEndDate;
@@ -20,18 +23,43 @@ public class CenterRegVO {
 	private int vMaxAmnt;
 	private int vRegAmnt;
 	private int vState;
+	private int vType;
 	private String vUploadFilePath;
 	private String vInfo;
-	private int v_no;
 	private String cName;
 	private String cAddr1;
 	private String cAddr2;
 
 	//
-	public CenterRegVO(){
+	public VolunteerDetailVO(){
 
 		System.out.println("CenterRegVO 생성자 호출");
 
+	}
+
+
+	public int getvType() {
+		return vType;
+	}
+
+	public void setvType(int vType) {
+		this.vType = vType;
+	}
+
+	public String getcId() {
+		return cId;
+	}
+
+	public void setcId(String cId) {
+		this.cId = cId;
+	}
+
+	public int getvReg_no() {
+		return vReg_no;
+	}
+
+	public void setvReg_no(int vReg_no) {
+		this.vReg_no = vReg_no;
 	}
 
 	public String getcName() {

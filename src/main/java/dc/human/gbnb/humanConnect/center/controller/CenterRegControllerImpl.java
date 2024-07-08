@@ -25,17 +25,60 @@ public class CenterRegControllerImpl implements CenterRegController {
 	private CenterRegVO centerRegVO ;
 
 	private static final String CURR_IMAGE_REPO_PATH = "c:\\spring\\image_repo";
-	
+
+	@Override
+	@RequestMapping(value= "/viewCenterReg.do", method = RequestMethod.GET)
+	public ModelAndView viewCenterReg(HttpServletRequest request, HttpServletResponse response,
+								  @RequestParam("centerId") String centerId,
+								  @RequestParam("v_no") int v_no) throws Exception {
+
+
+		List<CenterRegVO> Result = centerRegService.listIdCenterReg(centerId);
+		List<CenterRegVO> Result2 = centerRegService.listCenterReg(v_no);
+		System.out.println(Result2.get(0).getvTitle());
+		ModelAndView mav = new ModelAndView("/centerReg");
+
+		String job="view";
+		mav.addObject("job",job);
+		mav.addObject("centerList2",Result);
+		mav.addObject("centerList",Result2);
+		mav.addObject("centerId", centerId);
+		mav.addObject("v_no", v_no);
+		return mav;
+	}
+
+
+
+
 	@Override
 	@RequestMapping(value= "/centerReg.do", method = RequestMethod.GET)
-	public ModelAndView centerReg(HttpServletRequest request, HttpServletResponse response) throws Exception {
-	//public String listMembers(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		//String viewName = (String)request.getAttribute("viewName");
-//		List membersList = memberService.listMembers();
-		//ModelAndView mav = new ModelAndView(viewName);
+	public ModelAndView centerReg(HttpServletRequest request, HttpServletResponse response, @RequestParam("centerId") String centerId) throws Exception {
+
+
+		List<CenterRegVO> Result = centerRegService.listIdCenterReg(centerId);
 		ModelAndView mav = new ModelAndView("/centerReg");
-		
-//		mav.addObject("membersList", membersList);
+		mav.addObject("centerList2",Result);
+		mav.addObject("centerId", centerId);
+		return mav;
+	}
+
+	@Override
+	@RequestMapping(value= "/modifyCenterReg.do", method = RequestMethod.GET)
+	public ModelAndView modifyCenterReg(HttpServletRequest request, HttpServletResponse response,
+									  @RequestParam("centerId") String centerId,
+									  @RequestParam("v_no") int v_no) throws Exception {
+
+
+		List<CenterRegVO> Result = centerRegService.listIdCenterReg(centerId);
+		List<CenterRegVO> Result2 = centerRegService.listCenterReg(v_no);
+
+		ModelAndView mav = new ModelAndView("/centerReg");
+		String job="modify";
+		mav.addObject("job",job);
+		mav.addObject("centerList2",Result);
+		mav.addObject("centerList",Result2);
+		mav.addObject("centerId", centerId);
+		mav.addObject("v_no", v_no);
 		return mav;
 	}
 
@@ -51,8 +94,28 @@ public class CenterRegControllerImpl implements CenterRegController {
 
 		insert = centerRegService.addCenterReg(centerReg);
 		int v_no = centerRegService.v_noCenterReg();
-		List<CenterRegVO> Result = centerRegService.listCenterReg(v_no);
-		return Result;
+		List<CenterRegVO> centerList = centerRegService.listCenterReg(v_no);
+		return centerList;
+	}
+
+	@Override
+	@RequestMapping(value="/updateCenterReg.do" ,method = RequestMethod.POST)
+	@ResponseBody
+	public List<CenterRegVO> updateCenterReg(@ModelAttribute("centerReg") CenterRegVO centerReg,
+										  HttpServletRequest request, HttpServletResponse response) throws Exception {
+		request.setCharacterEncoding("utf-8");
+		int insert = 0;
+
+		System.out.println("update");
+		insert = centerRegService.updateCenterReg(centerReg);
+		int v_no = centerReg.getV_no();
+		String centerId = centerReg.getuId();
+
+		List<CenterRegVO> Result2 = centerRegService.listCenterReg(v_no);
+
+
+
+		return Result2;
 	}
 
 	@Override

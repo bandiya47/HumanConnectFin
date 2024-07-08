@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="dc.human.gbnb.humanConnect.volunteer.dao.VolunteerDAO">
+
+    <resultMap id="volunteerListResult" type="dc.human.gbnb.humanConnect.volunteer.vo.VolunteerListVO">
+        <result property="vNo" column="v_no" />
+        <result property="cId" column="c_id" />
+        <result property="vTitle" column="v_title" />
+        <result property="vStartDate" column="v_start_date" />
+
+        <result property="vStartTime" column="v_start_time"/>
+
+        <result property="vRstartDate" column="v_rstart_date" />
+
+        <result property="serviceCode" column="service_code" />
+        <result property="vMaxAmnt" column="v_max_amnt" />
+        <result property="vRegAmnt" column="v_reg_amnt" />
+        <result property="vState" column="v_state" />
+    </resultMap>
+
+    <select id="getVolunteerList" resultMap="volunteerListResult" >
+        <![CDATA[
+            SELECT
+                v.v_no,
+                v.v_title,
+                vr.c_id,
+                v.v_start_date,
+                v.v_start_time,
+                v.v_rstart_date,
+                v.service_code,
+                v.v_max_amnt,
+                v.v_reg_amnt,
+                v.v_state
+            FROM
+                volunteer v
+            JOIN
+                volunteer_reg vr ON v.v_no = vr.v_no
+            ORDER BY
+                v.v_no
+
+        ]]>
+    </select>
+
+</mapper>
