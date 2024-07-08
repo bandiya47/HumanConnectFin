@@ -21,8 +21,8 @@
 </head>
 <body>
 <jsp:include page="nevi.jsp" />
-    <form name="saveCenterPrivacy" method="post" action="centerSavePrivacy" onsubmit="return validatePassword()">
-    <input type="hidden" name="centerId" value="${CMyinfo.c_id}">
+    <form name="centerSavePrivacy" method="post" action="centerSavePrivacy" onsubmit="return validatePassword()">
+    <input type="hidden" name="centerId" value="${centerId}">
     <!--여기부터 아래 내용 메인-->
     <div class="mypage">
         <div><img src="./img/sole.png">개인정보수정</div><!--메뉴마다 수정-->

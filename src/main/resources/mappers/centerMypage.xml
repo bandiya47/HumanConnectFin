@@ -48,14 +48,14 @@
 
     <!-- 회원정보 확인 전 비밀번호를 확인하는 쿼리 -->
     <!-- 아이디는 세션에서 받아오고 비밀번호는 입력받을것. -->
-    <select id="checkCenterPrivacyPw" resultType="int" parameterType="memberVO">
+    <select id="checkCenterPrivacyPw" resultType="int" parameterType="java.util.Map">
         <![CDATA[
     select
         count(*)
     from
         CENTER_MNG_TABLE
     where
-        c_id=#{centerId} and c_pwd=#{c_pwd}
+        c_id=#{centerId, jdbcType=VARCHAR} and c_pwd=#{c_pwd, jdbcType=VARCHAR}
     ]]>
     </select>
 
@@ -63,7 +63,7 @@
 
 
     <!-- 센터 정보를 확인하는 쿼리 -->
-    <select id="selectAllCenterPrivacyList" resultMap="privacyResult"><!--참고 원래는 memResult였음-->
+    <select id="selectAllCenterPrivacyList" resultMap="privacyResult" parameterType="String"><!--참고 원래는 memResult였음-->
         <![CDATA[
         SELECT
             c_id,
@@ -76,13 +76,13 @@
         FROM
             CENTER_MNG_TABLE
         WHERE
-            c_id=#{centerId}
+            c_id=#{centerId, jdbcType=VARCHAR}
       ]]>
     </select>
 
 
     <!-- 센터 정보를 업데이트하는 쿼리 -->
-    <update id="updateCenterDetails" parameterType="dc.human.gbnb.humanConnect.volunteer.vo.MypageVO">
+    <update id="updateCenterDetails" parameterType="String" >
         <![CDATA[
             UPDATE
                 CENTER_MNG_TABLE
@@ -92,59 +92,12 @@
                 c_phone = #{c_phone},
                 c_email = #{c_email}
             WHERE
-                c_id = #{centerId}
+                c_id = #{centerId, jdbcType=VARCHAR}
     ]]>
     </update>
 
 
 
-
-    <!-- 회원 정보를 확인하는 쿼리 -->
-    <select id="selectAllPrivacyList" resultMap="privacyResult"><!--참고 원래는 memResult였음-->
-        <![CDATA[
-        SELECT
-            u_id,
-            u_name,
-            u_pwd,
-            u_addr1,
-            u_addr2,
-            u_email,
-            u_phone
-        FROM
-            volunteer_user
-        WHERE
-            u_id=#{u_id}
-      ]]>
-    </select>
-
-
-
-    <!-- 회원 정보를 업데이트하는 쿼리 -->
-    <update id="updateUserDetails" parameterType="dc.human.gbnb.humanConnect.volunteer.vo.MypageVO">
-        <![CDATA[
-            UPDATE
-                volunteer_user
-            SET
-                u_pwd = #{u_pwd},
-                u_addr1 = #{u_addr1},
-                u_phone = #{u_phone},
-                u_email = #{u_email}
-            WHERE
-                u_id = #{u_id}
-    ]]>
-    </update>
-
-
-    <!-- 회원을 탈퇴시켜버리는 쿼리 -->
-    <delete id="deletePrivacy" parameterType="String">
-        <![CDATA[
-	   delete
-	   from
-	        volunteer_user
-	   where
-	        u_id=#{u_id}
-	]]>
-    </delete>
 
 
 

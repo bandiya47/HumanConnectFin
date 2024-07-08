@@ -46,7 +46,7 @@ public class CenterMypageControllerImpl implements CenterMypageController {
 	public ModelAndView centerUpdatePrivacy(@RequestParam("centerId") String centerId,
 											HttpServletRequest request,
 											HttpServletResponse response) throws Exception
-	{
+	{	System.out.println("centerUpdatePrivacy : centerId: " + centerId); // 추가한 로그
 		ModelAndView mav = new ModelAndView();
 		try {
 			mav.setViewName("centerMypagePrivacyEdit");
@@ -67,7 +67,8 @@ public class CenterMypageControllerImpl implements CenterMypageController {
 									HttpServletRequest request,
 									HttpServletResponse response) throws Exception {
 		ModelAndView mav = new ModelAndView();
-		String centerId = mypageVO.getC_id();    //c_id를 useId라고 선언
+		String centerId = request.getParameter("centerId"); // centerId를 request에서 직접 가져오기
+		System.out.println("centerSavePrivacy : centerId: " + centerId); // 로그 추가
 		try {
 			int CsaveResult = 0;
 			CsaveResult = centerMypageService.updateCenterDetails(mypageVO);
