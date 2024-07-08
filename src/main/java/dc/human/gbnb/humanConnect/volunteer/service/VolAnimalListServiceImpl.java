@@ -71,6 +71,8 @@ public class VolAnimalListServiceImpl implements VolAnimalListService {
                 );
                 animalList.add(animal);
             }
+
+            System.out.println("A : "+animalList);
             return animalList;
         } catch (Exception e) {
             e.printStackTrace();

@@ -8,6 +8,9 @@ public interface MainService {
 
     List<MainVO> getMyVolunteerList(String u_id);
 
+    List<MainVO> getMyAdoptList(String u_id);
+
     List<MainVO> getApproachVolList(String u_id);
+
 
 }

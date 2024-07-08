@@ -37,20 +37,9 @@ public class MypageServiceImpl implements MypageService {
 		return mypageDAO.checkPrivacyPw(userId, u_pwd);
 	}
 
-
-//	@Service("memberService")
-//	@Transactional(propagation = Propagation.REQUIRED)
-//	public class MemberServiceImpl implements MemberService {
-//		@Autowired
-//		private MemberDAO memberDAO;
-//
-//		@Override
-//		public List listMembers() throws Exception {
-//			List membersList = null;
-//			membersList = memberDAO.selectAllMemberList();
-//			return membersList;
-//		}
-
-
+	@Override
+	public int removePrivacy(String u_id) throws Exception {
+		return mypageDAO.deletePrivacy(u_id);
+	}
 
 }

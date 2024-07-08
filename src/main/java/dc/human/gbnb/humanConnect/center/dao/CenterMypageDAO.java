@@ -22,11 +22,3 @@ public interface CenterMypageDAO {
 	public int checkCenterPrivacyPw(@Param("centerId") String centerId, @Param("c_pwd") String c_pwd) throws DataAccessException;
 
 }
-
-
-
-
-//public interface MemberDAO {
-//	public List<MemberVO> selectAllMemberList() throws DataAccessException;
-//
-//}

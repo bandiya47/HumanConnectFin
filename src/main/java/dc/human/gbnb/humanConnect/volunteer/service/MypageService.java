@@ -15,17 +15,10 @@ public interface MypageService {
 
 	public MypageVO privacyList(String u_id) throws Exception;
 
-
-
 	public int updateUserDetails(MypageVO mypageVO) throws Exception;
-
-
 
 	public int checkPrivacyPw(String userId, String u_pwd) throws Exception;
 
+	public int removePrivacy(String u_id) throws Exception;
 }
 
-
-//public interface MemberService {
-//	public List<MemberVO> listMembers() throws Exception;
-//}

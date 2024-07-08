@@ -1106,16 +1106,16 @@ vertical-align:middle;
 
 .mainTitle{                             /*큰제목*/
     font-size: 27px;
-    font-weight: bold; 
+    font-weight: bold;
     margin-bottom: 10px;                /*큰제목 아래 간격*/
     /*테스트용
     width: 980px;
     border: 1px solid black;*/
-    
+
     >img{
         width: 27px;
         height: 27px;
-    }  
+    }
 }
 
 .mainAllBtn{                            /*전체보기*/
@@ -1139,7 +1139,7 @@ vertical-align:middle;
 .mainFirstStack{                          /*1층 봉사신청내역*/
    /* display: flex;*/
 
-    
+
 }
 .mainFirstMiddle{
     width: 820px;
@@ -1153,7 +1153,7 @@ vertical-align:middle;
 	    font-size : 20px;
         tbody{
             >tr>th {
-                background-color : #463933;      
+                background-color : #463933;
                 vertical-align : middle;
                 color : white;
                 font-weight : bold;
@@ -1172,12 +1172,12 @@ vertical-align:middle;
 }
 
 .mainFirstSide{
-    width: 30px;   
+    width: 30px;
     >form>button{                              /*shortcut1*/
         width: 150px;
         height: 150px;       /*높이*/
         border: gray solid 1px;
-        border-radius: 5px; 
+        border-radius: 5px;
         cursor: pointer;
         margin-left: 10px;      /*본문과 왼쪽 마진*/
         background-image: url('../img/Shortcut1.png'); /* 배경 이미지 경로 설정 */
@@ -1206,7 +1206,7 @@ vertical-align:middle;
 	    font-size : 20px;
         tbody{
             >tr>th {
-                background-color : #463933;      
+                background-color : #463933;
                 vertical-align : middle;
                 color : white;
                 font-weight : bold;
@@ -1224,12 +1224,12 @@ vertical-align:middle;
     }
 }
 .mainSecondSide{
-    width: 30px;   
+    width: 30px;
     >form>button{                              /*shortcut1*/
         width: 150px;
         height: 150px;       /*높이*/
         border: gray solid 1px;
-        border-radius: 5px; 
+        border-radius: 5px;
         cursor: pointer;
         margin-left: 10px;      /*본문과 왼쪽 마진*/
         background-image: url('../img/Shortcut2.png'); /* 배경 이미지 경로 설정 */
@@ -1241,36 +1241,13 @@ vertical-align:middle;
 }
 
 
-.mainThirdStack{                          /*3층 보호동물 목록*/
-    display: flex;
-}
-.mainThirdMiddle{
-    width: 820px;                           /*3층 전체너비*/
-    border: gray solid 1px;
-    border-radius: 5px;
-    background-color: white;
-}
-.mainSlideContainer{                          /*컨테이너*/
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    >div{                                       /*안에 div*/
-        width: 230px;
-        height: 230px;
-        border: gray solid 1px;
-        margin: 5px 5px 5px 5px;
-    }
-}
-
-
-
 .mainThirdSide{
-    width: 30px;   
+    width: 30px;
     >form>button{                              /*shortcut1*/
         width: 150px;
         height: 150px;       /*높이*/
         border: gray solid 1px;
-        border-radius: 5px; 
+        border-radius: 5px;
         cursor: pointer;
         margin-left: 10px;      /*본문과 왼쪽 마진*/
         background-image: url('../img/Shortcut3.png'); /* 배경 이미지 경로 설정 */
@@ -1283,7 +1260,7 @@ vertical-align:middle;
 
 
 
-.mainFourthStack{                          /*2층 입양상담신청내역*/
+.mainFourthStack{                          /*4층 */
     display: flex;
 }
 .MainFourthMiddle{
@@ -1291,15 +1268,14 @@ vertical-align:middle;
     border: gray solid 1px;
     border-radius: 5px;
     background-color: white;
-    
 }
 .mainFourthSide{
-    width: 30px;   
+    width: 30px;
     >form>button{                              /*shortcut1*/
         width: 150px;
         height: 150px;       /*높이*/
         border: gray solid 1px;
-        border-radius: 5px; 
+        border-radius: 5px;
         cursor: pointer;
         margin-left: 10px;      /*본문과 왼쪽 마진*/
         background-image: url('../img/Shortcut4.png'); /* 배경 이미지 경로 설정 */
@@ -1311,22 +1287,22 @@ vertical-align:middle;
 }
 
 
+        .mainVolistContainer{                       /*volist 컨테이너*/
+                display: flex;
+               align-items: center;
+               justify-content: center;
+        }
 
-.mainVolistContainer{
-        display: flex;
-       align-items: center;
-       justify-content: center;
+        .mainVolist{                                       /*안에 div*/
+                  /* display : inline-block;*/
+                   width: 230px;
+                   height: 230px;
+                   border: gray solid 1px;
+                   margin: 5px 5px 5px 5px;
+               }
 
-}
 
 
-.mainVolist{                                       /*안에 div*/
-          /* display : inline-block;*/
-           width: 230px;
-           height: 230px;
-           border: gray solid 1px;
-           margin: 5px 5px 5px 5px;
-       }
 
 /**메인끝~~*****************************************************************************************************************/
 /**조인 시작~~*****************************************************************************************************************/

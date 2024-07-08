@@ -131,6 +131,30 @@ public class MypageControllerImpl implements MypageController {
 		return mav;
 	}
 
+	//회원 탈퇴
+	 @Override
+		@RequestMapping(value="/removePrivacy" ,method = RequestMethod.POST)/*경로*/
+		public ModelAndView removePrivacy(@RequestParam("userId") String userId,
+				           HttpServletRequest request, HttpServletResponse response) throws Exception{
+			request.setCharacterEncoding("utf-8");
+			mypageService.removePrivacy(userId);
+			ModelAndView mav = new ModelAndView();/*경로*/
+		 try {
+			 mypageVO = mypageService.privacyList(userId);
+			 //jsp 안에 객체 추가
+			 mav.addObject("myinfo", mypageVO);
+			 mav.addObject("userId", userId);
+			 //jsp 불러옴. jsp는 안써도 됨.
+			 mav.setViewName("mypagePrivacyCheck");
+		 } catch (Exception e) {
+			 e.printStackTrace();
+		 }
+		 return mav;
+
+		}
+
+
+
 	// 비밀번호 입력을 처리해줌.
 //	@Override
 //	@RequestMapping(value = "/checkPrivacyPw", method = RequestMethod.POST)

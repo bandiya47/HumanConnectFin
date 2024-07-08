@@ -14,20 +14,9 @@ import java.util.List;
 public interface MypageDAO {
 	 public MypageVO selectAllPrivacyList(String u_id) throws DataAccessException;
 
-
-
 	 public int updateUserDetails(MypageVO mypageVO) throws DataAccessException;
-
-
 
 	 public int checkPrivacyPw(@Param("u_id") String u_id, @Param("u_pwd") String u_pwd) throws DataAccessException;
 
+	 public int deletePrivacy(String u_id) throws DataAccessException;
 }
-
-
-
-
-//public interface MemberDAO {
-//	public List<MemberVO> selectAllMemberList() throws DataAccessException;
-//
-//}

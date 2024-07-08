@@ -46,7 +46,7 @@ public class CenterMypageControllerImpl implements CenterMypageController {
 	public ModelAndView centerUpdatePrivacy(@RequestParam("centerId") String centerId,
 											HttpServletRequest request,
 											HttpServletResponse response) throws Exception
-	{
+	{	System.out.println("centerUpdatePrivacy : centerId: " + centerId); // 추가한 로그
 		ModelAndView mav = new ModelAndView();
 		try {
 			mav.setViewName("centerMypagePrivacyEdit");
@@ -67,21 +67,24 @@ public class CenterMypageControllerImpl implements CenterMypageController {
 									HttpServletRequest request,
 									HttpServletResponse response) throws Exception {
 		ModelAndView mav = new ModelAndView();
-		String userId = mypageVO.getC_id();    //u_id를 useId라고 선언
+		String centerId = request.getParameter("centerId"); // centerId를 request에서 직접 가져오기
+		System.out.println("centerSavePrivacy : centerId: " + centerId); // 로그 추가
 		try {
-			int saveResult = 0;
-			saveResult = centerMypageService.updateCenterDetails(mypageVO);
-			if (saveResult == 1) {
-				mypageVO = centerMypageService.centerPrivacyList(userId);
-				mav.addObject("centerMyinfo", mypageVO);
-				mav.addObject("userId", userId);
+			int CsaveResult = 0;
+			CsaveResult = centerMypageService.updateCenterDetails(mypageVO);
+			if (CsaveResult == 1) {
+				mypageVO = centerMypageService.centerPrivacyList(centerId);
+				//jsp 안에 객체 추가
+				mav.addObject("CMyinfo", mypageVO);
+				mav.addObject("centerId", centerId);
+				//jsp 불러옴. jsp는 안써도 됨.
 				mav.setViewName("centerMypagePrivacyCheck"); //privacyList 랑 같은
 			} else {
 				mav.setViewName("centerMypagePrivacyEdit");
-				mypageVO = centerMypageService.centerPrivacyList(userId);
+				mypageVO = centerMypageService.centerPrivacyList(centerId);
 				//jsp 안에 객체 추가
 				mav.addObject("CMyinfo", mypageVO);
-				mav.addObject("userId", userId);    //전 페이지 그대로
+				mav.addObject("centerId", centerId);    //전 페이지 그대로
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -118,6 +121,7 @@ public class CenterMypageControllerImpl implements CenterMypageController {
 											   HttpServletResponse response) throws Exception {
 
 		ModelAndView mav = new ModelAndView();
+		//String centerId = mypageVO.getC_id();
 		try {
 			int cprivacycount = centerMypageService.checkCenterPrivacyPw(centerId, c_pwd);
 			if (cprivacycount == 1) {

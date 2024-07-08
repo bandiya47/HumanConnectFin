@@ -45,20 +45,4 @@ public class CenterMypageServiceImpl implements CenterMypageService {
 		}
 	}
 
-
-//	@Service("memberService")
-//	@Transactional(propagation = Propagation.REQUIRED)
-//	public class MemberServiceImpl implements MemberService {
-//		@Autowired
-//		private MemberDAO memberDAO;
-//
-//		@Override
-//		public List listMembers() throws Exception {
-//			List membersList = null;
-//			membersList = memberDAO.selectAllMemberList();
-//			return membersList;
-//		}
-
-
-
 }

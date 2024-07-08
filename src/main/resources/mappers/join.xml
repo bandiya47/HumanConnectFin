@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="dc.human.gbnb.humanConnect.login.dao.JoinDAO">
+    <insert id="insertMember" parameterType="dc.human.gbnb.humanConnect.login.vo.JoinVO">
+
+        insert into volunteer_user(u_Id,u_Name,u_Sex,u_Bdate,u_Pwd,u_Addr1, u_Email, u_Phone , u_type , created_date, created_id)
+       values(#{u_Id}, #{u_Name},#{u_Sex}, #{u_Bdate},#{u_Pwd},#{u_Addr1}, #{u_Email}, #{u_Phone} , 1, SYSDATE, #{u_Id})
+    </insert>
+
+    <select id="checkDuplicateUserId" parameterType="String" resultType="int">
+        SELECT COUNT(*) FROM volunteer_user WHERE u_Id = #{u_Id}
+    </select>
+
+</mapper>

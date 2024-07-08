@@ -63,16 +63,19 @@
 	            </div>
 
 	            <div>
-	            <form name="updateCenterPrivacy" method="post" action="${pageContext.request.contextPath}/updateCenterPrivacy">
-	                <input type="hidden" name="centerId" value="${centerId}">
-                	<div class="mypagePrivacyCheckBtnC">
-                    	<button type="submit" name="edit" class="mypagePrivacyCheckBtn">
-                            <img src="./img/soleWhite.png">
-                            수정
-                        </button>
-               		</div>
-            </form>
-            </div>
+
+                    <form name="updateCenterPrivacy" method="post" action="${pageContext.request.contextPath}/centerUpdatePrivacy">
+                        <input type="hidden" name="centerId" value="${centerId}">
+                        <div class="mypagePrivacyCheckBtnC">
+                            <button type="submit" name="edit" class="mypagePrivacyCheckBtn">
+                                <img src="./img/soleWhite.png">
+                                수정
+                            </button>
+                        </div>
+                    </form>
+
+
+                </div>
 	        </div>
 
 	    </div>

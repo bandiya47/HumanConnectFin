@@ -29,9 +29,13 @@ public interface MypageController {
                                        @RequestParam("u_pwd") String u_pwd,
                                        HttpServletRequest request,
                                        HttpServletResponse response) throws Exception;
-    //public ModelAndView checkPrivacyPw(@ModelAttribute MypageVO mypageVO, HttpServletRequest request, HttpServletResponse response) throws Exception;
+
+    //회원 탈퇴를 처리해줌
+    public ModelAndView removePrivacy(@RequestParam("userId") String u_id, HttpServletRequest request, HttpServletResponse response) throws Exception;
+
+
 }
 
-//    public ModelAndView privacyEdit(@RequestParam("u_id") String u_id, HttpServletRequest request, HttpServletResponse response) throws Exception;
+
 
 
