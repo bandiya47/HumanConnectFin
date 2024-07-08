@@ -16,4 +16,10 @@ public class PageController {
     public String loginPage() {
         return "login";
     }
+
+    @GetMapping("/loginPopup")
+    public String loginPopup() {
+        return "loginPopup";
+    }
+
 }

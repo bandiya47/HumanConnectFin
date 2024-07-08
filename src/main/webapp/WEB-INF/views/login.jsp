@@ -12,6 +12,8 @@
     	function goIndex() {
     		window.location.href = "index";
     	}
+          function showPopup() { window.open("loginPopup", "a", "width=400, height=300, left=0, top=50"); }
+          function idPopup() { window.open("loginPopup", "a", "width=400, height=300, left=0, top=50"); }
     </script>
 </head>
 <body class="loginBody">
@@ -26,6 +28,7 @@
 		        <div class="loginInput">
 		            <label for="password"></label>
 		            <input type="password" id="password" name="password" placeholder="비밀번호"required>
+
 		        </div>
 		        <div>
 		            <button class="loginBtn" type="submit">로그인</button>
@@ -37,9 +40,10 @@
 		                    <form action="join" method="get">
 		                        <button class="loginRegBtn" type="submit"> 비밀번호 찾기 |</button>
 		                    </form>
-		                    <form action="join" method="get">
-		                        <button class="loginRegBtn" type="submit">아이디 찾기 |</button>
-		                    </form>
+
+		                        <button class="loginRegBtn" onclick="idPopup();">| 아이디 찾기 |</button>
+
+		                    <input type="button" value="보호소 가입" onclick="showPopup();" style="width:80px;border:none;background-color:#FDECCB;margin-right:-75px"/>
 		                </div>
 		       	</div>
 		       </form>
