@@ -10,10 +10,10 @@ public interface AdminController {
     ModelAndView showMemberDetail(@RequestParam("u_id") String u_id);
     String updateMember(MemberVO memberVO);
     String deleteMember(@RequestParam("u_id") String u_id);
-    public ModelAndView showCenterMemberList(@RequestParam(value = "searchQuery", required = false) String searchQuery,
-                                             @RequestParam(value = "page", defaultValue = "1") int page,
-                                             @RequestParam(value = "size", defaultValue = "10") int size);
+    ModelAndView showCenterMemberList(@RequestParam(value = "searchQuery", required = false) String searchQuery,
+                                      @RequestParam(value = "page", defaultValue = "1") int page,
+                                      @RequestParam(value = "size", defaultValue = "10") int size);
     ModelAndView showCenterMemberDetail(@RequestParam("c_id") String c_id);
-    String updateCenterMember(CenterMemberVO centerMember);
+    String updateCenterMember(@RequestParam("oldCId") String oldCId, CenterMemberVO centerMember);
     String deleteCenterMember(@RequestParam("c_id") String c_id);
 }

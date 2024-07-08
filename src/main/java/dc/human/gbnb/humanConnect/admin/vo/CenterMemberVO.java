@@ -2,6 +2,7 @@ package dc.human.gbnb.humanConnect.admin.vo;
 
 public class CenterMemberVO {
     private String c_id;
+    private String oldCId;
     private String c_name;
     private String c_pwd;
     private String c_email;
@@ -19,6 +20,14 @@ public class CenterMemberVO {
 
     public void setC_id(String c_id) {
         this.c_id = c_id;
+    }
+
+    public String getOldCId() {
+        return oldCId;
+    }
+
+    public void setOldCId(String oldCId) {
+        this.oldCId = oldCId;
     }
 
     public String getC_name() {

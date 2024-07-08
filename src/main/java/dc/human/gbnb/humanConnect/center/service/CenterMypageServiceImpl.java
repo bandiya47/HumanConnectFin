@@ -19,7 +19,7 @@ public class CenterMypageServiceImpl implements CenterMypageService {
 	@Override
 	public MypageVO centerPrivacyList(String centerId) throws Exception {
 		try {
-			return centerMypageDAO.selectAllcenterPrivacyList(centerId);
+			return centerMypageDAO.selectAllCenterPrivacyList(centerId);
 		} catch (DataAccessException e) {
 			e.printStackTrace();
 			return null;

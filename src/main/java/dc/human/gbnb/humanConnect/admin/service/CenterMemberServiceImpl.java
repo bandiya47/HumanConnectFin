@@ -4,6 +4,7 @@ import dc.human.gbnb.humanConnect.admin.dao.CenterMemberDAO;
 import dc.human.gbnb.humanConnect.admin.vo.CenterMemberVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -31,6 +32,7 @@ public class CenterMemberServiceImpl implements CenterMemberService {
     }
 
     @Override
+    @Transactional
     public void updateCenterMember(CenterMemberVO centerMember) {
         centerMemberDAO.updateCenterMember(centerMember);
     }

@@ -276,7 +276,7 @@
                         <th width="5%">No</th>
                         <th width="10%">이름</th>
                         <th width="10%">아이디</th>
-                        <th width="15%">휴대폰 번호</th>
+                        <th width="15%">전화번호</th>
                         <th width="15%">주소</th>
                     </tr>
                 </thead>

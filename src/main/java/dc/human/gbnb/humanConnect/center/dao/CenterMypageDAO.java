@@ -13,7 +13,7 @@ public interface CenterMypageDAO {
 
 
 
-	 public MypageVO selectAllcenterPrivacyList(String centerId) throws DataAccessException;
+	 public MypageVO selectAllCenterPrivacyList(String centerId) throws DataAccessException;
 
 	 public int updateCenterDetails(MypageVO mypageVO) throws DataAccessException;
 

@@ -214,23 +214,25 @@
                     <td><input type="text" id="c_addr2" value="${centerMember.c_addr2}"></td>
                 </tr>
                 <tr>
-                    <td>휴대폰 번호</td>
+                    <td>전화번호</td>
                     <td colspan="2"><input type="text" id="c_phone" value="${centerMember.c_phone}"></td>
                 </tr>
                 <tr>
                     <td>이메일</td>
                     <td colspan="2"><input type="text" id="c_email" value="${centerMember.c_email}"></td>
                 </tr>
+                <input type="hidden" id="oldCId" name="oldCId" value="${centerMember.c_id}">
             </table>
         </div>
         <div class="adminMemDetailActionButtons">
-            <button type="button" class="updateButton" onclick="updateCenterMember()">수정</button>
-            <button type="button" class="deleteButton" onclick="deleteCenterMember('${centerMember.c_id}')">삭제</button>
+            <button type="button" class="updateButton" onclick="updateCenterMember('${centerMember.c_id}')">수정</button>
+                        <button type="button" class="deleteButton" onclick="deleteCenterMember('${centerMember.c_id}')">삭제</button>
         </div>
     </div>
 </div>
 <script>
     function updateCenterMember() {
+        const oldCId = document.getElementById("oldCId").value;
         const c_id = document.getElementById("c_id").value;
         const c_name = document.getElementById("c_name").value;
         const c_pwd = document.getElementById("c_pwd").value;
@@ -243,7 +245,7 @@
         form.method = 'post';
         form.action = `${contextPath}/updateCenterMember`;
 
-        const inputs = { c_id, c_name, c_pwd, c_addr1, c_addr2, c_phone, c_email };
+        const inputs = { oldCId, c_id, c_name, c_pwd, c_addr1, c_addr2, c_phone, c_email };
 
         for (const name in inputs) {
             const input = document.createElement('input');
@@ -255,21 +257,6 @@
 
         document.body.appendChild(form);
         form.submit();
-    }
-
-    function deleteCenterMember(c_id) {
-        if (confirm("정말로 회원을 삭제하시겠습니까?")) {
-            const form = document.createElement('form');
-            form.method = 'post';
-            form.action = `${contextPath}/deleteCenterMember`;
-            const input = document.createElement('input');
-            input.type = 'hidden';
-            input.name = 'c_id';
-            input.value = c_id;
-            form.appendChild(input);
-            document.body.appendChild(form);
-            form.submit();
-        }
     }
 </script>
 </body>

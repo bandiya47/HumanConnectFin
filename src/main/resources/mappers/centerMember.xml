@@ -20,52 +20,89 @@
 
     <select id="selectAllCenterMembers" resultMap="centerMemberResult">
         <![CDATA[
-            SELECT *
-            FROM (
-                SELECT a.*, ROWNUM rnum
-                FROM (SELECT * FROM CENTER_MNG_TABLE ORDER BY C_ID) a
-                WHERE ROWNUM <= #{size} + #{offset}
-            )
-            WHERE rnum > #{offset}
-        ]]>
+        SELECT
+            C_ID,
+            C_NAME,
+            C_PWD,
+            C_EMAIL,
+            C_PHONE,
+            C_ADDR1,
+            C_ADDR2,
+            CREATED_DATE,
+            CREATED_ID,
+            UPDATED_DATE,
+            UPDATED_ID,
+            CASE
+                WHEN REGEXP_LIKE(C_ID, '^[0-9]+') THEN 'zzzzz' || C_ID
+                ELSE C_ID
+            END as LISTORDER
+        FROM CENTER_MNG_TABLE
+        ORDER BY LISTORDER
+        OFFSET #{offset} ROWS FETCH NEXT #{size} ROWS ONLY
+    ]]>
     </select>
 
     <select id="searchCenterMembers" parameterType="map" resultMap="centerMemberResult">
         <![CDATA[
-            SELECT *
-            FROM (
-                SELECT a.*, ROWNUM rnum
-                FROM (SELECT * FROM CENTER_MNG_TABLE
-                      WHERE C_NAME LIKE '%' || #{searchQuery} || '%'
-                         OR C_ID LIKE '%' || #{searchQuery} || '%'
-                         OR C_PHONE LIKE '%' || #{searchQuery} || '%'
-                         OR C_EMAIL LIKE '%' || #{searchQuery} || '%'
-                      ORDER BY C_ID) a
-                WHERE ROWNUM <= #{size} + #{offset}
-            )
-            WHERE rnum > #{offset}
-        ]]>
+        SELECT
+            C_ID,
+            C_NAME,
+            C_PWD,
+            C_EMAIL,
+            C_PHONE,
+            C_ADDR1,
+            C_ADDR2,
+            CREATED_DATE,
+            CREATED_ID,
+            UPDATED_DATE,
+            UPDATED_ID,
+            CASE
+                WHEN REGEXP_LIKE(C_ID, '^[0-9]+') THEN 'zzzzz' || C_ID
+                ELSE C_ID
+            END as LISTORDER
+        FROM CENTER_MNG_TABLE
+        WHERE
+            C_NAME LIKE '%' || #{searchQuery} || '%'
+            OR C_ID LIKE '%' || #{searchQuery} || '%'
+            OR C_PHONE LIKE '%' || #{searchQuery} || '%'
+            OR C_EMAIL LIKE '%' || #{searchQuery} || '%'
+        ORDER BY LISTORDER
+        OFFSET #{offset} ROWS FETCH NEXT #{size} ROWS ONLY
+    ]]>
     </select>
 
     <select id="selectCenterMemberById" parameterType="String" resultMap="centerMemberResult">
         <![CDATA[
-            SELECT * FROM CENTER_MNG_TABLE
-            WHERE C_ID = #{c_id}
+            SELECT C_ID,
+                   C_NAME,
+                   C_PWD,
+                   C_EMAIL,
+                   C_PHONE,
+                   C_ADDR1,
+                   C_ADDR2,
+                   CREATED_DATE,
+                   CREATED_ID,
+                   UPDATED_DATE,
+                   UPDATED_ID
+              FROM CENTER_MNG_TABLE
+             WHERE C_ID = #{c_id}
         ]]>
     </select>
 
     <update id="updateCenterMember" parameterType="dc.human.gbnb.humanConnect.admin.vo.CenterMemberVO">
         <![CDATA[
             UPDATE CENTER_MNG_TABLE
-            SET C_NAME = #{c_name},
-                C_PWD = #{c_pwd},
-                C_EMAIL = #{c_email},
-                C_PHONE = #{c_phone},
-                C_ADDR1 = #{c_addr1},
-                C_ADDR2 = #{c_addr2},
-                UPDATED_DATE = SYSDATE,
-                UPDATED_ID = #{updated_id}
-            WHERE C_ID = #{c_id}
+                SET
+                    C_ID = #{c_id},
+                    C_NAME = #{c_name},
+                    C_PWD = #{c_pwd},
+                    C_EMAIL = #{c_email},
+                    C_PHONE = #{c_phone},
+                    C_ADDR1 = #{c_addr1},
+                    C_ADDR2 = #{c_addr2},
+                    UPDATED_DATE = SYSDATE,
+                    UPDATED_ID = 'admin'
+                WHERE C_ID = #{oldCId}
         ]]>
     </update>
 

@@ -89,7 +89,8 @@ public class AdminControllerImpl implements AdminController {
 
     @Override
     @PostMapping("/updateCenterMember")
-    public String updateCenterMember(CenterMemberVO centerMember) {
+    public String updateCenterMember(@RequestParam("oldCId") String oldCId, CenterMemberVO centerMember) {
+        centerMember.setOldCId(oldCId); // oldCId 설정
         centerMemberService.updateCenterMember(centerMember);
         return "redirect:/adminCenterMem";
     }

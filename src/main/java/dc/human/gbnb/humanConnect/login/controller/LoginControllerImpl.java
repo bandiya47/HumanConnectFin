@@ -40,7 +40,11 @@ public class LoginControllerImpl implements LoginController{
                 userVO = loginService.getUserDetails(userId, userType);
 
                 if ("VOLUNTEER_USER".equals(userType)) {
-                    viewName = "redirect:/main";
+                    if (userVO.getUType() == 1) {
+                        viewName = "redirect:/main";
+                    } else if (userVO.getUType() == 0) {
+                        viewName = "redirect:/adminMain";
+                    }
                 } else if ("CENTER_MNG_TABLE".equals(userType)) {
                     viewName = "redirect:/centerMain";
                 }
