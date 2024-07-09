@@ -22,7 +22,7 @@
 
     </style>
 </head>
-<body>
+<body class="mypageBody">
     <jsp:include page="nevi.jsp" />
 
     <!-- 슬라이딩 메뉴 버튼 -->
@@ -49,7 +49,7 @@
 
 
 	<div class="mypage">
-	    <div><img src="./img/sole.png">개인정보확인</div><!--메뉴마다 수정-->
+	    <div class="mypageMainTitle">개인정보확인</div>
 	    <div class="mypagePrivacyCheck">
 	        <div>
 	            <div>
@@ -94,21 +94,21 @@
 	            <div class="mypageChkBtnContainer">
                     <form name="privacyEdit" method="post" action="${pageContext.request.contextPath}/updatePrivacy">
                         <input type="hidden" name="userId" value="${userId}">
-                        <div class="mypagePrivacyCheckBtnC">
+
                             <button type="submit" name="edit" class="mypagePrivacyCheckBtn">
                                 <img src="./img/soleWhite.png">
                                 수정
                             </button>
-                        </div>
+
                     </form>
                     <form name="removePrivacy" method="post" action="${pageContext.request.contextPath}/removePrivacy" onsubmit="return confirmDelete();">
                         <input type="hidden" name="userId" value="${userId}">
-                        <div class="mypagePrivacyCheckBtnC">
+
                             <button type="submit" name="edit" class="mypagePrivacyCheckBtn">
                                 <img src="./img/soleWhite.png">
                                 삭제
                             </button>
-                        </div>
+
                     </form>
                 </div>
 	        </div>

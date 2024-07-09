@@ -16,7 +16,7 @@
 
     </style>
 </head>
-<body>
+<body class="mypageBody">
     <jsp:include page="nevi.jsp" />
 
     <div class="mypageMenuBtn">
@@ -40,7 +40,7 @@
     </nav>
 
     <div class="mypageMain">
-        <div class="mypageMainTitle"><img src="./img/sole.png" alt="">봉사신청 전체내역</div>
+        <div class="mypageMainTitle">봉사신청 전체내역</div>
         <div class="mypageMainFirstStack">
             <div class="mypageMainFirstMiddle">
                 <div>

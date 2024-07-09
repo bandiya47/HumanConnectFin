@@ -22,7 +22,7 @@
 
     </style>
 </head>
-<body>
+<body class="mypageBody">
     <jsp:include page="nevi.jsp" />
 
     <!-- 슬라이딩 메뉴 버튼 -->
@@ -53,7 +53,7 @@
     <input type="hidden" name="u_id" value="${myinfo.u_id}">
     <!--여기부터 아래 내용 메인-->
     <div class="mypage">
-        <div><img src="./img/sole.png">개인정보수정</div><!--메뉴마다 수정-->
+        <div  class="mypageMainTitle">개인정보수정</div>
         <div class="mypagePrivacyEdit">
             <div>
                 <div>
@@ -102,10 +102,7 @@
                     </button>
                 </div>
                 </form>
-                <div>
 
-                    <input type="button" value="탈퇴" name="action" class="mypagePrivacyEditWithdraw">
-                    </div>
             </div>
 
         </div>

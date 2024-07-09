@@ -761,6 +761,14 @@ header{
 }
 /**********************************************센터모집인원*************************************************/
 /**임시~~*****************************************************************************************************************/
+
+        .mypageBody{
+
+        font-family: 'MangoDdobak-B';
+
+        }
+
+
         .mypageMain {
             margin: 60px auto 0;
             width: 980px;
@@ -770,6 +778,7 @@ header{
             font-size: 27px;
             font-weight: bold;
             margin-bottom: 10px;
+            font-family: 'NEXONFootballGothicBA1';
         }
 
         .mypageMainTitle > img {
@@ -943,6 +952,9 @@ header{
 
 /*============개인정보 수정페이지===========*/
 .mypagePrivacyEdit{
+     font-family: 'MangoDdobak-B';
+     font-size: 15px;
+
     width: 100%;
     
     >table{
@@ -1068,7 +1080,7 @@ vertical-align:middle;
         display: flex;
         align-items : center;
         justify-content: center;
-        width: 20%;
+
         padding: 10px;
         background-color: #EC9343;
         color: #fff;
@@ -1077,6 +1089,9 @@ vertical-align:middle;
         border-radius: 5px;
         cursor: pointer;
         margin-top: 17px;
+        margin-right:5px;
+        width:80px;
+        justify-content: center;
         >img{
             width: 15px;
             margin-right: 5px;
@@ -1087,14 +1102,12 @@ vertical-align:middle;
         background-color:#D87A2B;
     }
 
-    .mypagePrivacyCheckBtnC{
-        width:500px;
-        display: flex;
-        justify-content: flex-end;
-    }
+
 
     
-
+    .mypageChkBtnContainer{
+        display: flex;
+    }
 
 
 
