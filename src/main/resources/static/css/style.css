@@ -2548,3 +2548,185 @@ vertical-align:middle;
             background-color: #204160; /* 어드민 메인 페이지와 어울리도록 색상 변경 */
         }
 /**********************************************AdminMemDetail*************************************************/
+/**adminNoticeList 시작~~*****************************************************************************************************************/
+
+.noticeListBody{
+ 	margin: 0 auto;
+    padding: 0;
+    font-family: 'MangoDdobak-B';
+}
+.adminNoticeListWholeContainer {
+    text-align: center;
+    margin: auto;
+    width: 980px;
+}
+
+/* 공지사항리스트 */
+.adminNoticeListDiv>h1,
+.adminNoticeRegDiv>h1,
+.adminNoticeDetailDiv>h1 {
+	width:980px;
+ 	border: none;
+    border-bottom: 5px solid rgb(53, 110, 119);
+    text-align: left;
+    padding: 10px 0px 10px 0px;
+    margin: 20px auto;
+    font-weight:bold;
+    font-size:25px;
+}
+.noticeListTable{
+background-color:white;
+
+}
+.noticeListTable th{
+    background-color: #AC8668;
+    color : white;
+    vertical-align:middle;
+    border:none;
+    height:40px;
+    font-size:22px;
+}
+
+#noticeTitle {
+    border: none;
+    width: 600px;
+    height: 20px;
+
+}
+#noticeContent{
+    border: none;
+    width: 90%;
+    height: 300px;
+}
+input::placeholder, textarea::placeholder{
+    text-align: center:
+    vertical-align: middle;
+}
+a {
+    border: none;
+    background-color: rgb(172,134,104,0.0);
+    color: rgb(172,134,104);
+    font-size: 15px;
+    font-weight: 700;
+    vertical-align: middle;
+    font-style: none;
+}
+.hidden_file_input {
+    display: none;
+}
+.click_fileUpload_label {
+    display: inline-block;
+    cursor: pointer;
+    padding: 10px 20px;
+    color: white;
+    background-color: #AC8668;
+    border-radius: 5px;
+    font-size: 15px;
+    font-weight: 500;
+    content-align: left;
+    margin-left: 30px;
+    margin-right: 30px;
+}
+#file-name {
+    font-size: 15px;
+    vertical-align: middle;
+}
+.buttonContainer1 {
+    float: right;
+    margin-bottom: 6px;
+}
+.paginationNotice {
+    display: inline-block;
+    margin-top: 20px;
+}
+.paginationNotice a, .paginationNotice span {
+    color: black;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+    transition: background-color .3s;
+    border: 1px solid #ddd;
+    margin: 0 4px;
+}
+.paginationNotice a:hover {
+    background-color: #ddd;
+    pointer: pointer;
+}
+.paginationNotice .active {
+    background-color: #FEAB82;
+    color: white;
+    border: 1px solid #FEAB82;
+}
+
+
+
+/**  adminNoticeList 끝~~*****************************************************************************************************************/
+
+
+
+
+/**adminNoticeDetail 시작~~*****************************************************************************************************************/
+
+.noticeDetailBody {
+    margin: 0 auto;
+    padding: 0;
+    font-family: 'MangoDdobak-B';
+}
+.adminNoticeDetailWholeContainer {
+    text-align: center;
+    margin: auto;
+    width: 980px;
+}
+
+/* 공지사항 상세페이지 */
+
+.adminNoticeListDiv>div>table, .adminNoticeRegDiv>div>table,
+.noticeDetailTable {
+    margin: 5px;
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 15px;
+    text-align: center; /* 추가: 테이블의 텍스트를 중앙 정렬 */
+}
+.buttonContainer3 button {
+    margin-top: 20px;
+}
+.noticeDetailTable {
+    height: 400px;
+}
+.noticeDetailTable th, .noticeDetailTable td {
+    vertical-align: middle; /* 수정: 중앙 정렬 */
+    background-color: white;
+}
+.noticeDetailTable th {
+    background-color: #AC8668;
+    color: white;
+    font-weight: 700;
+    font-size: 22px;
+}
+.noticeDetailTable td {
+    font-size: 22px; /* 텍스트 크기 수정 */
+}
+#detailContent {
+    height: 300px;
+}
+#detailAttach {
+    width: 100%; /* 첨부 파일 칸의 너비를 고정 */
+    height: 50px; /* 첨부 파일 칸의 높이를 고정 */
+}
+.buttonContainer1>button,
+.buttonContainer2>button,
+.buttonContainer3>button {
+    font-family: 'MangoDdobak-B';
+    font-size: 15px;
+    border-style: none;
+    width: 60px;
+    height: 30px;
+    color: white;
+    background-color: #AC8668;
+    cursor: pointer;
+    margin-right: 40px;
+    border-radius: 4px;
+}
+
+/**  adminNoticeDetail 끝~~*****************************************************************************************************************/

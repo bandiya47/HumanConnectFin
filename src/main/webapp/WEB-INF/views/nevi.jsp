@@ -25,7 +25,7 @@
         <div class="neviTop">   <!--최상단-->
             <div>
 
-                <form action="login" method="post">
+                <form action="logout" method="post">
                    <button type="submit" value="">로그아웃</button>
                 </form>
                  <form action="${pageContext.request.contextPath}/myPageMain" method="POST">
@@ -75,8 +75,9 @@
                     <li>
                         <div>
                             <img src="./img/soleWhite.png" alt="" class="">
-                            <form action="">
-                                <input type="submit" value="고객센터">
+                            <form action="/volNoticeList.do" method="get">
+                            <input type="hidden" name="userId" value="${userId}">
+                                <input type="submit" value="공지사항">
                             </form>
                         </div>
                     </li>

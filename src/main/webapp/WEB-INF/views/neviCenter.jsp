@@ -78,8 +78,9 @@
                     <li>
                         <div>
                             <img src="./img/soleWhite.png" alt="" class="">
-                            <form action="">
-                                <input type="submit" value="고객센터">
+                            <form action="/centerNoticeList.do" method="get">
+                                <input type="hidden" name="centerId" value="${centerId}">
+                                <input type="submit" value="공지사항">
                             </form>
                         </div>
                     </li>

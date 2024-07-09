@@ -33,9 +33,10 @@
         </c:forEach>
     </table>
 </div>
-<div class="pagination" style="margin-left:400px">
-    <c:set var="startPage" value="${((pageNo - 1) / 10) * 10 + 1}" />
+<div class="pagination" style="text-align : center;display: flex; justify-content: center;">
+    <c:set var="startPage" value="${(pageNo - 1) + 1}" />
     <c:set var="endPage" value="${startPage + 9}" />
+
     <c:if test="${startPage > 1}">
         <a href="viewCenterList.do?pageNo=${startPage - 10}&numOfRows=${numOfRows}&userId=${userId}">« 이전</a>
     </c:if>

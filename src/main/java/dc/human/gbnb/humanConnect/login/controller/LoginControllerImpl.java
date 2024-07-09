@@ -1,6 +1,9 @@
 package dc.human.gbnb.humanConnect.login.controller;
 
 import dc.human.gbnb.humanConnect.login.vo.UserVO;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -62,5 +65,14 @@ public class LoginControllerImpl implements LoginController{
             System.out.println(ex.getMessage());
         }
         return mav;
+    }
+
+    @RequestMapping(method = RequestMethod.POST, value = "/logout")
+    public String logout(HttpServletRequest request, HttpServletResponse response) {
+        HttpSession session = request.getSession(false); // 세션이 존재하면 반환, 존재하지 않으면 null 반환
+        if (session != null) {
+            session.invalidate(); // 세션 무효화
+        }
+        return "redirect:/login"; // 로그인 페이지로 리디렉션
     }
 }

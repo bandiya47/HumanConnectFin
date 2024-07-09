@@ -18,11 +18,18 @@
             searchQueryInput.value = '';
             searchQueryInput.closest('form').submit();
         }
+        function logout() {
+            const logoutForm = document.createElement('form');
+            logoutForm.method = 'post';
+            logoutForm.action = '${pageContext.request.contextPath}/logout';
+            document.body.appendChild(logoutForm);
+            logoutForm.submit();
+        }
     </script>
 </head>
 <body class="adminMainBody">
 <header class="adminMainHeader">
-    <img src="${pageContext.request.contextPath}/img/logo.png" alt="로고">
+    <img src="${pageContext.request.contextPath}/img/logo.png" alt="로고" onclick="logout()">
 </header>
 <div class="adminMainContainer">
     <div class="adminMainSidebar">
@@ -30,7 +37,7 @@
         <ul>
             <li class="active"><a href="${pageContext.request.contextPath}/adminMain">봉사회원정보 조회</a></li>
             <li><a href="${pageContext.request.contextPath}/adminCenterMem">센터회원정보 조회</a></li>
-            <li><a href="#">고객센터</a></li>
+            <li><a href="${pageContext.request.contextPath}/adminNoticeList.do">고객센터</a></li>
         </ul>
     </div>
     <div class="adminMainContent">
