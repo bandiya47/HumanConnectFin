@@ -1,5 +1,6 @@
 package dc.human.gbnb.humanConnect.volunteer.dao;
 
+import dc.human.gbnb.humanConnect.volunteer.vo.MainVO;
 import dc.human.gbnb.humanConnect.volunteer.vo.MypageVO;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -19,4 +20,6 @@ public interface MypageDAO {
 	 public int checkPrivacyPw(@Param("u_id") String u_id, @Param("u_pwd") String u_pwd) throws DataAccessException;
 
 	 public int deletePrivacy(String u_id) throws DataAccessException;
+
+	List<MypageVO> getMyVolunteerList(String u_id) throws DataAccessException;
 }

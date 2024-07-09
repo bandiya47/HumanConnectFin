@@ -112,7 +112,13 @@
                             <c:otherwise>
                                 <c:forEach var="vo" items="${myVolunteerList}" begin="0" end="2">
                                     <tr>
-                                        <td>${vo.c_name}</td>
+                                        <td>
+                                            <form action="/viewRegVolunteerDetail.do" method="get">
+                                            <input type="hidden" name="userId" value="${userId}">
+                                            <input type="hidden" name="vReg_no" value="${vo.vreg_no}">
+                                                <button type="submit">${vo.c_name}</button>
+                                            </form>
+                                        </td>
                                         <td>${vo.vreg_start_date}</td>
                                         <td>${vo.vreg_end_date}</td>
                                         <td>${vo.service_type}</td>

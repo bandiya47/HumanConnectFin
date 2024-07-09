@@ -20,23 +20,22 @@ public class LoginControllerImpl implements LoginController{
         return new ModelAndView("login"); // 로그인 페이지를 반환
     }
 
-    @RequestMapping(method = RequestMethod.POST, value="/login")
+    @RequestMapping(method = RequestMethod.POST, value = "/login")
     public ModelAndView login(
-            @RequestParam(name="userId") String userId,
-            @RequestParam(name="password") String userPassword
+            @RequestParam(name = "userId") String userId,
+            @RequestParam(name = "password") String userPassword
     ) {
         ModelAndView mav = new ModelAndView();
         try {
-
             String msg = "";
-            String viewName = "";
+            String viewName = "login"; // 기본 뷰 이름을 로그인 페이지로 설정
             UserVO userVO = null;
 
-            System.out.println("userId:"+userId+":userPassword:"+userPassword);
+            System.out.println("userId:" + userId + ":userPassword:" + userPassword);
             String userType = loginService.validateUser(userId, userPassword);
-            System.out.println("userType:"+userType);
+            System.out.println("userType:" + userType);
 
-            if (!"".equals(userType)) {
+            if (userType != null && !userType.isEmpty()) {
                 userVO = loginService.getUserDetails(userId, userType);
 
                 if ("VOLUNTEER_USER".equals(userType)) {
@@ -49,14 +48,14 @@ public class LoginControllerImpl implements LoginController{
                     viewName = "redirect:/centerMain";
                 }
             } else {
-                viewName = "login";
-                mav.addObject("error","1");
+                msg = "아이디 또는 비밀번호가 잘못되었습니다.";
+                mav.addObject("errorMessage", msg);
             }
 
-            System.out.println("viewName:"+viewName);
+            System.out.println("viewName:" + viewName);
 
-            mav.addObject("userVO",userVO);
-            mav.addObject("userId",userId);
+            mav.addObject("userVO", userVO);
+            mav.addObject("userId", userId);
             mav.setViewName(viewName);
 
         } catch (Exception ex) {

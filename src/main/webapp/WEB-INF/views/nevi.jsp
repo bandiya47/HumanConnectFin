@@ -9,11 +9,11 @@
     <title>HumanConnect</title>
     <link rel="stylesheet" type="text/css" href="./css/style.css">
     <script>
-       function goMain() {
-          window.location.href = "mainRequestTest";
-          <!--경로설정. 나중에서블릿으로 바꿔야함/ 센터메인의 경우 센터메인으로 바꾸기-->
-       }
-    </script>
+           function goMain(userId) {
+              window.location.href = "main?userId=" + userId;
+              <!--경로설정. 나중에 슬래시로 바꿔야함 / 센터메인의 경우 센터메인으로 바꾸기-->
+           }
+        </script>
 <!--####################css 경로 바꾸기/ img 경로 바꾸기####################-->
 </head>
 
@@ -25,10 +25,10 @@
         <div class="neviTop">   <!--최상단-->
             <div>
 
-                <form action="logout" method="post">
+                <form action="login" method="post">
                    <button type="submit" value="">로그아웃</button>
                 </form>
-                 <form action="${pageContext.request.contextPath}/showPrivacyPw" method="POST">
+                 <form action="${pageContext.request.contextPath}/myPageMain" method="POST">
                     <input type="hidden" name="userId" value="${userId}">
                     <button type="submit" value="">마이페이지</button>
                  </form>
@@ -39,7 +39,7 @@
 
         <div class="nevi">      <!--네비게이션-->
             <span>              <!--로고-->
-                <img src="./img/logo.png" alt="" class="" onclick="goMain()"></span>
+                <img src="${pageContext.request.contextPath}/img/logo.png" alt="" class="" onclick="goMain('${userId}')"></span>
             <span>
                 <ul>            <!--네비게이션바-->
                     <li>

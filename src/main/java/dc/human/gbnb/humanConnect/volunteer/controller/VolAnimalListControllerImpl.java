@@ -23,9 +23,11 @@ public class VolAnimalListControllerImpl implements VolAnimalListController {
                                     @RequestParam(defaultValue = "1") int pageNo,
                                     @RequestParam(defaultValue = "") String uprCd,
                                     @RequestParam(defaultValue = "") String orgCd,
-                                    @RequestParam(defaultValue = "") String kindCd) {
+                                    @RequestParam(defaultValue = "") String kindCd,
+                                    @RequestParam("userId") String userId) {
         List<VolAnimalListVO> animalList = volAnimalListService.getAnimalList(numOfRows, pageNo, uprCd, orgCd, kindCd);
         model.addAttribute("animalList", animalList);
+        model.addAttribute("userId", userId);
         return "volAnimalList"; // JSP 파일명 (volAnimalList.jsp)
     }
 }

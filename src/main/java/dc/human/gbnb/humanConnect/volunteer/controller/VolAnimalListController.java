@@ -9,5 +9,6 @@ public interface VolAnimalListController {
                              @RequestParam(defaultValue = "1") int pageNo,
                              @RequestParam(defaultValue = "") String uprCd,
                              @RequestParam(defaultValue = "") String orgCd,
-                             @RequestParam(defaultValue = "") String kindCd);
+                             @RequestParam(defaultValue = "") String kindCd,
+                             @RequestParam("userId") String userId);
 }

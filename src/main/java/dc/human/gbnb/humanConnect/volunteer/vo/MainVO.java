@@ -5,6 +5,7 @@ public class MainVO {
 //  개인정보 확인 및 수정
 
 	private String v_no;
+	private int vreg_no;
 	private String v_title;
 	private String vreg_start_date;
 	private String vreg_end_date;
@@ -37,6 +38,10 @@ public class MainVO {
 
 
 	private String u_id;
+
+	public int getVreg_no() {return vreg_no;}
+
+	public void setVreg_no(int vreg_no) {this.vreg_no = vreg_no;}
 
 	public String getV_no() {
 		return v_no;
