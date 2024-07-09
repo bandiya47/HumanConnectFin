@@ -17,7 +17,7 @@
 <div class="volAnimalListContainer">
     <main class="volAnimalListMain">
         <section class="volAnimalListList">
-            <h2>입양 목록 보기</h2>
+            <h2>보호동물 목록</h2>
             <div class="volAnimalListAnimal-list" id="animalList"><!-- 입양동물 --></div>
             <ul id="volAnimalListPagination" class="volAnimalListPagination"></ul>
         </section>

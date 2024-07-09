@@ -10,19 +10,23 @@ import java.util.List;
 @Mapper
 @Repository
 public interface CenterMainDAO {
-    List<CenterMainVO> getRecruitmentList(@Param("centerId") String centerId, @Param("vTitle") String vTitle);
+    List<CenterMainVO> getRecruitmentList(@Param("centerId") String centerId, @Param("offset") int offset, @Param("size") int size);
 
     List<CenterMainVO> getVolunteerList(String centerId);
 
     List<CenterMainVO> getAdoptionList(String centerId);
 
-    String getLatestRecruitmentTitle(String centerId);
+    int updateRecruitmentStatus(@Param("userId") String userId,
+                                @Param("status") int status,
+                                @Param("rejectReason") String rejectReason,
+                                @Param("centerId") String centerId,
+                                @Param("resNo") String resNo);
 
-    int updateStatus(@Param("userId") String userId,
-                     @Param("status") int status,
-                     @Param("rejectReason") String rejectReason,
-                     @Param("centerId") String centerId);
+    int updateVolunteerStatus(@Param("userId") String userId,
+                              @Param("status") int status,
+                              @Param("rejectReason") String rejectReason,
+                              @Param("centerId") String centerId,
+                              @Param("resNo") String resNo);
 
-    int updateRecruitmentStatus(String userId, int status, String rejectReason, String centerId);
-    int updateVolunteerStatus(String userId, int status, String rejectReason, String centerId);
+    int getTotalRecruitments(@Param("centerId") String centerId);
 }

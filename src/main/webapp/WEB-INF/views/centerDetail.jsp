@@ -24,7 +24,7 @@
       </style>
 </head>
 <body>
-<jsp:include page="neviCenter.jsp" />
+<jsp:include page="nevi.jsp" />
 <div class="volunteerDetailDiv">
     <h3>보호센터 상세</h3>
         <table class="volunteerDetailTable">

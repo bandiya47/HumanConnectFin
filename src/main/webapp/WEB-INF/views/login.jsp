@@ -8,12 +8,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <link rel="stylesheet" type="text/css" href="./css/style.css">
-    <script>
+     <script>
         function goIndex() {
             window.location.href = "index";
         }
-        function showPopup() { window.open("loginPopup", "a", "width=400, height=300, left=0, top=50"); }
-        function idPopup() { window.open("loginPopup", "a", "width=400, height=300, left=0, top=50"); }
+        function showPopup() {
+            var width = 400;
+            var height = 300;
+            var left = (window.innerWidth - width) / 2 + window.screenX;
+            var top = (window.innerHeight - height) / 2 + window.screenY;
+            window.open("loginPopup", "a", "width=" + width + ", height=" + height + ", left=" + left + ", top=" + top);
+        }
+        function idPopup() {
+            var width = 400;
+            var height = 300;
+            var left = (window.innerWidth - width) / 2 + window.screenX;
+            var top = (window.innerHeight - height) / 2 + window.screenY;
+            window.open("loginPopup", "a", "width=" + width + ", height=" + height + ", left=" + left + ", top=" + top);
+        }
         function showAlert(msg) {
             alert(msg);
         }
@@ -42,14 +54,14 @@
                 </div>
             </form>
             <div class="loginOpt">
+                <button class="loginRegBtn" onclick="showPopup();">보호소 가입</button>
                 <form action="join" method="get">
-                    <button class="loginRegBtn" type="submit"> 회원가입</button>
+                    <button class="loginRegBtn" type="submit"> 회원가입 |</button>
                 </form>
                 <form action="join" method="get">
                     <button class="loginRegBtn" type="submit"> 비밀번호 찾기 |</button>
                 </form>
-                <button class="loginRegBtn" onclick="idPopup();">| 아이디 찾기 |</button>
-                <input type="button" value="보호소 가입" onclick="showPopup();" style="width:80px;border:none;background-color:#FDECCB;margin-right:-75px"/>
+                <button class="loginRegBtn" onclick="idPopup();"> 아이디 찾기 |</button>
             </div>
         </div>
     </main>

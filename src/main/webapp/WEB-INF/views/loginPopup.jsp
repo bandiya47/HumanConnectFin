@@ -7,21 +7,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-
-    <script>
-
-    </script>
-</head>
+    <style>
+        .center-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        .contact-list {
+            list-style-type: none;
+            padding-left: 0;
+            text-align: center;
+        }
+    </style>
 <body>
-<div style="padding-left: 40px">
-		<img src="${pageContext.request.contextPath}/img/logo.png" width="300px" alt="로고" onclick="goIndex()">
+<div class="center-content">
+		<img src="${pageContext.request.contextPath}/img/logo.png" style="margin:0 auto;" width="300px" alt="로고" onclick="goIndex()">
 
-		<h3 style="text-align:left">보호센터 가입 문의 연락처</h3>
+		<h3>보호센터 가입 문의 연락처</h3>
 
-		    <ul style="list-style-type: none;padding-left: 10px">
+        <ul class="contact-list">
 		    <li>HP : 000-0000-0000</li>
 		    <li>E-Mail : example@gmail.net</li>
-		    </ul>
-
+        </ul>
 </body>
 </html>

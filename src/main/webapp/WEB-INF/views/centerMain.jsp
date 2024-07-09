@@ -52,7 +52,7 @@
         <section class="centerSection">
             <h2>모집신청내역</h2>
             <div class="centerBox">
-                <h3>${latestRecruitmentTitle}</h3>
+                <h3>${recruitmentList[0].title}</h3>
                 <table>
                     <thead>
                         <tr>
@@ -70,8 +70,9 @@
                                 </tr>
                             </c:when>
                             <c:otherwise>
-                                <c:forEach var="vo" items="${recruitmentList}">
+                                <c:forEach var="vo" items="${recruitmentList}" end="5">
                                     <tr>
+
                                         <td>${vo.userId}</td>
                                         <td>${vo.name}</td>
                                         <td>${vo.phone}</td>
@@ -82,6 +83,7 @@
                                                         <form method="post" action="${pageContext.request.contextPath}/centerMain">
                                                             <input type="hidden" name="userId" value="${vo.userId}">
                                                             <input type="hidden" name="centerId" value="${centerId}">
+                                                            <input type="hidden" name="resNo" value="${vo.resNo}">
                                                             <input type="hidden" name="action" value="approve">
                                                             <input type="hidden" name="section" value="recruitment">
                                                             <button class="centerMainApprv" type="submit">승인</button>
@@ -89,6 +91,7 @@
                                                         <form method="post" action="${pageContext.request.contextPath}/centerMain">
                                                             <input type="hidden" name="userId" value="${vo.userId}">
                                                             <input type="hidden" name="centerId" value="${centerId}">
+                                                            <input type="hidden" name="resNo" value="${vo.resNo}">
                                                             <input type="hidden" name="action" value="reject">
                                                             <input type="hidden" name="section" value="recruitment">
                                                             <button class="centerMainRej" type="button" onclick="showRejectReason('${vo.userId}_recruitment')">거절</button>
@@ -98,6 +101,7 @@
                                                         <form method="post" action="${pageContext.request.contextPath}/centerMain">
                                                             <input type="hidden" name="userId" value="${vo.userId}">
                                                             <input type="hidden" name="centerId" value="${centerId}">
+                                                            <input type="hidden" name="resNo" value="${vo.resNo}">
                                                             <input type="hidden" name="action" value="reject">
                                                             <input type="hidden" name="section" value="recruitment">
                                                             <input class="centerMainRR" type="text" name="rejectReason" placeholder="거절 사유를 입력하세요" />
@@ -110,6 +114,7 @@
                                                     <form method="post" action="${pageContext.request.contextPath}/centerMain">
                                                         <input type="hidden" name="userId" value="${vo.userId}">
                                                         <input type="hidden" name="centerId" value="${centerId}">
+                                                        <input type="hidden" name="resNo" value="${vo.resNo}">
                                                         <input type="hidden" name="action" value="complete">
                                                         <input type="hidden" name="section" value="recruitment">
                                                         <button class="centerMainVolBtn" type="submit">봉사완료</button>
@@ -130,7 +135,7 @@
                     </tbody>
                 </table>
                 <div class="centerlistViewAllCont">
-                    <form name="viewall" method="post" action="/recruitlist" encType="utf-8">
+                    <form name="viewall" method="get" action="${pageContext.request.contextPath}/centerRecruitList" encType="utf-8">
                         <input type="hidden" name="centerId" value="${centerId}">
                         <button type="submit" class="centerlistViewAll">전체보기&gt;</button>
                     </form>
@@ -163,7 +168,7 @@
                                 </tr>
                             </c:when>
                             <c:otherwise>
-                                <c:forEach var="vo" items="${volunteerList}">
+                                <c:forEach var="vo" items="${volunteerList}" end="5">
                                     <tr>
                                         <td onclick="submitForm('${pageContext.request.contextPath}/VolunteerMain.jsp', '${vo.userId}', '${centerId}', 'volunteer')">${vo.userId}</td>
                                         <td onclick="submitForm('${pageContext.request.contextPath}/VolunteerMain.jsp', '${vo.userId}', '${centerId}', 'volunteer')">${vo.name}</td>
@@ -175,6 +180,7 @@
                                                         <form method="post" action="${pageContext.request.contextPath}/centerMain">
                                                             <input type="hidden" name="userId" value="${vo.userId}">
                                                             <input type="hidden" name="centerId" value="${centerId}">
+                                                            <input type="hidden" name="resNo" value="${vo.resNo}">
                                                             <input type="hidden" name="action" value="approve">
                                                             <input type="hidden" name="section" value="volunteer">
                                                             <button class="centerMainApprv" type="submit">승인</button>
@@ -182,6 +188,7 @@
                                                         <form method="post" action="${pageContext.request.contextPath}/centerMain">
                                                             <input type="hidden" name="userId" value="${vo.userId}">
                                                             <input type="hidden" name="centerId" value="${centerId}">
+                                                            <input type="hidden" name="resNo" value="${vo.resNo}">
                                                             <input type="hidden" name="action" value="reject">
                                                             <input type="hidden" name="section" value="volunteer">
                                                             <button class="centerMainRej" type="button" onclick="showRejectReason('${vo.userId}_volunteer')">거절</button>
@@ -191,6 +198,7 @@
                                                         <form method="post" action="${pageContext.request.contextPath}/centerMain">
                                                             <input type="hidden" name="userId" value="${vo.userId}">
                                                             <input type="hidden" name="centerId" value="${centerId}">
+                                                            <input type="hidden" name="resNo" value="${vo.resNo}">
                                                             <input type="hidden" name="action" value="reject">
                                                             <input type="hidden" name="section" value="volunteer">
                                                             <input class="centerMainRR" type="text" name="rejectReason" placeholder="거절 사유를 입력하세요" />
@@ -203,6 +211,7 @@
                                                     <form method="post" action="${pageContext.request.contextPath}/centerMain">
                                                         <input type="hidden" name="userId" value="${vo.userId}">
                                                         <input type="hidden" name="centerId" value="${centerId}">
+                                                        <input type="hidden" name="resNo" value="${vo.resNo}">
                                                         <input type="hidden" name="action" value="complete">
                                                         <input type="hidden" name="section" value="volunteer">
                                                         <button class="centerMainVolBtn" type="submit">봉사완료</button>
@@ -223,7 +232,7 @@
                     </tbody>
                 </table>
                 <div class="centerlistViewAllCont">
-                    <form name="viewall" method="post" action="${pageContext.request.contextPath}/봉사모집리스트" encType="utf-8">
+                    <form name="viewall" method="get" action="${pageContext.request.contextPath}/centerVolunteerList" encType="utf-8">
                         <input type="hidden" name="centerId" value="${centerId}">
                         <button type="submit" class="centerlistViewAll">전체보기&gt;</button>
                     </form>
@@ -250,7 +259,7 @@
                                 </tr>
                             </c:when>
                             <c:otherwise>
-                                <c:forEach var="vo" items="${adoptionList}">
+                                <c:forEach var="vo" items="${adoptionList}" end="5">
                                     <tr>
                                         <td>${vo.userId}</td>
                                         <td>${vo.name}</td>

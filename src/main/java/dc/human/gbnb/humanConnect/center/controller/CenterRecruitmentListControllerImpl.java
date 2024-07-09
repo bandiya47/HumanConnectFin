@@ -11,36 +11,31 @@ import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
-@Controller("centerMainController")
-public class CenterMainControllerImpl implements CenterMainController {
+@Controller("centerRecruitmentListController")
+public class CenterRecruitmentListControllerImpl implements CenterRecruitmentListController {
 
     @Autowired
     private CenterMainService centerMainService;
 
     @Override
-    @GetMapping("/centerMain")
-    public ModelAndView showCenterMain(@RequestParam("userId") String userId,
-                                       @RequestParam(value = "page", defaultValue = "1") int page,
-                                       @RequestParam(value = "size", defaultValue = "7") int size) {
-        String centerId = userId;
-
-        ModelAndView mav = new ModelAndView("centerMain");
+    @GetMapping("/centerRecruitList")
+    public ModelAndView showRecruitList(@RequestParam("centerId") String centerId,
+                                        @RequestParam(value = "page", defaultValue = "1") int page,
+                                        @RequestParam(value = "size", defaultValue = "7") int size) {
         List<CenterMainVO> recruitmentList = centerMainService.getRecruitmentList(centerId, page, size);
         int totalRecords = centerMainService.getTotalRecruitments(centerId);
         int totalPages = (int) Math.ceil((double) totalRecords / size);
 
+        ModelAndView mav = new ModelAndView("centerRecruitmentList");
         mav.addObject("recruitmentList", recruitmentList);
-        mav.addObject("volunteerList", centerMainService.getVolunteerList(centerId));
-        mav.addObject("adoptionList", centerMainService.getAdoptionList(centerId));
-        mav.addObject("centerId", userId);
+        mav.addObject("centerId", centerId);
         mav.addObject("currentPage", page);
         mav.addObject("totalPages", totalPages);
-
         return mav;
     }
 
     @Override
-    @PostMapping("/centerMain")
+    @PostMapping("/centerRecruitList")
     public ModelAndView handlePostRequest(
             @RequestParam("action") String action,
             @RequestParam("userId") String userId,
@@ -54,25 +49,19 @@ public class CenterMainControllerImpl implements CenterMainController {
         if ("approve".equals(action)) {
             if ("recruitment".equals(section)) {
                 updateRow = centerMainService.updateRecruitmentStatus(userId, 1, null, centerId, resNo);
-            } else if ("volunteer".equals(section)) {
-                updateRow = centerMainService.updateVolunteerStatus(userId, 1, null, centerId, resNo);
             }
         } else if ("reject".equals(action)) {
             if ("recruitment".equals(section)) {
                 updateRow = centerMainService.updateRecruitmentStatus(userId, 2, rejectReason, centerId, resNo);
-            } else if ("volunteer".equals(section)) {
-                updateRow = centerMainService.updateVolunteerStatus(userId, 2, rejectReason, centerId, resNo);
             }
         } else if ("complete".equals(action)) {
             if ("recruitment".equals(section)) {
                 updateRow = centerMainService.updateRecruitmentStatus(userId, 3, null, centerId, resNo);
-            } else if ("volunteer".equals(section)) {
-                updateRow = centerMainService.updateVolunteerStatus(userId, 3, null, centerId, resNo);
             }
         }
 
-        ModelAndView mav = new ModelAndView("redirect:/centerMain");
-        mav.addObject("userId", centerId);
+        ModelAndView mav = new ModelAndView("redirect:/centerRecruitList");
+        mav.addObject("centerId", centerId);
         if (updateRow > 0) {
             mav.addObject("message", "수정되었습니다");
         } else {

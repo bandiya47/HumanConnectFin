@@ -1,12 +1,10 @@
 package dc.human.gbnb.humanConnect.center.controller;
 
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.bind.annotation.RequestParam;
 
-public interface CenterMainController {
-    public ModelAndView showCenterMain(@RequestParam("userId") String userId,
-                                       @RequestParam(value = "page", defaultValue = "1") int page,
-                                       @RequestParam(value = "size", defaultValue = "7") int size);
+public interface CenterVolunteerListController {
+    ModelAndView showVolunteerList(@RequestParam("centerId") String centerId);
 
     ModelAndView handlePostRequest(
             @RequestParam("action") String action,

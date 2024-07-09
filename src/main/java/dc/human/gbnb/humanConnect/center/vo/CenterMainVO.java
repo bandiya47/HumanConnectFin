@@ -1,22 +1,27 @@
 package dc.human.gbnb.humanConnect.center.vo;
 
 public class CenterMainVO {
-    private String userId; //봉사자 아이디
-    private String name; //봉사자 이름
-    private String phone; //봉사자 핸드폰
-    private String status;//승인 결과
-    private String rejectReason;//거절 사유
+    private String userId;
+    private String name;
+    private String phone;
+    private int status;
+    private String rejectReason;
+    private String title;
+    private String resNo;
 
+    // 생성자, getter, setter
 
-    public CenterMainVO() {
-    }
+    public CenterMainVO() {}
 
-
-    public CenterMainVO(String userId, String name, String phone) {
+    public CenterMainVO(String userId, String name, String phone, String title, String resNo) {
         this.userId = userId;
         this.name = name;
         this.phone = phone;
+        this.title = title;
+        this.resNo = resNo;
     }
+
+    // Getters and Setters
 
     public String getUserId() {
         return userId;
@@ -42,11 +47,11 @@ public class CenterMainVO {
         this.phone = phone;
     }
 
-    public String getStatus() {
+    public int getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(int status) {
         this.status = status;
     }
 
@@ -56,5 +61,21 @@ public class CenterMainVO {
 
     public void setRejectReason(String rejectReason) {
         this.rejectReason = rejectReason;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getResNo() {
+        return resNo;
+    }
+
+    public void setResNo(String resNo) {
+        this.resNo = resNo;
     }
 }

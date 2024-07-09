@@ -658,6 +658,114 @@ header{
 .centerMainRegisterButton:hover {
     background-color: #D87A2B;
 }
+
+.centerBody, .centerHtml {
+	margin: 0;
+	padding: 0;
+	font-family: 'MangoDdobak-B';
+	background-color: ##FAECC5;
+}
+
+.centerMain {
+	width: 1100px;
+	margin: 0 auto;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	padding: 20px;
+}
+
+.centerSection {
+	margin-bottom: 20px;
+}
+
+.centerSection h2 {
+	font-family: 'NEXONFootballGothicBA1';
+	font-size: 40px;
+	border-bottom: 2px solid #333;
+	padding-bottom: 10px;
+	margin-bottom: 25px;
+}
+
+.centerBox {
+	background-color: #fff;
+	padding: 20px;
+	border: 1px solid #ddd;
+	border-radius: 5px;
+	margin: 20px auto;
+}
+
+.centerBox h3 {
+	margin: 10px auto;
+	font-family: 'NEXONFootballGothicBA1';
+	font-weight: bold;
+	font-size: 40px;
+	text-align: center;
+	padding: 10px 0;
+}
+
+.centerBox table {
+	width: 100%;
+	border-collapse: collapse;
+	font-size: 22px;
+}
+
+.centerBox table th {
+	background-color: #463933;
+	vertical-align: middle;
+	color: white;
+	font-weight: bold;
+	padding: 15px;
+}
+
+.centerBox table td {
+	font-size: 18px;
+	border: none;
+	height: 40px;
+	text-align: center;
+	vertical-align: middle;
+	border-bottom: 1px solid #aaa;
+}
+
+.centerNoData {
+	text-align: center;
+	color: #888;
+}
+
+.centerMainBtn {
+	border: none;
+	font-family: 'MangoDdobak-B';
+	border-radius: 5px;
+	font-size: 15px;
+	font-weight: bold;
+	width: 100px;
+	height: 40px;
+	background-color: #EC9343;
+	color: #fff;
+	cursor: pointer;
+	margin: 5px auto;
+}
+
+.centerMainBtn:hover {
+	background-color: #D87A2B;
+}
+
+.centerlistViewAllCont {
+	display: flex;
+	justify-content: flex-end;
+	margin-top: 10px;
+}
+
+.centerlistViewAll {
+	float: right;
+	text-decoration: none;
+	border: none;
+	background-color: #fff;
+}
+
+.centerlistViewAll:hover {
+	cursor: pointer;
+}
 /**********************************************센터메인*************************************************/
 /**********************************************센터모집인원*************************************************/
 .centerRecBody {

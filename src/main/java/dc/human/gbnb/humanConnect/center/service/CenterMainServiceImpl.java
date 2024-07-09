@@ -17,20 +17,9 @@ public class CenterMainServiceImpl implements CenterMainService {
     private CenterMainDAO centerMainDAO;
 
     @Override
-    public List<CenterMainVO> getRecruitmentList(String centerId, String vTitle) {
-        List<CenterMainVO> recruitmentList = centerMainDAO.getRecruitmentList(centerId, vTitle);
-        if (recruitmentList != null && !recruitmentList.isEmpty()) {
-            recruitmentList.forEach(vo -> {
-                System.out.println("UserID: " + vo.getUserId());
-                System.out.println("Name: " + vo.getName());
-                System.out.println("Phone: " + vo.getPhone());
-                System.out.println("Status: " + vo.getStatus());
-                System.out.println("RejectReason: " + vo.getRejectReason());
-            });
-        } else {
-            System.out.println("Recruitment list is null or empty");
-        }
-        return recruitmentList;
+    public List<CenterMainVO> getRecruitmentList(String centerId, int page, int size) {
+        int offset = (page - 1) * size;
+        return centerMainDAO.getRecruitmentList(centerId, offset, size);
     }
 
     @Override
@@ -44,17 +33,17 @@ public class CenterMainServiceImpl implements CenterMainService {
     }
 
     @Override
-    public String getLatestRecruitmentTitle(String centerId) {
-        return centerMainDAO.getLatestRecruitmentTitle(centerId);
+    public int updateRecruitmentStatus(String userId, int status, String rejectReason, String centerId, String resNo) {
+        return centerMainDAO.updateRecruitmentStatus(userId, status, rejectReason, centerId, resNo);
     }
 
     @Override
-    public int updateRecruitmentStatus(String userId, int status, String rejectReason, String centerId) {
-        return centerMainDAO.updateRecruitmentStatus(userId, status, rejectReason, centerId);
+    public int updateVolunteerStatus(String userId, int status, String rejectReason, String centerId, String resNo) {
+        return centerMainDAO.updateVolunteerStatus(userId, status, rejectReason, centerId, resNo);
     }
 
     @Override
-    public int updateVolunteerStatus(String userId, int status, String rejectReason, String centerId) {
-        return centerMainDAO.updateVolunteerStatus(userId, status, rejectReason, centerId);
+    public int getTotalRecruitments(String centerId) {
+        return centerMainDAO.getTotalRecruitments(centerId);
     }
 }

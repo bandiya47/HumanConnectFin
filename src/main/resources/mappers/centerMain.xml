@@ -10,7 +10,9 @@
         <result property="name" column="name"/>
         <result property="phone" column="phone"/>
         <result property="status" column="status"/>
+        <result property="title" column="title"/>
         <result property="rejectReason" column="rejectReason"/>
+        <result property="resNo" column="resNo"/> <!-- 새로운 필드 추가 -->
     </resultMap>
 
     <select id="getRecruitmentList" resultMap="centerMainResult">
@@ -19,7 +21,9 @@
                U.U_NAME as name,
                U.U_PHONE as phone,
                A.REG_RESULT as status,
-               A.REJECT_RS as rejectReason
+               A.REJECT_RS as rejectReason,
+               V.V_TITLE as title,
+               R.VREG_NO as resNo
           FROM VOLUNTEER_USER U
           JOIN VOLUNTEER_REG R ON R.U_ID = U.U_ID
           JOIN ACCEPTION_RES A ON R.VREG_NO = A.VREG_NO
@@ -27,8 +31,12 @@
           JOIN CENTER_MNG_TABLE C ON C.C_ID = V.CREATED_ID
          WHERE V.CREATED_ID = #{centerId}
            AND R.V_TYPE = 0
-           AND V.V_TITLE = #{vTitle, jdbcType=VARCHAR}
-        ORDER BY V.CREATED_DATE DESC
+           AND V.V_NO = (
+               SELECT MAX(V2.V_NO)
+                 FROM VOLUNTEER V2
+                WHERE V2.CREATED_ID = #{centerId}
+           )
+         OFFSET #{offset} ROWS FETCH NEXT #{size} ROWS ONLY
         ]]>
     </select>
 
@@ -38,7 +46,8 @@
                U.U_NAME AS name,
                U.U_PHONE AS phone,
                A.REG_RESULT AS status,
-               A.REJECT_RS AS rejectReason
+               A.REJECT_RS AS rejectReason,
+               R.VREG_NO as resNo
           FROM VOLUNTEER_USER U
           JOIN VOLUNTEER_REG R ON R.U_ID = U.U_ID
           JOIN ACCEPTION_RES A ON R.VREG_NO = A.VREG_NO
@@ -62,16 +71,6 @@
         ]]>
     </select>
 
-    <select id="getLatestRecruitmentTitle" parameterType="String" resultType="String">
-        <![CDATA[
-        SELECT V_TITLE
-          FROM VOLUNTEER
-         WHERE CREATED_ID = #{centerId}
-        ORDER BY CREATED_DATE DESC
-        FETCH FIRST 1 ROWS ONLY
-        ]]>
-    </select>
-
     <update id="updateRecruitmentStatus">
         <![CDATA[
         UPDATE ACCEPTION_RES
@@ -80,10 +79,7 @@
                UPDATED_DATE = SYSDATE,
                UPDATED_ID = #{centerId}
          WHERE U_ID = #{userId}
-           AND VREG_NO IN (
-        SELECT R.VREG_NO
-          FROM VOLUNTEER_REG R
-         WHERE R.V_TYPE = 0)
+           AND VREG_NO = #{resNo}
         ]]>
     </update>
 
@@ -95,10 +91,7 @@
                UPDATED_DATE = SYSDATE,
                UPDATED_ID = #{centerId}
          WHERE U_ID = #{userId}
-           AND VREG_NO IN (
-        SELECT R.VREG_NO
-          FROM VOLUNTEER_REG R
-         WHERE R.V_TYPE = 1)
+           AND VREG_NO = #{resNo}
         ]]>
     </update>
 
