@@ -10,9 +10,10 @@
 </head>
 <body>
 <jsp:include page="nevi.jsp" />
-<div class="volunteerDetailDiv">
+<div class="volunteerDetailDiv" style="width:1000px; height:580px">
     <h3>보호센터 리스트</h3>
     <table class="volunteerDetailTable">
+
         <tr>
             <td class="volunteerDetailTd">보호소 명</td>
             <td class="volunteerDetailTd">주소</td>
@@ -24,7 +25,7 @@
                     <form method="get" action="${pageContext.request.contextPath}/detailCenterList.do" encType="UTF-8">
                         <input type="hidden" name="userId" value="${userId}">
                         <input type="hidden" name="careNm" value="${careInfoMap.careNm}">
-                        <input type="submit" value="${careInfoMap.careNm}">
+                        <input type="submit" value="${careInfoMap.careNm}" style="border:none; background-color:white; cursor:pointer;">
                     </form>
                 </td>
                 <td>${careInfoMap.careAddr}</td>

@@ -2100,3 +2100,90 @@ vertical-align:middle;
 				font-family: 'MangoDdobak-B';
 			}
 /**봉사신청 끝~~*****************************************************************************************************************/
+/**센터 리스트 시작~~*****************************************************************************************************************/
+            .centerListDiv{
+                text-align: center;
+                margin: auto;
+                width: 1100px;
+                height:580px;
+                font-family: 'MangoDdobak-B';
+                >div{
+                width:1100px;
+                margin:0 auto 35px;
+                justify-content:center;
+                border:1px solid #aeaeae;
+                }
+            .centerListDiv h2{
+                font-size: 40px;
+                font-family: 'NEXONFootballGothicBA1';
+                padding: 5px;
+                margin: 20px auto 20px;
+                color:black;
+            }
+            .centerListDiv h3 {
+                font-family: 'NEXONFootballGothicBA1';
+                border-bottom : 2px solid #333;
+                padding-bottom : 10px;
+                margin-bottom : 20px;
+                text-align: left;
+                font-size: 40px;
+
+            }
+
+            .centerListDiv .volunteerDetailTable{
+                margin: 5px auto;
+                border-top: 2px solid  #8B4513;
+                border-bottom: 2px solid  #8B4513;
+                width: 980px;
+                background-color:white;
+            }
+            .centerListDiv .volunteerDetailTable tr td{
+                padding: 5px;
+                border-bottom: 1px solid #FDECCB;
+                vertical-align: middle;
+                font-size:18px;
+            }
+            .centerListDiv .volunteerDetailTable .volunteerDetailTd{
+                border-right: 1px solid #8B4513;
+                background-color: #AC8668;
+                color:white;
+                vertical-align: middle;
+                font-size:22px;
+                padding:20px 15px;
+            }
+            .centerListDiv .centerListDiv2{
+                padding: 10px;
+                border: 2px solid #8B4513;
+                margin: 20px auto;
+                width: 960px;
+                margin-bottom:20px;
+                background-color:white;
+                font-size:18px;
+
+            }
+
+            .volunteerDetailBtn{
+                width:200px;
+                height:45px;
+                margin-bottom:20px;
+                background-color : #EC9343;
+                color: white;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                transition: background-color 0.3s ease;
+                font-size:18px;
+                font-family: 'MangoDdobak-B';
+
+            }
+            .volunteerDetailBtn:hover{
+                background-color : #D87A2B ;
+            }
+
+            .centerListDiv input::placeholder{
+                color:#8B4513;
+                font-size: 18px;
+                font-family: 'MangoDdobak-B';
+            }
+
+/**센터 리스트 끝~~*****************************************************************************************************************/
