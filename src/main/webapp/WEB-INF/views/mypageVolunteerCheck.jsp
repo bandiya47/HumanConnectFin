@@ -9,135 +9,11 @@
     <title>MyPage Volunteer Check</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
     <style>
-        .mypageMain {
-            margin: 60px auto 0;
-            width: 980px;
-        }
 
-        .mypageMainTitle {
-            font-size: 27px;
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
 
-        .mypageMainTitle > img {
-            width: 27px;
-            height: 27px;
-        }
 
-        .mypageMainFirstStack {
-        }
 
-        .mypageMainFirstMiddle {
-            width: 980px;
-            border: gray solid 1px;
-            border-radius: 5px;
-            background-color: white;
-        }
 
-        .mypageMainFirstMiddle > div > table {
-            width: 100%;
-            border-collapse: collapse;
-            font-family: 'MangoDdobak-B';
-            font-size: 20px;
-        }
-
-        .mypageMainFirstMiddle tbody > tr > th {
-            background-color: #463933;
-            vertical-align: middle;
-            color: white;
-            font-weight: bold;
-            padding: 15px;
-        }
-
-        .mypageMainFirstMiddle tbody > tr > td {
-            border: none;
-            font-size: 18px;
-            height: 80px;
-            text-align: center;
-            vertical-align: middle;
-            border-bottom: 1px solid #aaa;
-        }
-
-        .mypageNav {
-            overflow: hidden;
-            position: fixed;
-            top: 0;
-            right: 0;
-            height: 100%;
-            width: 300px;
-            transform: translateX(300px);
-            transition: transform 0.3s ease-in-out;
-            background: rgba(255, 255, 255, 0.9);
-            z-index: 1;
-        }
-
-        .mypageNav.mypageNav-open {
-            transform: translateX(0);
-        }
-
-        .mypageMenuBtn {
-            position: fixed;
-            top: 50%;
-            right: 20px;
-            padding: 10px;
-            background: rgba(0, 0, 0, 0.6);
-            border-radius: 5px;
-            cursor: pointer;
-            z-index: 2;
-            transform: translateY(-50%);
-        }
-
-        .mypageLine {
-            width: 30px;
-            height: 3px;
-            background-color: white;
-            margin: 6px 0;
-            transition: 0.4s;
-        }
-
-        .mypageLine.cross1 {
-            transform: rotate(-45deg) translate(-7px, 6px);
-        }
-
-        .mypageLine.cross2 {
-            opacity: 0;
-        }
-
-        .mypageLine.cross3 {
-            transform: rotate(45deg) translate(-8px, -8px);
-        }
-
-        .mypageNavLinks {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            opacity: 0;
-            transition: opacity 0.4s;
-        }
-
-        .fade-in {
-            opacity: 1;
-        }
-
-        .mypageLink {
-            margin: 20px 0;
-            text-decoration: none;
-            font-family: sans-serif;
-            color: rgba(0, 0, 0, 0.9);
-            font-weight: 700;
-            text-transform: uppercase;
-            font-size: 1.2rem;
-            transition: color 0.3s;
-        }
-
-        .mypageLink:hover {
-            color: rgba(0, 0, 0, 0.5);
-        }
     </style>
 </head>
 <body>
@@ -154,11 +30,11 @@
             <a href="#" class="mypageLink">마이페이지 메뉴</a>
             <form action="${pageContext.request.contextPath}/showPrivacyPw" method="POST">
                 <input type="hidden" name="userId" value="${userId}">
-                <button type="submit" value="">개인정보</button>
+                <button type="submit" value="" class="mypageNavLinksBtn">개인정보</button>
             </form>
              <form action="${pageContext.request.contextPath}/mypageVol" method="GET">
                 <input type="hidden" name="userId" value="${userId}">
-                <button type="submit" value="">나의봉사내역</button>
+                <button type="submit" value="" class="mypageNavLinksBtn">나의봉사내역</button>
             </form>
         </div>
     </nav>
@@ -185,16 +61,35 @@
                             <c:otherwise>
                                 <c:forEach var="vol" items="${mypageVolunteerList}">
                                     <tr>
-                                        <td>
+                                         <td>
                                             <form action="/viewRegVolunteerDetail.do" method="get">
-                                              <input type="hidden" name="userId" value="${userId}">
-                                              <input type="hidden" name="vReg_no" value="${vol.vreg_no}">
-                                                <button type="submit">${vol.c_name}</button>
+                                            <input type="hidden" name="userId" value="${userId}">
+                                            <input type="hidden" name="vReg_no" value="${vol.vreg_no}">
+                                                <button type="submit" class="firstStackBtn">${vol.c_name}</button>
                                             </form>
                                         </td>
-                                        <td>${vol.vreg_start_date}</td>
-                                        <td>${vol.vreg_end_date}</td>
-                                        <td>${vol.service_type}</td>
+                                        <td><form action="/viewRegVolunteerDetail.do" method="get">
+                                            <input type="hidden" name="userId" value="${userId}">
+                                            <input type="hidden" name="vReg_no" value="${vol.vreg_no}">
+                                                <button type="submit" class="firstStackBtn">${vol.vreg_start_date}</button>
+                                            </form>
+                                        </td>
+                                        <td>
+                                            <form action="/viewRegVolunteerDetail.do" method="get">
+                                            <input type="hidden" name="userId" value="${userId}">
+                                            <input type="hidden" name="vReg_no" value="${vol.vreg_no}">
+                                                <button type="submit" class="firstStackBtn">${vol.vreg_end_date}</button>
+                                            </form>
+
+                                        </td>
+                                        <td>
+                                            <form action="/viewRegVolunteerDetail.do" method="get">
+                                            <input type="hidden" name="userId" value="${userId}">
+                                            <input type="hidden" name="vReg_no" value="${vol.vreg_no}">
+                                                <button type="submit" class="firstStackBtn">${vol.service_type}</button>
+                                            </form>
+
+                                        </td>
                                     </tr>
                                 </c:forEach>
                             </c:otherwise>

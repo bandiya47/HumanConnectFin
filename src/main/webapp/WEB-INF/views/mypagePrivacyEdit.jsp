@@ -19,86 +19,7 @@
             }
         </script>
 <style>
-        /* 여기에 mypageVolunteerCheck.jsp의 슬라이딩 메뉴 관련 CSS를 붙여넣으세요 */
-        .mypageNav {
-            overflow: hidden;
-            position: fixed;
-            top: 0;
-            right: 0;
-            height: 100%;
-            width: 300px;
-            transform: translateX(300px);
-            transition: transform 0.3s ease-in-out;
-            background: rgba(255, 255, 255, 0.9);
-            z-index: 1;
-        }
 
-        .mypageNav.mypageNav-open {
-            transform: translateX(0);
-        }
-
-        .mypageMenuBtn {
-            position: fixed;
-            top: 50%;
-            right: 20px;
-            padding: 10px;
-            background: rgba(0, 0, 0, 0.6);
-            border-radius: 5px;
-            cursor: pointer;
-            z-index: 2;
-            transform: translateY(-50%);
-        }
-
-        .mypageLine {
-            width: 30px;
-            height: 3px;
-            background-color: white;
-            margin: 6px 0;
-            transition: 0.4s;
-        }
-
-        .mypageLine.cross1 {
-            transform: rotate(-45deg) translate(-7px, 6px);
-        }
-
-        .mypageLine.cross2 {
-            opacity: 0;
-        }
-
-        .mypageLine.cross3 {
-            transform: rotate(45deg) translate(-8px, -8px);
-        }
-
-        .mypageNavLinks {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            opacity: 0;
-            transition: opacity 0.4s;
-        }
-
-        .fade-in {
-            opacity: 1;
-        }
-
-        .mypageLink {
-            margin: 20px 0;
-            text-decoration: none;
-            font-family: sans-serif;
-            color: rgba(0, 0, 0, 0.9);
-            font-weight: 700;
-            text-transform: uppercase;
-            font-size: 1.2rem;
-            transition: color 0.3s;
-        }
-
-        .mypageLink:hover {
-            color: rgba(0, 0, 0, 0.5);
-        }
     </style>
 </head>
 <body>
@@ -112,19 +33,19 @@
     </div>
 
     <!-- 슬라이딩 네비게이션 메뉴 -->
-    <nav class="mypageNav">
-        <div class="mypageNavLinks">
-            <a href="#" class="mypageLink">마이페이지 메뉴</a>
-            <form action="${pageContext.request.contextPath}/showPrivacyPw" method="POST">
-                <input type="hidden" name="userId" value="${userId}">
-                <button type="submit" value="">개인정보</button>
-            </form>
-             <form action="${pageContext.request.contextPath}/mypageVol" method="GET">
-                <input type="hidden" name="userId" value="${userId}">
-                <button type="submit" value="">나의봉사내역</button>
-            </form>
-        </div>
-    </nav>
+       <nav class="mypageNav">
+              <div class="mypageNavLinks">
+                  <a href="#" class="mypageLink">마이페이지 메뉴</a>
+                  <form action="${pageContext.request.contextPath}/showPrivacyPw" method="POST">
+                      <input type="hidden" name="userId" value="${userId}">
+                      <button type="submit" value="" class="mypageNavLinksBtn">개인정보</button>
+                  </form>
+                   <form action="${pageContext.request.contextPath}/mypageVol" method="GET">
+                      <input type="hidden" name="userId" value="${userId}">
+                      <button type="submit" value="" class="mypageNavLinksBtn">나의봉사내역</button>
+                  </form>
+              </div>
+          </nav>
 
 
 

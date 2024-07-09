@@ -45,10 +45,16 @@
             justify-content: space-between;
         }
 
+        .mainAnimalListAnimal-detail{
+            margin-bottom : 10px
+        }
+
         .mainAnimalListAnimal-card img {
-            max-width: 100%;
+            width: 240px;
             height: 150px;
             border-radius: 5px;
+            margin-bottom : 20px
+
         }
 
         .slider {
@@ -61,9 +67,9 @@
         }
 
         .slider-container {
-            border: gray solid 1px;
+            border: none;
             border-radius: 5px;
-            background-color: white;
+
             display: flex;
             justify-content: center;
             align-items: center;
@@ -94,7 +100,7 @@
     <jsp:include page="nevi.jsp" />
 
     <div class="main">
-        <div class="mainTitle"><img src="./img/sole.png" alt="" class="">봉사 신청내역</div>
+        <div class="mainTitle">봉사 신청내역</div>
         <div class="mainFirstStack">
             <div class="mainFirstMiddle">
                 <div>
@@ -118,12 +124,31 @@
                                             <form action="/viewRegVolunteerDetail.do" method="get">
                                             <input type="hidden" name="userId" value="${userId}">
                                             <input type="hidden" name="vReg_no" value="${vo.vreg_no}">
-                                                <button type="submit">${vo.c_name}</button>
+                                                <button type="submit" class="firstStackBtn">${vo.c_name}</button>
                                             </form>
                                         </td>
-                                        <td>${vo.vreg_start_date}</td>
-                                        <td>${vo.vreg_end_date}</td>
-                                        <td>${vo.service_type}</td>
+                                        <td><form action="/viewRegVolunteerDetail.do" method="get">
+                                            <input type="hidden" name="userId" value="${userId}">
+                                            <input type="hidden" name="vReg_no" value="${vo.vreg_no}">
+                                                <button type="submit" class="firstStackBtn">${vo.vreg_start_date}</button>
+                                            </form>
+                                        </td>
+                                        <td>
+                                            <form action="/viewRegVolunteerDetail.do" method="get">
+                                            <input type="hidden" name="userId" value="${userId}">
+                                            <input type="hidden" name="vReg_no" value="${vo.vreg_no}">
+                                                <button type="submit" class="firstStackBtn">${vo.vreg_end_date}</button>
+                                            </form>
+
+                                        </td>
+                                        <td>
+                                            <form action="/viewRegVolunteerDetail.do" method="get">
+                                            <input type="hidden" name="userId" value="${userId}">
+                                            <input type="hidden" name="vReg_no" value="${vo.vreg_no}">
+                                                <button type="submit" class="firstStackBtn">${vo.service_type}</button>
+                                            </form>
+
+                                        </td>
                                     </tr>
                                 </c:forEach>
                             </c:otherwise>
@@ -140,7 +165,7 @@
             </form>
         </div>
 
-        <div class="mainTitle"><img src="./img/sole.png" alt="" class="">입양 신청내역</div>
+        <div class="mainTitle">입양 신청내역</div>
         <div class="mainSecondStack">
             <div class="mainSecondMiddle">
                 <table>
@@ -172,7 +197,7 @@
 
 
 
-        <div class="mainTitle"><img src="./img/sole.png" alt="" class="">보호동물 목록</div>
+        <div class="mainTitle">보호동물 목록</div>
         <div class="mainThirdStack">
             <div class="mainThirdMiddle">
                 <div class="slider-container">
@@ -187,12 +212,12 @@
 
         <div class="mainAllBtn">
             <form action="${pageContext.request.contextPath}/volAnimalList" method="get">
-                <button type="submit" value="">유기동물 전체보기</button>
+                <button type="submit" value="">보호동물 전체보기</button>
                 <input type="hidden" name="userId" value="${userId}">
             </form>
         </div>
 
-        <div class="mainTitle"><img src="./img/sole.png" alt="" class="">모집마감일이 임박한 봉사정보</div>
+        <div class="mainTitle">모집마감일이 임박한 봉사정보</div>
         <div class="mainFourthStack">
             <div class="MainFourthMiddle">
                 <div class="mainVolistContainer">
@@ -205,23 +230,25 @@
                                 <form name="main" method="get" action="/viewVolunteerDetail.do" encType="UTF-8" >
                                     <div class="mainVolist">
                                         <table class="mainVolistTb">
-                                            <input type="hidden" name="v_no" value="${avo.v_no}" />
-                                            <input type="hidden" name="userId" value="${userId}">
-                                            <tr>
-                                                <th colspan="2"><button type="submit">${avo.v_title}</button></th>
-                                            </tr>
-                                            <tr>
-                                                <td>모집<br>마감일</td>
-                                                <td>${avo.v_rend_date}</td>
-                                            </tr>
-                                            <tr>
-                                                <td>봉사<br>시작일</td>
-                                                <td>${avo.vreg_start_date}</td>
-                                            </tr>
-                                            <tr>
-                                                <td>봉사<br>장소</td>
-                                                <td>${avo.c_addr1}</td>
-                                            </tr>
+                                            <tbody>
+                                                <input type="hidden" name="v_no" value="${avo.v_no}" />
+                                                <input type="hidden" name="userId" value="${userId}">
+                                                <tr>
+                                                    <th colspan="2"><button type="submit" class=mainVolistBtn>${avo.v_title}</button></th>
+                                                </tr>
+                                                <tr>
+                                                    <td>모집<br>마감</td>
+                                                    <td>${avo.v_rend_date}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>봉사<br>시작</td>
+                                                    <td>${avo.vreg_start_date}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>봉사<br>장소</td>
+                                                    <td>${avo.c_addr1}</td>
+                                                </tr>
+                                            </tbody>
                                         </table>
                                     </div>
                                 </form>
@@ -254,12 +281,12 @@
                     animalList.empty();
                     response.animalList.forEach(function (animal) {
                         var card = '<div class="mainAnimalListAnimal-card">' +
-                            '<img src="' + animal.popfile + '" alt="Animal Image">' +
-                            '<div>공고번호 : ' + animal.noticeNo + '</div>' +
-                            '<div>품종 : ' + animal.kindCd + '</div>' +
-                            '<div>색상 : ' + animal.colorCd + '</div>' +
-                            '<div>성별 : ' + animal.sexCd + '</div>' +
-                            '<div>지역 : ' + animal.careAddr + '</div>' +
+                                '<img src="' + animal.popfile + '" alt="Animal Image">' +
+                                '<div class="mainAnimalListAnimal-detail">공고번호 : ' + animal.noticeNo + '</div>' +
+                                '<div class="mainAnimalListAnimal-detail">품종 : ' + animal.kindCd + '</div>' +
+                                '<div class="mainAnimalListAnimal-detail">색상 : ' + animal.colorCd + '</div>' +
+                                '<div class="mainAnimalListAnimal-detail">성별 : ' + animal.sexCd + '</div>' +
+                                '<div class="mainAnimalListAnimal-detail">지역 : ' + animal.careAddr + '</div>' +
                             '</div>';
                         animalList.append(card);
                     });
