@@ -13,7 +13,7 @@ public class VolunteerListServiceImpl implements VolunteerListService {
     @Resource
     private VolunteerDAO volunteerDAO;
 
-    @Autowired
+    @Override
     public List<VolunteerListVO> getVolunteerList() throws Exception {
         return volunteerDAO.getVolunteerList();
     }

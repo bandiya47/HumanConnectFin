@@ -185,6 +185,11 @@
         </div>
 
         </div>
+    <div class="button-container" style="border:none">
+                    <form action="/volunteerList.do" method="GET">
+                        <button type="submit" class="volunteerDetailBtn" style="margin-right:10px;">목록으로</button>
+                        <input type="hidden" name="userId" value="${userId}">
+                    </form>
 
 
         <c:if test="${userType == 1}">
@@ -221,7 +226,7 @@
 
 
 
-
+</div>
 
 
     </div>
