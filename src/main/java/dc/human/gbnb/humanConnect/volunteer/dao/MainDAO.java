@@ -11,11 +11,11 @@ import java.util.List;
 @Mapper
 @Repository("mainDAO")
 public interface MainDAO {
-	 List<MainVO> getMyVolunteerList(String u_id) throws DataAccessException;
+	List<MainVO> getMyVolunteerList(String u_id) throws DataAccessException;
 
-	 List<MainVO> getApproachVolList(String u_id) throws DataAccessException;
+	List<MainVO> getApproachVolList(String u_id) throws DataAccessException;
 
-	 List<MainVO> getMyAdoptList(String u_id) throws DataAccessException;
+	List<MainVO> getMyAdoptList(String u_id) throws DataAccessException;
 
 }
 

@@ -17,8 +17,8 @@ public interface MypageController {
     public ModelAndView updatePrivacy(@RequestParam("userId") String userId, HttpServletRequest request, HttpServletResponse response) throws Exception;
     //수정입력을 저장해줌
     public ModelAndView savePrivacy(
-                                   @ModelAttribute() MypageVO mypageVO,
-                                    HttpServletRequest request, HttpServletResponse response) throws Exception;
+            @ModelAttribute() MypageVO mypageVO,
+            HttpServletRequest request, HttpServletResponse response) throws Exception;
     //비번확인하는 창으로 넘어감
     public ModelAndView showPrivacyPw(@RequestParam("userId") String userId, HttpServletRequest request, HttpServletResponse response) throws Exception;
 
@@ -35,7 +35,3 @@ public interface MypageController {
     public ModelAndView showMypage(@RequestParam("userId") String userId);
 
 }
-
-
-
-

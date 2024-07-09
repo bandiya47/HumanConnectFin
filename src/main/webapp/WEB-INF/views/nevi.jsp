@@ -28,7 +28,7 @@
                 <form action="logout" method="post">
                    <button type="submit" value="">로그아웃</button>
                 </form>
-                 <form action="${pageContext.request.contextPath}/myPageMain" method="POST">
+                 <form action="${pageContext.request.contextPath}/mypageVol" method="GET">
                     <input type="hidden" name="userId" value="${userId}">
                     <button type="submit" value="">마이페이지</button>
                  </form>

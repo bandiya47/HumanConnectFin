@@ -158,7 +158,7 @@
             </form>
              <form action="${pageContext.request.contextPath}/mypageVol" method="GET">
                 <input type="hidden" name="userId" value="${userId}">
-                <button type="submit" value="">전체보기</button>
+                <button type="submit" value="">나의봉사내역</button>
             </form>
         </div>
     </nav>
