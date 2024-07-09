@@ -98,22 +98,42 @@
             <img src="/img/logo.png" class="joinLogo">
         </a>
         <form action="join" method="post" onsubmit="return validateForm()">
-            <input type="text" name="u_Name" placeholder="이름 *" class="joinText" required><br>
+        <div class="joinContainer1">
+            <input type="text" name="u_Name" placeholder="이름 *" class="joinText" required>
+        </div>
+        <div class="joinContainer2">
             <input type="radio" name="u_Sex" value="M" class="joinCheckBox" checked>Male
-            <input type="radio" name="u_Sex" value="F" class="joinCheckBox">Female<br>
-    
-            <input type="text" name="u_Bdate" placeholder="생년월일 *" class="joinText" required><br>
-    
+            <input type="radio" name="u_Sex" value="F" class="joinCheckBox">Female
+        </div>
+
+        <div class="joinContainer1">
+            <input type="text" name="u_Bdate" placeholder="생년월일 *" class="joinText" required>
+        </div>
+        <div class="joinContainer1">
             <input type="text" name="u_Id" required class="joinId" placeholder="아이디 *">
             <span id="userIdError"></span><br> <!-- 아이디 중복 여부 메시지 표시 -->
-            
-            <input type="password" id="u_Pwd" name="u_Pwd" placeholder="비밀번호 *" class="joinText" required><br>
-            <input type="password" id="u_PwdConfirm" name="u_PwdConfirm" placeholder="비밀번호 확인 *" class="joinText" required><br>
-            <span id="passwordError"></span><br>
-            
-            <input type="text" name="u_Addr1" placeholder="주소" class="joinText"><br>
-            <input type="text" name="u_Email" placeholder="이메일 *" class="joinText" required><br>
-            <input type="text" name="u_Phone" placeholder="휴대폰번호 *" class="joinText" required><br>
+        </div>
+        <div class="joinContainer1">
+            <input type="password" id="u_Pwd" name="u_Pwd" placeholder="비밀번호 *" class="joinText" required>
+        </div>
+        <div class="joinContainer1">
+            <input type="password" id="u_PwdConfirm" name="u_PwdConfirm" placeholder="비밀번호 확인 *" class="joinText" required>
+        </div>
+        <div class="joinContainer1">
+            <span id="passwordError"></span>
+        </div>
+        <div class="joinContainer1">
+            <input type="text" name="u_Addr1" placeholder="주소" class="joinText">
+        </div>
+        <div class="joinContainer1">
+            <input type="text" name="u_Addr2" placeholder="상세 주소" class="joinText">
+        </div>
+        <div class="joinContainer1">
+            <input type="text" name="u_Email" placeholder="이메일 *" class="joinText" required>
+        </div>
+        <div class="joinContainer1">
+            <input type="text" name="u_Phone" placeholder="휴대폰번호 *" class="joinText" required>
+        </div>
             
             <div class="joinContainer">
             <h1 class="joinH1">약관 동의</h1>

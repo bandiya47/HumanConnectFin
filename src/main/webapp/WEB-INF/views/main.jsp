@@ -35,7 +35,7 @@
             border: 1px solid #000;
             border-radius: 5px;
             width: 350px;
-            margin: 0 auto;
+            margin: 10px auto;
             padding: 10px;
             box-sizing: border-box;
             text-align: left;
@@ -61,10 +61,12 @@
         }
 
         .slider-container {
+            border: gray solid 1px;
+            border-radius: 5px;
+            background-color: white;
             display: flex;
             justify-content: center;
             align-items: center;
-            border: 1px solid #000;
             padding: 20px;
             box-sizing: border-box;
             position: relative;
@@ -112,7 +114,13 @@
                             <c:otherwise>
                                 <c:forEach var="vo" items="${myVolunteerList}" begin="0" end="2">
                                     <tr>
-                                        <td>${vo.c_name}</td>
+                                        <td>
+                                            <form action="/viewRegVolunteerDetail.do" method="get">
+                                            <input type="hidden" name="userId" value="${userId}">
+                                            <input type="hidden" name="vReg_no" value="${vo.vreg_no}">
+                                                <button type="submit">${vo.c_name}</button>
+                                            </form>
+                                        </td>
                                         <td>${vo.vreg_start_date}</td>
                                         <td>${vo.vreg_end_date}</td>
                                         <td>${vo.service_type}</td>
@@ -160,6 +168,7 @@
                 </table>
             </div>
         </div>
+        <div class="mainSecondThirdMargin"></div>
 
 
 
@@ -194,22 +203,21 @@
                             <c:forEach var="avo" items="${approachVolList}" begin="0" end="2">
                                 <form name="main" method="post" action="volunteerDetail" encType="UTF-8">
                                     <div class="mainVolist">
-                                        <table>
+                                        <table class="mainVolistTb">
                                             <input type="hidden" name="v_no" value="${avo.v_no}" />
                                             <tr>
-                                                <th>글 제목 :</th>
-                                                <th><button type="submit">${avo.v_title}</button></th>
+                                                <th colspan="2"><button type="submit">${avo.v_title}</button></th>
                                             </tr>
                                             <tr>
-                                                <td>모집마감일 :</td>
+                                                <td>모집<br>마감일</td>
                                                 <td>${avo.v_rend_date}</td>
                                             </tr>
                                             <tr>
-                                                <td>봉사시작일 :</td>
+                                                <td>봉사<br>시작일</td>
                                                 <td>${avo.vreg_start_date}</td>
                                             </tr>
                                             <tr>
-                                                <td>봉사 장소 :</td>
+                                                <td>봉사<br>장소</td>
                                                 <td>${avo.c_addr1}</td>
                                             </tr>
                                         </table>
