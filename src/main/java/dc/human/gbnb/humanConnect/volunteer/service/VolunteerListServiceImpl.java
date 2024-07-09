@@ -10,11 +10,11 @@ import java.util.List;
 @Service("volunteerListService")
 public class VolunteerListServiceImpl implements VolunteerListService {
 
-    @Resource
+    @Autowired
     private VolunteerDAO volunteerDAO;
 
-    @Autowired
-    public List<VolunteerListVO> getVolunteerList() throws Exception {
-        return volunteerDAO.getVolunteerList();
+    @Override
+    public List<VolunteerListVO> getVolunteerList(String userId) throws Exception {
+        return volunteerDAO.getVolunteerList(userId);
     }
 }

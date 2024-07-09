@@ -5,8 +5,6 @@ import java.util.List;
 
 public interface VolunteerListService {
 
-    public List<VolunteerListVO> getVolunteerList() throws Exception;
-
-
+    public List<VolunteerListVO> getVolunteerList(String userId) throws Exception;
 
 }

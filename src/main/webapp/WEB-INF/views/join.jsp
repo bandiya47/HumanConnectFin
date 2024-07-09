@@ -8,6 +8,7 @@
         <title>회원가입 페이지</title>
         <link rel="stylesheet" href="/css/style.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
         <script type="text/javascript">
     		 // 동의 체크박스가 체크되면 가입 버튼 활성화
             function toggleSubmitButton() {

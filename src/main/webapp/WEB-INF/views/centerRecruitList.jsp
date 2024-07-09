@@ -35,8 +35,9 @@
                                     <tr>
                                         <td>${dto.rNum}</td>
                                         <td>
-                                            <form action="${pageContext.request.contextPath}/volunteerDetail" method="get">
+                                            <form action="${pageContext.request.contextPath}/viewCenterReg.do" method="get">
                                                 <input type="hidden" name="v_no" value="${dto.rNum}">
+                                                <input type="hidden" name="centerId" value="${centerId}">
                                                 <input type="submit" value="${dto.rTitle}" style="font-family: 'MangoDdobak-B';border: none; background: none; cursor:pointer;font-size:18px;">
                                             </form>
                                         </td>

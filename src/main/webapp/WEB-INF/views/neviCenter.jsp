@@ -8,9 +8,9 @@
     <title>HumanConnect</title>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/style.css">
     <script>
-       function goMain() {
-          window.location.href = "centerMain";
-          <!--경로설정. 나중에서블릿으로 바꿔야함/ 센터메인의 경우 센터메인으로 바꾸기-->
+       function goMain(centerId) {
+          window.location.href = "centerMain?userId=" + centerId;
+          <!--경로설정. 나중에 슬래시로 바꿔야함 / 센터메인의 경우 센터메인으로 바꾸기-->
        }
     </script>
 <!--####################css 경로 바꾸기/ img 경로 바꾸기####################-->
@@ -36,7 +36,7 @@
 
         <div class="neviCenter">      <!--네비게이션-->
             <span>              <!--로고-->
-                <img src="./img/logo.png" alt="" class="" onclick="goMain()"></span>
+                <img src="${pageContext.request.contextPath}/img/logo.png" alt="" class="" onclick="goMain('${centerId}')"></span>
             <span>
                 <ul>            <!--네비게이션바-->
                     <li>

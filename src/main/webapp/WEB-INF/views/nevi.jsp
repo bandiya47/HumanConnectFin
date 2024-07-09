@@ -46,7 +46,8 @@
                         <div>
                             <img src="./img/soleWhite.png" alt="" class="">
 
-                            <form action="test">
+                            <form action="/volunteerList.do" method="GET">
+                                <input type="hidden" name="userId" value="${userId}">
                                 <input type="submit" value="봉사신청">
                             </form>
                         </div>
@@ -64,7 +65,8 @@
                     <li>
                         <div>
                             <img src="./img/soleWhite.png" alt="" class="">
-                            <form action="">
+                            <form action="/viewCenterList.do" method="GET">
+                                <input type="hidden" name="userId" value="${userId}">
                                 <input type="submit" value="보호센터">
                             </form>
                         </div>

@@ -11,6 +11,7 @@ public class JoinVO {
     private String u_Bdate;
     private String u_Pwd;
     private String u_Addr1;
+    private String u_Addr2;
     private String u_Email;
     private String u_Phone;
 
@@ -78,6 +79,14 @@ public class JoinVO {
 
     public void setU_Addr1(String u_Addr1) {
         this.u_Addr1 = u_Addr1;
+    }
+
+    public String getU_Addr2() {
+        return u_Addr1;
+    }
+
+    public void setU_Addr2(String u_Addr2) {
+        this.u_Addr1 = u_Addr2;
     }
 
 

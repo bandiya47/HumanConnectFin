@@ -155,7 +155,7 @@ header{
         }
     }
     span:nth-child(2){
-        margin-left: 310px;                               /* 네비바 항목 위치 */  
+        margin-left: 480px;                               /* 네비바 항목 위치 */
         align-items: center;
         >ul{
             list-style-type: none;                        /* 형식 점을 없애기 위해 설정 */

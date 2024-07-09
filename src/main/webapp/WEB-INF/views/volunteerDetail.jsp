@@ -119,7 +119,7 @@
     </head>
     <html>
     <body>
-	 <jsp:include page="neviCenter.jsp" />
+	 <jsp:include page="nevi.jsp" />
 
      <div class="volunteerDetailDiv">
      <c:if test="${job == 'Regist'}">

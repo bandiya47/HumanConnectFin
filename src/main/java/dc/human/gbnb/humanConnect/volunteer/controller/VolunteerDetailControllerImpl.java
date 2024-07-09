@@ -35,6 +35,7 @@ public class VolunteerDetailControllerImpl implements VolunteerDetailController 
 
 		List<VolunteerDetailVO> Result = volunteerDetailService.listVolunteerDetail(v_no);
 		System.out.println(Result.get(0).getvTitle());
+		System.out.println(userId);
 		ModelAndView mav = new ModelAndView("/volunteerDetail");
 
 		String job="View";
@@ -210,10 +211,4 @@ public class VolunteerDetailControllerImpl implements VolunteerDetailController 
 		}
 		return fileList;
 	}
-
-
-
-
-
-
-	}
+}

@@ -1,9 +1,5 @@
 package dc.human.gbnb.humanConnect.volunteer.vo;
 
-
-
-
-
 public class VolunteerListVO {
 
     private int vNo;

@@ -16,7 +16,5 @@ public interface VolunteerDAO {
 
     @Autowired
     SqlSession sqlSession = null; // MyBatis SqlSession 주입
-    List<VolunteerListVO> getVolunteerList()  throws DataAccessException;
-
-
+    List<VolunteerListVO> getVolunteerList(String userId)  throws DataAccessException;
 }

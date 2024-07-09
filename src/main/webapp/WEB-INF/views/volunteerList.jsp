@@ -23,7 +23,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HumanConnect</title>
+    <title>HumanConnect 봉사신청 리스트</title>
+
     <link rel="stylesheet" type="text/css" href="./css/style.css">
     <script>
        function goMain() {
@@ -35,78 +36,7 @@
 </head>
 
 <body>
-
-<header>                        <!--헤더-->
-    <div class="neviBack"><img src="./img/imsiback.jpg" alt=""></div>
-    <div class="neviFor">
-        <div class="neviTop">   <!--최상단-->
-            <div>
-                <form action="logout" method="post">
-                   <button type="submit" value="">로그아웃</button>
-                </form>
-                <form action="mypagePrivacyPw.jsp">
-                        <button type="submit" value="">마이페이지</button>
-                </form>
-            </div>
-        </div>
-        <div class="nevi">      <!--네비게이션-->
-            <span>              <!--로고-->
-                <img src="./img/logo.png" alt="" class="" onclick="goMain()"></span>
-            <span>
-                <ul>            <!--네비게이션바-->
-                    <li>
-                        <div>
-                            <img src="./img/soleWhite.png" alt="" class="">
-
-                            <form action="test">
-                                <input type="submit" value="봉사신청">
-                            </form>
-                        </div>
-                    </li>
-                    <li>
-                        <div>
-                            <img src="./img/soleWhite.png" alt="" class="">
-                            <form action="">
-                                <input type="submit" value="보호동물">
-                            </form>
-                        </div>
-                    </li>
-                    <li>
-                        <div>
-                            <img src="./img/soleWhite.png" alt="" class="">
-                            <form action="">
-                                <input type="submit" value="보호센터">
-                            </form>
-                        </div>
-                    </li>
-                    <li>
-                        <div>
-                            <img src="./img/soleWhite.png" alt="" class="">
-                            <form action="">
-                                <input type="submit" value="실종/제보">
-                            </form>
-                        </div>
-                    </li>
-                    <li>
-                        <div>
-                            <img src="./img/soleWhite.png" alt="" class="">
-                            <form action="">
-                                <input type="submit" value="고객센터">
-                            </form>
-                        </div>
-                    </li>
-                </ul>
-            </span>
-        </div>
-    </div>
-</header>
-
-
-<!--여기부터 아래 내용 정상적용 되는지 확인-->
-<div class="main"></div>
-
-</body>
-</html>
+    <jsp:include page="nevi.jsp" />
 	<!--전체 div-->
    <div class="volunteerListWholeContainer">
       <div>
@@ -124,8 +54,8 @@
          <table class="volunteerListFilterInput">
             <tr>
                <td>봉사기간 <input name="wantDay" type="date"></td>
-               <td>봉사명 <input name="volSearchInput" type="search"></td>
-               <td>센터명 <input name="ctrSearchInput" type="search"></td>
+               <td>봉사명 <input name="volSearchInput" type="search" placeholder="봉사명을 입력하세요"></td>
+               <td>센터명 <input name="ctrSearchInput" type="search" placeholder="센터명을 입력하세요"></td>
                <td>지역 <select onchange="selectRegion(this)">
                      <option>행정구역 선택</option>
                      <option value="all">전체</option>
@@ -148,77 +78,59 @@
 
          <div class="volunteerListVolRecruitList">
             <p>구인 리스트</p>
-            	<div>
-
-
-
-
-
-<table border="1">
-    <thead>
-    <tr>
-        <th>No</th>
-        <th>Title</th>
-        <th>Start Date</th>
-        <th>End Date</th>
-        <th>Start Time</th>
-        <th>Last Time</th>
-        <th>Rstart Date</th>
-        <th>Rend Date</th>
-        <th>Service Code</th>
-        <th>Max Amount</th>
-        <th>Reg Amount</th>
-        <th>State</th>
-    </tr>
-    </thead>
-    <tbody>
-    <c:forEach var="item" items="${volunteerList}">
-        <tr>
-            <td>
-            <form method="get" action="${pageContext.request.contextPath}/viewVolunteerDetail.do" encType="UTF-8">
-            <input type="hidden" name="userId" value="jhjeong">
-            <input type="hidden" name="v_no" value="${item.vNo}">
-            <input type="submit" value="${item.vNo}">
-            </form>
-            </td>
-            <td>${item.vTitle}</td>
-            <td>${item.vStartDate}</td>
-            <td>${item.vEndDate}</td>
-            <td>${item.vStartTime}</td>
-            <td>${item.vLastTime}</td>
-            <td>${item.vRstartDate}</td>
-            <td>${item.vRendDate}</td>
-            <td>${item.serviceCode}</td>
-            <td>${item.vMaxAmnt}</td>
-            <td>${item.vRegAmnt}</td>
-            <td>${item.vState}</td>
-        </tr>
-    </c:forEach>
-    </tbody>
-</table>
-
-
-
-
-
-
-
-		         </div>
-		        <div class="pagination">
-                        <span class="active">1</span>
-                        <a href="test?page=2">2</a>
-                        <a href="test?page=3">3</a>
-                        <a href="test?page=4">4</a>
-                        <a href="test?page=5">5</a>
-                        <a href="test?page=6">6</a>
-                        <a href="test?page=2">다음 &raquo;</a>
-		         </div>
+            <div>
+                <table class="volListFTable">
+                    <thead>
+                        <tr>
+                            <th width="6%">번호</th>
+                            <th width="25%">봉사명</th>
+                            <th width="10%">시작일</th>
+                            <th width="10%">종료일</th>
+                            <th width="10%">모집시작일</th>
+                            <th width="10%">모집마감일</th>
+                            <th width="6%">봉사구분</th>
+                            <th width="6%">모집인원</th>
+                            <th width="6%">신청인원</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <c:forEach var="item" items="${volunteerList}">
+                            <tr>
+                                <td>
+                                    <form method="get" action="${pageContext.request.contextPath}/viewVolunteerDetail.do" encType="UTF-8">
+                                        <input type="hidden" name="userId" value="${userId}">
+                                        <input type="hidden" name="v_no" value="${item.vNo}">
+                                        <input class="vNoInput" type="submit" value="${item.vNo}">
+                                    </form>
+                                </td>
+                                <td>${item.vTitle}</td>
+                                <td>${item.vStartDate}</td>
+                                <td>${item.vEndDate}</td>
+                                <td>${item.vRstartDate}</td>
+                                <td>${item.vRendDate}</td>
+                                <td>${item.serviceCode}</td>
+                                <td>${item.vRegAmnt}명</td>
+                                <td>${item.vMaxAmnt}명</td>
+                            </tr>
+                        </c:forEach>
+                    </tbody>
+                </table>
+            </div>
+            <div class="pagination">
+                    <span class="active">1</span>
+                    <a href="test?page=2">2</a>
+                    <a href="test?page=3">3</a>
+                    <a href="test?page=4">4</a>
+                    <a href="test?page=5">5</a>
+                    <a href="test?page=6">6</a>
+                    <a href="test?page=2">다음 &raquo;</a>
+             </div>
          </div>
       </div>
    </div>
 
-<script type="text/javascript"  src="/js/volunteerList.js" >
+<script type="text/javascript"  src="${contextPath}/js/volunteerList.js" >
 </script>
+
 </body>
 </html>
-
