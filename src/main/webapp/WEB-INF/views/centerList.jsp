@@ -34,7 +34,7 @@
     </table>
 </div>
 <div class="pagination" style="text-align : center;display: flex; justify-content: center;">
-    <c:set var="startPage" value="${(pageNo - 1) + 1}" />
+    <c:set var="startPage" value="${pageNo - ((pageNo - 1) % 10)}" />
     <c:set var="endPage" value="${startPage + 9}" />
 
     <c:if test="${startPage > 1}">
