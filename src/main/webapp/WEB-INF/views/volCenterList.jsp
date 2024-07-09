@@ -8,7 +8,7 @@
            <script type="text/javascript">
            $(document).ready(function() {
                         var job ="${job}";
-                        alert("${job}");
+
 
 
 
@@ -185,7 +185,11 @@
 
         </div>
 
-
+    <div class="button-container" style="border:none">
+                    <form action="/viewCenterList.do" method="GET">
+                        <button type="submit" class="volunteerDetailBtn" >목록으로</button>
+                        <input type="hidden" name="userId" value="${userId}">
+                    </form>
 
             <c:if test="${job == 'View'}">
                 <form name="volunteerDetailReg" method="post" action="${pageContext.request.contextPath}/regVolunteerDetail.do" encType="UTF-8">
@@ -212,19 +216,8 @@
                 </form>
             </c:if>
 
-
-
-   		<c:if test="${userType ==2}">
-        	<button type="button" class="volunteerDetailBtn"  value="목록으로" onClick="location.href='recruitlist'">목록으로</button>
-    	</c:if>
-
-
-
-
-
-
     </div>
-
+</div>
 
 </body>
     </html>
