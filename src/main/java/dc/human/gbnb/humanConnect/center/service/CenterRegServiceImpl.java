@@ -1,5 +1,6 @@
 package dc.human.gbnb.humanConnect.center.service;
 
+import dc.human.gbnb.humanConnect.center.vo.CenterMainVO;
 import dc.human.gbnb.humanConnect.center.vo.CenterRegVO;
 import dc.human.gbnb.humanConnect.center.dao.CenterRegDAO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,6 +49,13 @@ public class CenterRegServiceImpl implements CenterRegService {
 		List centerRegList = null;
 		centerRegList = centerRegDAO.selectCenterRegIdList(centerId);
 		return centerRegList;
+	}
+
+	@Override
+	public List<CenterMainVO> getRegRecruitmentList(int v_no) throws Exception {
+		List<CenterMainVO> recruitmentList = centerRegDAO.getRegRecruitmentList(v_no);
+		System.out.println("Recruitment List: " + recruitmentList);
+		return recruitmentList;
 	}
 
 }
