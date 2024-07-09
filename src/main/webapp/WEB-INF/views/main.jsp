@@ -34,8 +34,8 @@
             font-size: 15px;
             border: 1px solid #000;
             border-radius: 5px;
-            width: 350px;
-            margin: 10px auto;
+            width: 300px;
+            margin: auto 10px ;
             padding: 10px;
             box-sizing: border-box;
             text-align: left;
@@ -52,7 +52,7 @@
         }
 
         .slider {
-            width: 80%;
+            width: 90%;
             margin: 0 auto;
         }
 
@@ -186,8 +186,9 @@
         </div>
 
         <div class="mainAllBtn">
-            <form action="" method="post">
-                <button type="submit" value="">전체보기</button>
+            <form action="${pageContext.request.contextPath}/volAnimalList" method="get">
+                <button type="submit" value="">유기동물 전체보기</button>
+                <input type="hidden" name="userId" value="${userId}">
             </form>
         </div>
 
@@ -201,10 +202,11 @@
                         </c:when>
                         <c:otherwise>
                             <c:forEach var="avo" items="${approachVolList}" begin="0" end="2">
-                                <form name="main" method="post" action="volunteerDetail" encType="UTF-8">
+                                <form name="main" method="get" action="/viewVolunteerDetail.do" encType="UTF-8" >
                                     <div class="mainVolist">
                                         <table class="mainVolistTb">
                                             <input type="hidden" name="v_no" value="${avo.v_no}" />
+                                            <input type="hidden" name="userId" value="${userId}">
                                             <tr>
                                                 <th colspan="2"><button type="submit">${avo.v_title}</button></th>
                                             </tr>
@@ -231,8 +233,9 @@
         </div>
 
         <div class="mainAllBtn">
-            <form action="" method="post">
-                <button type="submit" value="">전체보기</button>
+            <form action="${pageContext.request.contextPath}/volunteerList.do" method="get">
+                <input type="hidden" name="userId" value="${userId}">
+                <button type="submit" value="">리스트 전체보기</button>
             </form>
         </div>
     </div>
@@ -270,6 +273,7 @@
                         autoplaySpeed: 2000,
                         prevArrow: $('.arrow-left'),
                         nextArrow: $('.arrow-right'),
+
                     });
                 },
                 error: function () {
