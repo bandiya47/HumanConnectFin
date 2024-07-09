@@ -1,5 +1,6 @@
 package dc.human.gbnb.humanConnect.center.dao;
 
+import dc.human.gbnb.humanConnect.center.vo.CenterMainVO;
 import dc.human.gbnb.humanConnect.center.vo.CenterRegVO;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.dao.DataAccessException;
@@ -17,4 +18,5 @@ public interface CenterRegDAO {
 	 public CenterRegVO selectVNoCenterReg () throws DataAccessException;
 	 public List selectCenterRegList(int v_no) throws DataAccessException;
 	 public List selectCenterRegIdList(String centerId) throws DataAccessException;
+	 List<CenterMainVO> getRegRecruitmentList(int v_no) throws DataAccessException;
 }

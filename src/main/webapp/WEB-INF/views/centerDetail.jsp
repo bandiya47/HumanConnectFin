@@ -60,6 +60,10 @@
 
     </div>
     <div class="button-container" style="border:none">
+        <form action="/viewCenterList.do" method="GET">
+            <button type="submit" class="volunteerDetailBtn" style="margin:10px;">목록으로</button>
+            <input type="hidden" name="userId" value="${userId}">
+        </form>
     <c:if test="${disable != 0}">
     <form method="post" action="${pageContext.request.contextPath}/volCenterList.do" encType="UTF-8">
         <input type="hidden" name="userId" value="${userId}">
@@ -67,7 +71,7 @@
         <button type="submit" class="volunteerDetailBtn" style="margin:10px;" >봉사 신청</button></form>
     </c:if>
     <c:if test="${disable == 0}">
-        <button class="volunteerDetailBtn" style="background-color:gray;" >봉사 신청</button>
+        <button class="volunteerDetailBtn" style="background-color:gray;margin:10px;" >봉사 신청</button>
     </c:if>
         <button class="volunteerDetailBtn" data-toggle="modal" data-target="#myModal" style="margin:10px;" >입양 상담신청</button>
 

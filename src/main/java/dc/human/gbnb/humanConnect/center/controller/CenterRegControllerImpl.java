@@ -1,5 +1,6 @@
 package dc.human.gbnb.humanConnect.center.controller;
 
+import dc.human.gbnb.humanConnect.center.service.CenterMainService;
 import dc.human.gbnb.humanConnect.center.vo.CenterRegVO;
 import dc.human.gbnb.humanConnect.center.service.CenterRegService;
 import jakarta.servlet.http.HttpServletRequest;
@@ -20,7 +21,10 @@ import java.util.*;
 public class CenterRegControllerImpl implements CenterRegController {
 	@Autowired
 	private CenterRegService centerRegService;
-	
+
+	@Autowired
+	private CenterMainService centerMainService;
+
 	@Autowired
 	private CenterRegVO centerRegVO ;
 
@@ -40,6 +44,7 @@ public class CenterRegControllerImpl implements CenterRegController {
 
 		String job="view";
 		mav.addObject("job",job);
+		mav.addObject("recruitmentList", centerRegService.getRegRecruitmentList(v_no));
 		mav.addObject("centerList2",Result);
 		mav.addObject("centerList",Result2);
 		mav.addObject("centerId", centerId);
