@@ -10,6 +10,7 @@
     <style>
         html, body {
             background-color: white !important;
+            font-family: 'MangoDdobak-B' !important;
         }
     </style>
     <script>

@@ -41,9 +41,9 @@
     <div class="adminMainSidebar">
         <h3>관리자<br>페이지</h3>
         <ul>
-            <li class="active"><a href="${pageContext.request.contextPath}/adminMain">봉사회원정보 조회</a></li>
+            <li ><a href="${pageContext.request.contextPath}/adminMain">봉사회원정보 조회</a></li>
             <li><a href="${pageContext.request.contextPath}/adminCenterMem">센터회원정보 조회</a></li>
-            <li><a href="${pageContext.request.contextPath}/adminNoticeList.do">고객센터</a></li>
+            <li class="active"><a href="${pageContext.request.contextPath}/adminNoticeList.do">고객센터</a></li>
         </ul>
     </div>
 <!--공지사항 목록 및 삭제-->
@@ -60,10 +60,10 @@
                 <table class="noticeListTable">
                    <thead>
                        <tr>
-                           <th width="10%">No</th>
-                           <th width="53%">제목</th>
+                           <th width="3%">No</th>
+                           <th width="50%">제목</th>
                            <th width="10%">작성자</th>
-                           <th width="20%">작성일</th>
+                           <th width="15%">작성일</th>
                            <th width="7%">선택</th>
                        </tr>
                    </thead>

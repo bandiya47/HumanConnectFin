@@ -22,8 +22,8 @@
         <h3>관리자<br>페이지</h3>
         <ul>
             <li class="active"><a href="${pageContext.request.contextPath}/adminMain">봉사회원정보 조회</a></li>
-            <li><a href="#">센터회원정보 조회</a></li>
-            <li><a href="#">고객센터</a></li>
+            <li><a href="${pageContext.request.contextPath}/adminCenterMem">센터회원정보 조회</a></li>
+            <li><a href="${pageContext.request.contextPath}/adminNoticeList.do">고객센터</a></li>
         </ul>
     </div>
     <div class="adminMemDetailContent">
