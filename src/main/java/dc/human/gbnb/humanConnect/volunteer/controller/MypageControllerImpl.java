@@ -1,16 +1,16 @@
 package dc.human.gbnb.humanConnect.volunteer.controller;
 
 import dc.human.gbnb.humanConnect.volunteer.service.MypageService;
+import dc.human.gbnb.humanConnect.volunteer.vo.MainVO;
 import dc.human.gbnb.humanConnect.volunteer.vo.MypageVO;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+
+import java.util.List;
 
 @Controller
 public class MypageControllerImpl implements MypageController {
@@ -152,6 +152,38 @@ public class MypageControllerImpl implements MypageController {
 		 return mav;
 
 		}
+
+		//봉사마이페이지
+		@Override
+		@GetMapping("/mypageVol")
+		public ModelAndView showMypage(
+				@RequestParam("userId") String userId
+		) {
+			System.out.println("Received userId: " + userId);
+			ModelAndView mav = new ModelAndView("mypageVolunteerCheck");
+			List<MypageVO> mypageVolunteerList = mypageService.getMypageVolunteerList(userId);
+			mav.addObject("mypageVolunteerList", mypageVolunteerList);
+			mav.addObject("userId", userId);
+//            System.out.println("Main Controller Printing **myVolunteerList**: " + myVolunteerList);
+//            System.out.println("Main Controller Printing **myAdpotList**: " + myAdpotList);
+//            System.out.println("Main Controller Printing **approachVolList**: " + approachVolList);
+			return mav;
+		}
+	//	@Override
+	//	@GetMapping("/main")
+	//	public ModelAndView showMain(
+	//			@RequestParam("userId") String userId
+	//	) {
+	//		System.out.println("Received userId: " + userId);
+	//		ModelAndView mav = new ModelAndView("main");
+	//		List<MainVO> myVolunteerList = mainService.getMyVolunteerList(userId);
+	//		mav.addObject("myVolunteerList", myVolunteerList);
+	//		mav.addObject("userId", userId);
+	////            System.out.println("Main Controller Printing **myVolunteerList**: " + myVolunteerList);
+	////            System.out.println("Main Controller Printing **myAdpotList**: " + myAdpotList);
+	////            System.out.println("Main Controller Printing **approachVolList**: " + approachVolList);
+	//		return mav;
+	//	}
 
 
 

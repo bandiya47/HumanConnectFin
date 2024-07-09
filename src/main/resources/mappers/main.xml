@@ -8,6 +8,7 @@
     <resultMap id="MainVOResultMap" type="dc.human.gbnb.humanConnect.volunteer.vo.MainVO">
         <result property="u_id" column="U_ID"/>
         <result property="v_no" column="V_NO"/>
+        <result property="vreg_no" column="VREG_NO"/>
         <result property="v_title" column="V_TITLE"/>
         <result property="vreg_start_date" column="VREG_START_DATE"/><!--vol 봉사시작일-->
         <result property="vreg_no" column="VREG_NO"/>

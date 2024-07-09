@@ -3,7 +3,7 @@ package dc.human.gbnb.humanConnect.volunteer.vo;
 public class MainVO {
 //	VOLUNTEER_USER 테이블
 //  개인정보 확인 및 수정
-
+	private  int vreg_no;
 	private String v_no;
 	private int vreg_no;
 	private String v_title;
@@ -19,6 +19,15 @@ public class MainVO {
 	private String visit_time;
 	private String visit_date;
 	//private String v_state;
+
+
+	public int getVreg_no() {
+		return vreg_no;
+	}
+
+	public void setVreg_no(int vreg_no) {
+		this.vreg_no = vreg_no;
+	}
 
 	public String getVisit_time() {
 		return visit_time;

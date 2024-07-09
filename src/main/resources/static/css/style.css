@@ -1119,7 +1119,7 @@ vertical-align:middle;
 }
 
 .mainAllBtn{                            /*전체보기*/
-    width: 820px;
+    width: 980px;
     height: 30px;
     /* border: gray solid 1px; */
     /* background-color: white; */
@@ -1142,7 +1142,7 @@ vertical-align:middle;
 
 }
 .mainFirstMiddle{
-    width: 820px;
+    width: 980px;
     border: gray solid 1px;
     border-radius: 5px;
     background-color: white;
@@ -1193,9 +1193,10 @@ vertical-align:middle;
 
 .mainSecondStack{                          /*2층 입양상담신청내역*/
    /* display: flex;*/
+   margin-bottom: 10px;
 }
 .mainSecondMiddle{
-    width: 820px;
+    width: 980px;
     border: gray solid 1px;
     border-radius: 5px;
     background-color: white;
@@ -1204,6 +1205,7 @@ vertical-align:middle;
 	    border-collapse: collapse;
 	    font-family: 'MangoDdobak-B';
 	    font-size : 20px;
+
         tbody{
             >tr>th {
                 background-color : #463933;
@@ -1240,6 +1242,12 @@ vertical-align:middle;
     }
 }
 
+.mainSecondThirdMargin{
+    width: 980px;
+    height: 30px;
+    border: none;
+    background: transparent;
+}
 
 .mainThirdSide{
     width: 30px;
@@ -1258,13 +1266,20 @@ vertical-align:middle;
     }
 }
 
-
+.mainvoListNoData{
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #888;
+}
 
 .mainFourthStack{                          /*4층 */
     display: flex;
 }
 .MainFourthMiddle{
-    width: 820px;
+    width: 980px;
     border: gray solid 1px;
     border-radius: 5px;
     background-color: white;
@@ -1295,12 +1310,36 @@ vertical-align:middle;
 
         .mainVolist{                                       /*안에 div*/
                   /* display : inline-block;*/
-                   width: 230px;
+                   width: 300px;
                    height: 230px;
                    border: gray solid 1px;
-                   margin: 5px 5px 5px 5px;
+                   margin: 15px 7px 15px 7px;                  /*위 오 아 왼*/
                }
 
+        .mainVolistTb{
+            vertical-align: middle;
+
+                >tr>th{ background-color : #463933;
+                       vertical-align : middle;
+                       padding : 15px;
+                }
+                >tr>td {
+                        border: none;
+                        font-size : 18px;
+                        height : 80px;
+                        text-align: center;
+                        vertical-align : middle;
+                        border-bottom : 1px solid #aaa;
+                        >button{
+                                        border:none;
+                                        background-color:transparent;
+                                        color : white;
+                                            font-weight : bold;
+
+                                        }
+                }
+
+        }
 
 
 

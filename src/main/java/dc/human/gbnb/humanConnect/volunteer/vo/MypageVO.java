@@ -23,11 +23,19 @@ public class MypageVO {
 	private String c_addr1;
 	private String c_addr2;
 
+	private String v_no;
+	private String v_title;
+	private int vreg_no;
+	private String vreg_start_date;
+	private String vreg_end_date;
+	private String service_type;
 
 
 
 
-//	VOLUNTEER_USER 테이블
+
+
+	//	VOLUNTEER_USER 테이블
 //  개인정보 확인 및 수정
 	public String getU_name() {
 		return u_name;
@@ -159,7 +167,58 @@ public class MypageVO {
 	public MypageVO() {
 		System.out.println("MemberVO 생성자 호출");
 	}
-	
 
-	
+
+
+	public String getVreg_end_date() {
+		return vreg_end_date;
+	}
+
+	public void setVreg_end_date(String vreg_end_date) {
+		this.vreg_end_date = vreg_end_date;
+	}
+
+	public String getV_no() {
+		return v_no;
+	}
+
+	public void setV_no(String v_no) {
+		this.v_no = v_no;
+	}
+
+	public String getV_title() {
+		return v_title;
+	}
+
+	public void setV_title(String v_title) {
+		this.v_title = v_title;
+	}
+
+	public String getVreg_start_date() {
+		return vreg_start_date;
+	}
+
+	public void setVreg_start_date(String vreg_start_date) {
+		this.vreg_start_date = vreg_start_date;
+	}
+
+	public String getService_type() {
+		return service_type;
+	}
+
+	public void setService_type(String service_type) {
+		this.service_type = service_type;
+	}
+
+
+	public int getVreg_no() {
+		return vreg_no;
+	}
+
+	public void setVreg_no(int vreg_no) {
+		this.vreg_no = vreg_no;
+	}
+
+
+
 }

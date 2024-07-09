@@ -4,8 +4,6 @@ import dc.human.gbnb.humanConnect.volunteer.vo.MypageVO;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -33,6 +31,8 @@ public interface MypageController {
     //회원 탈퇴를 처리해줌
     public ModelAndView removePrivacy(@RequestParam("userId") String u_id, HttpServletRequest request, HttpServletResponse response) throws Exception;
 
+    //봉사마이페이지
+    public ModelAndView showMypage(@RequestParam("userId") String userId);
 
 }
 

@@ -20,6 +20,6 @@ public interface MypageDAO {
 	 public int checkPrivacyPw(@Param("u_id") String u_id, @Param("u_pwd") String u_pwd) throws DataAccessException;
 
 	 public int deletePrivacy(String u_id) throws DataAccessException;
-
-	List<MypageVO> getMyVolunteerList(String u_id) throws DataAccessException;
+	//봉사마이페이지
+	List<MypageVO> getMypageVolunteerList(String u_id) throws DataAccessException;
 }
