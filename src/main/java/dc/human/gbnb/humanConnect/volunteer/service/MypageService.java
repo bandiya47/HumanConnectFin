@@ -17,4 +17,3 @@ public interface MypageService {
 	//봉사마이페이지
 	public List<MypageVO> getMypageVolunteerList(String u_id);
 }
-

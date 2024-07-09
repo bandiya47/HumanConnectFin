@@ -18,11 +18,36 @@
             return confirm("정말 삭제하시겠습니까?");
         }
     </script>
+<style>
+
+    </style>
 </head>
-
-
 <body>
-<jsp:include page="nevi.jsp" />
+    <jsp:include page="nevi.jsp" />
+
+    <!-- 슬라이딩 메뉴 버튼 -->
+    <div class="mypageMenuBtn">
+        <div class="mypageLine mypageLine1"></div>
+        <div class="mypageLine mypageLine2"></div>
+        <div class="mypageLine mypageLine3"></div>
+    </div>
+
+    <!-- 슬라이딩 네비게이션 메뉴 -->
+     <nav class="mypageNav">
+            <div class="mypageNavLinks">
+                <a href="#" class="mypageLink">마이페이지 메뉴</a>
+                <form action="${pageContext.request.contextPath}/showPrivacyPw" method="POST">
+                    <input type="hidden" name="userId" value="${userId}">
+                    <button type="submit" value="" class="mypageNavLinksBtn">개인정보</button>
+                </form>
+                 <form action="${pageContext.request.contextPath}/mypageVol" method="GET">
+                    <input type="hidden" name="userId" value="${userId}">
+                    <button type="submit" value="" class="mypageNavLinksBtn">나의봉사내역</button>
+                </form>
+            </div>
+        </nav>
+
+
 	<div class="mypage">
 	    <div><img src="./img/sole.png">개인정보확인</div><!--메뉴마다 수정-->
 	    <div class="mypagePrivacyCheck">
@@ -66,7 +91,7 @@
 	                </table>
 	            </div>
 
-	            <div>
+	            <div class="mypageChkBtnContainer">
                     <form name="privacyEdit" method="post" action="${pageContext.request.contextPath}/updatePrivacy">
                         <input type="hidden" name="userId" value="${userId}">
                         <div class="mypagePrivacyCheckBtnC">
@@ -90,6 +115,21 @@
 
 	    </div>
 	</div>
+ <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const menuBtn = document.querySelector('.mypageMenuBtn');
+            const nav = document.querySelector('.mypageNav');
+            const lines = document.querySelectorAll('.mypageLine');
+            const link = document.querySelector('.mypageNavLinks');
 
+            menuBtn.addEventListener('click', () => {
+                nav.classList.toggle('mypageNav-open');
+                lines[0].classList.toggle('cross1');
+                lines[1].classList.toggle('cross2');
+                lines[2].classList.toggle('cross3');
+                link.classList.toggle('fade-in');
+            });
+        });
+    </script>
 </body>
 </html

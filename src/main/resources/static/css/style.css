@@ -869,6 +869,152 @@ header{
 }
 /**********************************************센터모집인원*************************************************/
 /**임시~~*****************************************************************************************************************/
+        .mypageMain {
+            margin: 60px auto 0;
+            width: 980px;
+        }
+
+        .mypageMainTitle {
+            font-size: 27px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .mypageMainTitle > img {
+            width: 27px;
+            height: 27px;
+        }
+
+        .mypageMainFirstStack {
+        }
+
+        .mypageMainFirstMiddle {
+            width: 980px;
+            border: gray solid 1px;
+            border-radius: 5px;
+            background-color: white;
+        }
+
+        .mypageMainFirstMiddle > div > table {
+            width: 100%;
+            border-collapse: collapse;
+            font-family: 'MangoDdobak-B';
+            font-size: 20px;
+        }
+
+        .mypageMainFirstMiddle tbody > tr > th {
+            background-color: #463933;
+            vertical-align: middle;
+            color: white;
+            font-weight: bold;
+            padding: 15px;
+        }
+
+        .mypageMainFirstMiddle tbody > tr > td {
+            border: none;
+            font-size: 18px;
+            height: 80px;
+            text-align: center;
+            vertical-align: middle;
+            border-bottom: 1px solid #aaa;
+        }
+
+        .mypageNav {
+            overflow: hidden;
+            position: fixed;
+            top: 0;
+            right: 0;
+            height: 100%;
+            width: 300px;
+            transform: translateX(300px);
+            transition: transform 0.3s ease-in-out;
+            background: rgba(255, 255, 255, 0.9);
+            z-index: 1;
+        }
+
+        .mypageNav.mypageNav-open {
+            transform: translateX(0);
+        }
+
+        .mypageMenuBtn {
+            position: fixed;
+            top: 50%;
+            right: 20px;
+            padding: 10px;
+            background: rgba(0, 0, 0, 0.6);
+            border-radius: 5px;
+            cursor: pointer;
+            z-index: 2;
+            transform: translateY(-50%);
+        }
+
+        .mypageLine {
+            width: 30px;
+            height: 3px;
+            background-color: white;
+            margin: 6px 0;
+            transition: 0.4s;
+        }
+
+        .mypageLine.cross1 {
+            transform: rotate(-45deg) translate(-7px, 6px);
+        }
+
+        .mypageLine.cross2 {
+            opacity: 0;
+        }
+
+        .mypageLine.cross3 {
+            transform: rotate(45deg) translate(-8px, -8px);
+        }
+
+        .mypageNavLinks {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+        .mypageNavLinksBtn{
+            border:none;
+            background-color:transparent;
+            margin: 20px 0;
+            text-decoration: none;
+            font-family: sans-serif;
+            color: rgba(0, 0, 0, 0.9);
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 1.2rem;
+            transition: color 0.3s;
+            cursor:pointer;
+        }
+        .mypageNavLinksBtn:hover {
+            color: rgba(0, 0, 0, 0.5);
+        }
+
+        .fade-in {
+            opacity: 1;
+        }
+
+        .mypageLink {
+            margin: 20px 0;
+            text-decoration: none;
+            font-family: sans-serif;
+            color: rgba(0, 0, 0, 0.9);
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 20px;
+            transition: color 0.3s;
+            cursor:default;
+
+        }
+
+
+
 .mypage{
     
     margin: 50px auto 0;
@@ -1213,16 +1359,19 @@ vertical-align:middle;
 }
 
 .mainTitle{                             /*큰제목*/
-    font-size: 27px;
+    font-family: 'NEXONFootballGothicBA1';
+    font-size : 40px;
     font-weight: bold;
     margin-bottom: 10px;                /*큰제목 아래 간격*/
     /*테스트용
     width: 980px;
     border: 1px solid black;*/
 
+
     >img{
-        width: 27px;
-        height: 27px;
+        width: 30px;
+        height: 30px;
+
     }
 }
 
@@ -1274,10 +1423,23 @@ vertical-align:middle;
 		    text-align: center;
 		    vertical-align : middle;
 		    border-bottom : 1px solid #aaa;
+
 	        }
         }
     }
 }
+
+        .firstStackBtn{
+                 font-size : 18px;
+                 height:100%
+                 width:100%;
+                 font-family: 'MangoDdobak-B';
+                 border:none;
+                 background-color:transparent;
+                 cursor:pointer;
+
+                }
+
 
 .mainFirstSide{
     width: 30px;
@@ -1392,11 +1554,13 @@ vertical-align:middle;
     border-radius: 5px;
     background-color: white;
 }
+
+
 .mainFourthSide{
     width: 30px;
     >form>button{                              /*shortcut1*/
         width: 150px;
-        height: 150px;       /*높이*/
+
         border: gray solid 1px;
         border-radius: 5px;
         cursor: pointer;
@@ -1411,43 +1575,66 @@ vertical-align:middle;
 
 
         .mainVolistContainer{                       /*volist 컨테이너*/
-                display: flex;
-               align-items: center;
-               justify-content: center;
+           display: flex;
+           align-items: center;
+           justify-content: center;
         }
 
         .mainVolist{                                       /*안에 div*/
-                  /* display : inline-block;*/
-                   width: 300px;
-                   height: 230px;
-                   border: gray solid 1px;
-                   margin: 15px 7px 15px 7px;                  /*위 오 아 왼*/
-               }
+
+           width: 300px;
+
+
+           margin: 15px 5px 15px 5px;                  /*위 오 아 왼*/
+       }
 
         .mainVolistTb{
             vertical-align: middle;
+            border:none;
+            font-family: 'MangoDdobak-B';
+            font-size: 15px;
+                >tbody{
+                    border:none;
+                    >tr{
 
-                >tr>th{ background-color : #463933;
-                       vertical-align : middle;
-                       padding : 15px;
+                            >th{
+                                background-color : #463933;
+                                vertical-align : middle;
+                                padding : 15px;
+                                border:none;
+                            }
+                    }
+
                 }
-                >tr>td {
-                        border: none;
-                        font-size : 18px;
-                        height : 80px;
-                        text-align: center;
-                        vertical-align : middle;
-                        border-bottom : 1px solid #aaa;
-                        >button{
-                                        border:none;
-                                        background-color:transparent;
-                                        color : white;
-                                            font-weight : bold;
-
-                                        }
-                }
-
         }
+        .mainVolistTb> div > table > tbody > tr > td:first-child {
+                 width: 38%;
+             }
+        .mainVolistTb> div > table > tbody > tr > td {
+                 /*border: none;*/
+                 font-size: 18px;
+                 height: 80px;
+                 text-align: center;
+                 vertical-align: middle;
+                 /*border-bottom: 1px solid #aaa;*/
+                 border: none;
+                 justify-content:center;
+                 font-family: 'MangoDdobak-B';
+                 font-size: 15px;
+        }
+
+        .mainVolistBtn{
+                     border:none;
+                     background-color:transparent;
+                     color : white;
+                     font-weight : bold;
+
+                     cursor:pointer;
+                     font-family: 'MangoDdobak-B';
+                     font-size: 15px;
+
+
+                     }
 
 
 

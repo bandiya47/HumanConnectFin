@@ -85,7 +85,7 @@ public class MypageControllerImpl implements MypageController {
 	}
 
 
-//	//비밀번호 확인하는 창으로 넘어감
+	//	//비밀번호 확인하는 창으로 넘어감
 	@Override
 	@RequestMapping(value = "/showPrivacyPw", method = RequestMethod.POST)
 	public ModelAndView showPrivacyPw(@RequestParam("userId") String userId, HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -132,43 +132,43 @@ public class MypageControllerImpl implements MypageController {
 	}
 
 	//회원 탈퇴
-	 @Override
-		@RequestMapping(value="/removePrivacy" ,method = RequestMethod.POST)/*경로*/
-		public ModelAndView removePrivacy(@RequestParam("userId") String userId,
-				           HttpServletRequest request, HttpServletResponse response) throws Exception{
-			request.setCharacterEncoding("utf-8");
-			mypageService.removePrivacy(userId);
-			ModelAndView mav = new ModelAndView();/*경로*/
-		 try {
-			 mypageVO = mypageService.privacyList(userId);
-			 //jsp 안에 객체 추가
-			 mav.addObject("myinfo", mypageVO);
-			 mav.addObject("userId", userId);
-			 //jsp 불러옴. jsp는 안써도 됨.
-			 mav.setViewName("mypagePrivacyCheck");
-		 } catch (Exception e) {
-			 e.printStackTrace();
-		 }
-		 return mav;
-
-		}
-
-		//봉사마이페이지
-		@Override
-		@GetMapping("/mypageVol")
-		public ModelAndView showMypage(
-				@RequestParam("userId") String userId
-		) {
-			System.out.println("Received userId: " + userId);
-			ModelAndView mav = new ModelAndView("mypageVolunteerCheck");
-			List<MypageVO> mypageVolunteerList = mypageService.getMypageVolunteerList(userId);
-			mav.addObject("mypageVolunteerList", mypageVolunteerList);
+	@Override
+	@RequestMapping(value="/removePrivacy" ,method = RequestMethod.POST)/*경로*/
+	public ModelAndView removePrivacy(@RequestParam("userId") String userId,
+									  HttpServletRequest request, HttpServletResponse response) throws Exception{
+		request.setCharacterEncoding("utf-8");
+		mypageService.removePrivacy(userId);
+		ModelAndView mav = new ModelAndView();/*경로*/
+		try {
+			mypageVO = mypageService.privacyList(userId);
+			//jsp 안에 객체 추가
+			mav.addObject("myinfo", mypageVO);
 			mav.addObject("userId", userId);
+			//jsp 불러옴. jsp는 안써도 됨.
+			mav.setViewName("mypagePrivacyCheck");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return mav;
+
+	}
+
+	//봉사마이페이지
+	@Override
+	@GetMapping("/mypageVol")
+	public ModelAndView showMypage(
+			@RequestParam("userId") String userId
+	) {
+		System.out.println("Received userId: " + userId);
+		ModelAndView mav = new ModelAndView("mypageVolunteerCheck");
+		List<MypageVO> mypageVolunteerList = mypageService.getMypageVolunteerList(userId);
+		mav.addObject("mypageVolunteerList", mypageVolunteerList);
+		mav.addObject("userId", userId);
 //            System.out.println("Main Controller Printing **myVolunteerList**: " + myVolunteerList);
 //            System.out.println("Main Controller Printing **myAdpotList**: " + myAdpotList);
 //            System.out.println("Main Controller Printing **approachVolList**: " + approachVolList);
-			return mav;
-		}
+		return mav;
+	}
 	//	@Override
 	//	@GetMapping("/main")
 	//	public ModelAndView showMain(
@@ -221,6 +221,4 @@ public class MypageControllerImpl implements MypageController {
 
 
 
-	}
-
-
+}
