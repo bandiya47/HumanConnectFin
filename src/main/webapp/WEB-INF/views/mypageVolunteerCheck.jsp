@@ -61,90 +61,67 @@
 
         .mypageNav {
             overflow: hidden;
-            position: relative;
-            transform: translateX(-300px);
+            position: fixed;
+            top: 0;
+            right: 0;
             height: 100%;
-            width: 400px;
-            transition: all 800ms cubic-bezier(.8, 0, .33, 1);
-            border-radius: 0% 0% 100% 50%;
+            width: 300px;
+            transform: translateX(300px);
+            transition: transform 0.3s ease-in-out;
+            background: rgba(255, 255, 255, 0.9);
+            z-index: 1;
         }
 
         .mypageNav.mypageNav-open {
-            transform: translateX(0px);
-            border-radius: 0% 0% 0% 0%;
-            background: rgba(255, 255, 255, 0.6);
-        }
-
-        .mypageMenuBtn {
-            position: absolute;
-            top: 50%;
-            right: 5%;
-            padding: 0;
-            width: 30px;
-            cursor: pointer;
-            z-index: 2;
-        }
-
-        .mypageLine {
-            padding: 0;
-            width: 30px;
-            background: #fff;
-            height: 2px;
-            margin: 5px 0;
-            transition: all 700ms cubic-bezier(.9, 0, .33, 1);
-        }
-
-        .mypageLine--1 {
-            width: 30px;
-            transform: rotate(0) translateY(0);
-        }
-
-        .mypageLine--1.mypageLine-cross {
-            width: 30px;
-            transform: rotate(45deg) translateY(10px);
-            background: rgba(0, 0, 0, 0.6);
-        }
-
-        .mypageLine--2 {
-            width: 28px;
             transform: translateX(0);
         }
 
-        .mypageLine--2.mypageLine-fade-out {
-            width: 28px;
-            transform: translate(30px);
+        .mypageMenuBtn {
+            position: fixed;
+            top: 50%;
+            right: 20px;
+            padding: 10px;
+            background: rgba(0, 0, 0, 0.6);
+            border-radius: 5px;
+            cursor: pointer;
+            z-index: 2;
+            transform: translateY(-50%);
+        }
+
+        .mypageLine {
+            width: 30px;
+            height: 3px;
+            background-color: white;
+            margin: 6px 0;
+            transition: 0.4s;
+        }
+
+        .mypageLine.cross1 {
+            transform: rotate(-45deg) translate(-7px, 6px);
+        }
+
+        .mypageLine.cross2 {
             opacity: 0;
         }
 
-        .mypageLine--3 {
-            width: 20px;
-            transform: rotate(0) translateY(0);
-        }
-
-        .mypageLine--3.mypageLine-cross {
-            width: 30px;
-            transform: rotate(-45deg) translateY(-10px);
-            background: rgba(0, 0, 0, 0.6);
+        .mypageLine.cross3 {
+            transform: rotate(45deg) translate(-8px, -8px);
         }
 
         .mypageNavLinks {
             position: absolute;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
-            transform: translateX(-100px);
             opacity: 0;
-            transition: all 900ms cubic-bezier(.9, 0, .33, 1);
+            transition: opacity 0.4s;
         }
 
         .fade-in {
             opacity: 1;
-            transform: translateX(0px);
         }
 
         .mypageLink {
@@ -155,7 +132,7 @@
             font-weight: 700;
             text-transform: uppercase;
             font-size: 1.2rem;
-            transition: all 300ms cubic-bezier(.9, 0, .33, 1);
+            transition: color 0.3s;
         }
 
         .mypageLink:hover {
@@ -166,23 +143,28 @@
 <body>
     <jsp:include page="nevi.jsp" />
 
-    <nav class="mypageNav">
-        <div class="mypageMenuBtn">
-            <div class="mypageLine mypageLine--1"></div>
-            <div class="mypageLine mypageLine--2"></div>
-            <div class="mypageLine mypageLine--3"></div>
-        </div>
+    <div class="mypageMenuBtn">
+        <div class="mypageLine mypageLine1"></div>
+        <div class="mypageLine mypageLine2"></div>
+        <div class="mypageLine mypageLine3"></div>
+    </div>
 
+    <nav class="mypageNav">
         <div class="mypageNavLinks">
-            <a href="" class="mypageLink">Home</a>
-            <a href="" class="mypageLink">Contact</a>
-            <a href="" class="mypageLink">Profile</a>
-            <a href="" class="mypageLink">About</a>
+            <a href="#" class="mypageLink">마이페이지 메뉴</a>
+            <form action="${pageContext.request.contextPath}/showPrivacyPw" method="POST">
+                <input type="hidden" name="userId" value="${userId}">
+                <button type="submit" value="">개인정보</button>
+            </form>
+             <form action="${pageContext.request.contextPath}/mypageVol" method="GET">
+                <input type="hidden" name="userId" value="${userId}">
+                <button type="submit" value="">전체보기</button>
+            </form>
         </div>
     </nav>
 
     <div class="mypageMain">
-        <div class="mypageMainTitle"><img src="./img/sole.png" alt="" class="">봉사신청 전체내역</div>
+        <div class="mypageMainTitle"><img src="./img/sole.png" alt="">봉사신청 전체내역</div>
         <div class="mypageMainFirstStack">
             <div class="mypageMainFirstMiddle">
                 <div>
@@ -203,7 +185,13 @@
                             <c:otherwise>
                                 <c:forEach var="vol" items="${mypageVolunteerList}">
                                     <tr>
-                                        <td>${vol.c_name}</td>
+                                        <td>
+                                            <form action="/viewRegVolunteerDetail.do" method="get">
+                                              <input type="hidden" name="userId" value="${userId}">
+                                              <input type="hidden" name="vReg_no" value="${vol.vreg_no}">
+                                                <button type="submit">${vol.c_name}</button>
+                                            </form>
+                                        </td>
                                         <td>${vol.vreg_start_date}</td>
                                         <td>${vol.vreg_end_date}</td>
                                         <td>${vol.service_type}</td>
@@ -216,20 +204,19 @@
             </div>
         </div>
     </div>
+
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const menuBtn = document.querySelector('.mypageMenuBtn');
             const nav = document.querySelector('.mypageNav');
-            const lineOne = document.querySelector('.mypageLine--1');
-            const lineTwo = document.querySelector('.mypageLine--2');
-            const lineThree = document.querySelector('.mypageLine--3');
+            const lines = document.querySelectorAll('.mypageLine');
             const link = document.querySelector('.mypageNavLinks');
 
             menuBtn.addEventListener('click', () => {
                 nav.classList.toggle('mypageNav-open');
-                lineOne.classList.toggle('mypageLine-cross');
-                lineTwo.classList.toggle('mypageLine-fade-out');
-                lineThree.classList.toggle('mypageLine-cross');
+                lines[0].classList.toggle('cross1');
+                lines[1].classList.toggle('cross2');
+                lines[2].classList.toggle('cross3');
                 link.classList.toggle('fade-in');
             });
         });
