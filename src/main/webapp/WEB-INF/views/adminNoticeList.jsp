@@ -1,0 +1,263 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<c:set var="contextPath" value="${pageContext.request.contextPath}"  />
+<%@ page import="jakarta.servlet.http.HttpSession"%>
+<%@ page import="jakarta.servlet.http.HttpServletRequest"%>
+<%@ page import="dc.human.gbnb.humanConnect.admin.vo.AdminNoticeListVO"%>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HumanConnect 공지사항</title>
+    <link rel="stylesheet" href="./css/style.css">
+     <style>
+            html, body {
+                background-color: white !important;
+            }
+     </style>
+</head>
+<body class="noticeListBody">
+ <script>
+        function resetSearch() {
+            const searchQueryInput = document.querySelector('input[name="searchQuery"]');
+            searchQueryInput.value = '';
+            searchQueryInput.closest('form').submit();
+        }
+        function logout() {
+            const logoutForm = document.createElement('form');
+            logoutForm.method = 'post';
+            logoutForm.action = '${pageContext.request.contextPath}/logout';
+            document.body.appendChild(logoutForm);
+            logoutForm.submit();
+        }
+    </script>
+<header class="adminMainHeader">
+    <img src="${pageContext.request.contextPath}/img/logo.png" alt="로고" onclick="logout()">
+</header>
+<div class="adminMainContainer">
+    <div class="adminMainSidebar">
+        <h3>관리자<br>페이지</h3>
+        <ul>
+            <li class="active"><a href="${pageContext.request.contextPath}/adminMain">봉사회원정보 조회</a></li>
+            <li><a href="${pageContext.request.contextPath}/adminCenterMem">센터회원정보 조회</a></li>
+            <li><a href="${pageContext.request.contextPath}/adminNoticeList.do">고객센터</a></li>
+        </ul>
+    </div>
+<!--공지사항 목록 및 삭제-->
+    <div class="adminNoticeListWholeContainer">
+    <form id="noticeListForm" method="post" enctype="multipart/form-data"
+            action="${pageContext.request.contextPath}/deleteNotices.do" style="display:block">
+        <div class="adminNoticeListDiv">
+            <h1>공지사항</h1>
+            <div class="buttonContainer1">
+                    <button class="noticeRegButton" name="noticeReg" value="새 글" type="button" onclick="showNoticeForm()">새 글</button>
+                    <button class="noticeDelButton" name="noticeDel" value="삭제" type="button" onclick="deleteSelectedNotices()">삭제</button>
+            </div>
+            <div class="noticeListSomeDiv">
+                <table class="noticeListTable">
+                   <thead>
+                       <tr>
+                           <th width="10%">No</th>
+                           <th width="53%">제목</th>
+                           <th width="10%">작성자</th>
+                           <th width="20%">작성일</th>
+                           <th width="7%">선택</th>
+                       </tr>
+                   </thead>
+                   <c:forEach var="item" items="${adminNoticeList}">
+                       <tbody>
+                           <tr>
+                              <td>
+                                <a href="${pageContext.request.contextPath}/viewNoticeDetail.do?nNumber=${item.nNumber}">
+                                  ${item.nNumber}
+                              </td>
+                              <td>${item.nTitle}</td>
+                              <td>${item.uId}</td>
+                              <td>${item.nDate}</td>
+                              <td>
+                                <form>
+                                    <input type="checkbox" class="deleteCheckbox" name="nNumbers" value="${item.nNumber}">
+                                    </input>
+                                </form>
+                              </td>
+                           </tr>
+                       </tbody>
+                    </c:forEach>
+                </table>
+            </div>
+            <div class="paginationNotice">
+               <span class="active">1</span>
+               <a href="test?page=2">2</a>
+               <a href="test?page=3">3</a>
+               <a href="test?page=4">4</a>
+               <a href="test?page=5">5</a>
+               <a href="test?page=6">6</a>
+               <a href="test?page=2">다음 &raquo;</a>
+            </div>
+       </div>
+      </form>
+   </div>
+
+
+    <!--새 글 작성-->
+    <div class="noticeListBody" id="noticeReg" style="display:none;">
+        <div class="adminNoticeListWholeContainer">
+            <form id="noticeRegForm" method="post" enctype="multipart/form-data"
+                        action="${pageContext.request.contextPath}/addNotice">
+
+                <div class="adminNoticeRegDiv">
+                    <h1>공지사항 등록</h1>
+                    <div class="buttonContainer2">
+                        <table class="noticeRegTable">
+                            <tr>
+                                <td width="25%">
+                                    공지 타입
+                                </td>
+                                <td width="25%">
+                                    공지사항
+                                </td>
+                                <td width="25%">
+                                    작성자
+                                </td>
+                                <td width="25%">
+                                    관리자
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    제목
+                                </td>
+                                <td colspan="5">
+                                    <label for="noticeTitle"></label>
+                                    <input type="text" id="noticeTitle" name="noticeTitle" required>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="6">
+                                    <label for="noticeContent"></label>
+                                    <textarea id="noticeContent" name="noticeContent" placeholder="공지사항을 입력 해주세요." required></textarea>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    첨부파일
+                                </td>
+                                <td colspan="5" background-color="white" class="click_fileUpload">
+                                   <label for="nAttachPath" class="click_fileUpload_label">파일 선택</label>
+                                   <input type="file" id="nAttachPath" name="nAttachPath" class="hidden_file_input">
+                                   <span id="file-name">선택된 파일 없음</span>
+                                </td>
+                            </tr>
+                        </table>
+                        <button type="submit" onclick="submitNotice()">등록</button>
+                        <button type="button" onclick="goNoticeList()">목록</button>
+                    </div>
+               </div>
+            </form>
+        </div>
+    </div>
+
+
+    <script type="text/javascript">
+
+        <!--공지사항 등록 페이지-->
+        function showNoticeForm() {
+            document.getElementById('noticeReg').style.display = 'block';
+            document.getElementById('noticeListForm').style.display = 'none';
+        }
+
+        function showNoticeDetail() {
+                window.location.href = "${pageContext.request.contextPath}/viewNoticeDetail.do";
+            }
+
+        function goNoticeList() {
+                          window.location.href = "${pageContext.request.contextPath}/adminNoticeList.do";
+        }
+
+        <!--공지사항 등록 실행-->
+        function submitNotice() {
+            const title = document.getElementById('noticeTitle').value;
+            const content = document.getElementById('noticeContent').value.replace(/\n/g, "<br>");
+            const file = document.getElementById('nAttachPath').files[0];
+
+            const formData = new FormData();
+                formData.append('noticeTitle', title);
+                formData.append('noticeContent', content);
+                formData.append('nAttachPath', file);
+
+            fetch("${contextPath}/addNotice", {
+            method: 'POST',
+            body: formData
+            })
+            .then(response => response.JSON()) // JSON 응답 파싱
+            .then(result => {
+            if (result === "addNotice_success") {
+              window.location.href = `./viewNoticeDetail.do?nNumber=${result.nNumber}`;
+            } else {
+              alert("공지사항 등록 실패");
+            }
+            })
+            .catch(error => {
+            console.error('Error:', error);
+            });
+            }
+
+
+        <!--공지사항 삭제-->
+        function deleteSelectedNotices() {
+            const checkboxes = document.querySelectorAll('input[name="nNumbers"]:checked');
+            const selectedNumbers = Array.from(checkboxes).map(checkbox => parseInt(checkbox.value));
+
+            console.log("Selected numbers:", selectedNumbers);
+
+            if (selectedNumbers.length > 0) {
+                fetch("${contextPath}/deleteNoticesAjax", {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({nNumbers: selectedNumbers }) // JSON.stringify 사용
+                })
+                .then(response => response.text())
+                .then(result => {
+                    console.log("Server response:", result);
+                    if (result === "success") {
+                        window.location.reload();
+                    } else {
+                        alert("공지글 삭제 성공");
+                        goNoticeList();
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+            } else {
+                alert("삭제할 공지사항을 선택해주세요.");
+            }
+        }
+
+        function handleNoticeItemClick(event) {
+                 const nNumber = event.target.dataset.nNumber;
+                 const detailUrl = `/detail?nNumber=${nNumber}`;
+                   window.location.href = detailUrl;
+               }
+
+       const noticeList = document.querySelectorAll('.notice-item');
+       noticeList.forEach(item => {
+         item.addEventListener('click', handleNoticeItemClick);
+       });
+
+       document.getElementById('nAttachPath').addEventListener('change', function() {
+           var fileName = this.files[0] ? this.files[0].name : '선택된 파일 없음';
+           document.getElementById('file-name').textContent = fileName;
+       });
+
+    </script>
+
+
+</body>
+</html>
+

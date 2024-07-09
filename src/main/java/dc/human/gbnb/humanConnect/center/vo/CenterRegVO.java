@@ -23,11 +23,39 @@ public class CenterRegVO {
 	private String vUploadFilePath;
 	private String vInfo;
 	private int v_no;
-//
+	private String cName;
+	private String cAddr1;
+	private String cAddr2;
+
+	//
 	public CenterRegVO(){
 
-			System.out.println("CenterRegVO 생성자 호출");
+		System.out.println("CenterRegVO 생성자 호출");
 
+	}
+
+	public String getcName() {
+		return cName;
+	}
+
+	public void setcName(String cName) {
+		this.cName = cName;
+	}
+
+	public String getcAddr1() {
+		return cAddr1;
+	}
+
+	public void setcAddr1(String cAddr1) {
+		this.cAddr1 = cAddr1;
+	}
+
+	public String getcAddr2() {
+		return cAddr2;
+	}
+
+	public void setcAddr2(String cAddr2) {
+		this.cAddr2 = cAddr2;
 	}
 
 	public String getvServiceType() {

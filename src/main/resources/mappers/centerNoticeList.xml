@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="dc.human.gbnb.humanConnect.center.dao.CenterNoticeListDAO">
+
+    <resultMap id="noticeListResult" type="dc.human.gbnb.humanConnect.center.vo.CenterNoticeListVO">
+        <result property="nNumber" column="n_number" />
+        <result property="nType" column="n_type" />
+        <result property="nTitle" column="n_title" />
+        <result property="uId" column="u_id" />
+        <result property="nDate" column="n_date"/>
+        <result property="nContent" column="n_content" />
+        <result property="nAttachPath" column="n_attach_path" />
+        <result property="createdDate" column="created_date" />
+        <result property="createdId" column="created_id" />
+        <result property="updatedDate" column="updated_date" />
+        <result property="updatedId" column="updated_id" />
+    </resultMap>
+
+    <!-- 공지사항 목록 -->
+    <select id="getNoticeList" resultMap="noticeListResult" parameterType="map">
+        <![CDATA[
+            SELECT * FROM (
+                SELECT
+                    ROWNUM AS rnum,
+                    n_number,
+                    n_type,
+                    n_title,
+                    u_id,
+                    n_date,
+                    n_content,
+                    n_attach_path,
+                    created_date,
+                    created_id,
+                    updated_date,
+                    updated_id
+                FROM
+                    customer_notice
+                ORDER BY
+                    n_number DESC
+            )
+            WHERE rnum BETWEEN #{offset} AND #{offset} + #{size} - 1
+        ]]>
+    </select>
+
+    <!-- 공지사항 개수 -->
+    <select id="countNotices" resultType="int">
+        <![CDATA[
+            SELECT COUNT(*)
+            FROM customer_notice
+        ]]>
+    </select>
+
+    <!-- 공지사항 상세 -->
+    <select id="getNoticeDetail" resultMap="noticeListResult">
+        <![CDATA[
+            SELECT
+                n_number,
+                n_title,
+                u_id,
+                n_date,
+                n_content,
+                n_attach_path
+            FROM
+                customer_notice
+            WHERE
+                n_number = #{nNumber}
+        ]]>
+    </select>
+</mapper>

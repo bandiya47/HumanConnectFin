@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="dc.human.gbnb.humanConnect.login.dao.LoginFindPwDAO">
+
+<!--    <resultMap id="findPwResult" type="dc.human.gbnb.humanConnect.login.vo.UserVO">-->
+<!--        <result property="userId" column="id" />-->
+<!--    </resultMap>-->
+
+    <select id="selectFindPw" parameterType="String">
+        <![CDATA[
+        SELECT u_id as Result
+          FROM volunteer_user
+         WHERE u_id = #{userId}
+        ]]>
+    </select>
+
+    <update id="updateFindPw" parameterType="String">
+        <![CDATA[
+		 update volunteer_user set
+		 U_PWD = #{userPw},
+		 UPDATED_ID = #{userId},
+         UPDATED_DATE = SYSDATE
+         where U_ID = #{userId}
+		]]>
+    </update>
+
+
+
+</mapper>
