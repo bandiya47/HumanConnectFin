@@ -1258,7 +1258,14 @@ vertical-align:middle;
     }
 }
 
-
+.mainvoListNoData{
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #888;
+}
 
 .mainFourthStack{                          /*4층 */
     display: flex;

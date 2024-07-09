@@ -126,8 +126,9 @@
         </div>
 
         <div class="mainAllBtn">
-            <form action="mypageVolunteerRecruitlist.html" method="post">
-                <button type="submit" value="">전체보기</button>
+             <form action="${pageContext.request.contextPath}/mypageVol" method="GET">
+                                <input type="hidden" name="userId" value="${userId}">
+                                <button type="submit" value="">전체보기</button>
             </form>
         </div>
 
@@ -160,11 +161,7 @@
             </div>
         </div>
 
-        <div class="mainAllBtn">
-            <form action="mypageAdoptlist.html" method="post">
-                <button type="submit" value="">전체보기</button>
-            </form>
-        </div>
+
 
         <div class="mainTitle"><img src="./img/sole.png" alt="" class="">보호동물 목록</div>
         <div class="mainThirdStack">
@@ -189,31 +186,38 @@
         <div class="mainFourthStack">
             <div class="MainFourthMiddle">
                 <div class="mainVolistContainer">
-                    <c:forEach var="avo" items="${approachVolList}" begin="0" end="2">
-                        <form name="main" method="post" action="volunteerDetail" encType="UTF-8">
-                            <div class="mainVolist">
-                                <table>
-                                    <input type="hidden" name="v_no" value="${avo.v_no }" />
-                                    <tr>
-                                        <th>글 제목 :</th>
-                                        <th><button type="submit">${avo.v_title}</button></th>
-                                    </tr>
-                                    <tr>
-                                        <td>모집마감일 :</td>
-                                        <td>${avo.v_rend_date}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>봉사시작일 :</td>
-                                        <td>${avo.vreg_start_date}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>봉사 장소 :</td>
-                                        <td>${avo.c_addr1}</td>
-                                    </tr>
-                                </table>
-                            </div>
-                        </form>
-                    </c:forEach>
+                    <c:choose>
+                        <c:when test="${empty approachVolList}">
+                            <div class="mainvoListNoData">표시할 데이터가 없습니다</div>
+                        </c:when>
+                        <c:otherwise>
+                            <c:forEach var="avo" items="${approachVolList}" begin="0" end="2">
+                                <form name="main" method="post" action="volunteerDetail" encType="UTF-8">
+                                    <div class="mainVolist">
+                                        <table>
+                                            <input type="hidden" name="v_no" value="${avo.v_no}" />
+                                            <tr>
+                                                <th>글 제목 :</th>
+                                                <th><button type="submit">${avo.v_title}</button></th>
+                                            </tr>
+                                            <tr>
+                                                <td>모집마감일 :</td>
+                                                <td>${avo.v_rend_date}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>봉사시작일 :</td>
+                                                <td>${avo.vreg_start_date}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>봉사 장소 :</td>
+                                                <td>${avo.c_addr1}</td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </form>
+                            </c:forEach>
+                        </c:otherwise>
+                    </c:choose>
                 </div>
             </div>
         </div>
