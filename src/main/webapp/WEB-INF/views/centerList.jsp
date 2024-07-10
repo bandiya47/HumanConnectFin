@@ -6,33 +6,38 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/style.css">
 </head>
 <body>
 <jsp:include page="nevi.jsp" />
-<div class="volunteerDetailDiv" style="width:1000px; height:580px">
+<div class="volunteerDetailDiv">
     <h3>보호센터 리스트</h3>
-    <table class="volunteerDetailTable">
-
-        <tr>
-            <td class="volunteerDetailTd">보호소 명</td>
-            <td class="volunteerDetailTd">주소</td>
-            <td class="volunteerDetailTd">대표번호</td>
-        </tr>
-        <c:forEach var="careInfoMap" items="${careInfo}">
-            <tr>
-                <td>
-                    <form method="get" action="${pageContext.request.contextPath}/detailCenterList.do" encType="UTF-8">
-                        <input type="hidden" name="userId" value="${userId}">
-                        <input type="hidden" name="careNm" value="${careInfoMap.careNm}">
-                        <input type="submit" value="${careInfoMap.careNm}" style="border:none; background-color:white; cursor:pointer;">
-                    </form>
-                </td>
-                <td>${careInfoMap.careAddr}</td>
-                <td>${careInfoMap.careTel}</td>
-            </tr>
-        </c:forEach>
-    </table>
+    <div class="centerListBox">
+        <table class="volunteerDetailTable">
+            <thead>
+                <tr>
+                    <th class="volunteerDetailTh">보호소명</th>
+                    <th class="volunteerDetailTh">주소</th>
+                    <th class="volunteerDetailTh" width="25%">대표번호</th>
+                </tr>
+            </thead>
+            <tbody>
+                <c:forEach var="careInfoMap" items="${careInfo}">
+                    <tr>
+                        <td class="volunteerDetailTd">
+                            <form method="get" action="${pageContext.request.contextPath}/detailCenterList.do" encType="UTF-8">
+                                <input type="hidden" name="userId" value="${userId}">
+                                <input type="hidden" name="careNm" value="${careInfoMap.careNm}">
+                                <input type="submit" value="${careInfoMap.careNm}" class="volunteerDetailInput">
+                            </form>
+                        </td>
+                        <td class="volunteerDetailTd">${careInfoMap.careAddr}</td>
+                        <td class="volunteerDetailTd">${careInfoMap.careTel}</td>
+                    </tr>
+                </c:forEach>
+            </tbody>
+        </table>
+    </div>
 </div>
 <div class="pagination" style="text-align : center;display: flex; justify-content: center;">
     <c:set var="startPage" value="${pageNo - ((pageNo - 1) % 10)}" />

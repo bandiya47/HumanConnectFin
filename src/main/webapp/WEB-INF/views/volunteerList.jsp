@@ -40,42 +40,6 @@
 	<!--전체 div-->
    <div class="volunteerListWholeContainer">
       <div>
-         <div class="volunteerListCategoryContainer">
-            <button onclick="addFilter('청소/배식')">청소/배식</button>
-            <button onclick="addFilter('산책')">산책</button>
-            <button onclick="addFilter('목욕')">목욕</button>
-            <button onclick="addFilter('사진')">사진</button>
-            <button onclick="addFilter('미용')">미용</button>
-            <button onclick="addFilter('이동')">이동</button>
-            <button onclick="addFilter('의료')">의료</button>
-         </div>
-         <div id="volunteerListFilterContainer"></div>
-
-         <table class="volunteerListFilterInput">
-            <tr>
-               <td>봉사기간 <input name="wantDay" type="date"></td>
-               <td>봉사명 <input name="volSearchInput" type="search" placeholder="봉사명을 입력하세요"></td>
-               <td>센터명 <input name="ctrSearchInput" type="search" placeholder="센터명을 입력하세요"></td>
-               <td>지역 <select onchange="selectRegion(this)">
-                     <option>행정구역 선택</option>
-                     <option value="all">전체</option>
-                     <option value="seoul">서울특별시</option>
-                     <option value="kyungki">경기도</option>
-                     <option value="chungnam">충청남도</option>
-                     <option value="chungbuk">충청북도</option>
-                     <option value="kangwon">강원도</option>
-                     <option value="jeonnam">전라남도</option>
-                     <option value="jeonbuk">전라북도</option>
-                     <option value="kyungnam">경상남도</option>
-                     <option value="kyungbuk">경상북도</option>
-                     <option value="jeju">제주시</option>
-               </select> <select id="volunteerListSelectCity">
-                     <option>도시 선택</option>
-               </select>
-               </td>
-            </tr>
-         </table>
-
          <div class="volunteerListVolRecruitList">
             <p>구인 리스트</p>
             <div>

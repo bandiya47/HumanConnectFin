@@ -29,9 +29,9 @@
         <%
             }
         %>
-        <a href="findId.jsp" class="find_button">다시 시도</a>
-        <a href="findPwd.jsp" class="find_button">비밀번호 찾기</a>
-        <a href="login.jsp" class="find_button">로그인 하기</a>
+        <a href="findId" class="find_button">다시 시도</a>
+        <a href="viewFindPw.do" class="find_button">비밀번호 재설정</a>
+        <a href="login" class="find_button">로그인 하기</a>
     </div>
 </body>
 </html>

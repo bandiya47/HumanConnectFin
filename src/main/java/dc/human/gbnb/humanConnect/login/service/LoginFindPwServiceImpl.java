@@ -1,13 +1,10 @@
 package dc.human.gbnb.humanConnect.login.service;
 
 import dc.human.gbnb.humanConnect.login.dao.LoginFindPwDAO;
-import dc.human.gbnb.humanConnect.login.vo.UserVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
 @Service("loginFindPwService")
 @Transactional(propagation = Propagation.REQUIRED)
@@ -18,11 +15,32 @@ public class LoginFindPwServiceImpl implements LoginFindPwService {
 
 
     @Override
-    public String findPw(String userId) throws Exception {
-        return loginFindPWDAO.selectFindPw(userId);
+    public String findPw(String userId,String userName,String userEmail,String userPhone) {
+        return loginFindPWDAO.selectFindPw(userId,userName,userEmail,userPhone);
     }
+
     @Override
     public int rePw(String userId,String userPw) throws Exception {
         return loginFindPWDAO.updateFindPw(userId,userPw);
+    }
+
+    @Override
+    public String findPw(String userId) {
+        return loginFindPWDAO.selectFindPw(userId);
+    }
+
+    @Override
+    public String findName(String userName) {
+        return loginFindPWDAO.selectFindPw(userName);
+    }
+
+    @Override
+    public String findEmail(String userEmail) {
+        return loginFindPWDAO.selectFindPw(userEmail);
+    }
+
+    @Override
+    public String findPh(String userPhone) {
+        return loginFindPWDAO.selectFindPw(userPhone);
     }
 }

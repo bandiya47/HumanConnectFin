@@ -21,13 +21,14 @@
                             <th>ID</th>
                             <th>이름</th>
                             <th>전화번호</th>
+                            <th>방문날짜</th>
                         </tr>
                     </thead>
                     <tbody>
                         <c:choose>
                             <c:when test="${empty adoptionList}">
                                 <tr>
-                                    <td colspan="3" class="centerNoData">표시할 데이터가 없습니다</td>
+                                    <td colspan="4" class="centerNoData">표시할 데이터가 없습니다</td>
                                 </tr>
                             </c:when>
                             <c:otherwise>
@@ -36,12 +37,19 @@
                                         <td>${vo.userId}</td>
                                         <td>${vo.name}</td>
                                         <td>${vo.phone}</td>
+                                        <td>${vo.visit_date}</td>
                                     </tr>
                                 </c:forEach>
                             </c:otherwise>
                         </c:choose>
                     </tbody>
                 </table>
+                <div class="pagination">
+                    <c:forEach begin="1" end="${totalPages}" var="i">
+                        <a href="${pageContext.request.contextPath}/centerAdoptionList?centerId=${centerId}&page=${i}"
+                           class="${i == currentPage ? 'active' : ''}">${i}</a>
+                    </c:forEach>
+                </div>
             </div>
         </section>
     </main>

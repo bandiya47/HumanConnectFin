@@ -5,15 +5,15 @@
 
 <mapper namespace="dc.human.gbnb.humanConnect.login.dao.LoginFindPwDAO">
 
-<!--    <resultMap id="findPwResult" type="dc.human.gbnb.humanConnect.login.vo.UserVO">-->
-<!--        <result property="userId" column="id" />-->
-<!--    </resultMap>-->
+    <!--    <resultMap id="findPwResult" type="dc.human.gbnb.humanConnect.login.vo.UserVO">-->
+    <!--        <result property="userId" column="id" />-->
+    <!--    </resultMap>-->
 
     <select id="selectFindPw" parameterType="String">
         <![CDATA[
         SELECT u_id as Result
           FROM volunteer_user
-         WHERE u_id = #{userId}
+         WHERE u_id = #{userId} AND u_name = #{userName} AND u_email = #{userEmail} AND u_phone = #{userPhone}
         ]]>
     </select>
 

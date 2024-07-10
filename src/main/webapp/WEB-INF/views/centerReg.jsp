@@ -467,226 +467,205 @@
 
             					<h3>모집요강 등록</h3>
 
-		        <div>
-		        <h2><input class="centerRegTitle" id="title" type="text" name="vTitle" placeholder="제목을 입력해주세요."></h2>
-		        <table class="centerRegTable">
-		            <tr>
-		                <td class="centerRegTd">봉사기간</td>
-		                <td>
-		                <div id="vDate">
-		                    <input id="startDate" class="centerRegDateLeft" type="date" name="vStartDate"><vStartDate></vStartDate>
-		                    ~
-		                    <input id="endDate" class="centerRegDateRight" type="date" name="vEndDate">
-                        </div><vDate></vDate>
-		                </td>
-		                <td class="centerRegTd">봉사시간</td>
-		                <td>
-		                <div id="vTime">
-		                    <input id="startTime" class="centerRegDateLeft" type="time" name="vStartTime">
-		                    ~
-		                    <input id="endTime" class="centerRegDateRight" type="time" name="vLastTime">
-		                </div><vTime></vTime>
-		                </td>
-		            </tr>
-		            <tr>
-		                <td class="centerRegTd">모집기간</td>
-		                <td>
-		                <div id="rDate">
-		                    <input id="rStartDate" class="centerRegDateLeft" type="date" name="vRStartDate">
-		                    ~
-		                    <input id="rEndDate" class="centerRegDateRight" type="date" name="vREndDate">
-		                </div><rDate></rDate>
-		                </td>
-		                <td class="centerRegTd">활동요일</td>
-		                <td><div id="work">
-		                    <input id="work1" type="checkbox" name="vWorkingDay1" value="월">월
-		                    <input id="work2" type="checkbox" name="vWorkingDay2" value="화">화
-		                    <input id="work3" type="checkbox" name="vWorkingDay3" value="수">수
-		                    <input id="work4" type="checkbox" name="vWorkingDay4" value="목">목
-		                    <input id="work5" type="checkbox" name="vWorkingDay5" value="금">금
-		                    <input id="work6" type="checkbox" name="vWorkingDay6" value="토">토
-		                    <input id="work7" type="checkbox" name="vWorkingDay7" value="일">일
-		                    </div>
-							<work></work>
-		                </td>
-		            </tr>
-		            <tr>
-		                <td class="centerRegTd">모집인원</td>
-		                <td><input class="centervRegAmnt" id="vRegAmnt" type="text" name="vRegAmnt" placeholder="모집인원을 입력해주세요."><vRegAmnt></vRegAmnt></td>
-		                <td class="centerRegTd">봉사분야</td>
-		                <td>
-		                <select id="serviceCode"  name="vServiceCode">
-		                        <option value="">선택</option>
-		                        <option value="1">청소/배식</option>
-		                        <option value="2">산책</option>
-		                        <option value="3">목욕</option>
-		                        <option value="4">사진</option>
-		                        <option value="5">미용</option>
-		                        <option value="6">이동</option>
-		                        <option value="7">의료</option>
-		                    </select>
-		                    <serviceCode></serviceCode>
-		                </td>
-		            </tr>
-		            <tr>
-		               <td class="centerRegTd">센터명</td>
-		                <td>
-		                    ${centerList2[0].cName}
-		                </td>
-		                <td class="centerRegTd">봉사장소</td>
-		                <td>
-		                    ${centerList2[0].cAddr1} ${centerList2[0].cAddr2}
-		                </td>
-		            </tr>
-		            <tr>
-		                <td class="centerRegTd">첨부파일</td>
-		                <td colspan="3"><input id="file" type="file" name="vUploadFilePath" multiple="multiple"><file></file></td>
-		            </tr>
-		        </table>
-		        <div class="centerRegDiv2">
-		            <textarea id="info" name="vInfo"  placeholder="자격요건, 주의사항, 상세내용, 등을 입력해주세요."></textarea><info></info>
-		        </div>
-
-
-                            <c:choose>
-
-                                <c:when test="${empty recruitmentList}">
-                                		        <div class="centerRegDiv2">
-                                	                <table>
-                                                        <thead>
-                                                            <tr>
-                                                                <th width="15%">ID</th>
-                                                                <th width="15%">이름</th>
-                                                                <th width="15%">전화번호</th>
-                                                                <th>봉사상태</th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody>
-                                    <tr>
-                                        <td colspan="4" class="centerNoData">표시할 데이터가 없습니다</td>
-                                    </tr>
-                                              </tbody>
-                                                                                        </table>
-
-                                                                    		        </div>
-                                </c:when>
-                                <c:otherwise>
-                                		        <div class="centerRegDiv2">
-                                	                <table>
-                                                        <thead>
-                                                            <tr>
-                                                                <th width="15%">ID</th>
-                                                                <th width="15%">이름</th>
-                                                                <th width="15%">전화번호</th>
-                                                                <th>봉사상태</th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                                    <c:forEach var="vo" items="${recruitmentList}">
-                                                                        <tr>
-                                                                            <td>${vo.userId}</td>
-                                                                            <td>${vo.name}</td>
-                                                                            <td>${vo.phone}</td>
-                                                                            <td>
-                                                                                <c:choose>
-                                                                                    <c:when test="${vo.status == '0'}">
-                                                                                        <div class="centerMainBtnG">
-                                                                                            <form method="post" action="${pageContext.request.contextPath}/centerMain">
-                                                                                                <input type="hidden" name="userId" value="${vo.userId}">
-                                                                                                <input type="hidden" name="centerId" value="${centerId}">
-                                                                                                <input type="hidden" name="action" value="approve">
-                                                                                                <input type="hidden" name="section" value="recruitment">
-                                                                                                <button class="centerMainApprv" type="submit">승인</button>
-                                                                                            </form>
-                                                                                            <form method="post" action="${pageContext.request.contextPath}/centerMain">
-                                                                                                <input type="hidden" name="userId" value="${vo.userId}">
-                                                                                                <input type="hidden" name="centerId" value="${centerId}">
-                                                                                                <input type="hidden" name="action" value="reject">
-                                                                                                <input type="hidden" name="section" value="recruitment">
-                                                                                                <button class="centerMainRej" type="button" onclick="showRejectReason('${vo.userId}_recruitment')">거절</button>
-                                                                                            </form>
-                                                                                        </div>
-                                                                                        <div id="reject-reason-${vo.userId}_recruitment" style="display:none;">
-                                                                                            <form method="post" action="${pageContext.request.contextPath}/centerMain">
-                                                                                                <input type="hidden" name="userId" value="${vo.userId}">
-                                                                                                <input type="hidden" name="centerId" value="${centerId}">
-                                                                                                <input type="hidden" name="action" value="reject">
-                                                                                                <input type="hidden" name="section" value="recruitment">
-                                                                                                <input class="centerMainRR" type="text" name="rejectReason" placeholder="거절 사유를 입력하세요" />
-                                                                                                <button class="centerRR" type="submit">O</button>
-                                                                                                <button class="centerRR" type="button" onclick="hideRejectReason('${vo.userId}_recruitment')">X</button>
-                                                                                            </form>
-                                                                                        </div>
-                                                                                    </c:when>
-                                                                                    <c:when test="${vo.status == '1'}">
-                                                                                        <form method="post" action="${pageContext.request.contextPath}/centerMain">
-                                                                                            <input type="hidden" name="userId" value="${vo.userId}">
-                                                                                            <input type="hidden" name="centerId" value="${centerId}">
-                                                                                            <input type="hidden" name="action" value="complete">
-                                                                                            <input type="hidden" name="section" value="recruitment">
-                                                                                            <button class="centerMainVolBtn" type="submit">봉사완료</button>
-                                                                                        </form>
-                                                                                    </c:when>
-                                                                                    <c:when test="${vo.status == '2'}">
-                                                                                        <div>거절됨: ${vo.rejectReason}</div>
-                                                                                    </c:when>
-                                                                                    <c:when test="${vo.status == '3'}">
-                                                                                        <div>봉사완료</div>
-                                                                                    </c:when>
-                                                                                </c:choose>
-                                                                            </td>
-                                                                        </tr>
-                                                                    </c:forEach>
-                                              </tbody>
-                                                                                        </table>
-
-                                                                    		        </div>
-                                </c:otherwise>
-
-
-                            </c:choose>
-
-
-
-
-
-
-
-
-		        </div>
-
-                    <div class="button-container">
-
-                    <c:set var="v_no" value="${centerList[0].v_no}" />
-                    <c:choose>
-                    <c:when test="${ v_no > 0}">
-                        <form name="recruitmentRegister" method="get" action="${pageContext.request.contextPath}/centerMain" encType="utf-8">
-                            <input type="hidden" name="userId" value="${centerId}">
-                            <input id="centerRegBtnCN" type="submit"  class="centerRegBtn" value="목록" />
-                        </form>
-                        <form name="recruitmentRegister" method="get" action="${pageContext.request.contextPath}/modifyCenterReg.do" encType="utf-8">
-                            <input id="centerRegBtnRM" class="centerRegBtn" type="submit" value="수정" />
-                            <input type="hidden" name="centerId" value="${centerId}"/>
-                            <input type="hidden" name="v_no" value="${v_no}"/>
-                        </form>
-                    </c:when>
-                    <c:otherwise>
-                        <form name="recruitmentRegister" method="get" action="${pageContext.request.contextPath}/centerMain" encType="utf-8">
-                            <input type="hidden" name="userId" value="${centerId}">
-                            <input id="centerRegBtnCN" type="submit"  class="centerRegBtn" value="취소" />
-                        </form>
-                        <form name="recruitmentRegister" method="get" action="${pageContext.request.contextPath}/viewCenterReg.do" encType="utf-8">
-                            <input id="centerRegBtnRM" class="centerRegBtn" type="button" value="등록" onClick="fn_process()" />
-                            <input type="hidden" name="centerId" value="${centerId}"/>
-                            <hidden></hidden>
-                        </form>
-                    </c:otherwise>
-
-                    </c:choose>
+		        <div class="centerRegBox">
+		            <h2><input class="centerRegTitle" id="title" type="text" name="vTitle" placeholder="제목을 입력해주세요."></h2>
+                    <table class="centerRegTable">
+                        <tr>
+                            <td class="centerRegTd">봉사기간</td>
+                            <td>
+                            <div id="vDate">
+                                <input id="startDate" class="centerRegDateLeft" type="date" name="vStartDate"><vStartDate></vStartDate>
+                                ~
+                                <input id="endDate" class="centerRegDateRight" type="date" name="vEndDate">
+                            </div><vDate></vDate>
+                            </td>
+                            <td class="centerRegTd">봉사시간</td>
+                            <td>
+                            <div id="vTime">
+                                <input id="startTime" class="centerRegDateLeft" type="time" name="vStartTime">
+                                ~
+                                <input id="endTime" class="centerRegDateRight" type="time" name="vLastTime">
+                            </div><vTime></vTime>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="centerRegTd">모집기간</td>
+                            <td>
+                            <div id="rDate">
+                                <input id="rStartDate" class="centerRegDateLeft" type="date" name="vRStartDate">
+                                ~
+                                <input id="rEndDate" class="centerRegDateRight" type="date" name="vREndDate">
+                            </div><rDate></rDate>
+                            </td>
+                            <td class="centerRegTd">활동요일</td>
+                            <td><div id="work">
+                                <input id="work1" type="checkbox" name="vWorkingDay1" value="월">월
+                                <input id="work2" type="checkbox" name="vWorkingDay2" value="화">화
+                                <input id="work3" type="checkbox" name="vWorkingDay3" value="수">수
+                                <input id="work4" type="checkbox" name="vWorkingDay4" value="목">목
+                                <input id="work5" type="checkbox" name="vWorkingDay5" value="금">금
+                                <input id="work6" type="checkbox" name="vWorkingDay6" value="토">토
+                                <input id="work7" type="checkbox" name="vWorkingDay7" value="일">일
+                                </div>
+                                <work></work>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="centerRegTd">모집인원</td>
+                            <td><input class="centervRegAmnt" id="vRegAmnt" type="text" name="vRegAmnt" placeholder="모집인원을 입력해주세요."><vRegAmnt></vRegAmnt></td>
+                            <td class="centerRegTd">봉사분야</td>
+                            <td>
+                            <select id="serviceCode"  name="vServiceCode">
+                                    <option value="">선택</option>
+                                    <option value="1">청소/배식</option>
+                                    <option value="2">산책</option>
+                                    <option value="3">목욕</option>
+                                    <option value="4">사진</option>
+                                    <option value="5">미용</option>
+                                    <option value="6">이동</option>
+                                    <option value="7">의료</option>
+                                </select>
+                                <serviceCode></serviceCode>
+                            </td>
+                        </tr>
+                        <tr>
+                           <td class="centerRegTd">센터명</td>
+                            <td>
+                                ${centerList2[0].cName}
+                            </td>
+                            <td class="centerRegTd">봉사장소</td>
+                            <td>
+                                ${centerList2[0].cAddr1} ${centerList2[0].cAddr2}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="centerRegTd">첨부파일</td>
+                            <td colspan="3"><input id="file" type="file" name="vUploadFilePath" multiple="multiple"><file></file></td>
+                        </tr>
+                    </table>
+		            <div class="centerRegDiv2">
+		                <textarea id="info" name="vInfo"  placeholder="자격요건, 주의사항, 상세내용, 등을 입력해주세요."></textarea><info></info>
                     </div>
-
+                    <c:choose>
+                        <c:when test="${empty recruitmentList}">
+                            <div class="centerRegDiv2">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th width="15%">ID</th>
+                                            <th width="15%">이름</th>
+                                            <th width="15%">전화번호</th>
+                                            <th>봉사상태</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td colspan="4" class="centerNoData">표시할 데이터가 없습니다</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </c:when>
+                        <c:otherwise>
+                            <div class="centerRegDiv2">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th width="15%">ID</th>
+                                            <th width="15%">이름</th>
+                                            <th width="15%">전화번호</th>
+                                            <th>봉사상태</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <c:forEach var="vo" items="${recruitmentList}">
+                                            <tr>
+                                                <td>${vo.userId}</td>
+                                                <td>${vo.name}</td>
+                                                <td>${vo.phone}</td>
+                                                <td>
+                                                    <c:choose>
+                                                        <c:when test="${vo.status == '0'}">
+                                                            <div class="centerMainBtnG">
+                                                                <form method="post" action="${pageContext.request.contextPath}/centerMain">
+                                                                    <input type="hidden" name="userId" value="${vo.userId}">
+                                                                    <input type="hidden" name="centerId" value="${centerId}">
+                                                                    <input type="hidden" name="action" value="approve">
+                                                                    <input type="hidden" name="section" value="recruitment">
+                                                                    <button class="centerMainApprv" type="submit">승인</button>
+                                                                </form>
+                                                                <form method="post" action="${pageContext.request.contextPath}/centerMain">
+                                                                    <input type="hidden" name="userId" value="${vo.userId}">
+                                                                    <input type="hidden" name="centerId" value="${centerId}">
+                                                                    <input type="hidden" name="action" value="reject">
+                                                                    <input type="hidden" name="section" value="recruitment">
+                                                                    <button class="centerMainRej" type="button" onclick="showRejectReason('${vo.userId}_recruitment')">거절</button>
+                                                                </form>
+                                                            </div>
+                                                            <div id="reject-reason-${vo.userId}_recruitment" style="display:none;">
+                                                                <form method="post" action="${pageContext.request.contextPath}/centerMain">
+                                                                    <input type="hidden" name="userId" value="${vo.userId}">
+                                                                    <input type="hidden" name="centerId" value="${centerId}">
+                                                                    <input type="hidden" name="action" value="reject">
+                                                                    <input type="hidden" name="section" value="recruitment">
+                                                                    <input class="centerMainRR" type="text" name="rejectReason" placeholder="거절 사유를 입력하세요" />
+                                                                    <button class="centerRR" type="submit">O</button>
+                                                                    <button class="centerRR" type="button" onclick="hideRejectReason('${vo.userId}_recruitment')">X</button>
+                                                                </form>
+                                                            </div>
+                                                        </c:when>
+                                                        <c:when test="${vo.status == '1'}">
+                                                            <form method="post" action="${pageContext.request.contextPath}/centerMain">
+                                                                <input type="hidden" name="userId" value="${vo.userId}">
+                                                                <input type="hidden" name="centerId" value="${centerId}">
+                                                                <input type="hidden" name="action" value="complete">
+                                                                <input type="hidden" name="section" value="recruitment">
+                                                                <button class="centerMainVolBtn" type="submit">봉사완료</button>
+                                                            </form>
+                                                        </c:when>
+                                                        <c:when test="${vo.status == '2'}">
+                                                            <div>거절됨: ${vo.rejectReason}</div>
+                                                        </c:when>
+                                                        <c:when test="${vo.status == '3'}">
+                                                            <div>봉사완료</div>
+                                                        </c:when>
+                                                    </c:choose>
+                                                </td>
+                                            </tr>
+                                        </c:forEach>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </c:otherwise>
+                    </c:choose>
+		        </div>
+                <div class="button-container">
+                    <c:set var="v_no" value="${centerList[0].v_no}" />
+                        <c:choose>
+                            <c:when test="${ v_no > 0}">
+                                <form name="recruitmentRegister" method="get" action="${pageContext.request.contextPath}/centerMain" encType="utf-8">
+                                    <input type="hidden" name="userId" value="${centerId}">
+                                    <input id="centerRegBtnCN" type="submit"  class="centerRegBtn" value="목록" />
+                                </form>
+                                <form name="recruitmentRegister" method="get" action="${pageContext.request.contextPath}/modifyCenterReg.do" encType="utf-8">
+                                    <input id="centerRegBtnRM" class="centerRegBtn" type="submit" value="수정" />
+                                    <input type="hidden" name="centerId" value="${centerId}"/>
+                                    <input type="hidden" name="v_no" value="${v_no}"/>
+                                </form>
+                            </c:when>
+                            <c:otherwise>
+                                <form name="recruitmentRegister" method="get" action="${pageContext.request.contextPath}/centerMain" encType="utf-8">
+                                    <input type="hidden" name="userId" value="${centerId}">
+                                    <input id="centerRegBtnCN" type="submit"  class="centerRegBtn" value="취소" />
+                                </form>
+                                <form name="recruitmentRegister" method="get" action="${pageContext.request.contextPath}/viewCenterReg.do" encType="utf-8">
+                                    <input id="centerRegBtnRM" class="centerRegBtn" type="button" value="등록" onClick="fn_process()" />
+                                    <input type="hidden" name="centerId" value="${centerId}"/>
+                                    <hidden></hidden>
+                                </form>
+                            </c:otherwise>
+                    </c:choose>
+                </div>
 		    </div>
-
 		</body>
-    </html>
 </html>

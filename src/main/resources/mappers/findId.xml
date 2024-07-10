@@ -5,8 +5,11 @@
 
 <mapper namespace="dc.human.gbnb.humanConnect.login.dao.FindIdDAO">
     <select id="searchMember" parameterType="dc.human.gbnb.humanConnect.login.vo.FindIdVO" resultType="java.lang.String">
-        SELECT U_ID
-        FROM volunteer_user
-        WHERE U_NAME = #{u_Name} AND U_EMAIL = #{u_Email}
+        SELECT
+            U_ID
+        FROM
+            volunteer_user
+        WHERE
+            U_NAME = #{u_Name} AND U_EMAIL = #{u_Email}
     </select>
 </mapper>

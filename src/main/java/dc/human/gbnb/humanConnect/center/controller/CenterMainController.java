@@ -16,5 +16,7 @@ public interface CenterMainController {
             @RequestParam("resNo") String resNo,
             @RequestParam(value = "rejectReason", required = false) String rejectReason
     );
-    public ModelAndView showAdoptionList(@RequestParam("centerId") String centerId);
+    public ModelAndView showAdoptionList(@RequestParam("centerId") String centerId,
+                                         @RequestParam(value = "page", defaultValue = "1") int page,
+                                         @RequestParam(value = "size", defaultValue = "7") int size);
 }

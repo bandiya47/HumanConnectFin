@@ -28,8 +28,8 @@ public class CenterMainServiceImpl implements CenterMainService {
     }
 
     @Override
-    public List<CenterMainVO> getAdoptionList(String centerId) {
-        return centerMainDAO.getAdoptionList(centerId);
+    public List<CenterMainVO> getAdoptionList(String centerId, int offset, int size) { // 페이지네이션을 위한 매개변수 추가
+        return centerMainDAO.getAdoptionList(centerId, offset, size);
     }
 
     @Override
@@ -45,5 +45,10 @@ public class CenterMainServiceImpl implements CenterMainService {
     @Override
     public int getTotalRecruitments(String centerId) {
         return centerMainDAO.getTotalRecruitments(centerId);
+    }
+
+    @Override
+    public int getTotalAdoptions(String centerId) {
+        return centerMainDAO.getTotalAdoptions(centerId);
     }
 }

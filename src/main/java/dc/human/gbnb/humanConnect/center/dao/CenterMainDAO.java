@@ -14,7 +14,7 @@ public interface CenterMainDAO {
 
     List<CenterMainVO> getVolunteerList(String centerId);
 
-    List<CenterMainVO> getAdoptionList(String centerId);
+    List<CenterMainVO> getAdoptionList(@Param("centerId") String centerId, @Param("offset") int offset, @Param("size") int size);
 
     int updateRecruitmentStatus(@Param("userId") String userId,
                                 @Param("status") int status,
@@ -29,4 +29,6 @@ public interface CenterMainDAO {
                               @Param("resNo") String resNo);
 
     int getTotalRecruitments(@Param("centerId") String centerId);
+
+    int getTotalAdoptions(@Param("centerId") String centerId);
 }

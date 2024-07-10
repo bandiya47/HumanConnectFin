@@ -23,15 +23,16 @@ public class CenterMainControllerImpl implements CenterMainController {
                                        @RequestParam(value = "page", defaultValue = "1") int page,
                                        @RequestParam(value = "size", defaultValue = "7") int size) {
         String centerId = userId;
+        int offset = (page - 1) * size;
 
         ModelAndView mav = new ModelAndView("centerMain");
-        List<CenterMainVO> recruitmentList = centerMainService.getRecruitmentList(centerId, page, size);
+        List<CenterMainVO> recruitmentList = centerMainService.getRecruitmentList(centerId, offset, size);
         int totalRecords = centerMainService.getTotalRecruitments(centerId);
         int totalPages = (int) Math.ceil((double) totalRecords / size);
 
         mav.addObject("recruitmentList", recruitmentList);
         mav.addObject("volunteerList", centerMainService.getVolunteerList(centerId));
-        mav.addObject("adoptionList", centerMainService.getAdoptionList(centerId));
+        mav.addObject("adoptionList", centerMainService.getAdoptionList(centerId, offset, size));
         mav.addObject("centerId", userId);
         mav.addObject("currentPage", page);
         mav.addObject("totalPages", totalPages);
@@ -84,12 +85,18 @@ public class CenterMainControllerImpl implements CenterMainController {
 
     @Override
     @GetMapping("/centerAdoptionList")
-    public ModelAndView showAdoptionList(@RequestParam("centerId") String centerId) {
-        List<CenterMainVO> adoptionList = centerMainService.getAdoptionList(centerId);
+    public ModelAndView showAdoptionList(@RequestParam("centerId") String centerId,
+                                         @RequestParam(value = "page", defaultValue = "1") int page,
+                                         @RequestParam(value = "size", defaultValue = "7") int size) {
+        List<CenterMainVO> adoptionList = centerMainService.getAdoptionList(centerId, page, size);
+        int totalRecords = centerMainService.getTotalAdoptions(centerId);
+        int totalPages = (int) Math.ceil((double) totalRecords / size);
 
         ModelAndView mav = new ModelAndView("centerAdoptionList");
         mav.addObject("adoptionList", adoptionList);
         mav.addObject("centerId", centerId);
+        mav.addObject("currentPage", page);
+        mav.addObject("totalPages", totalPages);
 
         return mav;
     }

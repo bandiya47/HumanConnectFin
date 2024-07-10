@@ -8,6 +8,7 @@ public class CenterMainVO {
     private String rejectReason;
     private String title;
     private String resNo;
+    private String visit_date;
 
     // 생성자, getter, setter
 
@@ -22,6 +23,14 @@ public class CenterMainVO {
     }
 
     // Getters and Setters
+
+    public String getVisit_date() {
+        return visit_date;
+    }
+
+    public void setVisit_date(String visit_date) {
+        this.visit_date = visit_date;
+    }
 
     public String getUserId() {
         return userId;

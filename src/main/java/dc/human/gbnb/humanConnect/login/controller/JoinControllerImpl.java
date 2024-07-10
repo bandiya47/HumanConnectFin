@@ -4,13 +4,16 @@ import dc.human.gbnb.humanConnect.login.service.JoinService;
 import dc.human.gbnb.humanConnect.login.vo.JoinVO;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.HashMap;
+import java.util.Map;
 
-@Controller
+
+@RestController
 public class JoinControllerImpl implements JoinController {
 
     @Autowired
@@ -40,12 +43,21 @@ public class JoinControllerImpl implements JoinController {
     }
 
     @Override
-    @GetMapping("/checkUserId")
+    @PostMapping("/checkUserIdDuplicate")
     @ResponseBody
-    public boolean checkUserId(@RequestParam("u_Id") String u_Id) {
-        return joinService.isUserIdAvailable(u_Id);
+    public Map<String, String> checkUserIdDuplicate(@RequestParam("u_Id") String u_Id) throws Exception {
+        Map<String, String> response = new HashMap<>();
+        if (joinService.isUserIdDuplicate(u_Id)) {
+            response.put("status", "duplicate");
+        } else {
+            response.put("status", "available");
+        }
+        return response;
     }
-    }
+
+}
+
+
 
     // 회원가입 처리 서블릿 (예시)
 //    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, ServletException, IOException {

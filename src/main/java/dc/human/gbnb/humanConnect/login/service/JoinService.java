@@ -4,7 +4,7 @@ import dc.human.gbnb.humanConnect.login.vo.JoinVO;
 
 public interface JoinService {
 
-    boolean isUserIdAvailable(String u_Id);
+    boolean isUserIdDuplicate(String u_Id) throws Exception;
 
     int addMember(JoinVO joinVO) throws Exception;
 }

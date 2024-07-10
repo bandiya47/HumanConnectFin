@@ -249,6 +249,7 @@
                             <th>ID</th>
                             <th>이름</th>
                             <th>전화번호</th>
+                            <th>방문날짜</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -264,6 +265,7 @@
                                         <td>${vo.userId}</td>
                                         <td>${vo.name}</td>
                                         <td>${vo.phone}</td>
+                                        <td>${vo.visit_date}</td>
                                     </tr>
                                 </c:forEach>
                             </c:otherwise>

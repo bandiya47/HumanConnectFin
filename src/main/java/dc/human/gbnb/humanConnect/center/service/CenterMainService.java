@@ -9,11 +9,13 @@ public interface CenterMainService {
 
     List<CenterMainVO> getVolunteerList(String centerId);
 
-    List<CenterMainVO> getAdoptionList(String centerId);
+    List<CenterMainVO> getAdoptionList(String centerId, int offset, int size);
 
     int updateRecruitmentStatus(String userId, int status, String rejectReason, String centerId, String resNo);
 
     int updateVolunteerStatus(String userId, int status, String rejectReason, String centerId, String resNo);
 
     int getTotalRecruitments(String centerId);
+
+    int getTotalAdoptions(String centerId);
 }

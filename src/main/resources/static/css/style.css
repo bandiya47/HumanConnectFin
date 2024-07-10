@@ -474,17 +474,19 @@ header{
     width: 400px;
     margin: 15px auto 0;
     text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .loginRegBtn {
-    float : right;
-    margin-right : -5px;
+    margin-right: -5px;
     border: none;
     background-color: #FDECCB;
     color: #838383;
     cursor: pointer;
 }
 .loginRegBtn:hover {
-    text-decoration-line:underline;
+    text-decoration-line: underline;
 }
 /**********************************************센터메인*************************************************/
 .centerBody, .centerHtml {
@@ -1672,60 +1674,92 @@ vertical-align:middle;
     width: 50%;
     height: 20%;
 }
+
+.joinText, .joinCheckBox, .join_ChkIdBtn {
+    font-family: 'MangoDdobak-B';
+}
+
 .joinText {
     width: 650px;
     height: 50px;
-    margin: 10px;    
-    margin-left: 11%;
-    margin-right: 10%;
-    align-content: center;
-    align-items: center;
-   
+    margin: 10px auto;
+    display: block;
 }
+
+.joinContainer3 {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 10px auto;
+    width: 650px;
+}
+
 .joinId {
-    width: 400px;
-    height: 30px;
-    margin: 10px;    
-    margin-left: 11%;
-    margin-right: 10%;
-    align-content: center;
-    align-items: center;
-  
+    flex-grow: 1;
+    height: 50px;
+    margin-right: 10px;
+    margin-left: -3px;
+    font-family: 'MangoDdobak-B';
 }
-.joinIdCheck {
-    height: 30px;
-    width: 100px;
-    margin-left: -5px;
-    margin-right: 10%;
+
+.join_ChkIdBtn {
+    width: 150px;
+    height: 50px;
+    padding: 0;
+    color: white;
+    background-color: #EC9343;
+    border: none;
+    cursor: pointer;
+    border-radius: 3px;
+    font-family: 'MangoDdobak-B';
 }
+
+.join_ChkIdBtn:hover {
+    background-color: #D87A2B;
+}
+
 .joinCheckBox {
     margin: 5px;
     text-align: left;
 }
+
 .joinBody {
     font-family: Arial, sans-serif;
-    margin: 0px;
+    margin: 0;
     background-color: #FDECCB;
-      text-align: center;
+    text-align: center;
 }
-.joinBody.maxWidth {
-    max-width: 1000px;
-}
-.joinBody.maxheight {
-    max-height: 1400px;
-}
+
 .joinContainer {
     max-width: 600px;
     margin: 0 auto;
     text-align: left;
 }
+
+.joinContainer1, .joinContainer2, .joinContainer3 {
+    max-width: 90%;
+    height: auto;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.joinContainer2 {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 650px;
+    margin: 10px auto;
+}
+.joinContainer2 label {
+    margin-right: 10px; /* 라벨과 체크박스 사이의 간격 */
+}
 .joinH1 {
     text-align: center;
     font-size: 20pt;
-    font-style: bold;
-    margin-top: 10px;
-    margin-bottom: 15px; 
+    font-weight: bold;
+    margin: 10px 0;
 }
+
 .joinTerms {
     border: 1px solid #ccc;
     padding: 10px;
@@ -1733,10 +1767,12 @@ vertical-align:middle;
     height: 200px;
     overflow-y: scroll;
 }
+
 .joinCheckbox {
-    margin-top: 10px;
-    margin-bottom: 10px;
+    margin: 10px 0;
+    text-align: left;
 }
+
 .joinSubmit-btn {
     display: block;
     width: 100%;
@@ -1747,14 +1783,27 @@ vertical-align:middle;
     cursor: pointer;
     margin-bottom: 50px;
 }
+
 .joinSubmit-btn:disabled {
     background-color: #ccc;
     cursor: not-allowed;
 }
+
 .joinSubmit-btn:hover {
-            background-color: #F1A580;
-            font-decoration: none;
-        }
+    background-color: #F1A580;
+}
+
+#join_IdMessage {
+    margin-top: 5px;
+}
+
+.join_Duplicate {
+    color: red;
+}
+
+.join_Available {
+    color: green;
+}
 /**조인 끝~~*****************************************************************************************************************/
 /**파인드 시작~~*****************************************************************************************************************/
       .find_logo {
@@ -1840,7 +1889,7 @@ vertical-align:middle;
         .find_button {
             width: 100%;
             padding: 10px;
-            background-color: #EC9343;
+            background-color: #FEAB82;
             color: white;
             border: none;
             border-radius: 5px;
@@ -1850,7 +1899,7 @@ vertical-align:middle;
             font-family: 'MangoDdobak-B';
         }
         .find_button:hover {
-            background-color: #D87A2B;
+            background-color: #F1A580;
             font-decoration: none;
             font-family: 'MangoDdobak-B';
         }
@@ -2233,108 +2282,118 @@ vertical-align:middle;
 /**센터레그 끝~~*****************************************************************************************************************/
 
 /**봉사상세 시작~~*****************************************************************************************************************/
-
-            .volunteerDetailDiv{
-                text-align: center;
-                margin: auto;
-                width: 1100px;
-                font-family: 'MangoDdobak-B';
-                >div{
-                width:1100px;
-                margin:0 auto 35px;
-                justify-content:center;
-                border:1px solid #aeaeae;
-                }
-            }
-            .volunteerDetailDiv h2{
-                font-size: 40px;
-                font-family: 'NEXONFootballGothicBA1';                
-                padding: 5px;
-                margin: 20px auto 20px;                
-                color:black;
-            }
-            .volunteerDetailDiv h3 {
-            	font-family: 'NEXONFootballGothicBA1';
-			    border-bottom : 2px solid #333;
-			    padding-bottom : 10px;
-			    margin-bottom : 20px;
-			    text-align: left;
-			    font-size: 40px;
-			    
-			}
-            
-            .volunteerDetailDiv .volunteerDetailTable{
-                margin: 5px auto;
-                border-top: 2px solid  #8B4513;
-                border-bottom: 2px solid  #8B4513;
-                width: 980px;
-                background-color:white;
-            }
-            .volunteerDetailDiv .volunteerDetailTable tr td{
-                padding: 5px;
-                border-bottom: 1px solid #FDECCB;
-                vertical-align: middle;
-                font-size:18px;
-            }
-            .volunteerDetailDiv .volunteerDetailTable .volunteerDetailTd{
-                border-right: 1px solid #8B4513;
-                background-color: #AC8668;
-                color:white;
-                vertical-align: middle;
-                font-size:22px;
-                padding:20px 15px;
-            }
-            .volunteerDetailDiv .volunteerDetailDiv2{
-                padding: 10px;
-                border: 2px solid #8B4513;
-                margin: 20px auto;
-                width: 960px;
-                margin-bottom:20px;
-                background-color:white;
-                font-size:18px;
-                
-            }
-            
-            .volunteerDetailBtn{
-            	width:200px;
-            	height:45px;
-            	margin-bottom:20px;
-			    background-color : #EC9343;
-			    color: white;
-			    border: none;
-			    border-radius: 5px;
-			    cursor: pointer;
-			    transition: background-color 0.3s ease;
-			    font-size:18px;
-			    font-family: 'MangoDdobak-B';
-			            	
-            }
-            .volunteerDetailBtn:hover{
-            	background-color : #D87A2B ;
-            }
-            .volunteerDetailDiv2 textarea {
-                width: 950px;
-                height: 6.25em;
-                border: none;
-                resize: none;
-                background-color:white;
-            }
-            .volunteerDetailDiv2  textarea,input:focus{
-                outline:none;
-            }
-
-            .volunteerDetailDiv2 textarea::placeholder{
-                color:#8B4513;
-                font-size:18px;
-                font-family: 'MangoDdobak-B';
-            }
-            .volunteerDetailDiv input::placeholder{
-                color:#8B4513;
-                font-size: 18px;
-                font-family: 'MangoDdobak-B';
-            }
-
-
+.volunteerDetailDiv {
+    text-align: center;
+    margin: 0 auto;
+    width: 1100px;
+    font-family: 'MangoDdobak-B';
+}
+.centerListBox {
+    background-color: #fff;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin: 20px auto;
+}
+.volunteerDetailDiv h2 {
+    font-size: 40px;
+    font-family: 'NEXONFootballGothicBA1';
+    padding: 5px;
+    margin: 20px auto 20px;
+    color: black;
+}
+.volunteerDetailDiv h3 {
+    font-family: 'NEXONFootballGothicBA1';
+    border-bottom: 2px solid #333;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    text-align: left;
+    font-size: 40px;
+}
+.volunteerDetailTable {
+    margin: 5px auto;
+    width: 980px;
+    background-color: white;
+    border-collapse: collapse;
+    font-size: 22px;
+}
+.volunteerDetailTh {
+    text-align: center;
+    background-color: #463933;
+    vertical-align: middle;
+    color: white;
+    font-weight: bold;
+    padding: 15px;
+}
+.volunteerDetailTd {
+    font-size: 18px;
+    border: none;
+    height: 60px;
+    text-align: center;
+    vertical-align: middle;
+    border-bottom: 1px solid #aaa;
+}
+.volunteerDetailInput {
+    border: none;
+    background-color: white;
+    cursor: pointer;
+    font-size: 18px;
+    font-family: 'MangoDdobak-B';
+    color: inherit;
+}
+.volunteerDetailInput:focus {
+    outline: none;
+}
+.pagination {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+}
+.volunteerDetailDiv2 {
+    padding: 10px;
+    border: 2px solid #8B4513;
+    margin: 20px auto;
+    width: 960px;
+    margin-bottom: 20px;
+    background-color: white;
+    font-size: 18px;
+}
+.volunteerDetailBtn {
+    width: 200px;
+    height: 45px;
+    margin-bottom: 20px;
+    background-color: #EC9343;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 18px;
+    font-family: 'MangoDdobak-B';
+}
+.volunteerDetailBtn:hover {
+    background-color: #D87A2B;
+}
+.volunteerDetailDiv2 textarea {
+    width: 950px;
+    height: 6.25em;
+    border: none;
+    resize: none;
+    background-color: white;
+}
+.volunteerDetailDiv2 textarea, input:focus {
+    outline: none;
+}
+.volunteerDetailDiv2 textarea::placeholder {
+    color: #8B4513;
+    font-size: 18px;
+    font-family: 'MangoDdobak-B';
+}
+.volunteerDetailDiv input::placeholder {
+    color: #8B4513;
+    font-size: 18px;
+    font-family: 'MangoDdobak-B';
+}
 /**봉사상세 끝~~*****************************************************************************************************************/
 /**봉사신청 시작~~*****************************************************************************************************************/
             .volunteerRegDiv{

@@ -13,6 +13,7 @@
         <result property="title" column="title"/>
         <result property="rejectReason" column="rejectReason"/>
         <result property="resNo" column="resNo"/> <!-- 새로운 필드 추가 -->
+        <result property="visit_date" column="visit_date"/>
     </resultMap>
 
     <select id="getRecruitmentList" resultMap="centerMainResult">
@@ -60,7 +61,8 @@
         <![CDATA[
         SELECT U.U_ID AS userId,
                U.U_NAME AS name,
-               U.U_PHONE AS phone
+               U.U_PHONE AS phone,
+               A.VISIT_DATE AS visit_date
           FROM VOLUNTEER_USER U
           JOIN ADOPT_REG A ON A.U_ID = U.U_ID
           JOIN CENTER_MNG_TABLE C ON A.C_NAME = C.C_NAME
@@ -68,6 +70,7 @@
         SELECT C_NAME
           FROM CENTER_MNG_TABLE
          WHERE C_ID = #{centerId})
+         OFFSET #{offset} ROWS FETCH NEXT #{size} ROWS ONLY
         ]]>
     </select>
 
@@ -104,6 +107,15 @@
         JOIN VOLUNTEER V ON V.V_NO = R.V_NO
         JOIN CENTER_MNG_TABLE C ON C.C_ID = V.C_ID
         WHERE C.C_ID = #{centerId} AND R.V_TYPE = 0
+        ]]>
+    </select>
+    <select id="getTotalAdoptions" resultType="int">
+        <![CDATA[
+        SELECT COUNT(*)
+        FROM VOLUNTEER_USER U
+        JOIN ADOPT_REG A ON A.U_ID = U.U_ID
+        JOIN CENTER_MNG_TABLE C ON A.C_NAME = C.C_NAME
+        WHERE C.C_ID = #{centerId}
         ]]>
     </select>
 </mapper>

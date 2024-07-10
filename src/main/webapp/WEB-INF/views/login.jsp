@@ -71,14 +71,14 @@
                 </div>
             </form>
             <div class="loginOpt">
+                <button class="loginRegBtn" onclick="idPopup();">아이디 찾기 |</button>
+                <form action="join" method="get">
+                    <button class="loginRegBtn" type="submit">비밀번호 찾기 |</button>
+                </form>
+                <form action="join" method="get">
+                   <button class="loginRegBtn" type="submit">회원가입 |</button>
+                </form>
                 <button class="loginRegBtn" onclick="showPopup();">보호소 가입</button>
-                <form action="join" method="get">
-                    <button class="loginRegBtn" type="submit"> 회원가입 |</button>
-                </form>
-                <form action="join" method="get">
-                    <button class="loginRegBtn" type="submit"> 비밀번호 찾기 |</button>
-                </form>
-                <button class="loginRegBtn" onclick="idPopup();"> 아이디 찾기 |</button>
             </div>
         </div>
     </main>
