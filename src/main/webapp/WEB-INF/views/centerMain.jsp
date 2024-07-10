@@ -271,7 +271,7 @@
                     </tbody>
                 </table>
                 <div class="centerlistViewAllCont">
-                    <form name="viewall" method="post" action="${pageContext.request.contextPath}/봉사모집리스트" encType="utf-8">
+                    <form action="/centerAdoptionList" method="get" encType="utf-8">
                         <input type="hidden" name="centerId" value="${centerId}">
                         <button type="submit" class="centerlistViewAll">전체보기&gt;</button>
                     </form>
