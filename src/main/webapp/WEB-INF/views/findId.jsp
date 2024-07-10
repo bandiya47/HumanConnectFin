@@ -6,7 +6,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>아이디 찾기</title>
    <link rel="stylesheet" type="text/css" href="/css/style.css">
-   <script> // 이름,이메일 누락시 알림
+   <script>
+
+
+    // 이름,이메일 누락시 알림
         function validateForm() {
             var u_name = document.getElementById("u_Name").value;
             var u_email = document.getElementById("u_Email").value;
