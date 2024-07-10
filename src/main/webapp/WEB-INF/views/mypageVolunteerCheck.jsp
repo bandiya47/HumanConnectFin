@@ -40,7 +40,7 @@
     </nav>
 
     <div class="mypageMain">
-        <div class="mypageMainTitle">봉사신청 전체내역</div>
+        <div class="mypageMainTitle2">봉사신청 전체내역</div>
         <div class="mypageMainFirstStack">
             <div class="mypageMainFirstMiddle">
                 <div>

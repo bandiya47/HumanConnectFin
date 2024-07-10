@@ -218,6 +218,7 @@
         </div>
 
         <div class="mainTitle">모집마감일이 임박한 봉사정보</div>
+
         <div class="mainFourthStack">
             <div class="MainFourthMiddle">
                 <div class="mainVolistContainer">
@@ -227,14 +228,16 @@
                         </c:when>
                         <c:otherwise>
                             <c:forEach var="avo" items="${approachVolList}" begin="0" end="2">
-                                <form name="main" method="get" action="/viewVolunteerDetail.do" encType="UTF-8" >
+                                <form name="main" method="get" action="/viewVolunteerDetail.do" encType="UTF-8">
                                     <div class="mainVolist">
                                         <table class="mainVolistTb">
                                             <tbody>
                                                 <input type="hidden" name="v_no" value="${avo.v_no}" />
                                                 <input type="hidden" name="userId" value="${userId}">
                                                 <tr>
-                                                    <th colspan="2"><button type="submit" class=mainVolistBtn>${avo.v_title}</button></th>
+                                                    <th colspan="2">
+                                                        <button type="submit" class="mainVolistBtn">${avo.v_title}</button>
+                                                    </th>
                                                 </tr>
                                                 <tr>
                                                     <td>모집<br>마감</td>
@@ -245,8 +248,8 @@
                                                     <td>${avo.vreg_start_date}</td>
                                                 </tr>
                                                 <tr>
-                                                    <td>봉사<br>장소</td>
-                                                    <td>${avo.c_addr1}</td>
+                                                    <td style="auto">봉사<br>장소</td>
+                                                    <td style="height:100px;">${avo.c_addr1}</td>
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -258,6 +261,7 @@
                 </div>
             </div>
         </div>
+
 
         <div class="mainAllBtn">
             <form action="${pageContext.request.contextPath}/volunteerList.do" method="get">

@@ -888,6 +888,13 @@ header{
             margin-bottom: 10px;
             font-family: 'NEXONFootballGothicBA1';
         }
+        .mypageMainTitle2{
+            font-size: 27px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            font-family: 'NEXONFootballGothicBA1';
+        }
+
 
         .mypageMainTitle > img {
             width: 27px;
@@ -1570,99 +1577,84 @@ vertical-align:middle;
     text-align: center;
     color: #888;
 }
-
-.mainFourthStack{                          /*4층 */
+.mainFourthStack { /*4층 */
     display: flex;
 }
-.MainFourthMiddle{
+.MainFourthMiddle {
     width: 980px;
     border: gray solid 1px;
     border-radius: 5px;
     background-color: white;
 }
 
-
-.mainFourthSide{
+.mainFourthSide {
     width: 30px;
-    >form>button{                              /*shortcut1*/
-        width: 150px;
-
-        border: gray solid 1px;
-        border-radius: 5px;
-        cursor: pointer;
-        margin-left: 10px;      /*본문과 왼쪽 마진*/
-        background-image: url('../img/Shortcut4.png'); /* 배경 이미지 경로 설정 */
-        background-size: cover; /* 배경 이미지 크기 조정 */
-        background-position: center; /* 배경 이미지 위치 조정 */
-        background-repeat: no-repeat; /* 배경 이미지 반복 방지 */
-        background-color: white;    /* 배경색//이미지가 투명임 */
-    }
+}
+.mainFourthSide > form > button { /*shortcut1*/
+    width: 150px;
+    border: gray solid 1px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 10px; /*본문과 왼쪽 마진*/
+    background-image: url('../img/Shortcut4.png'); /* 배경 이미지 경로 설정 */
+    background-size: cover; /* 배경 이미지 크기 조정 */
+    background-position: center; /* 배경 이미지 위치 조정 */
+    background-repeat: no-repeat; /* 배경 이미지 반복 방지 */
+    background-color: white; /* 배경색//이미지가 투명임 */
 }
 
+.mainVolistContainer { /*volist 컨테이너*/
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: auto; /* 유동적인 높이 */
+}
 
-        .mainVolistContainer{                       /*volist 컨테이너*/
-           display: flex;
-           align-items: center;
-           justify-content: center;
-        }
+.mainVolist { /*안에 div*/
+    width: 300px;
+    margin: 15px 5px 15px 5px; /*위 오 아 왼*/
+    height: auto; /* 유동적인 높이 */
+}
 
-        .mainVolist{                                       /*안에 div*/
+.mainVolistTb {
+    vertical-align: middle;
+    border: none;
+    font-family: 'MangoDdobak-B';
+    font-size: 15px;
+    width: 100%;
 
-           width: 300px;
-
-
-           margin: 15px 5px 15px 5px;                  /*위 오 아 왼*/
-       }
-
-        .mainVolistTb{
-            vertical-align: middle;
-            border:none;
-            font-family: 'MangoDdobak-B';
-            font-size: 15px;
-                >tbody{
-                    border:none;
-                    >tr{
-
-                            >th{
-                                background-color : #463933;
-                                vertical-align : middle;
-                                padding : 15px;
-                                border:none;
-                            }
-                    }
-
-                }
-        }
-        .mainVolistTb> div > table > tbody > tr > td:first-child {
-                 width: 38%;
-             }
-        .mainVolistTb> div > table > tbody > tr > td {
-                 /*border: none;*/
-                 font-size: 18px;
-                 height: 80px;
-                 text-align: center;
-                 vertical-align: middle;
-                 /*border-bottom: 1px solid #aaa;*/
-                 border: none;
-                 justify-content:center;
-                 font-family: 'MangoDdobak-B';
-                 font-size: 15px;
-        }
-
-        .mainVolistBtn{
-                     border:none;
-                     background-color:transparent;
-                     color : white;
-                     font-weight : bold;
-
-                     cursor:pointer;
-                     font-family: 'MangoDdobak-B';
-                     font-size: 15px;
-
-
-                     }
-
-
+}
+.mainVolistTb > tbody {
+    border: none;
+}
+.mainVolistTb > tbody > tr > th {
+    background-color: #463933;
+    vertical-align: middle;
+    padding: 15px;
+    border: none;
+}
+.mainVolistTb > tbody > tr > td {
+    font-size: 18px;
+    height: auto; /* 유동적인 높이 */
+    text-align: center;
+    vertical-align: middle;
+    border: none;
+    justify-content: center;
+    font-family: 'MangoDdobak-B';
+    font-size: 15px;
+}
+.mainVolistTb > tbody > tr > td:first-child {
+    width: 20%; /* 모집마감 td의 width를 늘림 */
+}
+.mainVolistBtn {
+    border: none;
+    background-color: transparent;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    font-family: 'MangoDdobak-B';
+    font-size: 15px;
+}
 
 /**메인끝~~*****************************************************************************************************************/
 /**조인 시작~~*****************************************************************************************************************/
