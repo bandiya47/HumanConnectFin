@@ -18,9 +18,9 @@
 
 
 <body>
-<jsp:include page="nevi.jsp" />
+<jsp:include page="neviCenter.jsp" />
 	<div class="mypage">
-	    <div><img src="./img/sole.png">개인정보확인</div><!--메뉴마다 수정-->
+	    <div>개인정보확인</div><!--메뉴마다 수정-->
 	    <div class="mypagePrivacyCheck">
 	        <div>
 	            <div>
@@ -80,6 +80,22 @@
 
 	    </div>
 	</div>
+<script>
+            var msg = '${msg}';
+            if(msg === '비밀번호를 다시 확인해 주세요.') {
+                alert("비밀번호를 다시 확인해 주세요.");
+            }
 
+            function validatePassword() {
+                console.log("validatePassword 호출됨"); // 함수 호출 여부 확인용 로그
+                const password = document.getElementById("c_pwd").value;
+                const confirmPassword = document.getElementById("confirmPwd").value;
+                if (password !== confirmPassword) {
+                    alert("비밀번호가 일치하지 않습니다.");
+                    return false;
+                }
+                return true;
+            }
+        </script>
 </body>
 </html
