@@ -36,8 +36,7 @@
                     <span></span>
                 </div>
                 <button type="submit" id="" class="mypagePrivacyPwCheckBtn1">
-                    <img src="./img/soleWhite.png" alt="Submit">
-                    <span>제출</span>
+                    제출
                 </button>
                 <!--맵핑 필요 : myPrivacyCheck-->
             <c:if test="${not empty error}">

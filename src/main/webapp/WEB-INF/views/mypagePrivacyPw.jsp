@@ -19,7 +19,7 @@
 
     </style>
 </head>
-<body>
+<body class="mypageBody">
     <jsp:include page="nevi.jsp" />
 
     <!-- 슬라이딩 메뉴 버튼 -->
@@ -46,7 +46,7 @@
 
     <!-- 개인정보 확인 컨텐츠 -->
     <div class="mypage">
-        <div> <img src="./img/sole.png">개인정보확인</div>
+        <div  class="mypageMainTitle">개인정보확인</div>
         <div class="mypagePrivacyPw">
             <div class="mypagePrivacyPwNoti">
                 <div>개인정보 수정을 위해 <br> 비밀번호 확인이 필요합니다.</div>
@@ -59,8 +59,7 @@
                         <span></span>
                     </div>
                     <button type="submit" id="" class="mypagePrivacyPwCheckBtn1">
-                        <img src="./img/soleWhite.png" alt="Submit">
-                        <span>제출</span>
+                          제출
                     </button>
                     <!--맵핑 필요 : myPrivacyCheck-->
                     <c:if test="${not empty error}">

@@ -18,6 +18,7 @@ public class MainVO {
 	private String visit_time;
 	private String visit_date;
 	//private String v_state;
+	//
 
 
 	public String getVisit_time() {

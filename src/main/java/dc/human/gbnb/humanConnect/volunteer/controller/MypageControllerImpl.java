@@ -122,8 +122,8 @@ public class MypageControllerImpl implements MypageController {
 				mav.addObject("myinfo", mypageVO);
 				mav.addObject("userId", userId);
 			} else {
-
-				mav.setViewName("showPrivacyPw");
+				mav.setViewName("mypagePrivacyPw");
+				mav.addObject("userId", userId);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -68,7 +68,7 @@
                         <input type="hidden" name="centerId" value="${centerId}">
                         <div class="mypagePrivacyCheckBtnC">
                             <button type="submit" name="edit" class="mypagePrivacyCheckBtn">
-                                <img src="./img/soleWhite.png">
+
                                 수정
                             </button>
                         </div>
