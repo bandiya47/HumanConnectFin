@@ -18,8 +18,6 @@
                 background-color: white !important;
             }
      </style>
-</head>
-<body class="noticeListBody">
  <script>
         function resetSearch() {
             const searchQueryInput = document.querySelector('input[name="searchQuery"]');
@@ -34,6 +32,8 @@
             logoutForm.submit();
         }
     </script>
+</head>
+<body class="noticeListBody">
 <header class="adminMainHeader">
     <img src="${pageContext.request.contextPath}/img/logo.png" alt="로고" onclick="logout()">
 </header>
@@ -46,25 +46,33 @@
             <li class="active"><a href="${pageContext.request.contextPath}/adminNoticeList.do">고객센터</a></li>
         </ul>
     </div>
-<!--공지사항 목록 및 삭제-->
     <div class="adminNoticeListWholeContainer">
-    <form id="noticeListForm" method="post" enctype="multipart/form-data"
-            action="${pageContext.request.contextPath}/deleteNotices.do" style="display:block">
+        <h1>공지사항</h1>
+        <div class="adminMainSearch-box">
+            <form action="${pageContext.request.contextPath}/adminMain" method="get">
+                <input type="text" name="searchQuery" placeholder="검색어 입력" value="${param.searchQuery}">
+                <input type="submit" value="검색">
+                <img src="${pageContext.request.contextPath}/img/reset.png" alt="초기화" onclick="resetSearch()">
+            </form>
+        </div>
+
+
+        <form id="noticeListForm" method="post" enctype="multipart/form-data"
+                action="${pageContext.request.contextPath}/deleteNotices.do" style="display:block">
         <div class="adminNoticeListDiv">
-            <h1>공지사항</h1>
             <div class="buttonContainer1">
                     <button class="noticeRegButton" name="noticeReg" value="새 글" type="button" onclick="showNoticeForm()">새 글</button>
                     <button class="noticeDelButton" name="noticeDel" value="삭제" type="button" onclick="deleteSelectedNotices()">삭제</button>
             </div>
             <div class="noticeListSomeDiv">
-                <table class="noticeListTable">
+                <table class="adminNoticeListTable">
                    <thead>
                        <tr>
-                           <th width="3%">No</th>
-                           <th width="50%">제목</th>
+                           <th width="8%">No</th>
+                           <th width="62%">제목</th>
                            <th width="10%">작성자</th>
                            <th width="15%">작성일</th>
-                           <th width="7%">선택</th>
+                           <th width="5%">선택</th>
                        </tr>
                    </thead>
                    <c:forEach var="item" items="${adminNoticeList}">
@@ -88,7 +96,7 @@
                     </c:forEach>
                 </table>
             </div>
-            <div class="paginationNotice">
+            <div class="adminMainPagination">
                <span class="active">1</span>
                <a href="test?page=2">2</a>
                <a href="test?page=3">3</a>

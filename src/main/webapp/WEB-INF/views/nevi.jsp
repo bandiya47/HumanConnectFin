@@ -39,7 +39,7 @@
 
         <div class="nevi">      <!--네비게이션-->
             <span>              <!--로고-->
-                <img src="${pageContext.request.contextPath}/img/logo.png" alt="" class="" onclick="goMain('${userId}')"></span>
+                <img src="${pageContext.request.contextPath}/img/logo.png" alt="" class="" style="cursor:pointer"onclick="goMain('${userId}')"></span>
             <span>
                 <ul>            <!--네비게이션바-->
                     <li>

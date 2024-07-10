@@ -16,13 +16,13 @@
 </head>
 <jsp:include page="nevi.jsp" />
 <!--공지사항 목록 및 삭제-->
-    <div class="adminNoticeListWholeContainer">
+    <div class="volNoticeListWholeContainer">
     <form id="noticeListForm" method="post" enctype="multipart/form-data"
             action="${pageContext.request.contextPath}/deleteNotices.do" style="display:block">
-        <div class="adminNoticeListDiv">
-            <h1>공지사항</h1>
+        <div class="volNoticeListDiv">
+            <h2>공지사항</h2>
             <div class="noticeListSomeDiv">
-                <table class="noticeListTable">
+                <table class="volNoticeListTable">
                    <thead>
                        <tr>
                            <th width="10%">No</th>
@@ -36,11 +36,20 @@
                            <tr>
                               <td>
                                 <a href="${pageContext.request.contextPath}/viewVolNoticeDetail.do?nNumber=${item.nNumber}&userId=${userId}">
-                                  ${item.nNumber}
+                                ${item.nNumber}
                               </td>
-                              <td>${item.nTitle}</td>
-                              <td>${item.uId}</td>
-                              <td>${item.nDate}</td>
+                              <td>
+                                <a href="${pageContext.request.contextPath}/viewVolNoticeDetail.do?nNumber=${item.nNumber}&userId=${userId}">
+                                ${item.nTitle}
+                              </td>
+                              <td>
+                                <a href="${pageContext.request.contextPath}/viewVolNoticeDetail.do?nNumber=${item.nNumber}&userId=${userId}">
+                                ${item.uId}
+                              </td>
+                              <td>
+                                <a href="${pageContext.request.contextPath}/viewVolNoticeDetail.do?nNumber=${item.nNumber}&userId=${userId}">
+                                ${item.nDate}
+                              </td>
                            </tr>
                        </tbody>
                     </c:forEach>

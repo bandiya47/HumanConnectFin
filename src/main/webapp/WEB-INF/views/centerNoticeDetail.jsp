@@ -12,15 +12,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HumanConnect 공지사항</title>
-    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
 </head>
 <body class="noticeListBody">
     <jsp:include page="neviCenter.jsp" />
     <!-- 상세 공지글 -->
     <div class="noticeDetailBody" id="noticeDetail" style="display:block;" action="${pageContext.request.contextPath}/viewNoticeDetail.do">
-        <div class="adminNoticeDetailWholeContainer">
+        <div class="volNoticeDetailWholeContainer">
             <form id="noticeDetailForm" method="post" enctype="multipart/form-data">
-                <div class="adminNoticeDetailDiv">
+                <div class="volNoticeDetailDiv">
                     <h1>공지사항 상세페이지</h1>
                     <div class="buttonContainer3">
                         <table id="noticeDetailTable" class="noticeDetailTable">

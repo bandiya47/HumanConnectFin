@@ -3367,66 +3367,161 @@ vertical-align:middle;
 /**adminNoticeList 시작~~*****************************************************************************************************************/
 
 .noticeListBody{
- 	margin: 0 auto;
-    padding: 0;
     font-family: 'MangoDdobak-B';
+    margin: 0 auto;
+    padding: 0;
+    background: white;
     width: 1250px;
 }
 .adminNoticeListWholeContainer {
+    flex: 1;
+    padding: 10px;
+    border-right: 1px solid #000;
+}
+.adminNoticeListWholeContainer h1 {
+    font-size: 24px;
+    font-weight: bold;
+}
+.adminNoticeListDiv table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+.adminMainTableContainer table, .adminMainTableContainer th, .adminMainTableContainer td {
+            border: 1px solid #000;
+}
+.adminNoticeListTable th {
+    background-color: rgb(32,65,96);
+    vertical-align: middle;
+    color: white;
+    font-weight: bold;
+    padding: 15px;
+}
+.adminNoticeListTable th, .adminNoticeListTable td {
+    padding: 10px;
     text-align: center;
-    margin: auto;
+    word-break: break-word;
+}
+.adminNoticeListTable td a {
+    text-decoration: none;
+    color: #000;
+    display: block;
+}
+.adminNoticeListTable tbody tr:nth-child(even) {
+    background-color: #d9e2ec;
 }
 
-/* 공지사항리스트 */
-.adminNoticeListDiv>h1,
-.adminNoticeRegDiv>h1,
-.adminNoticeDetailDiv>h1 {
-	width:980px;
- 	border: none;
-    border-bottom: 5px solid rgb(53, 110, 119);
-    text-align: left;
-    padding: 10px 0px 10px 0px;
-    margin: 20px auto;
-    font-weight:bold;
-    font-size:25px;
-}
-.noticeListTable{
-background-color:white;
-
-}
-.noticeListTable th{
-    background-color: #AC8668;
-    color : white;
-    vertical-align:middle;
-    border:none;
-    height:40px;
-    font-size:22px;
+.adminNoticeListTable tbody tr:nth-child(odd) {
+    background-color: #f4f8fb;
 }
 
+.adminNoticeListTable tbody tr:hover {
+    background-color: #d3e0ea;
+    cursor: pointer;
+}
+
+.adminMainPagination {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.adminMainPagination a {
+    margin: 0 5px;
+    padding: 5px 10px;
+    text-decoration: none;
+    border: 1px solid #000;
+    border-radius: 5px;
+    color: #204160;
+}
+
+.adminMainPagination a.active {
+    background-color: #204160;
+    color: #fff;
+}
+
+.adminMainPagination a:hover {
+    background-color: #102a40;
+    color: white;
+}
+
+.adminMainActionButtons {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.adminMainActionButtons button {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 0 10px;
+    background-color: #204160;
+    color: white;
+}
+
+.adminMainActionButtons button:hover {
+    background-color: #102a40;
+}
+
+.adminMainSearch-box img {
+    width: 20px;
+    cursor: pointer;
+    vertical-align: middle;
+}
 #noticeTitle {
+    font-family: 'MangoDdobak-B';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2405-3@1.1/MangoDdobak-B.woff2') format('woff2');
+    font-size: 20px;
     border: none;
     width: 600px;
-    height: 20px;
-
+    height: 40px;
+    vertical-align: middle;
 }
 #noticeContent{
+    font-family: 'MangoDdobak-B';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2405-3@1.1/MangoDdobak-B.woff2') format('woff2');
     border: none;
     width: 90%;
-    height: 300px;
+    height: 90%;
+    text-align: left;
+    padding-left: 30px;
+    padding-top: 30px;
+    font-size: 22px;
+    vertical-align: middle;
+    resize: none;
 }
-input::placeholder, textarea::placeholder{
+.noticeListTable td input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+}
+input::placeholder {
     text-align: center:
     vertical-align: middle;
 }
-a {
+
+.noticeTitle, .noticeWriter {
     border: none;
     background-color: rgb(172,134,104,0.0);
-    color: rgb(172,134,104);
-    font-size: 15px;
+    color: black;
+    font-size: 17px;
     font-weight: 700;
     vertical-align: middle;
-    font-style: none;
+    text-decoration: none;
 }
+.noticeRegTitle {
+    background-color: #AC8668;
+        color: white;
+        font-weight: 700;
+        font-size: 22px;
+        vertical-align: middle;
+        height: 50px;
+}
+.noticeRegContent {
+    font-size: 20px;
+    vertical-align: middle;
+}
+
 .hidden_file_input {
     display: none;
 }
@@ -3447,16 +3542,14 @@ a {
     font-size: 15px;
     vertical-align: middle;
 }
-.buttonContainer1 {
-    float: right;
-    margin-bottom: 6px;
-}
+
 .paginationNotice {
     display: inline-block;
     margin-top: 20px;
 }
 .paginationNotice a, .paginationNotice span {
-    color: black;
+    background-color: rgb(70,57,51);
+    color: white;
     float: left;
     padding: 8px 16px;
     text-decoration: none;
@@ -3465,14 +3558,16 @@ a {
     margin: 0 4px;
 }
 .paginationNotice a:hover {
-    background-color: #ddd;
+    background-color: rgb(172,134,104);
     pointer: pointer;
 }
 .paginationNotice .active {
-    background-color: #FEAB82;
+    background-color: rgb(253,111,43);
     color: white;
     border: 1px solid #FEAB82;
 }
+
+
 
 
 
@@ -3481,68 +3576,164 @@ a {
 
 
 
+
 /**adminNoticeDetail 시작~~*****************************************************************************************************************/
 
-.noticeDetailBody {
-    margin: 0 auto;
+.noticeDetailBody{
+ 	margin: 0 auto;
     padding: 0;
     font-family: 'MangoDdobak-B';
 }
-.adminNoticeDetailWholeContainer {
+.adminNoticeDetailWholeContainer,
+ .volNoticeDetailWholeContainer {
     text-align: center;
     margin: auto;
-    width: 980px;
+    width: 1100px;
 }
 
 /* 공지사항 상세페이지 */
 
 .adminNoticeListDiv>div>table, .adminNoticeRegDiv>div>table,
-.noticeDetailTable {
-    margin: 5px;
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 15px;
-    text-align: center; /* 추가: 테이블의 텍스트를 중앙 정렬 */
+.noticeDetailTable{
+   margin: 5px;
+   text-align: center;
+   width: 100%;
+  /* border: 1px solid;*/
+   margin: 2px;
+   border-collapse: collapse;
+   font-size: 15px;
 }
-.buttonContainer3 button {
-    margin-top: 20px;
-}
-.noticeDetailTable {
+
+.noticeDetailTable,
+.noticeRegTable {
     height: 400px;
 }
-.noticeDetailTable th, .noticeDetailTable td {
-    vertical-align: middle; /* 수정: 중앙 정렬 */
-    background-color: white;
+#detailTitle, #detailAttach {
+    height: 50px;
+    vertical-align: middle;
+    font-size: 20px;
 }
-.noticeDetailTable th {
-    background-color: #AC8668;
+.noticeDetailTable th{
+    background-color: rgb(70,57,51);
     color: white;
     font-weight: 700;
     font-size: 22px;
+    vertical-align: middle;
+    border: none;
 }
-.noticeDetailTable td {
-    font-size: 22px; /* 텍스트 크기 수정 */
+.noticeDetailTable, tr, td {
+    background-color: white;
+    text-align: center:
+    vertical-align: middle;
+}
+pre {
+    white-space: pre-wrap;
 }
 #detailContent {
-    height: 300px;
+    vertical-align: middle;
+    text-align: left;
+    padding-left: 30px;
+    font-size: 20px;
+    height: auto;
 }
-#detailAttach {
-    width: 100%; /* 첨부 파일 칸의 너비를 고정 */
-    height: 50px; /* 첨부 파일 칸의 높이를 고정 */
+.buttonContainer1 {
+    text-align: right;
+    margin-right: 30px;
 }
-.buttonContainer1>button,
+.buttonContainer1>button{
+    font-family: 'MangoDdobak-B';
+    font-size: 15px;
+    font-style: bold;
+    border-style: none;
+    width: 50px;
+    height: 30px;
+    color: white;
+    background-color: rgb(32,65,96);
+    cursor: pointer;
+    vertical-align: middle;
+    margin-right: 40px;
+    margin-top: 20px;
+    border-radius: 4px;
+}
 .buttonContainer2>button,
 .buttonContainer3>button {
     font-family: 'MangoDdobak-B';
-    font-size: 15px;
+    font-size: 20px;
+    font-style: bold;
     border-style: none;
-    width: 60px;
-    height: 30px;
+    width: 80px;
+    height: 40px;
     color: white;
-    background-color: #AC8668;
+    background-color: rgb(70,57,51);
     cursor: pointer;
+    vertical-align: middle;
     margin-right: 40px;
+    margin-top: 20px;
     border-radius: 4px;
+}
+.click_fileUpload_label:hover,
+.buttonContainer1>button:hover,
+.buttonContainer2>button:hover,
+.buttonContainer3>button:hover {
+    background-color: #AC8668;
+}
+.click_fileUpload_label:active,
+.buttonContainer1>button:active,
+.buttonContainer2>button:active,
+.buttonContainer3>button:active {
+    background-color: rgb(253,111,43);
 }
 
 /**  adminNoticeDetail 끝~~*****************************************************************************************************************/
+/**volNoticeList 시작~~*****************************************************************************************************************/
+.noticeListBody{
+ 	margin: 0 auto;
+    padding: 0;
+    font-family: 'MangoDdobak-B';
+}
+.volNoticeListWholeContainer {
+    text-align: center;
+    margin: auto;
+    width: 1100px;
+}
+.volNoticeListDiv>h2,
+ .volNoticeDetailDiv>h2 {
+    font-family: 'NEXONFootballGothicBA1';
+    width:1100px;
+ 	border: none;
+    border-bottom: 1px solid black;
+    text-align: left;
+    padding: 5px;
+    margin: 20px auto 20px;
+    font-weight:bold;
+    font-size:40px;
+}
+.volNoticeListTable {
+    width: 100%;
+}
+.volNoticeListTable>thead>tr>th {
+    font-family: 'MangoDdobak-B';
+    background-color : #463933;
+    vertical-align : middle;
+    color : white;
+    font-weight : bold;
+    padding : 15px;
+}
+.volNoticeListTable>tbody>tr>td{
+    font-family: 'MangoDdobak-B';
+    text-align: center;
+    vertical-align: middle;
+    height: 25px;
+}
+.volNoticeListTable>tbody>tr>td>a{
+    font-family: 'MangoDdobak-B';
+    text-align: center;
+    vertical-align: middle;
+    color: black;
+    text-decoration: none;
+}
+.volNoticeListTable tbody tr:hover {
+  background-color: rgb(256,236,203);
+}
+
+/**volNoticeList 끝~~*****************************************************************************************************************/

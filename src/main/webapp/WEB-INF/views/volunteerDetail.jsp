@@ -147,36 +147,36 @@
         <h2>${volunteerList[0].vTitle}</h2>
         <table class="volunteerDetailTable">
             <tr>
-                <td class="volunteerDetailTd">봉사기간</td>
+                <th class="volunteerDetailTh">봉사기간</th>
                 <td>${volunteerList[0].vStartDate} ~ ${volunteerList[0].vEndDate}</td>
-                <td class="volunteerDetailTd">봉사시간</td>
+                <th class="volunteerDetailTh">봉사시간</th>
                 <td>${volunteerList[0].vStartTime} ~ ${volunteerList[0].vLastTime}</td>
             </tr>
             <tr>
-                <td class="volunteerDetailTd">모집기간</td>
+                <td class="volunteerDetailTh">모집기간</td>
                 <td>${volunteerList[0].vRStartDate} ~ ${volunteerList[0].vREndDate}</td>
-                <td class="volunteerDetailTd">활동요일</td>
+                <td class="volunteerDetailTh">활동요일</td>
                 <td>${volunteerList[0].vWorkingDay}</td>
             </tr>
             <tr>
-                <td class="volunteerDetailTd">모집인원</td>
+                <td class="volunteerDetailTh">모집인원</td>
                 <td>${volunteerList[0].vRegAmnt}명</td>
-                <td class="volunteerDetailTd">신청인원</td>
+                <td class="volunteerDetailTh">신청인원</td>
                 <td><mmnt><input id="vMaxAmnt" class="volunteerRegAmnt" name="vMaxAmnt" type="text" placeholder="신청인원을 입력해주세요."></mmnt></td>
             </tr>
             <tr>
-                <td class="volunteerDetailTd">봉사분야</td>
+                <td class="volunteerDetailTh">봉사분야</td>
                 <td>${volunteerList[0].vServiceType}</td>
-                <td class="volunteerDetailTd">센터명</td>
+                <td class="volunteerDetailTh">센터명</td>
                 <td>${volunteerList[0].cName}</td>
             </tr>
 
             <tr>
-                <td class="volunteerDetailTd">봉사장소</td>
+                <td class="volunteerDetailTh">봉사장소</td>
                 <td colspan="3">${volunteerList[0].cAddr1} ${volunteerList[0].cAddr2}</td>
             </tr>
             <tr>
-                <td class="volunteerDetailTd">첨부파일</td>
+                <td class="volunteerDetailTh">첨부파일</td>
                 <td colspan="3"><file><input id="file" type="file" name="vUploadFilePath"></file></td>
             </tr>
         </table>
