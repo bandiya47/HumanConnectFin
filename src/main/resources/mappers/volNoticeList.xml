@@ -22,26 +22,36 @@
     <!-- 공지사항 목록 -->
     <select id="getNoticeList" resultMap="noticeListResult" >
         <![CDATA[
-            SELECT
-                n_number,
-                n_type,
-                n_title,
-                u_id,
-                n_date,
-                n_content,
-                n_attach_path,
-                created_date,
-                created_id,
-                updated_date,
-                updated_id
-            FROM
-                customer_notice
-            ORDER BY
-                n_number desc
+            SELECT * FROM (
+                SELECT
+                    ROWNUM AS rnum,
+                    n_number,
+                    n_type,
+                    n_title,
+                    u_id,
+                    n_date,
+                    n_content,
+                    n_attach_path,
+                    created_date,
+                    created_id,
+                    updated_date,
+                    updated_id
+                FROM
+                    customer_notice
+                ORDER BY
+                    n_number DESC
+            )
+            WHERE rnum BETWEEN #{offset} AND #{offset} + #{size} - 1
         ]]>
     </select>
 
-    <!-- 공지사항 상세 -->
+    <select id="countNotices" resultType="int">
+        <![CDATA[
+            SELECT COUNT(*)
+            FROM customer_notice
+        ]]>
+    </select>
+
     <select id="getNoticeDetail" resultMap="noticeListResult" >
         <![CDATA[
             SELECT

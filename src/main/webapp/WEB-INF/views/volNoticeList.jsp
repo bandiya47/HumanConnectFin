@@ -56,15 +56,24 @@
                 </table>
             </div>
             <div class="paginationNotice">
-               <span class="active">1</span>
-               <a href="test?page=2">2</a>
-               <a href="test?page=3">3</a>
-               <a href="test?page=4">4</a>
-               <a href="test?page=5">5</a>
-               <a href="test?page=6">6</a>
-               <a href="test?page=2">다음 &raquo;</a>
+                <c:if test="${currentPage > 1}">
+                    <a href="${contextPath}/centerNoticeList.do?centerId=${centerId}&page=${currentPage - 1}">&laquo; 이전</a>
+                </c:if>
+                <c:forEach begin="1" end="${totalPages}" var="i">
+                    <c:choose>
+                        <c:when test="${i == currentPage}">
+                            <span class="active">${i}</span>
+                        </c:when>
+                        <c:otherwise>
+                            <a href="${contextPath}/centerNoticeList.do?centerId=${centerId}&page=${i}">${i}</a>
+                        </c:otherwise>
+                    </c:choose>
+                </c:forEach>
+                <c:if test="${currentPage < totalPages}">
+                    <a href="${contextPath}/centerNoticeList.do?centerId=${centerId}&page=${currentPage + 1}">다음 &raquo;</a>
+                </c:if>
             </div>
-       </div>
+        </div>
       </form>
    </div>
 

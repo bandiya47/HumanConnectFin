@@ -19,13 +19,18 @@ public class VolNoticeListControllerImpl implements VolNoticeListController {
 
     @Override
     @RequestMapping(value = "/volNoticeList.do", method = RequestMethod.GET)
-    public ModelAndView volNoticeList(@RequestParam("userId") String userId) throws Exception {
+    public ModelAndView volNoticeList(@RequestParam("userId") String userId,
+                                      @RequestParam(value = "page", defaultValue = "1") int page,
+                                      @RequestParam(value = "size", defaultValue = "10") int size) throws Exception {
         ModelAndView mav = new ModelAndView();
-        List<VolNoticeListVO> volNoticeList = volNoticeListService.getNoticeList();
+        List<VolNoticeListVO> volNoticeList = volNoticeListService.getNoticeList(page, size);
+        int totalNotices = volNoticeListService.countNotices();
 
         mav.setViewName("volNoticeList"); // JSP 파일명 지정
         mav.addObject("volNoticeList", volNoticeList); // JSP에 데이터 전달
         mav.addObject("userId", userId);
+        mav.addObject("currentPage", page);
+        mav.addObject("totalPages", (int) Math.ceil((double) totalNotices / size));
         return mav;
     }
 

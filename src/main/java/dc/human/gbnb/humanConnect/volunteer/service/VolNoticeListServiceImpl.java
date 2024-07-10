@@ -1,5 +1,6 @@
 package dc.human.gbnb.humanConnect.volunteer.service;
 
+import dc.human.gbnb.humanConnect.center.vo.CenterNoticeListVO;
 import dc.human.gbnb.humanConnect.volunteer.dao.VolNoticeListDAO;
 import dc.human.gbnb.humanConnect.volunteer.vo.VolNoticeListVO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,8 +15,9 @@ public class VolNoticeListServiceImpl implements VolNoticeListService {
     @Autowired
     private VolNoticeListDAO volNoticeListDAO;
 
-    public List<VolNoticeListVO> getNoticeList() throws Exception {
-        return volNoticeListDAO.getNoticeList();
+    public List<VolNoticeListVO> getNoticeList(int page, int size) throws Exception {
+        int offset = (page - 1) * size + 1;
+        return volNoticeListDAO.getNoticeList(offset, size);
     }
 
     public VolNoticeListVO getNoticeDetail(int nNumber) throws Exception {
@@ -25,7 +27,10 @@ public class VolNoticeListServiceImpl implements VolNoticeListService {
     public VolNoticeListVO getLatestNotices() throws Exception {
         return volNoticeListDAO.getLatestNotice();
     }
-
+    @Override
+    public int countNotices() throws Exception {
+        return volNoticeListDAO.countNotices();
+    }
     public VolNoticeListVO getLatestNotice() throws Exception {
         return volNoticeListDAO.getLatestNotice();
     }

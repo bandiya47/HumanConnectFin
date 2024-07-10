@@ -14,16 +14,15 @@
     <title>HumanConnect 공지사항</title>
     <link rel="stylesheet" href="./css/style.css">
 </head>
-<body class="noticeListBody">
     <jsp:include page="neviCenter.jsp" />
     <!-- 공지사항 목록 및 삭제 -->
-    <div class="adminNoticeListWholeContainer">
+    <div class="volNoticeListWholeContainer">
         <form id="noticeListForm" method="post" enctype="multipart/form-data"
                 action="${pageContext.request.contextPath}/deleteNotices.do" style="display:block">
-            <div class="adminNoticeListDiv">
-                <h1>공지사항</h1>
+            <div class="volNoticeListDiv">
+                <h2>공지사항</h2>
                 <div class="noticeListSomeDiv">
-                    <table class="noticeListTable">
+                    <table class="volNoticeListTable">
                         <thead>
                             <tr>
                                 <th width="10%">No</th>

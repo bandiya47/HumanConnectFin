@@ -11,9 +11,11 @@ import java.util.List;
 @Repository("volNoticeListDAO")
 public interface VolNoticeListDAO {
 
-    List<VolNoticeListVO> getNoticeList()  throws DataAccessException;
+    List<VolNoticeListVO> getNoticeList(@Param("offset") int offset, @Param("size") int size)  throws DataAccessException;
 
     VolNoticeListVO getNoticeDetail(int nNumber) throws DataAccessException;
 
     VolNoticeListVO getLatestNotice() throws DataAccessException;
+
+    int countNotices() throws DataAccessException;
 }

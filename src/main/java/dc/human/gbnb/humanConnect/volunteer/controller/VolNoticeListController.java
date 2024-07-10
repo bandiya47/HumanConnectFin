@@ -9,7 +9,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 public interface VolNoticeListController {
     @RequestMapping(value = "/volNoticeList.do", method = RequestMethod.GET)
-    ModelAndView volNoticeList(@RequestParam("userId") String userId) throws Exception;
+    ModelAndView volNoticeList(@RequestParam("userId") String userId,
+                               @RequestParam(value = "page", defaultValue = "1") int page,
+                               @RequestParam(value = "size", defaultValue = "10") int size)  throws Exception;
 
     @RequestMapping(value = "/viewVolNoticeDetail.do", method = RequestMethod.GET)
     ModelAndView viewNoticeDetail(HttpServletRequest request, HttpServletResponse response,
