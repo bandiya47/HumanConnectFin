@@ -81,4 +81,16 @@ public class CenterMainControllerImpl implements CenterMainController {
 
         return mav;
     }
+
+    @Override
+    @GetMapping("/centerAdoptionList")
+    public ModelAndView showAdoptionList(@RequestParam("centerId") String centerId) {
+        List<CenterMainVO> adoptionList = centerMainService.getAdoptionList(centerId);
+
+        ModelAndView mav = new ModelAndView("centerAdoptionList");
+        mav.addObject("adoptionList", adoptionList);
+        mav.addObject("centerId", centerId);
+
+        return mav;
+    }
 }

@@ -29,6 +29,23 @@
         function showAlert(msg) {
             alert(msg);
         }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            var inputs = document.querySelectorAll("input[required]");
+
+            inputs.forEach(function(input) {
+                input.addEventListener("invalid", function(event) {
+                    event.target.setCustomValidity("");
+                    if (!event.target.validity.valid) {
+                        event.target.setCustomValidity(event.target.getAttribute("data-error-message"));
+                    }
+                });
+
+                input.addEventListener("input", function(event) {
+                    event.target.setCustomValidity("");
+                });
+            });
+        });
     </script>
 </head>
 <body class="loginBody">
@@ -43,11 +60,11 @@
             <form action="login" method="post">
                 <div class="loginInput">
                     <label for="userId"></label>
-                    <input type="text" id="userId" name="userId" placeholder="아이디" required>
+                    <input type="text" id="userId" name="userId" placeholder="아이디" required data-error-message="아이디를 입력해 주세요.">
                 </div>
                 <div class="loginInput">
                     <label for="password"></label>
-                    <input type="password" id="password" name="password" placeholder="비밀번호" required>
+                    <input type="password" id="password" name="password" placeholder="비밀번호" required data-error-message="비밀번호를 입력해 주세요.">
                 </div>
                 <div>
                     <button class="loginBtn" type="submit">로그인</button>

@@ -62,7 +62,8 @@
                     <li>
                         <div>
                             <img src="./img/soleWhite.png" alt="" class="">
-                            <form action="">
+                            <form method="get" action="${pageContext.request.contextPath}/centerVolunteerList" encType="utf-8">
+                                <input type="hidden" name="centerId" value="${centerId}">
                                 <input type="submit" value="봉사신청내역">
                             </form>
                         </div>
@@ -70,7 +71,8 @@
                     <li>
                         <div>
                             <img src="./img/soleWhite.png" alt="" class="">
-                            <form action="">
+                            <form action="/centerAdoptionList" method="get" encType="utf-8">
+                                <input type="hidden" name="centerId" value="${centerId}">
                                 <input type="submit" value="입양상담신청내역">
                             </form>
                         </div>

@@ -4,6 +4,7 @@ public class MainVO {
 //	VOLUNTEER_USER 테이블
 //  개인정보 확인 및 수정
 
+	private String vreg_no;
 	private String v_no;
 	private String v_title;
 	private String vreg_start_date;
@@ -39,6 +40,10 @@ public class MainVO {
 
 
 	private String u_id;
+
+	public String getVreg_no() { return vreg_no; }
+
+	public void setVreg_no(String vreg_no) { this.vreg_no = vreg_no; }
 
 	public String getV_no() {
 		return v_no;
