@@ -97,8 +97,7 @@
 
                 <div class="mypagePrivacyEditBtnC">
                     <button type="submit" name="action" class="mypagePrivacyEditBtn">
-                        <img src="./img/soleWhite.png">
-                        확인
+                         확인
                     </button>
                 </div>
                 </form>

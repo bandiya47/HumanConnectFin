@@ -74,6 +74,7 @@
                            </td>
 	                    </tr>
 	                    <tr>
+
 	                         <td>상세주소</td>
 	                    </tr>
 	                    <tr>
@@ -105,7 +106,6 @@
                         <input type="hidden" name="userId" value="${userId}">
 
                             <button type="submit" name="edit" class="mypagePrivacyCheckBtn">
-                                <img src="./img/soleWhite.png">
                                 삭제
                             </button>
 

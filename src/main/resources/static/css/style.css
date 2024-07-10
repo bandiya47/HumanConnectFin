@@ -962,21 +962,20 @@ header{
         text-align: left;
         width: 100%;
         border: 1px solid;
-        margin: 2px;
+
         
     }
 }
 
 
 .mypagePrivacyEditTable {
-    width: 500px;
+    width: 600px;
+    height:330px;
     border-collapse: collapse;
     margin: 20px auto 0;
     font-size: 15px;
     text-align: center;
-    >tr>td>input{
-        border: red;
-    }
+
 }
 .mypagePrivacyEditTable th, table td {
 padding: 12px;
@@ -1017,9 +1016,10 @@ vertical-align:middle;
     }
 
     .mypagePrivacyEditBtnC{
-        width:500px;
+        width:850px;
         display: flex;
         justify-content: flex-end;
+        padding-top:30px;
     }
 
     .mypagePrivacyEditWithdraw{
@@ -1027,7 +1027,6 @@ vertical-align:middle;
         background-color: transparent;
         cursor: pointer;
         color: #555;
-        
     }
 
 
@@ -1036,44 +1035,46 @@ vertical-align:middle;
 /*============개인정보 확인페이지===========*/
 
 
-.mypagePrivacyCheck{
-    width: 100%;
-    
-    >table{
-        margin: 10px 10px 10px 10px;
-        text-align: left;
+    .mypagePrivacyCheck{
         width: 100%;
-        border: 1px solid;
-        margin: 2px;
-        
+
+        >table{
+            margin: 10px 10px 10px 10px;
+            text-align: left;
+            width: 100%;
+            border: 1px solid;
+            margin: 2px;
+
+        }
     }
-}
 
 
-.mypagePrivacyCheckTable {
-    width: 500px;
-    border-collapse: collapse;
-    margin: 20px 0 0;
-    font-size: 15px;
-    text-align: center;
-    >tr>td>input{
-        border: red;
-    }
-}
-.mypagePrivacyCheckTable th, table td {
-padding: 12px;
-border: 1px solid #ddd;
-}
-.mypagePrivacyCheckTable th {
-width: 25%;
-background-color: #AC8668;
-color : white;
-vertical-align:middle;
-}
-.mypagePrivacyCheckTable td {
-    background-color: white;
-    vertical-align:middle;
-    }
+    .mypagePrivacyCheckTable {
+        width: 600px;
+        height:330px;
+        border-collapse: collapse;
+        margin: 20px auto 0;
+        font-size: 15px;
+        text-align: center;
+
+    }.mypagePrivacyCheckTable th, .mypagePrivacyCheckTable td {
+         padding: 12px;
+         border: 1px solid #ddd;
+     }
+
+     .mypagePrivacyCheckTable th {
+         width: 25%;
+         background-color: #AC8668;
+         color: white;
+         vertical-align: middle;
+     }
+
+     .mypagePrivacyCheckTable td {
+         background-color: white;
+         vertical-align: middle;
+     }
+
+
 
 
     .mypagePrivacyCheckBtn {
@@ -1117,22 +1118,28 @@ vertical-align:middle;
 /*============비밀번호 입력 페이지===========*/
 
 .mypagePrivacyPw{
+    margin-top:20px;
    >div{
-    margin-left: 20px;      /*안내 및 비밀번호 입력창 위치 : 왼쪽마진*/
+      margin:auto;      /*안내 및 비밀번호 입력창 위치 : 왼쪽마진*/
    }
 
 }
 .mypagePrivacyPwNoti{
+
     background-color: white;
-    width: 420px;
+    width: 550px;
     border-radius: 15px;
-    padding: 30px;
+    padding: 50px;
+    margin:auto;
+
+
 
     >div:nth-child(1){
         color: gray;          /*안내 메시지 폰트색상*/
-        font-size: 17px;          /*안내 메시지 폰트size*/
-        margin-top: 0px;       /*안내 메시지 위치_윗마진*/
+        font-size: 25px;          /*안내 메시지 폰트size*/
+        margin-top: 20px;       /*안내 메시지 위치_윗마진*/
         margin-bottom: 10px;    /*비밀번호 입력창 위치*/
+        margin-left: 50px;
     }
     
     
@@ -1168,13 +1175,14 @@ vertical-align:middle;
 
 
 .mypagePrivacyPwInputPW2{    /*비밀번호입력창*/
-    margin: 0;
+
+    margin-left: 50px;
+    margin-top:  40px;        /*비밀번호입력창 위치*/
     padding: 0;
     box-sizing: border-box;
     position: relative;
     width: 300px;
-    /* margin-left: 50px; */
-    margin-top: 40px;        /*비밀번호입력창 위치*/
+
     >input{
         font-size: 15px;
         color: #222222;
@@ -1226,7 +1234,7 @@ vertical-align:middle;
 .mypagePrivacyPwCheckBtn1 {
     width: 100px;
     height : 40px;
-    margin: 20px 310px 0;   /*위 가운데정렬 */
+    margin: 35px 420px 0;   /*위 가운데정렬 */
     display: block;
     background-color: #EC9343;
     color : #ffffff;
@@ -1234,6 +1242,8 @@ vertical-align:middle;
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    font-family: 'MangoDdobak-B';
+    font-size : 20px;
     display: flex;
     align-items: center;
     justify-content: center;
