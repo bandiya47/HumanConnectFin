@@ -97,7 +97,7 @@
                         <input type="hidden" name="userId" value="${userId}">
 
                             <button type="submit" name="edit" class="mypagePrivacyCheckBtn">
-                                <img src="./img/soleWhite.png">
+
                                 수정
                             </button>
 

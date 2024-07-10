@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>   
+
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page import="jakarta.servlet.http.HttpSession" %>
 <%@ page import="jakarta.servlet.http.HttpServletRequest" %>
 
@@ -12,20 +12,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HumanConnect</title>
     <link rel="stylesheet" type="text/css" href="./css/style.css">
-        <script>
-            var msg = '${msg}';
-            if(msg === '비밀번호를 다시 확인해 주세요.') {
-                alert("비밀번호를 다시 확인해 주세요.");
+    <script>
+        var msg = '${msg}';
+        if(msg === '비밀번호를 다시 확인해 주세요.') {
+            alert("비밀번호를 다시 확인해 주세요.");
+        }
+
+        function validatePassword() {
+            console.log("validatePassword 호출됨"); // 함수 호출 여부 확인용 로그
+            const password = document.getElementById("c_pwd").value;
+            const confirmPassword = document.getElementById("confirmPwd").value;
+            if (password !== confirmPassword) {
+                alert("비밀번호가 일치하지 않습니다.");
+                return false;
             }
-        </script>
+            return true;
+        }
+    </script>
 </head>
 <body>
-<jsp:include page="nevi.jsp" />
-    <form name="centerSavePrivacy" method="post" action="centerSavePrivacy" onsubmit="return validatePassword()">
+<jsp:include page="neviCenter.jsp" />
+<form name="centerSavePrivacy" method="post" action="centerSavePrivacy" onsubmit="return validatePassword()">
     <input type="hidden" name="centerId" value="${centerId}">
     <!--여기부터 아래 내용 메인-->
     <div class="mypage">
-        <div><img src="./img/sole.png">개인정보수정</div><!--메뉴마다 수정-->
+        <div>개인정보수정</div>
         <div class="mypagePrivacyEdit">
             <div>
                 <div>
@@ -36,13 +47,11 @@
                         </tr>
                         <tr>
                             <th>아이디</th>
-                            <td>                        	
-                                ${CMyinfo.c_id}
-                            </td>
+                            <td>${CMyinfo.c_id}</td>
                         </tr>
                         <tr>
                             <th>비밀번호</th>
-                            <td><input type="password" id="c_pwd" name="c_pwd" value="${CMyinfo.c_pwd}"</td>
+                            <td><input type="password" id="c_pwd" name="c_pwd" value="${CMyinfo.c_pwd}"></td>
                         </tr>
                         <tr>
                             <th>비밀번호 확인</th>
@@ -52,8 +61,7 @@
                             <th rowspan="2">주소</th>
                             <td><input type="text" name="c_addr1" value="${CMyinfo.c_addr1}"></td>
                         </tr>
-    
-                        <tr>                        
+                        <tr>
                             <td>상세주소. 표 확인해보기</td>
                         </tr>
                         <tr>
@@ -66,22 +74,16 @@
                         </tr>
                     </table>
                 </div>
-
                 <div class="mypagePrivacyEditBtnC">
-                    <button type="submit" name="action" class="mypagePrivacyEditBtn">
+                    <button type="submit" name="action" action="centerSavePrivacy" class="mypagePrivacyEditBtn" >
+
 
                         확인
                     </button>
                 </div>
-                </form>
-                <div>
-
-
-                    </div>
             </div>
-            
         </div>
     </div>
-
-    </body>
-    </html>
+</form>
+</body>
+</html>
