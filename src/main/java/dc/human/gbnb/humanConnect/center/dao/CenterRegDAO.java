@@ -7,6 +7,7 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Map;
 
 
 @Mapper
@@ -19,4 +20,8 @@ public interface CenterRegDAO {
 	 public List selectCenterRegList(int v_no) throws DataAccessException;
 	 public List selectCenterRegIdList(String centerId) throws DataAccessException;
 	 List<CenterMainVO> getRegRecruitmentList(int v_no) throws DataAccessException;
+	List<CenterMainVO> getRecruitmentList(Map<String, Object> params) throws DataAccessException;
+	int getTotalRecruitments(String centerId, int v_no) throws DataAccessException;
+	int updateRecruitmentStatus(Map<String, Object> params) throws DataAccessException;
+
 }

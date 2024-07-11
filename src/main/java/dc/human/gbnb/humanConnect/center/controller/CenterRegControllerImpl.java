@@ -9,6 +9,8 @@ import dc.human.gbnb.humanConnect.center.service.CenterRegService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -16,6 +18,8 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import java.io.File;
 
+import java.io.FileInputStream;
+import java.io.OutputStream;
 import java.util.*;
 
 
@@ -39,29 +43,30 @@ public class CenterRegControllerImpl implements CenterRegController {
 	@Override
 	@RequestMapping(value= "/viewCenterReg.do", method = RequestMethod.GET)
 	public ModelAndView viewCenterReg(HttpServletRequest request, HttpServletResponse response,
-								  @RequestParam("centerId") String centerId,
-								  @RequestParam("v_no") int v_no,
-								  @RequestParam(value = "page", defaultValue = "1") int page,
-								  @RequestParam(value = "size", defaultValue = "7") int size) throws Exception {
+									  @RequestParam("centerId") String centerId,
+									  @RequestParam("v_no") int v_no,
+									  @RequestParam(value = "page", defaultValue = "1") int page,
+									  @RequestParam(value = "size", defaultValue = "7") int size) throws Exception {
 
-
-		List<CenterRegVO> Result = centerRegService.listIdCenterReg(centerId);
-		List<CenterRegVO> Result2 = centerRegService.listCenterReg(v_no);
-		List<CenterMainVO> recruitmentList = centerMainService.getRecruitmentList(centerId, page, size);
-		int totalRecords = centerMainService.getTotalRecruitments(centerId);
-		int totalPages = (int) Math.ceil((double) totalRecords / size);
-		System.out.println(Result2.get(0).getvTitle());
 		ModelAndView mav = new ModelAndView("/centerReg");
 
-		String job="view";
-		mav.addObject("job",job);
-		mav.addObject("recruitmentList", centerRegService.getRegRecruitmentList(v_no));
-		mav.addObject("centerList2",Result);
-		mav.addObject("centerList",Result2);
-		mav.addObject("recruitmentList", recruitmentList);
-		mav.addObject("totalPages", totalPages);
+		List<CenterRegVO> Result = centerRegService.listIdCenterReg(centerId);
+		mav.addObject("centerList2", Result);
 		mav.addObject("centerId", centerId);
+
+		List<CenterRegVO> Result2 = centerRegService.listCenterReg(v_no);
+		mav.addObject("centerList", Result2);
+		mav.addObject("job", "view");
+		mav.addObject("recruitmentList", centerRegService.getRecruitmentList(centerId, v_no, page, size));
 		mav.addObject("v_no", v_no);
+		System.out.println(Result2.get(0).getvTitle());
+
+		// 페이지네이션 처리
+		int totalRecords = centerRegService.getTotalRecruitments(centerId, v_no);
+		int totalPages = (int) Math.ceil((double) totalRecords / size);
+		mav.addObject("totalPages", totalPages);
+		mav.addObject("currentPage", page);
+
 		return mav;
 	}
 
@@ -73,26 +78,34 @@ public class CenterRegControllerImpl implements CenterRegController {
 			@RequestParam("centerId") String centerId,
 			@RequestParam("section") String section,
 			@RequestParam(value = "rejectReason", required = false) String rejectReason,
-			@RequestParam("resNo") String resNo
+			@RequestParam("resNo") String resNo,
+			@RequestParam("v_no") int v_no
 	) {
 		int updateRow = 0;
 
-		if ("approve".equals(action)) {
-			if ("recruitment".equals(section)) {
-				updateRow = centerMainService.updateRecruitmentStatus(userId, 1, null, centerId, resNo);
+		try {
+			if ("approve".equals(action)) {
+				if ("recruitment".equals(section)) {
+					updateRow = centerRegService.updateRecruitmentStatus(userId, 1, null, centerId, resNo);
+				}
+			} else if ("reject".equals(action)) {
+				if ("recruitment".equals(section)) {
+					rejectReason = rejectReason == null ? "" : rejectReason;
+					updateRow = centerRegService.updateRecruitmentStatus(userId, 2, rejectReason, centerId, resNo);
+				}
+			} else if ("complete".equals(action)) {
+				if ("recruitment".equals(section)) {
+					updateRow = centerRegService.updateRecruitmentStatus(userId, 3, null, centerId, resNo);
+				}
 			}
-		} else if ("reject".equals(action)) {
-			if ("recruitment".equals(section)) {
-				updateRow = centerMainService.updateRecruitmentStatus(userId, 2, rejectReason, centerId, resNo);
-			}
-		} else if ("complete".equals(action)) {
-			if ("recruitment".equals(section)) {
-				updateRow = centerMainService.updateRecruitmentStatus(userId, 3, null, centerId, resNo);
-			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			// 예외 처리 로직 추가
 		}
 
-		ModelAndView mav = new ModelAndView("redirect:/centerRecruitList");
+		ModelAndView mav = new ModelAndView("redirect:/viewCenterReg.do");
 		mav.addObject("centerId", centerId);
+		mav.addObject("v_no", v_no);
 		if (updateRow > 0) {
 			mav.addObject("message", "수정되었습니다");
 		} else {
@@ -152,24 +165,19 @@ public class CenterRegControllerImpl implements CenterRegController {
 		return centerList;
 	}
 
-	@Override
-	@RequestMapping(value="/updateCenterReg.do" ,method = RequestMethod.POST)
-	@ResponseBody
-	public List<CenterRegVO> updateCenterReg(@ModelAttribute("centerReg") CenterRegVO centerReg,
-										  HttpServletRequest request, HttpServletResponse response) throws Exception {
+	@PostMapping("/updateCenterReg.do")
+	public ModelAndView updateCenterReg(@ModelAttribute("centerReg") CenterRegVO centerReg,
+										HttpServletRequest request, HttpServletResponse response) throws Exception {
 		request.setCharacterEncoding("utf-8");
-		int insert = 0;
-
-		System.out.println("update");
-		insert = centerRegService.updateCenterReg(centerReg);
+		int insert = centerRegService.updateCenterReg(centerReg);
 		int v_no = centerReg.getV_no();
 		String centerId = centerReg.getuId();
 
-		List<CenterRegVO> Result2 = centerRegService.listCenterReg(v_no);
+		ModelAndView mav = new ModelAndView("redirect:/viewCenterReg.do");
+		mav.addObject("centerId", centerId);
+		mav.addObject("v_no", v_no);
 
-
-
-		return Result2;
+		return mav;
 	}
 
 	@Override
@@ -217,4 +225,26 @@ public class CenterRegControllerImpl implements CenterRegController {
 		}
 		return fileList;
 	}
+
+	@Override
+	@RequestMapping("/CenterDownload")
+	public void CenterDownload(@RequestParam("imageFileName") String imageFileName,
+							   HttpServletResponse response) throws Exception {
+		OutputStream out = response.getOutputStream();
+		String downFile = CURR_IMAGE_REPO_PATH + "/" + imageFileName;
+		File file = new File(downFile);
+
+		response.setHeader("Cache-Control", "no-cache");
+		response.addHeader("Content-disposition", "attachment; filename=" + imageFileName);
+		FileInputStream in = new FileInputStream(file);
+		byte[] buffer = new byte[1024 * 8];
+		while (true) {
+			int count = in.read(buffer);
+			if (count == -1)
+				break;
+			out.write(buffer, 0, count);
+		}
+		in.close();
+		out.close();
 	}
+}

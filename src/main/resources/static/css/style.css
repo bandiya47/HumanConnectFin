@@ -287,7 +287,7 @@ header{
         }
     }
     span:nth-child(2){
-        margin-left: 210px;                               /* 네비바 항목 위치 */  
+        margin-left: 190px;                               /* 네비바 항목 위치 */
         align-items: center;
         >ul{
             list-style-type: none;                        /* 형식 점을 없애기 위해 설정 */
@@ -767,6 +767,29 @@ header{
 
 .centerlistViewAll:hover {
 	cursor: pointer;
+}
+.centerRecListPagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.centerRecListPagination a {
+    margin: 0 5px;
+    padding: 8px 16px;
+    text-decoration: none;
+    border: 1px solid #ddd;
+    color: #333;
+}
+
+.centerRecListPagination a:hover {
+    background-color: #ddd;
+}
+
+.centerRecListPagination a.active {
+    background-color: #FEAB82;
+    color: white;
+    border: 1px solid #FEAB82;
 }
 /**********************************************센터메인*************************************************/
 /**********************************************센터모집인원*************************************************/
@@ -2104,14 +2127,26 @@ vertical-align:middle;
         font-size: 15px;
         text-align: center;
 }
+.volListFTable a {
+        text-decoration-line: none;
+        color: black;
+        cursor: pointer;
+}
 .volListFTable th, table td {
     padding: 12px;
     border: 1px solid #ddd;
+    vertical-align: middle;
 }
 .volListFTable th {
-    background-color: #AC8668;
+    background-color: #463933;
     color : white;
     vertical-align:middle;
+}
+.volListNo{
+    text-align: center;
+}
+.volListSer{
+    text-align: center;
 }
 .volListFTable>tbody>tr:nth-child(even) {
     background-color: #f9f9f9;
@@ -2216,7 +2251,7 @@ vertical-align:middle;
                 border: none;
                 background-color: white;
                 font-size: 14px;
-                margin-left: 20px;
+                margin-left: 0px;
                 cursor: pointer;
             }
             .centerRegDateRight{
@@ -2264,17 +2299,17 @@ vertical-align:middle;
 				width: 250px;
 				height: 20px;
 			    border: none;
-			    text-align:center;
+			    text-align:left;
 			    margin-bottom:5px;
 			    background-color: white;
 			}
 			.centerRegDiv h2 input::placeholder{
-				color:#8B4513;
+				color:#aaa;
 				font-size: 40px;
 				font-family: 'MangoDdobak-B';
 			}
 			.centerRegDiv input::placeholder{
-				color:#8B4513;
+				color:#aaa;
 				font-size: 18px;
 				font-family: 'MangoDdobak-B';
 			}
@@ -2283,7 +2318,7 @@ vertical-align:middle;
 			}
 		
 			.centerRegDiv2 textarea::placeholder{
-				color:#8B4513;
+				color:#aaa;
 				font-size:18px;
 				font-family: 'MangoDdobak-B';
 			}
@@ -2293,14 +2328,10 @@ vertical-align:middle;
               align-items: center;
             }
             .centerRegDiv5 {
-                display: flex;
-                justify-content: center
-                align-items: center;
                 padding: 10px;
                 border: 2px solid #000;
                 margin: 20px auto;
                 width: 980px;
-                margin-bottom: 20px;
                 background-color: white;
                 box-sizing: border-box;
             }
@@ -2310,16 +2341,17 @@ vertical-align:middle;
                 text-align: center;
                 margin: 0 auto;
             }
-
+            .volListT th {
+                background-color:  #463933;;
+                font-size: 22px;
+                color: white;
+            }
             .volListT th, .volListT td {
                 border: 1px solid #ddd;
                 padding: 8px;
                 text-align: center;
-            }
-
-            .volListT th {
-                background-color: #f2f2f2;
-                color: black;
+                height: 50px;
+                vertical-align: middle;
             }
 
 
@@ -2368,6 +2400,8 @@ vertical-align:middle;
     color: white;
     font-weight: bold;
     padding: 15px;
+    border: none;
+    border-bottom:1px solid #aaa;
 }
 .volunteerDetailTd {
     font-size: 18px;
@@ -3031,6 +3065,21 @@ vertical-align:middle;
             border-bottom: 1px solid #000;
             align-items: center;
             padding: 10px 0;
+            position: relative;
+        }
+        .adminBtn {
+            position: absolute;
+            right: 10px; /* 오른쪽 끝으로 위치 */
+            top: 82%;
+            transform: translateY(-50%);
+            margin: 0;
+            font-family: 'MangoDdobak-B' !important;
+            padding: 5px 10px;
+            border: none;
+            background-color: #204160;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
         }
 
         .adminCenterMemHeader img {
@@ -3184,7 +3233,7 @@ vertical-align:middle;
             color: #000;
             display: block;
         }
-        .adminCenterMemTableContainer td:nth-child(5) {
+        .adminCenterMemTableContainer td:nth-child(4) {
             font-size: 11px;
         }
         .adminCenterMemTableContainer tbody tr:nth-child(even) {
@@ -3251,6 +3300,7 @@ vertical-align:middle;
             padding: 0;
             background-color: white;
             width: 1250px;
+            font-family: 'MangoDdobak-B';
          }
 
         .adminMemDetailHeader {
@@ -3423,12 +3473,27 @@ vertical-align:middle;
         }
 
         .adminMainHeader {
-            display: flex;
-            justify-content: center;
-            border-bottom: 1px solid #000;
-            align-items: center;
-            padding: 10px 0;
-        }
+           display: flex;
+           justify-content: center;
+           border-bottom: 1px solid #000;
+           align-items: center;
+           padding: 10px 0;
+           position: relative;
+       }
+       .adminBtn {
+           position: absolute;
+           right: 10px; /* 오른쪽 끝으로 위치 */
+           top: 82%;
+           transform: translateY(-50%);
+           margin: 0;
+           font-family: 'MangoDdobak-B' !important;
+           padding: 5px 10px;
+           border: none;
+           background-color: #204160;
+           color: white;
+           border-radius: 5px;
+           cursor: pointer;
+       }
 
         .adminMainHeader img {
             width: 280px; /* 로고 크기 */
@@ -3648,7 +3713,22 @@ vertical-align:middle;
             border-bottom: 1px solid #000;
             align-items: center;
             padding: 10px 0;
+            position: relative;
         }
+       .adminBtn {
+           position: absolute;
+           right: 10px; /* 오른쪽 끝으로 위치 */
+           top: 82%;
+           transform: translateY(-50%);
+           margin: 0;
+           font-family: 'MangoDdobak-B' !important;
+           padding: 5px 10px;
+           border: none;
+           background-color: #204160;
+           color: white;
+           border-radius: 5px;
+           cursor: pointer;
+       }
 
         .adminMemDetailHeader img {
             width: 280px; /* 로고 크기 */
@@ -4267,3 +4347,64 @@ pre {
 }
 
 /**  adminNoticeDetail 끝~~*****************************************************************************************************************/
+/** 조인 리절트 시작~~***************************************************************************************************************/
+.resultLogo {
+    width: 450px;
+    margin: 50px auto;
+    display: block;
+    cursor: pointer;
+    font-family: 'MangoDdobak-B';
+}
+.resultBody {
+    font-family: Arial, sans-serif;
+    background-color: #FDECCB;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-family: 'MangoDdobak-B';
+}
+.resultContainer {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    width: 450px;
+    margin: 0 auto;
+    text-align: center;
+    font-family: 'MangoDdobak-B';
+}
+.resultBold {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 25pt;
+    font-weight: bold;
+    font-family: 'MangoDdobak-B';
+}
+.resultMessage {
+    margin-bottom: 20px;
+    font-size: 18pt;
+    color: #333;
+    font-family: 'MangoDdobak-B';
+}
+.resultButton {
+    width: 250px;
+    padding: 10px;
+    background-color: #EC9343;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 0 auto;
+    text-decoration: none;
+    display: block;
+    text-align: center;
+    font-family: 'MangoDdobak-B';
+}
+.resultButton:hover {
+    background-color: #D87A2B;
+    font-family: 'MangoDdobak-B';
+}
+/**조인 리절트 끝~~************************************************************************************************************************/

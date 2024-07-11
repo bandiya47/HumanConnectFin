@@ -48,10 +48,10 @@
                         <tr>
                             <th width="6%">번호</th>
                             <th width="25%">봉사명</th>
-                            <th width="10%">시작일</th>
-                            <th width="10%">종료일</th>
-                            <th width="10%">모집시작일</th>
-                            <th width="10%">모집마감일</th>
+                            <th width="12%">시작일</th>
+                            <th width="12%">종료일</th>
+                            <th width="12%">모집시작일</th>
+                            <th width="12%">모집마감일</th>
                             <th width="6%">봉사구분</th>
                             <th width="6%">모집인원</th>
                             <th width="6%">신청인원</th>
@@ -60,19 +60,13 @@
                     <tbody>
                         <c:forEach var="item" items="${volunteerList}">
                             <tr>
-                                <td>
-                                    <form method="get" action="${pageContext.request.contextPath}/viewVolunteerDetail.do" encType="UTF-8">
-                                        <input type="hidden" name="userId" value="${userId}">
-                                        <input type="hidden" name="v_no" value="${item.vNo}">
-                                        <input class="vNoInput" type="submit" value="${item.vNo}">
-                                    </form>
-                                </td>
-                                <td>${item.vTitle}</td>
+                                <td class="volListNo"><a href="${pageContext.request.contextPath}/viewVolunteerDetail.do?userId=${userId}&v_no=${item.vNo}">${item.vNo}</a></td>
+                                <td><a href="${pageContext.request.contextPath}/viewVolunteerDetail.do?userId=${userId}&v_no=${item.vNo}">${item.vTitle}</a></td>
                                 <td>${item.vStartDate}</td>
                                 <td>${item.vEndDate}</td>
                                 <td>${item.vRstartDate}</td>
                                 <td>${item.vRendDate}</td>
-                                <td>${item.serviceCode}</td>
+                                <td class="volListSer">${item.serviceCode}</td>
                                 <td>${item.vRegAmnt}명</td>
                                 <td>${item.vMaxAmnt}명</td>
                             </tr>
@@ -80,15 +74,11 @@
                     </tbody>
                 </table>
             </div>
-            <div class="pagination">
-                    <span class="active">1</span>
-                    <a href="test?page=2">2</a>
-                    <a href="test?page=3">3</a>
-                    <a href="test?page=4">4</a>
-                    <a href="test?page=5">5</a>
-                    <a href="test?page=6">6</a>
-                    <a href="test?page=2">다음 &raquo;</a>
-             </div>
+         </div>
+         <div class="pagination">
+             <c:forEach var="page" begin="1" end="${totalPages}">
+                 <a href="?userId=${userId}&page=${page}&size=10" class="${currentPage == page ? 'active' : ''}">${page}</a>
+             </c:forEach>
          </div>
       </div>
    </div>

@@ -9,7 +9,9 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 
 @Service("centerRegService")
@@ -52,10 +54,30 @@ public class CenterRegServiceImpl implements CenterRegService {
 	}
 
 	@Override
-	public List<CenterMainVO> getRegRecruitmentList(int v_no) throws Exception {
-		List<CenterMainVO> recruitmentList = centerRegDAO.getRegRecruitmentList(v_no);
-		System.out.println("Recruitment List: " + recruitmentList);
-		return recruitmentList;
+	public List<CenterMainVO> getRecruitmentList(String centerId, int v_no, int page, int size) throws Exception {
+		int offset = (page - 1) * size;
+		Map<String, Object> params = new HashMap<>();
+		params.put("centerId", centerId);
+		params.put("v_no", v_no);
+		params.put("offset", offset);
+		params.put("limit", size);
+		return centerRegDAO.getRecruitmentList(params);
+	}
+
+	@Override
+	public int getTotalRecruitments(String centerId, int v_no) throws Exception {
+		return centerRegDAO.getTotalRecruitments(centerId, v_no);
+	}
+
+	@Override
+	public int updateRecruitmentStatus(String userId, int status, String rejectReason, String centerId, String resNo) throws Exception {
+		Map<String, Object> params = new HashMap<>();
+		params.put("userId", userId);
+		params.put("status", status);
+		params.put("rejectReason", rejectReason);
+		params.put("centerId", centerId);
+		params.put("resNo", resNo);
+		return centerRegDAO.updateRecruitmentStatus(params);
 	}
 
 }

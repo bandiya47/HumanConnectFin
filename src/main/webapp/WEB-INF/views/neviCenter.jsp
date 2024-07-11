@@ -45,7 +45,7 @@
                             <form name="recruitmentRegister" method="get" action="${pageContext.request.contextPath}/centerReg.do" encType="utf-8">
                                 <input type="hidden" name="userId" value="${userId}">
                                 <input type="hidden" name="centerId" value="${centerId}">
-                                <input type="submit" value="봉사등록">
+                                <input type="submit" value="모집요강등록">
                             </form>
                         </div>
                     </li>

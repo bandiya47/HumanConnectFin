@@ -21,4 +21,5 @@ public interface VolunteerDetailController {
 	public ModelAndView modVolunteerDetail(HttpServletRequest request, HttpServletResponse response,@RequestParam("userId") String userId, @RequestParam("vReg_no") int vReg_no) throws Exception;
 	public ModelAndView updateVolunteerDetail(@ModelAttribute("info") VolunteerDetailVO volunteerDetailVO, HttpServletRequest request, HttpServletResponse response, @RequestParam("userId") String userId, @RequestParam("vReg_no") int vReg_no) throws Exception;
 	public Map uploadVolunteerDetail(MultipartHttpServletRequest multipartRequest, HttpServletResponse response) throws Exception;
+	public void download(@RequestParam("imageFileName") String imageFileName, HttpServletResponse response) throws Exception;
 }

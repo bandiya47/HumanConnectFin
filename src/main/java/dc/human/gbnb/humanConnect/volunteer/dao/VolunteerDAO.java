@@ -11,10 +11,6 @@ import java.util.List;
 @Mapper
 @Repository("volunteerDAO")
 public interface VolunteerDAO {
-
-//    int insertVolunteerList(VolunteerListVO volunteerListVO) throws DataAccessException ;
-
-    @Autowired
-    SqlSession sqlSession = null; // MyBatis SqlSession 주입
-    List<VolunteerListVO> getVolunteerList(String userId)  throws DataAccessException;
+    List<VolunteerListVO> getVolunteerList(int offset, int size) throws Exception;
+    int getVolunteerCount() throws Exception;
 }

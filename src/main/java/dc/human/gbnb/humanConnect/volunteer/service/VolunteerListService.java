@@ -5,6 +5,7 @@ import java.util.List;
 
 public interface VolunteerListService {
 
-    public List<VolunteerListVO> getVolunteerList(String userId) throws Exception;
+    List<VolunteerListVO> getVolunteerList(int page, int size) throws Exception;
+    int getVolunteerCount() throws Exception;
 
 }

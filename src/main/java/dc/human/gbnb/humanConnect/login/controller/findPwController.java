@@ -6,21 +6,14 @@ import org.springframework.web.servlet.ModelAndView;
 
 public interface findPwController {
 
-    public ModelAndView viewFindPw(
-
-            HttpSession session
-    );
-
     public String findPw(
             @RequestParam(name="userId") String userId,
-            HttpSession session
-    );
-
+            @RequestParam(name="userName") String userName,
+            @RequestParam(name="userEmail") String userEmail,
+            @RequestParam(name="userPhone") String userPhone,
+            HttpSession session);
     public String rePw(
             @RequestParam(name="userId") String userId,
-            @RequestParam(name="userPw")String userPw,
-            HttpSession session
-    );
-
-
+            @RequestParam(name="userPw") String userPw,
+            HttpSession session);
 }

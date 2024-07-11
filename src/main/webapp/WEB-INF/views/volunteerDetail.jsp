@@ -46,8 +46,8 @@
                                    document.getElementById("info").value=_info;
 
 
-                                   if(vMaxAmnt=='' ){
-                                       alert("모집인원을 입력하세요");
+                                   if(vMaxAmnt=='' || vMaxAmnt <= 0 ){
+                                       alert("모집인원을 1명 이상 입력해주세요");
                                        event.preventDefault();
                                        return;
                                    }else if(_file){

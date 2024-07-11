@@ -70,7 +70,7 @@
                                 </tr>
                             </c:when>
                             <c:otherwise>
-                                <c:forEach var="vo" items="${recruitmentList}" end="5">
+                                <c:forEach var="vo" items="${recruitmentList}" end="4">
                                     <tr>
 
                                         <td>${vo.userId}</td>
@@ -168,7 +168,7 @@
                                 </tr>
                             </c:when>
                             <c:otherwise>
-                                <c:forEach var="vo" items="${volunteerList}" end="5">
+                                <c:forEach var="vo" items="${volunteerList}" end="4">
                                     <tr>
                                         <td onclick="submitForm('${pageContext.request.contextPath}/VolunteerMain.jsp', '${vo.userId}', '${centerId}', 'volunteer')">${vo.userId}</td>
                                         <td onclick="submitForm('${pageContext.request.contextPath}/VolunteerMain.jsp', '${vo.userId}', '${centerId}', 'volunteer')">${vo.name}</td>
@@ -260,7 +260,7 @@
                                 </tr>
                             </c:when>
                             <c:otherwise>
-                                <c:forEach var="vo" items="${adoptionList}" end="5">
+                                <c:forEach var="vo" items="${adoptionList}" end="4">
                                     <tr>
                                         <td>${vo.userId}</td>
                                         <td>${vo.name}</td>

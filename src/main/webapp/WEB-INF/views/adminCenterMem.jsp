@@ -11,6 +11,7 @@
         html, body {
             background-color: white !important;
         }
+
     </style>
     <script>
         function resetSearch() {
@@ -18,10 +19,10 @@
             searchQueryInput.value = '';
             searchQueryInput.closest('form').submit();
         }
-        function logout() {
+        function adminMain() {
             const logoutForm = document.createElement('form');
-            logoutForm.method = 'post';
-            logoutForm.action = '${pageContext.request.contextPath}/logout';
+            logoutForm.method = 'get';
+            logoutForm.action = '${pageContext.request.contextPath}/adminMain';
             document.body.appendChild(logoutForm);
             logoutForm.submit();
         }
@@ -29,7 +30,10 @@
 </head>
 <body class="adminCenterMemBody">
 <header class="adminCenterMemHeader">
-    <img src="${pageContext.request.contextPath}/img/logo.png" alt="로고" onclick="logout()">
+    <img src="${pageContext.request.contextPath}/img/logo.png" alt="로고" onclick="adminMain()">
+    <form action="logout" method="post">
+       <button class="adminBtn" type="submit" value="">로그아웃</button>
+    </form>
 </header>
 <div class="adminCenterMemContainer">
     <div class="adminCenterMemSidebar">
@@ -53,7 +57,6 @@
             <table>
                 <thead>
                     <tr>
-                        <th width="5%">No</th>
                         <th width="10%">이름</th>
                         <th width="10%">아이디</th>
                         <th width="15%">전화번호</th>
@@ -63,11 +66,10 @@
                 <tbody>
                     <c:forEach var="member" items="${centerMemberList}" varStatus="status">
                         <tr>
-                            <td>${status.index + 1}</td>
                             <td><a href="centerMemberDetail?c_id=${member.c_id}">${member.c_name}</a></td>
-                            <td>${member.c_id}</td>
-                            <td>${member.c_phone}</td>
-                            <td>${member.c_addr1} ${member.c_addr2}</td>
+                            <td><a href="centerMemberDetail?c_id=${member.c_id}">${member.c_id}</td>
+                            <td><a href="centerMemberDetail?c_id=${member.c_id}">${member.c_phone}</td>
+                            <td><a href="centerMemberDetail?c_id=${member.c_id}">${member.c_addr1} ${member.c_addr2}</td>
                         </tr>
                     </c:forEach>
                 </tbody>
@@ -75,7 +77,7 @@
         </div>
         <div class="adminCenterMemPagination">
             <c:forEach var="page" begin="1" end="${totalPages}">
-                <a href="?page=${page}&searchQuery=${param.searchQuery}&size=20" class="${currentPage == page ? 'active' : ''}">${page}</a>
+                <a href="?page=${page}&size=${size}&searchQuery=${param.searchQuery}" class="${currentPage == page ? 'active' : ''}">${page}</a>
             </c:forEach>
         </div>
     </div>

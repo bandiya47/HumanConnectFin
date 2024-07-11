@@ -23,8 +23,9 @@ public class CenterMainServiceImpl implements CenterMainService {
     }
 
     @Override
-    public List<CenterMainVO> getVolunteerList(String centerId) {
-        return centerMainDAO.getVolunteerList(centerId);
+    public List<CenterMainVO> getVolunteerList(String centerId, int page, int size) {
+        int offset = (page - 1) * size;
+        return centerMainDAO.getVolunteerList(centerId, offset, size);
     }
 
     @Override
@@ -45,6 +46,11 @@ public class CenterMainServiceImpl implements CenterMainService {
     @Override
     public int getTotalRecruitments(String centerId) {
         return centerMainDAO.getTotalRecruitments(centerId);
+    }
+
+    @Override
+    public int getTotalVolunteers(String centerId) {
+        return centerMainDAO.getTotalVolunteers(centerId);
     }
 
     @Override

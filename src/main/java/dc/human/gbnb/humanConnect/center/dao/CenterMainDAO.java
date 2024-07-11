@@ -12,7 +12,7 @@ import java.util.List;
 public interface CenterMainDAO {
     List<CenterMainVO> getRecruitmentList(@Param("centerId") String centerId, @Param("offset") int offset, @Param("size") int size);
 
-    List<CenterMainVO> getVolunteerList(String centerId);
+    List<CenterMainVO> getVolunteerList(@Param("centerId") String centerId, @Param("offset") int offset, @Param("size") int size);
 
     List<CenterMainVO> getAdoptionList(@Param("centerId") String centerId, @Param("offset") int offset, @Param("size") int size);
 
@@ -29,6 +29,8 @@ public interface CenterMainDAO {
                               @Param("resNo") String resNo);
 
     int getTotalRecruitments(@Param("centerId") String centerId);
+
+    int getTotalVolunteers(@Param("centerId") String centerId);
 
     int getTotalAdoptions(@Param("centerId") String centerId);
 }

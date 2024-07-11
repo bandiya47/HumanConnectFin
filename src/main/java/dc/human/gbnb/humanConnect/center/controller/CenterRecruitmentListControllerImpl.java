@@ -21,12 +21,12 @@ public class CenterRecruitmentListControllerImpl implements CenterRecruitmentLis
     @GetMapping("/centerRecruitList")
     public ModelAndView showRecruitList(@RequestParam("centerId") String centerId,
                                         @RequestParam(value = "page", defaultValue = "1") int page,
-                                        @RequestParam(value = "size", defaultValue = "7") int size) {
+                                        @RequestParam(value = "size", defaultValue = "5") int size) {
         List<CenterMainVO> recruitmentList = centerMainService.getRecruitmentList(centerId, page, size);
         int totalRecords = centerMainService.getTotalRecruitments(centerId);
         int totalPages = (int) Math.ceil((double) totalRecords / size);
 
-        ModelAndView mav = new ModelAndView("centerRecruitmentList");
+        ModelAndView mav = new ModelAndView("centerVolRecruitmentList");
         mav.addObject("recruitmentList", recruitmentList);
         mav.addObject("centerId", centerId);
         mav.addObject("currentPage", page);
@@ -60,7 +60,7 @@ public class CenterRecruitmentListControllerImpl implements CenterRecruitmentLis
             }
         }
 
-        ModelAndView mav = new ModelAndView("redirect:/centerRecruitList");
+        ModelAndView mav = new ModelAndView("redirect:/centerVolRecruitList");
         mav.addObject("centerId", centerId);
         if (updateRow > 0) {
             mav.addObject("message", "수정되었습니다");

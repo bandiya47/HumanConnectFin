@@ -48,12 +48,13 @@
                U.U_PHONE AS phone,
                A.REG_RESULT AS status,
                A.REJECT_RS AS rejectReason,
-               R.VREG_NO as resNo
+               R.VREG_NO AS resNo
           FROM VOLUNTEER_USER U
           JOIN VOLUNTEER_REG R ON R.U_ID = U.U_ID
           JOIN ACCEPTION_RES A ON R.VREG_NO = A.VREG_NO
          WHERE R.V_TYPE = 1
            AND R.C_ID = #{centerId}
+         OFFSET #{offset} ROWS FETCH NEXT #{size} ROWS ONLY
         ]]>
     </select>
 
@@ -100,13 +101,23 @@
 
     <select id="getTotalRecruitments" resultType="int">
         <![CDATA[
+            SELECT COUNT(*)
+            FROM VOLUNTEER_USER U
+            JOIN VOLUNTEER_REG R ON R.U_ID = U.U_ID
+            JOIN ACCEPTION_RES A ON R.VREG_NO = A.VREG_NO
+            JOIN VOLUNTEER V ON V.V_NO = R.V_NO
+            JOIN CENTER_MNG_TABLE C ON C.C_ID = V.C_ID
+            WHERE C.C_ID = #{centerId} AND R.V_TYPE = 0
+        ]]>
+    </select>
+    <select id="getTotalVolunteers" resultType="int">
+        <![CDATA[
         SELECT COUNT(*)
-        FROM VOLUNTEER_USER U
-        JOIN VOLUNTEER_REG R ON R.U_ID = U.U_ID
-        JOIN ACCEPTION_RES A ON R.VREG_NO = A.VREG_NO
-        JOIN VOLUNTEER V ON V.V_NO = R.V_NO
-        JOIN CENTER_MNG_TABLE C ON C.C_ID = V.C_ID
-        WHERE C.C_ID = #{centerId} AND R.V_TYPE = 0
+          FROM VOLUNTEER_USER U
+          JOIN VOLUNTEER_REG R ON R.U_ID = U.U_ID
+          JOIN ACCEPTION_RES A ON R.VREG_NO = A.VREG_NO
+         WHERE R.V_TYPE = 1
+           AND R.C_ID = #{centerId}
         ]]>
     </select>
     <select id="getTotalAdoptions" resultType="int">

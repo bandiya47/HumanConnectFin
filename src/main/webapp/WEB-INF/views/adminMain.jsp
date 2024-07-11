@@ -19,10 +19,10 @@
             searchQueryInput.value = '';
             searchQueryInput.closest('form').submit();
         }
-        function logout() {
+        function adminMain() {
             const logoutForm = document.createElement('form');
-            logoutForm.method = 'post';
-            logoutForm.action = '${pageContext.request.contextPath}/logout';
+            logoutForm.method = 'get';
+            logoutForm.action = '${pageContext.request.contextPath}/adminMain';
             document.body.appendChild(logoutForm);
             logoutForm.submit();
         }
@@ -30,7 +30,10 @@
 </head>
 <body class="adminMainBody">
 <header class="adminMainHeader">
-    <img src="${pageContext.request.contextPath}/img/logo.png" alt="로고" onclick="logout()">
+    <img src="${pageContext.request.contextPath}/img/logo.png" alt="로고" onclick="adminMain()">
+    <form action="logout" method="post">
+       <button class="adminBtn" type="submit" value="">로그아웃</button>
+    </form>
 </header>
 <div class="adminMainContainer">
     <div class="adminMainSidebar">
@@ -54,7 +57,6 @@
             <table>
                 <thead>
                     <tr>
-                        <th width="5%">No</th>
                         <th width="10%">이름</th>
                         <th width="10%">아이디</th>
                         <th width="15%">휴대폰 번호</th>
@@ -64,11 +66,10 @@
                 <tbody>
                     <c:forEach var="member" items="${memberList}" varStatus="status">
                         <tr>
-                            <td>${status.index + 1}</td>
                             <td><a href="adminMemDetail?u_id=${member.u_id}">${member.u_name}</a></td>
-                            <td>${member.u_id}</td>
-                            <td>${member.u_phone}</td>
-                            <td>${member.u_email}</td>
+                            <td><a href="adminMemDetail?u_id=${member.u_id}">${member.u_id}</td>
+                            <td><a href="adminMemDetail?u_id=${member.u_id}">${member.u_phone}</td>
+                            <td><a href="adminMemDetail?u_id=${member.u_id}">${member.u_email}</td>
                         </tr>
                     </c:forEach>
                 </tbody>

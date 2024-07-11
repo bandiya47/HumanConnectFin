@@ -9,7 +9,7 @@
     <!--        <result property="userId" column="id" />-->
     <!--    </resultMap>-->
 
-    <select id="selectFindPw" parameterType="String">
+    <select id="selectFindPw" parameterType="map">
         <![CDATA[
         SELECT u_id as Result
           FROM volunteer_user
@@ -17,16 +17,13 @@
         ]]>
     </select>
 
-    <update id="updateFindPw" parameterType="String">
+    <update id="updateFindPw" parameterType="map">
         <![CDATA[
-		 update volunteer_user set
-		 U_PWD = #{userPw},
-		 UPDATED_ID = #{userId},
-         UPDATED_DATE = SYSDATE
-         where U_ID = #{userId}
-		]]>
+        UPDATE volunteer_user
+           SET u_pwd = #{userPw},
+               updated_id = #{userId},
+               updated_date = SYSDATE
+         WHERE u_id = #{userId}
+        ]]>
     </update>
-
-
-
 </mapper>

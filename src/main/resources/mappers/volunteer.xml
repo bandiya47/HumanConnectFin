@@ -37,6 +37,7 @@
 		<result property="name" column="name" />
 		<result property="phone" column="phone" />
 		<result property="status" column="status" />
+		<result property="resNo" column="resNo"/>
 		<result property="rejectReason" column="rejectReason" />
 	</resultMap>
 
@@ -108,24 +109,50 @@
 		]]>
 	</select>
 
-	<select id="getRegRecruitmentList" resultMap="getCenterRegResult" parameterType="int">
-		SELECT U.U_ID as userId,
-		U.U_NAME as name,
-		U.U_PHONE as phone,
-		A.REG_RESULT as status,
-		A.REJECT_RS as rejectReason
-		FROM VOLUNTEER_USER U
-		JOIN VOLUNTEER_REG R ON R.U_ID = U.U_ID
-		JOIN ACCEPTION_RES A ON R.VREG_NO = A.VREG_NO
-		JOIN VOLUNTEER V ON V.V_NO = R.V_NO
-		JOIN CENTER_MNG_TABLE C ON C.C_ID = V.CREATED_ID
-		WHERE V.V_NO = #{v_no}
-		AND R.V_TYPE = 0
-
-		ORDER BY V.CREATED_DATE DESC
+	<select id="getRecruitmentList" resultMap="getCenterRegResult" parameterType="map">
+		<![CDATA[
+			SELECT U.U_ID as userId,
+			U.U_NAME as name,
+			U.U_PHONE as phone,
+			A.REG_RESULT as status,
+			A.REJECT_RS as rejectReason,
+			R.VREG_NO as resNo
+			FROM VOLUNTEER_USER U
+			JOIN VOLUNTEER_REG R ON R.U_ID = U.U_ID
+			JOIN ACCEPTION_RES A ON R.VREG_NO = A.VREG_NO
+			JOIN VOLUNTEER V ON V.V_NO = R.V_NO
+			JOIN CENTER_MNG_TABLE C ON C.C_ID = V.CREATED_ID
+			WHERE V.V_NO = #{v_no}
+			AND R.V_TYPE = 0
+			AND V.CREATED_ID = #{centerId}
+			ORDER BY V.CREATED_DATE DESC
+			OFFSET #{offset} ROWS FETCH NEXT #{limit} ROWS ONLY
+  		]]>
 	</select>
 
+	<select id="getTotalRecruitments" resultType="int">
+		<![CDATA[
+       		SELECT COUNT(*)
+            FROM VOLUNTEER_USER U
+            JOIN VOLUNTEER_REG R ON R.U_ID = U.U_ID
+            JOIN ACCEPTION_RES A ON R.VREG_NO = A.VREG_NO
+            JOIN VOLUNTEER V ON V.V_NO = R.V_NO
+            JOIN CENTER_MNG_TABLE C ON C.C_ID = V.C_ID
+            WHERE C.C_ID = #{centerId} AND R.V_TYPE = 0
+        ]]>
+	</select>
 
+	<update id="updateRecruitmentStatus" parameterType="map">
+		<![CDATA[
+			UPDATE ACCEPTION_RES
+           SET REG_RESULT = #{status},
+               REJECT_RS = #{rejectReason, jdbcType=VARCHAR},
+               UPDATED_DATE = SYSDATE,
+               UPDATED_ID = #{centerId}
+         WHERE U_ID = #{userId}
+           AND VREG_NO = #{resNo}
+		]]>
+	</update>
 <!--	<update id="updateMember" parameterType="memberVO">-->
 <!--     <![CDATA[-->
 <!--	     update t_member-->

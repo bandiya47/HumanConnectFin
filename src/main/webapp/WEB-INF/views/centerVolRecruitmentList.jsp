@@ -73,7 +73,7 @@
                                             <c:choose>
                                                 <c:when test="${vo.status == '0'}">
                                                     <div class="centerMainBtnG">
-                                                        <form method="post" action="${pageContext.request.contextPath}/recruitlist">
+                                                        <form method="post" action="${pageContext.request.contextPath}/centerRecruitList">
                                                             <input type="hidden" name="userId" value="${vo.userId}">
                                                             <input type="hidden" name="centerId" value="${centerId}">
                                                             <input type="hidden" name="action" value="approve">
@@ -81,7 +81,7 @@
                                                             <input type="hidden" name="resNo" value="${vo.resNo}">
                                                             <button class="centerMainApprv" type="submit">승인</button>
                                                         </form>
-                                                        <form method="post" action="${pageContext.request.contextPath}/recruitlist">
+                                                        <form method="post" action="${pageContext.request.contextPath}/centerRecruitList">
                                                             <input type="hidden" name="userId" value="${vo.userId}">
                                                             <input type="hidden" name="centerId" value="${centerId}">
                                                             <input type="hidden" name="action" value="reject">
@@ -91,7 +91,7 @@
                                                         </form>
                                                     </div>
                                                     <div id="reject-reason-${vo.userId}_recruitment" style="display:none;">
-                                                        <form method="post" action="${pageContext.request.contextPath}/recruitlist">
+                                                        <form method="post" action="${pageContext.request.contextPath}/centerRecruitList">
                                                             <input type="hidden" name="userId" value="${vo.userId}">
                                                             <input type="hidden" name="centerId" value="${centerId}">
                                                             <input type="hidden" name="action" value="reject">
@@ -104,7 +104,7 @@
                                                     </div>
                                                 </c:when>
                                                 <c:when test="${vo.status == '1'}">
-                                                    <form method="post" action="${pageContext.request.contextPath}/recruitlist">
+                                                    <form method="post" action="${pageContext.request.contextPath}/centerRecruitList">
                                                         <input type="hidden" name="userId" value="${vo.userId}">
                                                         <input type="hidden" name="centerId" value="${centerId}">
                                                         <input type="hidden" name="action" value="complete">

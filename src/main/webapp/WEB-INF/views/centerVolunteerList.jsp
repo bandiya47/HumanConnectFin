@@ -51,7 +51,7 @@
                                             <c:choose>
                                                 <c:when test="${vo.status == '0'}">
                                                     <div class="centerMainBtnG">
-                                                        <form method="post" action="${pageContext.request.contextPath}/centerRecruitList">
+                                                        <form method="post" action="${pageContext.request.contextPath}/centerVolunteerList">
                                                             <input type="hidden" name="userId" value="${vo.userId}">
                                                             <input type="hidden" name="centerId" value="${centerId}">
                                                             <input type="hidden" name="action" value="approve">
@@ -59,7 +59,7 @@
                                                             <input type="hidden" name="resNo" value="${vo.resNo}">
                                                             <button class="centerMainApprv" type="submit">승인</button>
                                                         </form>
-                                                        <form method="post" action="${pageContext.request.contextPath}/centerRecruitList">
+                                                        <form method="post" action="${pageContext.request.contextPath}/centerVolunteerList">
                                                             <input type="hidden" name="userId" value="${vo.userId}">
                                                             <input type="hidden" name="centerId" value="${centerId}">
                                                             <input type="hidden" name="action" value="reject">
@@ -69,7 +69,7 @@
                                                         </form>
                                                     </div>
                                                     <div id="reject-reason-${vo.userId}_recruitment" style="display:none;">
-                                                        <form method="post" action="${pageContext.request.contextPath}/centerRecruitList">
+                                                        <form method="post" action="${pageContext.request.contextPath}/centerVolunteerList">
                                                             <input type="hidden" name="userId" value="${vo.userId}">
                                                             <input type="hidden" name="centerId" value="${centerId}">
                                                             <input type="hidden" name="action" value="reject">
@@ -82,7 +82,7 @@
                                                     </div>
                                                 </c:when>
                                                 <c:when test="${vo.status == '1'}">
-                                                    <form method="post" action="${pageContext.request.contextPath}/centerRecruitList">
+                                                    <form method="post" action="${pageContext.request.contextPath}/centerVolunteerList">
                                                         <input type="hidden" name="userId" value="${vo.userId}">
                                                         <input type="hidden" name="centerId" value="${centerId}">
                                                         <input type="hidden" name="action" value="complete">
@@ -105,6 +105,11 @@
                         </c:choose>
                     </tbody>
                 </table>
+            </div>
+             <div class="pagination">
+                <c:forEach var="i" begin="1" end="${totalPages}">
+                    <a href="${pageContext.request.contextPath}/centerVolunteerList?centerId=${centerId}&page=${i}&size=5" class="${currentPage == i ? 'active' : ''}">${i}</a>
+                </c:forEach>
             </div>
         </section>
     </main>

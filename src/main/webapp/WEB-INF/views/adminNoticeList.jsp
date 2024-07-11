@@ -25,10 +25,10 @@
                 searchQueryInput.value = '';
                 searchQueryInput.closest('form').submit();
             }
-            function logout() {
+            function adminMain() {
                 const logoutForm = document.createElement('form');
-                logoutForm.method = 'post';
-                logoutForm.action = '${pageContext.request.contextPath}/logout';
+                logoutForm.method = 'get';
+                logoutForm.action = '${pageContext.request.contextPath}/adminMain';
                 document.body.appendChild(logoutForm);
                 logoutForm.submit();
             }
@@ -36,7 +36,10 @@
 </head>
 <body class="noticeListBody">
 <header class="adminMainHeader">
-    <img src="${pageContext.request.contextPath}/img/logo.png" alt="로고" onclick="logout()">
+    <img src="${pageContext.request.contextPath}/img/logo.png" alt="로고" onclick="adminMain()">
+    <form action="logout" method="post">
+       <button class="adminBtn" type="submit" value="">로그아웃</button>
+    </form>
 </header>
 <div class="adminMainContainer">
     <div class="adminMainSidebar">

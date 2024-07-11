@@ -23,7 +23,7 @@ public class AdminControllerImpl implements AdminController {
     @GetMapping("/adminMain")
     public ModelAndView showMemberList(@RequestParam(value = "searchQuery", required = false) String searchQuery,
                                        @RequestParam(value = "page", defaultValue = "1") int page,
-                                       @RequestParam(value = "size", defaultValue = "20") int size) {
+                                       @RequestParam(value = "size", defaultValue = "15") int size) {
         ModelAndView mav = new ModelAndView("adminMain");
         List<MemberVO> memberList;
         if (searchQuery != null && !searchQuery.isEmpty()) {
@@ -66,7 +66,7 @@ public class AdminControllerImpl implements AdminController {
     @GetMapping("/adminCenterMem")
     public ModelAndView showCenterMemberList(@RequestParam(value = "searchQuery", required = false) String searchQuery,
                                              @RequestParam(value = "page", defaultValue = "1") int page,
-                                             @RequestParam(value = "size", defaultValue = "20") int size) {
+                                             @RequestParam(value = "size", defaultValue = "13") int size) {
         ModelAndView mav = new ModelAndView("adminCenterMem");
         List<CenterMemberVO> centerMemberList;
 

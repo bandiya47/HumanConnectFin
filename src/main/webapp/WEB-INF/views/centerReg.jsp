@@ -8,502 +8,332 @@
 
         <link rel="stylesheet" type="text/css" href="/css/style.css">
 
-           <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
-           <script type="text/javascript">
-           $(document).ready(function() {
-                                var job ="${job}";
+        <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+        <script type="text/javascript">
+        $(document).ready(function() {
+            var job = "${job}";
 
-                              if(job == "view"){
+            if (job == "view") {
+                var v_no = "${centerList[0].v_no}";
+                var vTitle = "${centerList[0].vTitle}";
+                var vStartDate = "${centerList[0].vStartDate}";
+                var vEndDate = "${centerList[0].vEndDate}";
+                var vStartTime = "${centerList[0].vStartTime}";
+                var vLastTime = "${centerList[0].vLastTime}";
+                var vRStartDate = "${centerList[0].vRStartDate}";
+                var vREndDate = "${centerList[0].vREndDate}";
+                var vWorkingDay = "${centerList[0].vWorkingDay}";
+                var vServiceCode = "${centerList[0].vServiceType}";
+                var vServiceCode2 = "${centerList[0].vServiceCode}";
+                var vRegAmnt = "${centerList[0].vRegAmnt}";
+                var vUploadFilePath = "${centerList[0].vUploadFilePath}";
+                var vInfo = "${centerList[0].vInfo}";
 
+                $('h2').html('<h1>' + vTitle + '</h1>');
 
-                                   var v_no = "${centerList[0].v_no}";
-                                   var vTitle = "${centerList[0].vTitle}";
-                                   var vStartDate = "${centerList[0].vStartDate}";
-                                   var vEndDate = "${centerList[0].vEndDate}";
-                                   var vStartTime = "${centerList[0].vStartTime}";
-                                   var vLastTime = "${centerList[0].vLastTime}";
-                                   var vRStartDate = "${centerList[0].vRStartDate}";
-                                   var vREndDate = "${centerList[0].vREndDate}";
-                                   var vWorkingDay = "${centerList[0].vWorkingDay}";
-                                   var vServiceCode = "${centerList[0].vServiceType}";
-                                   var vServiceCode2 ="${centerList[0].vServiceCode}";
-                                   var vRegAmnt = "${centerList[0].vRegAmnt}";
-                                   var vUploadFilePath = "${centerList[0].vUploadFilePath}";
-                                   var vInfo = "${centerList[0].vInfo}";
+                $('#vDate').remove();
+                $('vDate').html('<h1>' + vStartDate + ' ~ ' + vEndDate + '</h1>');
 
+                $('#vTime').remove();
+                $('vTime').html('<h1>' + vStartTime + ' ~ ' + vLastTime + '</h1>');
 
+                $('#rDate').remove();
+                $('rDate').html('<h1>' + vRStartDate + ' ~ ' + vREndDate + '</h1>');
 
-                                   $( 'h2' ).html( '<h1>'+vTitle+'</h1>' );
+                $('#work').remove();
+                $('work').html('<h1>' + vWorkingDay + '</h1>');
 
-                                   $('#vDate').remove();
-                                   $( 'vDate' ).html( '<h1>' + vStartDate + ' ~ ' + vEndDate + '</h1>' );
+                $('#vRegAmnt').remove();
+                $('vRegAmnt').html('<h1>' + vRegAmnt + '</h1>');
 
-                                   $('#vTime').remove();
-                                   $( 'vTime' ).html( '<h1>' + vStartTime + ' ~ ' + vLastTime + '</h1>' );
+                $('#serviceCode').remove();
+                $('serviceCode').html('<h1>' + vServiceCode + '</h1>');
 
-                                   $('#rDate').remove();
-                                   $( 'rDate' ).html( '<h1>' + vRStartDate + ' ~ ' + vREndDate + '</h1>' );
+                $('#file').remove();
+                $('file').html('<h1>' + vUploadFilePath + '</h1>');
 
-                                   $('#work').remove();
-                                   $( 'work' ).html( '<h1>' + vWorkingDay + '</h1>' );
-
-                                   $('#vRegAmnt').remove();
-                                   $( 'vRegAmnt' ).html( '<h1>' + vRegAmnt + '</h1>' );
-
-                                   $('#serviceCode').remove();
-                                   $( 'serviceCode' ).html( '<h1>' + vServiceCode + '</h1>' );
-
-                                   $('#file').remove();
-                                   $( 'file' ).html( '<h1>' + vUploadFilePath + '</h1>' );
-
-                                   $('#info').remove();
-                                   if( vInfo == "없음" ){
-                                   $( 'info' ).html( '<h1>' + vInfo + '</h1>' );
-                                   }else{
-                                   $( 'info' ).html( '<h1 style="text-align : left">' + vInfo + '</h1>' );
-                                   }
-
-
-
-                              }
-
-                              if(job == "modify"){
-
-                                                         var v_no = "${centerList[0].v_no}";
-                                                         var vTitle = "${centerList[0].vTitle}";
-                                                         var vStartDate = "${centerList[0].vStartDate}";
-                                                         var vEndDate = "${centerList[0].vEndDate}";
-                                                         var vStartTime = "${centerList[0].vStartTime}";
-                                                         var vLastTime = "${centerList[0].vLastTime}";
-                                                         var vRStartDate = "${centerList[0].vRStartDate}";
-                                                         var vREndDate = "${centerList[0].vREndDate}";
-                                                         var vWorkingDay = "${centerList[0].vWorkingDay}";
-                                                         var vServiceCode = "${centerList[0].vServiceType}";
-                                                         var vServiceCode2 ="${centerList[0].vServiceCode}";
-                                                         var vRegAmnt = "${centerList[0].vRegAmnt}";
-                                                         var vUploadFilePath = "${centerList[0].vUploadFilePath}";
-                                                         var vInfo = "${centerList[0].vInfo}";
-
-
-                                          	               document.getElementById("title").value = vTitle;
-                                          	               document.getElementById("startDate").value = vStartDate;
-                                          	               document.getElementById("endDate").value = vEndDate;
-                                          	               document.getElementById("startTime").value = vStartTime;
-                                          	               document.getElementById("endTime").value = vLastTime;
-                                          	               document.getElementById("rStartDate").value = vRStartDate;
-                                          	               document.getElementById("rEndDate").value = vREndDate;
-
-
-                                                            var wokr1 = vWorkingDay.indexOf("월");
-                                                            var wokr2 = vWorkingDay.indexOf("화");
-                                                            var wokr3 = vWorkingDay.indexOf("수");
-                                                            var wokr4 = vWorkingDay.indexOf("목");
-                                                            var wokr5 = vWorkingDay.indexOf("금");
-                                                            var wokr6 = vWorkingDay.indexOf("토");
-                                                            var wokr7 = vWorkingDay.indexOf("일");
-
-                                                            if(wokr1!=-1){
-                                                                document.getElementById("work1").checked = true;
-                                                            }
-                                                            if(wokr2!=-1){
-                                                                document.getElementById("work2").checked = true;
-                                                            }
-                                                            if(wokr3!=-1){
-                                                                document.getElementById("work3").checked = true;
-                                                            }
-                                                            if(wokr4!=-1){
-                                                               document.getElementById("work4").checked = true;
-                                                            }
-                                                            if(wokr5!=-1){
-                                                               document.getElementById("work5").checked = true;
-                                                            }
-                                                            if(wokr6!=-1){
-                                                               document.getElementById("work6").checked = true;
-                                                            }
-                                                            if(wokr7!=-1){
-                                                               document.getElementById("work7").checked = true;
-                                                            }
-
-
-                                                            vInfo=vInfo.replace(/<br>/g, "\n");
-
-
-
-                                          	               document.getElementById("vRegAmnt").value = vRegAmnt;
-                                          	               document.getElementById("serviceCode").value = vServiceCode2;
-
-                                          	               document.getElementById("info").value = vInfo;
-                                          	               document.getElementById("centerRegBtnRM").value="수정 완료";
-                                          	               document.getElementById("centerRegBtnRM").addEventListener("click", fn_modify);
-
-
-
-
-                                       	}
-
-
-
-                          });
-           </script>
-           <script type="text/javascript">
-               function fn_modify(){
-                   var _uId = "${centerId}";
-                   var v_no = "${v_no}";
-                   var _title=$("#title").val();
-                   var _startDate=$("#startDate").val();
-                   var _endDate=$("#endDate").val();
-                   var _startTime=$("#startTime").val();
-                   var _endTime=$("#endTime").val();
-                   var _rStartDate=$("#rStartDate").val();
-                   var _rEndDate=$("#rEndDate").val();
-
-
-                   var _vWorkingDay = "";
-                   var _work1=$("#work1").prop("checked");
-                   var _work2=$("#work2").prop("checked");
-                   var _work3=$("#work3").prop("checked");
-                   var _work4=$("#work4").prop("checked");
-                   var _work5=$("#work5").prop("checked");
-                   var _work6=$("#work6").prop("checked");
-                   var _work7=$("#work7").prop("checked");
-                   if(_work1==1){
-                        _vWorkingDay +=$("#work1").val();
-                        _vWorkingDay +=" ";
-                   }
-                   if(_work2==1){
-                        _vWorkingDay +=$("#work2").val();
-                        _vWorkingDay +=" ";
-                   }
-                   if(_work3==1){
-                         _vWorkingDay +=$("#work3").val();
-                         _vWorkingDay +=" ";
-                   }
-                   if(_work4==1){
-                         _vWorkingDay +=$("#work4").val();
-                         _vWorkingDay +=" ";
-                   }
-                   if(_work5==1){
-                         _vWorkingDay +=$("#work5").val();
-                         _vWorkingDay +=" ";
-                   }
-                   if(_work6==1){
-                         _vWorkingDay +=$("#work6").val();
-                         _vWorkingDay +=" ";
-                   }
-                   if(_work7==1){
-                         _vWorkingDay +=$("#work7").val();
-                         _vWorkingDay +=" ";
-                    }
-
-                   var _vRegAmnt=$("#vRegAmnt").val();
-                   var _serviceCode=$("#serviceCode").val();
-                   var _info=$("#info").val().replace(/\n/g, "<br>");
-
-
-                   if(_title==''){
-                         alert("제목을 입력하세요");
-                         return;
-                   }else if(_startDate=='' || _endDate=='' ){
-                       alert("봉사시간을 입력하세요");
-                       return;
-                   }else if(_startTime=='' || _endTime=='' ){
-                       alert("봉사시간을 입력하세요");
-                       return;
-                   }else if(_rStartDate=='' || _rEndDate=='' ){
-                       alert("모집기간을 입력하세요");
-                       return;
-                   }else if(_vWorkingDay==''){
-                       alert("봉사요일을 체크하세요");
-                       return;
-                   }else if(_vRegAmnt=='' ){
-                       alert("모집인원을 입력하세요");
-                       return;
-                   }else if(_serviceCode=='' ){
-                       alert("봉사분야를 체크하세요");
-                       return;
-                   }else if(_info=='' ){
-                       _info="없음";
-                       }
-                    job =null;
-                   $.ajax({
-                       type:"post",
-                       async:false,
-                       url:"${contextPath}/updateCenterReg.do",
-                       data: {
-                               vTitle: _title,
-                               vStartDate: _startDate,
-                               vEndDate: _endDate,
-                               vStartTime: _startTime,
-                               vLastTime: _endTime,
-                               vRStartDate: _rStartDate,
-                               vREndDate: _rEndDate,
-                               vWorkingDay: _vWorkingDay,
-                               vRegAmnt: _vRegAmnt,
-                               vServiceCode: _serviceCode,
-                               vInfo: _info,
-                               uId: _uId,
-                               v_no: v_no
-                         },
-                       success:function (data,textStatus){
-                            alert("업데이트 완료");
-                            var v_no = data[0].v_no;
-                            var uId = data[0].uId;
-
-                            window.open('http://127.0.0.1:18090/viewCenterReg.do?centerId='+uId+ '&v_no='+v_no, '_blank');
-
-
-
-
-                       },
-                       error:function(data,textStatus){
-                          alert("에러가 발생했습니다.");
-                       },
-                       complete:function(data,textStatus){
-                       }
-                 });
-
+                $('#info').remove();
+                if (vInfo == "없음") {
+                    $('info').html('<h1>' + vInfo + '</h1>');
+                } else {
+                    $('info').html('<h1 style="text-align : left">' + vInfo + '</h1>');
+                }
             }
 
+            if (job == "modify") {
+                var v_no = "${centerList[0].v_no}";
+                var vTitle = "${centerList[0].vTitle}";
+                var vStartDate = "${centerList[0].vStartDate}";
+                var vEndDate = "${centerList[0].vEndDate}";
+                var vStartTime = "${centerList[0].vStartTime}";
+                var vLastTime = "${centerList[0].vLastTime}";
+                var vRStartDate = "${centerList[0].vRStartDate}";
+                var vREndDate = "${centerList[0].vREndDate}";
+                var vWorkingDay = "${centerList[0].vWorkingDay}";
+                var vServiceCode = "${centerList[0].vServiceType}";
+                var vServiceCode2 = "${centerList[0].vServiceCode}";
+                var vRegAmnt = "${centerList[0].vRegAmnt}";
+                var vUploadFilePath = "${centerList[0].vUploadFilePath}";
+                var vInfo = "${centerList[0].vInfo}";
 
+                document.getElementById("title").value = vTitle;
+                document.getElementById("startDate").value = vStartDate;
+                document.getElementById("endDate").value = vEndDate;
+                document.getElementById("startTime").value = vStartTime;
+                document.getElementById("endTime").value = vLastTime;
+                document.getElementById("rStartDate").value = vRStartDate;
+                document.getElementById("rEndDate").value = vREndDate;
 
-	           function fn_process(){
-                   var _uId = "${centerId}";
-	               var _title=$("#title").val();
-	               var _startDate=$("#startDate").val();
-	               var _endDate=$("#endDate").val();
-	               var _startTime=$("#startTime").val();
-	               var _endTime=$("#endTime").val();
-	               var _rStartDate=$("#rStartDate").val();
-	               var _rEndDate=$("#rEndDate").val();
+                var wokr1 = vWorkingDay.indexOf("월");
+                var wokr2 = vWorkingDay.indexOf("화");
+                var wokr3 = vWorkingDay.indexOf("수");
+                var wokr4 = vWorkingDay.indexOf("목");
+                var wokr5 = vWorkingDay.indexOf("금");
+                var wokr6 = vWorkingDay.indexOf("토");
+                var wokr7 = vWorkingDay.indexOf("일");
 
+                if (wokr1 != -1) {
+                    document.getElementById("work1").checked = true;
+                }
+                if (wokr2 != -1) {
+                    document.getElementById("work2").checked = true;
+                }
+                if (wokr3 != -1) {
+                    document.getElementById("work3").checked = true;
+                }
+                if (wokr4 != -1) {
+                    document.getElementById("work4").checked = true;
+                }
+                if (wokr5 != -1) {
+                    document.getElementById("work5").checked = true;
+                }
+                if (wokr6 != -1) {
+                    document.getElementById("work6").checked = true;
+                }
+                if (wokr7 != -1) {
+                    document.getElementById("work7").checked = true;
+                }
 
-	               var _vWorkingDay = "";
-	               var _work1=$("#work1").prop("checked");
-	               var _work2=$("#work2").prop("checked");
-	               var _work3=$("#work3").prop("checked");
-	               var _work4=$("#work4").prop("checked");
-	               var _work5=$("#work5").prop("checked");
-	               var _work6=$("#work6").prop("checked");
-	               var _work7=$("#work7").prop("checked");
-	               if(_work1==1){
-	                    _vWorkingDay +=$("#work1").val();
-	                    _vWorkingDay +=" ";
-	               }
-	               if(_work2==1){
-	                    _vWorkingDay +=$("#work2").val();
-	                    _vWorkingDay +=" ";
-	               }
-	               if(_work3==1){
-                        _vWorkingDay +=$("#work3").val();
-                        _vWorkingDay +=" ";
-	               }
-	               if(_work4==1){
-                        _vWorkingDay +=$("#work4").val();
-                        _vWorkingDay +=" ";
-	               }
-	               if(_work5==1){
-                        _vWorkingDay +=$("#work5").val();
-                        _vWorkingDay +=" ";
-	               }
-	               if(_work6==1){
-                        _vWorkingDay +=$("#work6").val();
-                        _vWorkingDay +=" ";
-	               }
-	               if(_work7==1){
-                        _vWorkingDay +=$("#work7").val();
-                        _vWorkingDay +=" ";
-                   }
+                vInfo = vInfo.replace(/<br>/g, "\n");
 
-	               var _vRegAmnt=$("#vRegAmnt").val();
-	               var _serviceCode=$("#serviceCode").val();
-	               var _file=$("#file").val();
-	               var _info=$("#info").val().replace(/\n/g, "<br>");
+                document.getElementById("vRegAmnt").value = vRegAmnt;
+                document.getElementById("serviceCode").value = vServiceCode2;
+                document.getElementById("info").value = vInfo;
+                document.getElementById("centerRegBtnRM").value = "수정 완료";
+                document.getElementById("centerRegBtnRM").addEventListener("click", function(event) {
+                    event.preventDefault();
+                    fn_modify();
+                });
+            }
+        });
 
+        function fn_modify() {
+            var _title = $("#title").val();
+            var _startDate = $("#startDate").val();
+            var _endDate = $("#endDate").val();
+            var _startTime = $("#startTime").val();
+            var _endTime = $("#endTime").val();
+            var _rStartDate = $("#rStartDate").val();
+            var _rEndDate = $("#rEndDate").val();
+            var _vWorkingDay = "";
+            if ($("#work1").prop("checked")) _vWorkingDay += $("#work1").val() + " ";
+            if ($("#work2").prop("checked")) _vWorkingDay += $("#work2").val() + " ";
+            if ($("#work3").prop("checked")) _vWorkingDay += $("#work3").val() + " ";
+            if ($("#work4").prop("checked")) _vWorkingDay += $("#work4").val() + " ";
+            if ($("#work5").prop("checked")) _vWorkingDay += $("#work5").val() + " ";
+            if ($("#work6").prop("checked")) _vWorkingDay += $("#work6").val() + " ";
+            if ($("#work7").prop("checked")) _vWorkingDay += $("#work7").val() + " ";
 
-	               if(_title==''){
-	                     alert("제목을 입력하세요");
-	                     return;
-	               }else if(_startDate=='' || _endDate=='' ){
-	                   alert("봉사시간을 입력하세요");
-	                   return;
-	               }else if(_startTime=='' || _endTime=='' ){
-	                   alert("봉사시간을 입력하세요");
-	                   return;
-	               }else if(_rStartDate=='' || _rEndDate=='' ){
-	                   alert("모집기간을 입력하세요");
-	                   return;
-	               }else if(_vWorkingDay==''){
-	                   alert("봉사요일을 체크하세요");
-	                   return;
-	               }else if(_vRegAmnt=='' ){
-	                   alert("모집인원을 입력하세요");
-	                   return;
-	               }else if(_serviceCode=='' ){
-	                   alert("봉사분야를 체크하세요");
-	                   return;
-	               }else if(_file){
-	                   var formData = new FormData();
-                       var inputFile = $("input[name='vUploadFilePath']");
-                       var files = inputFile[0].files;
-                       formData.append("uploadFile", files[0]);
+            var _vRegAmnt = $("#vRegAmnt").val();
+            var _serviceCode = $("#serviceCode").val();
+            var _info = $("#info").val().replace(/\n/g, "<br>");
 
-                       if(_info=='' ){
-                           _info="없음";
-                       }
-
-                       $.ajax({
-                             url: "${contextPath}/upload",
-                             type: "POST",
-                             data: formData,
-                             contentType: false,
-                             processData: false,
-                             success:function (data,textStatus){
-                               alert("파일 업로드에 성공했습니다.");
-                             },
-                             error:function(data,textStatus){
-                                 alert("파일 업로드에 실패했습니다.");
-                             },
-                       });
-
-	               }else if(_file=='' ){
-	            	   _file="없음";
-	            	   if(_info=='' ){
-	            		   _info="없음";
-	            	   }
-	               }else if(_info=='' ){
-	            	   _info="없음";
-	            	   }
-
-	               $.ajax({
-	                   type:"post",
-	                   async:true,
-	                   url:"${contextPath}/addCenterReg.do",
-	                   dataType:"json",
-	                   data: {
-                              vTitle: _title,
-                              vStartDate: _startDate,
-                              vEndDate: _endDate,
-                              vStartTime: _startTime,
-                              vLastTime: _endTime,
-                              vRStartDate: _rStartDate,
-                              vREndDate: _rEndDate,
-                              vWorkingDay: _vWorkingDay,
-                              vRegAmnt: _vRegAmnt,
-                              vServiceCode: _serviceCode,
-                              vUploadFilePath: _file,
-                              vInfo: _info,
-                              uId: _uId
-	                	 },
-	                   success:function (data,textStatus){
-	                        var v_no = data[0].v_no;
-                            var vTitle = data[0].vTitle;
-                            var vStartDate = data[0].vStartDate;
-                            var vEndDate = data[0].vEndDate;
-                            var vStartTime = data[0].vStartTime;
-                            var vLastTime = data[0].vLastTime;
-                            var vRStartDate = data[0].vRStartDate;
-                            var vREndDate = data[0].vREndDate;
-                            var vWorkingDay = data[0].vWorkingDay;
-                            var vServiceCode = data[0].vServiceType;
-                            var vRegAmnt = data[0].vRegAmnt;
-                            var vUploadFilePath = data[0].vUploadFilePath;
-                            var vInfo = data[0].vInfo;
-
-
-                            document.getElementById("centerRegBtnCN").value = "확인";
-                            document.getElementById("centerRegBtnRM").value = "수정";
-                            document.getElementById("centerRegBtnRM").type="submit";
-
-                            $( 'hidden' ).html( '<input type="hidden" name="v_no" value="'+v_no+'"/>' );
-
-                            $( 'h2' ).html( '<h1>'+vTitle+'</h1>' );
-
-                            $('#vDate').remove();
-                            $( 'vDate' ).html( '<h1>' + vStartDate + ' ~ ' + vEndDate + '</h1>' );
-
-                            $('#vTime').remove();
-                            $( 'vTime' ).html( '<h1>' + vStartTime + ' ~ ' + vLastTime + '</h1>' );
-
-                            $('#rDate').remove();
-                            $( 'rDate' ).html( '<h1>' + vRStartDate + ' ~ ' + vREndDate + '</h1>' );
-
-                            $('#work').remove();
-                            $( 'work' ).html( '<h1>' + vWorkingDay + '</h1>' );
-
-                            $('#vRegAmnt').remove();
-                            $( 'vRegAmnt' ).html( '<h1>' + vRegAmnt + '</h1>' );
-
-                            $('#serviceCode').remove();
-                            $( 'serviceCode' ).html( '<h1>' + vServiceCode + '</h1>' );
-
-                            $('#file').remove();
-                            $( 'file' ).html( '<h1>' + vUploadFilePath + '</h1>' );
-
-                            $('#info').remove();
-                            if( vInfo == "없음" ){
-                            $( 'info' ).html( '<h1>' + vInfo + '</h1>' );
-                            }else{
-                            $( 'info' ).html( '<h1 style="text-align : left">' + vInfo + '</h1>' );
-                            }
-
-	                   },
-	                   error:function(data,textStatus){
-	                      alert("에러가 발생했습니다.");
-	                   },
-	                   complete:function(data,textStatus){
-	                   }
-	             });
-
-         	}
-            function showRejectReason(id) {
-                document.getElementById('reject-reason-' + id).style.display = 'block';
+            if (_title == '') {
+                alert("제목을 입력하세요");
+                return;
+            } else if (_startDate == '' || _endDate == '') {
+                alert("봉사시간을 입력하세요");
+                return;
+            } else if (_startTime == '' || _endTime == '') {
+                alert("봉사시간을 입력하세요");
+                return;
+            } else if (_rStartDate == '' || _rEndDate == '') {
+                alert("모집기간을 입력하세요");
+                return;
+            } else if (_vWorkingDay == '') {
+                alert("봉사요일을 체크하세요");
+                return;
+            } else if (_vRegAmnt == '') {
+                alert("모집인원을 입력하세요");
+                return;
+            } else if (_serviceCode == '') {
+                alert("봉사분야를 체크하세요");
+                return;
+            } else if (_info == '') {
+                _info = "없음";
             }
 
-            function hideRejectReason(id) {
-                document.getElementById('reject-reason-' + id).style.display = 'none';
+            var form = document.createElement("form");
+            form.setAttribute("method", "post");
+            form.setAttribute("action", "${contextPath}/updateCenterReg.do");
+
+            var inputs = [
+                { name: "vTitle", value: _title },
+                { name: "vStartDate", value: _startDate },
+                { name: "vEndDate", value: _endDate },
+                { name: "vStartTime", value: _startTime },
+                { name: "vLastTime", value: _endTime },
+                { name: "vRStartDate", value: _rStartDate },
+                { name: "vREndDate", value: _rEndDate },
+                { name: "vWorkingDay", value: _vWorkingDay },
+                { name: "vRegAmnt", value: _vRegAmnt },
+                { name: "vServiceCode", value: _serviceCode },
+                { name: "vInfo", value: _info },
+                { name: "uId", value: "${centerId}" },
+                { name: "v_no", value: "${centerList[0].v_no}" }
+            ];
+
+            inputs.forEach(function(input) {
+                var inputElement = document.createElement("input");
+                inputElement.setAttribute("type", "hidden");
+                inputElement.setAttribute("name", input.name);
+                inputElement.setAttribute("value", input.value);
+                form.appendChild(inputElement);
+            });
+
+            document.body.appendChild(form);
+            form.submit();
+        }
+
+        function fn_process() {
+            var _uId = "${centerId}";
+            var _title = $("#title").val();
+            var _startDate = $("#startDate").val();
+            var _endDate = $("#endDate").val();
+            var _startTime = $("#startTime").val();
+            var _endTime = $("#endTime").val();
+            var _rStartDate = $("#rStartDate").val();
+            var _rEndDate = $("#rEndDate").val();
+            var _vWorkingDay = "";
+            if ($("#work1").prop("checked")) _vWorkingDay += $("#work1").val() + " ";
+            if ($("#work2").prop("checked")) _vWorkingDay += $("#work2").val() + " ";
+            if ($("#work3").prop("checked")) _vWorkingDay += $("#work3").val() + " ";
+            if ($("#work4").prop("checked")) _vWorkingDay += $("#work4").val() + " ";
+            if ($("#work5").prop("checked")) _vWorkingDay += $("#work5").val() + " ";
+            if ($("#work6").prop("checked")) _vWorkingDay += $("#work6").val() + " ";
+            if ($("#work7").prop("checked")) _vWorkingDay += $("#work7").val() + " ";
+
+            var _vRegAmnt = $("#vRegAmnt").val();
+            var _serviceCode = $("#serviceCode").val();
+            var _file = $("#file").val();
+            var _info = $("#info").val().replace(/\n/g, "<br>");
+
+            if (_title == '') {
+                alert("제목을 입력하세요");
+                return;
+            } else if (_startDate == '' || _endDate == '') {
+                alert("봉사시간을 입력하세요");
+                return;
+            } else if (_startTime == '' || _endTime == '') {
+                alert("봉사시간을 입력하세요");
+                return;
+            } else if (_rStartDate == '' || _rEndDate == '') {
+                alert("모집기간을 입력하세요");
+                return;
+            } else if (_vWorkingDay == '') {
+                alert("봉사요일을 체크하세요");
+                return;
+            } else if (_vRegAmnt == '') {
+                alert("모집인원을 입력하세요");
+                return;
+            } else if (_serviceCode == '') {
+                alert("봉사분야를 체크하세요");
+                return;
+            } else if (_info == '') {
+                _info = "없음";
             }
 
-           </script>
+            var form = document.createElement("form");
+            form.setAttribute("method", "post");
+            form.setAttribute("action", "${contextPath}/addCenterReg.do");
+
+            var inputs = [
+                { name: "vTitle", value: _title },
+                { name: "vStartDate", value: _startDate },
+                { name: "vEndDate", value: _endDate },
+                { name: "vStartTime", value: _startTime },
+                { name: "vLastTime", value: _endTime },
+                { name: "vRStartDate", value: _rStartDate },
+                { name: "vREndDate", value: _rEndDate },
+                { name: "vWorkingDay", value: _vWorkingDay },
+                { name: "vRegAmnt", value: _vRegAmnt },
+                { name: "vServiceCode", value: _serviceCode },
+                { name: "vInfo", value: _info },
+                { name: "uId", value: _uId }
+            ];
+
+            inputs.forEach(function(input) {
+                var inputElement = document.createElement("input");
+                inputElement.setAttribute("type", "hidden");
+                inputElement.setAttribute("name", input.name);
+                inputElement.setAttribute("value", input.value);
+                form.appendChild(inputElement);
+            });
+
+            document.body.appendChild(form);
+            form.submit();
+        }
+
+        function showRejectReason(id) {
+            document.getElementById('reject-reason-' + id).style.display = 'block';
+        }
+
+        function hideRejectReason(id) {
+            document.getElementById('reject-reason-' + id).style.display = 'none';
+        }
+        </script>
     </head>
-    <html>
-	    <body>
-	    <jsp:include page="neviCenter.jsp" />
-		        <div class="centerRegDiv">
-
-            					<h3>모집요강 등록</h3>
-
-		        <div class="centerRegBox">
-		            <h2><input class="centerRegTitle" id="title" type="text" name="vTitle" placeholder="제목을 입력해주세요."></h2>
-                    <table class="centerRegTable">
-                        <tr>
-                            <td class="centerRegTd">봉사기간</td>
-                            <td>
+    <body>
+        <jsp:include page="neviCenter.jsp" />
+        <div class="centerRegDiv">
+            <h3>모집요강 등록</h3>
+            <div class="centerRegBox">
+                <h2><input class="centerRegTitle" id="title" type="text" name="vTitle" placeholder="제목을 입력해주세요."></h2>
+                <table class="centerRegTable">
+                    <tr>
+                        <td class="centerRegTd">봉사기간</td>
+                        <td>
                             <div id="vDate">
-                                <input id="startDate" class="centerRegDateLeft" type="date" name="vStartDate"><vStartDate></vStartDate>
+                                <input id="startDate" class="centerRegDateLeft" type="date" name="vStartDate">
+                                <vStartDate></vStartDate>
                                 ~
                                 <input id="endDate" class="centerRegDateRight" type="date" name="vEndDate">
-                            </div><vDate></vDate>
-                            </td>
-                            <td class="centerRegTd">봉사시간</td>
-                            <td>
+                            </div>
+                            <vDate></vDate>
+                        </td>
+                        <td class="centerRegTd">봉사시간</td>
+                        <td>
                             <div id="vTime">
                                 <input id="startTime" class="centerRegDateLeft" type="time" name="vStartTime">
                                 ~
                                 <input id="endTime" class="centerRegDateRight" type="time" name="vLastTime">
-                            </div><vTime></vTime>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="centerRegTd">모집기간</td>
-                            <td>
+                            </div>
+                            <vTime></vTime>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="centerRegTd">모집기간</td>
+                        <td>
                             <div id="rDate">
                                 <input id="rStartDate" class="centerRegDateLeft" type="date" name="vRStartDate">
                                 ~
                                 <input id="rEndDate" class="centerRegDateRight" type="date" name="vREndDate">
-                            </div><rDate></rDate>
-                            </td>
-                            <td class="centerRegTd">활동요일</td>
-                            <td><div id="work">
+                            </div>
+                            <rDate></rDate>
+                        </td>
+                        <td class="centerRegTd">활동요일</td>
+                        <td>
+                            <div id="work">
                                 <input id="work1" type="checkbox" name="vWorkingDay1" value="월">월
                                 <input id="work2" type="checkbox" name="vWorkingDay2" value="화">화
                                 <input id="work3" type="checkbox" name="vWorkingDay3" value="수">수
@@ -511,173 +341,197 @@
                                 <input id="work5" type="checkbox" name="vWorkingDay5" value="금">금
                                 <input id="work6" type="checkbox" name="vWorkingDay6" value="토">토
                                 <input id="work7" type="checkbox" name="vWorkingDay7" value="일">일
-                                </div>
-                                <work></work>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="centerRegTd">모집인원</td>
-                            <td><input class="centervRegAmnt" id="vRegAmnt" type="text" name="vRegAmnt" placeholder="모집인원을 입력해주세요."><vRegAmnt></vRegAmnt></td>
-                            <td class="centerRegTd">봉사분야</td>
-                            <td>
-                            <select id="serviceCode"  name="vServiceCode">
-                                    <option value="">선택</option>
-                                    <option value="1">청소/배식</option>
-                                    <option value="2">산책</option>
-                                    <option value="3">목욕</option>
-                                    <option value="4">사진</option>
-                                    <option value="5">미용</option>
-                                    <option value="6">이동</option>
-                                    <option value="7">의료</option>
-                                </select>
-                                <serviceCode></serviceCode>
-                            </td>
-                        </tr>
-                        <tr>
-                           <td class="centerRegTd">센터명</td>
-                            <td>
-                                ${centerList2[0].cName}
-                            </td>
-                            <td class="centerRegTd">봉사장소</td>
-                            <td>
-                                ${centerList2[0].cAddr1} ${centerList2[0].cAddr2}
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="centerRegTd">첨부파일</td>
-                            <td colspan="3"><input id="file" type="file" name="vUploadFilePath" multiple="multiple"><file></file></td>
-                        </tr>
-                    </table>
-		            <div class="centerRegDiv2">
-		                <textarea id="info" name="vInfo"  placeholder="자격요건, 주의사항, 상세내용, 등을 입력해주세요."></textarea><info></info>
-                    </div>
-                    <c:choose>
-                        <c:when test="${empty recruitmentList}">
-                            <div class="centerRegDiv5">
-                                <table class="volListT">
-                                    <thead>
-                                        <tr>
-                                            <th width="15%">ID</th>
-                                            <th width="15%">이름</th>
-                                            <th width="15%">전화번호</th>
-                                            <th>봉사상태</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td colspan="4" class="centerNoData">표시할 데이터가 없습니다</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
                             </div>
-                        </c:when>
-                        <c:otherwise>
-                            <h3>봉사자 리스트</h3>
-                            <div class="centerRegDiv5">
-                                <table class="volListT">
-                                    <thead>
+                            <work></work>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="centerRegTd">모집인원</td>
+                        <td>
+                            <input class="centervRegAmnt" id="vRegAmnt" type="text" name="vRegAmnt" placeholder="모집인원을 입력해주세요.">
+                            <vRegAmnt></vRegAmnt>
+                        </td>
+                        <td class="centerRegTd">봉사분야</td>
+                        <td>
+                            <select id="serviceCode" name="vServiceCode">
+                                <option value="">선택</option>
+                                <option value="1">청소/배식</option>
+                                <option value="2">산책</option>
+                                <option value="3">목욕</option>
+                                <option value="4">사진</option>
+                                <option value="5">미용</option>
+                                <option value="6">이동</option>
+                                <option value="7">의료</option>
+                            </select>
+                            <serviceCode></serviceCode>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="centerRegTd">센터명</td>
+                        <td>
+                            ${centerList2[0].cName}
+                        </td>
+                        <td class="centerRegTd">봉사장소</td>
+                        <td>
+                            ${centerList2[0].cAddr1} ${centerList2[0].cAddr2}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="centerRegTd">첨부파일</td>
+                        <td colspan="3">
+                            <input id="file" type="file" name="vUploadFilePath" multiple="multiple">
+                            <file></file>
+                        </td>
+                    </tr>
+                </table>
+                <div class="centerRegDiv2">
+                    <textarea id="info" name="vInfo" placeholder="자격요건, 주의사항, 상세내용, 등을 입력해주세요."></textarea>
+                    <info></info>
+                </div>
+
+                <c:choose>
+                    <c:when test="${empty recruitmentList}">
+                        <div class="centerRegDiv5">
+                            <table class="volListT">
+                                <thead>
+                                    <tr>
+                                        <th width="15%">ID</th>
+                                        <th width="15%">이름</th>
+                                        <th width="15%">전화번호</th>
+                                        <th>봉사상태</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td colspan="4" class="centerNoData">표시할 데이터가 없습니다</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </c:when>
+                    <c:otherwise>
+                        <h3>봉사자 리스트</h3>
+                        <div class="centerRegDiv5">
+                            <table class="volListT">
+                                <thead>
+                                    <tr>
+                                        <th width="15%">ID</th>
+                                        <th width="15%">이름</th>
+                                        <th width="15%">전화번호</th>
+                                        <th>봉사상태</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <c:forEach var="vo" items="${recruitmentList}">
                                         <tr>
-                                            <th width="15%">ID</th>
-                                            <th width="15%">이름</th>
-                                            <th width="15%">전화번호</th>
-                                            <th>봉사상태</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <c:forEach var="vo" items="${recruitmentList}">
-                                            <tr>
-                                                <td>${vo.userId}</td>
-                                                <td>${vo.name}</td>
-                                                <td>${vo.phone}</td>
-                                                <td>
-                                                    <c:choose>
-                                                        <c:when test="${vo.status == '0'}">
-                                                            <div class="centerMainBtnG">
-                                                                <form method="post" action="${pageContext.request.contextPath}/centerMain">
-                                                                    <input type="hidden" name="userId" value="${vo.userId}">
-                                                                    <input type="hidden" name="centerId" value="${centerId}">
-                                                                    <input type="hidden" name="action" value="approve">
-                                                                    <input type="hidden" name="section" value="recruitment">
-                                                                    <button class="centerMainApprv" type="submit">승인</button>
-                                                                </form>
-                                                                <form method="post" action="${pageContext.request.contextPath}/centerMain">
-                                                                    <input type="hidden" name="userId" value="${vo.userId}">
-                                                                    <input type="hidden" name="centerId" value="${centerId}">
-                                                                    <input type="hidden" name="action" value="reject">
-                                                                    <input type="hidden" name="section" value="recruitment">
-                                                                    <button class="centerMainRej" type="button" onclick="showRejectReason('${vo.userId}_recruitment')">거절</button>
-                                                                </form>
-                                                            </div>
-                                                            <div id="reject-reason-${vo.userId}_recruitment" style="display:none;">
-                                                                <form method="post" action="${pageContext.request.contextPath}/centerMain">
-                                                                    <input type="hidden" name="userId" value="${vo.userId}">
-                                                                    <input type="hidden" name="centerId" value="${centerId}">
-                                                                    <input type="hidden" name="action" value="reject">
-                                                                    <input type="hidden" name="section" value="recruitment">
-                                                                    <input class="centerMainRR" type="text" name="rejectReason" placeholder="거절 사유를 입력하세요" />
-                                                                    <button class="centerRR" type="submit">O</button>
-                                                                    <button class="centerRR" type="button" onclick="hideRejectReason('${vo.userId}_recruitment')">X</button>
-                                                                </form>
-                                                            </div>
-                                                        </c:when>
-                                                        <c:when test="${vo.status == '1'}">
-                                                            <form method="post" action="${pageContext.request.contextPath}/centerMain">
+                                            <td>${vo.userId}</td>
+                                            <td>${vo.name}</td>
+                                            <td>${vo.phone}</td>
+                                            <td>
+                                                <c:choose>
+                                                    <c:when test="${vo.status == '0'}">
+                                                        <div class="centerMainBtnG">
+                                                            <form method="post" action="${contextPath}/viewCenterReg.do">
                                                                 <input type="hidden" name="userId" value="${vo.userId}">
                                                                 <input type="hidden" name="centerId" value="${centerId}">
-                                                                <input type="hidden" name="action" value="complete">
+                                                                <input type="hidden" name="action" value="approve">
                                                                 <input type="hidden" name="section" value="recruitment">
-                                                                <button class="centerMainVolBtn" type="submit">봉사완료</button>
+                                                                <input type="hidden" name="resNo" value="${vo.resNo}">
+                                                                <input type="hidden" name="v_no" value="${centerList[0].v_no}">
+                                                                <button class="centerMainApprv" type="submit">승인</button>
                                                             </form>
-                                                        </c:when>
-                                                        <c:when test="${vo.status == '2'}">
-                                                            <div>거절됨: ${vo.rejectReason}</div>
-                                                        </c:when>
-                                                        <c:when test="${vo.status == '3'}">
-                                                            <div>봉사완료</div>
-                                                        </c:when>
-                                                    </c:choose>
-                                                </td>
-                                            </tr>
-                                        </c:forEach>
-                                    </tbody>
-                                </table>
+                                                            <form method="post" action="${contextPath}/viewCenterReg.do">
+                                                                <input type="hidden" name="userId" value="${vo.userId}">
+                                                                <input type="hidden" name="centerId" value="${centerId}">
+                                                                <input type="hidden" name="action" value="reject">
+                                                                <input type="hidden" name="section" value="recruitment">
+                                                                <input type="hidden" name="resNo" value="${vo.resNo}">
+                                                                <input type="hidden" name="v_no" value="${centerList[0].v_no}">
+                                                                <button class="centerMainRej" type="button" onclick="showRejectReason('${vo.userId}_recruitment')">거절</button>
+                                                            </form>
+                                                        </div>
+                                                        <div id="reject-reason-${vo.userId}_recruitment" style="display:none;">
+                                                            <form method="post" action="${contextPath}/viewCenterReg.do">
+                                                                <input type="hidden" name="userId" value="${vo.userId}">
+                                                                <input type="hidden" name="centerId" value="${centerId}">
+                                                                <input type="hidden" name="action" value="reject">
+                                                                <input type="hidden" name="section" value="recruitment">
+                                                                <input type="hidden" name="resNo" value="${vo.resNo}">
+                                                                <input type="hidden" name="v_no" value="${centerList[0].v_no}">
+                                                                <input class="centerMainRR" type="text" name="rejectReason" placeholder="거절 사유를 입력하세요" />
+                                                                <button class="centerRR" type="submit">O</button>
+                                                                <button class="centerRR" type="button" onclick="hideRejectReason('${vo.userId}_recruitment')">X</button>
+                                                            </form>
+                                                        </div>
+                                                    </c:when>
+                                                    <c:when test="${vo.status == '1'}">
+                                                        <form method="post" action="${contextPath}/viewCenterReg.do">
+                                                            <input type="hidden" name="userId" value="${vo.userId}">
+                                                            <input type="hidden" name="centerId" value="${centerId}">
+                                                            <input type="hidden" name="action" value="complete">
+                                                            <input type="hidden" name="section" value="recruitment">
+                                                            <input type="hidden" name="resNo" value="${vo.resNo}">
+                                                            <input type="hidden" name="v_no" value="${centerList[0].v_no}">
+                                                            <button class="centerMainVolBtn" type="submit">봉사완료</button>
+                                                        </form>
+                                                    </c:when>
+                                                    <c:when test="${vo.status == '2'}">
+                                                        <div>거절됨: ${vo.rejectReason}</div>
+                                                    </c:when>
+                                                    <c:when test="${vo.status == '3'}">
+                                                        <div>봉사완료</div>
+                                                    </c:when>
+                                                </c:choose>
+                                            </td>
+                                        </tr>
+                                    </c:forEach>
+                                </tbody>
+                            </table>
+                            <c:if test="${not empty totalPages}">
                                 <div class="centerRecListPagination">
                                     <c:forEach begin="1" end="${totalPages}" var="i">
-                                        <a href="${pageContext.request.contextPath}/viewCenterReg.do?centerId=${centerId}&page=${i}"
-                                           class="${i == currentPage ? 'active' : ''}">${i}</a>
+                                        <c:choose>
+                                            <c:when test="${not empty v_no}">
+                                                <a href="${contextPath}/viewCenterReg.do?centerId=${centerId}&v_no=${v_no}&page=${i}" class="${i == currentPage ? 'active' : ''}">${i}</a>
+                                            </c:when>
+                                            <c:otherwise>
+                                                <a href="${contextPath}/viewCenterReg.do?centerId=${centerId}&page=${i}" class="${i == currentPage ? 'active' : ''}">${i}</a>
+                                            </c:otherwise>
+                                        </c:choose>
                                     </c:forEach>
                                 </div>
-                            </div>
-                        </c:otherwise>
-                    </c:choose>
-		        </div>
-                <div class="button-container">
-                    <c:set var="v_no" value="${centerList[0].v_no}" />
-                        <c:choose>
-                            <c:when test="${ v_no > 0}">
-                                <form name="recruitmentRegister" method="get" action="${pageContext.request.contextPath}/centerMain" encType="utf-8">
-                                    <input type="hidden" name="userId" value="${centerId}">
-                                    <input id="centerRegBtnCN" type="submit"  class="centerRegBtn" value="목록" />
-                                </form>
-                                <form name="recruitmentRegister" method="get" action="${pageContext.request.contextPath}/modifyCenterReg.do" encType="utf-8">
-                                    <input id="centerRegBtnRM" class="centerRegBtn" type="submit" value="수정" />
-                                    <input type="hidden" name="centerId" value="${centerId}"/>
-                                    <input type="hidden" name="v_no" value="${v_no}"/>
-                                </form>
-                            </c:when>
-                            <c:otherwise>
-                                <form name="recruitmentRegister" method="get" action="${pageContext.request.contextPath}/centerMain" encType="utf-8">
-                                    <input type="hidden" name="userId" value="${centerId}">
-                                    <input id="centerRegBtnCN" type="submit"  class="centerRegBtn" value="취소" />
-                                </form>
-                                <form name="recruitmentRegister" method="get" action="${pageContext.request.contextPath}/viewCenterReg.do" encType="utf-8">
-                                    <input id="centerRegBtnRM" class="centerRegBtn" type="button" value="등록" onClick="fn_process()" />
-                                    <input type="hidden" name="centerId" value="${centerId}"/>
-                                    <hidden></hidden>
-                                </form>
-                            </c:otherwise>
-                    </c:choose>
-                </div>
-		    </div>
-		</body>
+                            </c:if>
+                        </div>
+                    </c:otherwise>
+                </c:choose>
+            </div>
+            <div class="button-container">
+                <c:set var="v_no" value="${centerList[0].v_no}" />
+                <c:choose>
+                    <c:when test="${ v_no > 0}">
+                        <form name="recruitmentRegister" method="get" action="${pageContext.request.contextPath}/recruitlist" encType="utf-8">
+                            <input type="hidden" name="centerId" value="${centerId}">
+                            <input id="centerRegBtnCN" type="submit" class="centerRegBtn" value="목록" />
+                        </form>
+                        <form name="recruitmentRegister" method="get" action="${pageContext.request.contextPath}/modifyCenterReg.do" encType="utf-8">
+                            <input id="centerRegBtnRM" class="centerRegBtn" type="submit" value="수정" />
+                            <input type="hidden" name="centerId" value="${centerId}" />
+                            <input type="hidden" name="v_no" value="${v_no}" />
+                        </form>
+                    </c:when>
+                    <c:otherwise>
+                        <form name="recruitmentRegister" method="get" action="${pageContext.request.contextPath}/centerMain" encType="utf-8">
+                            <input type="hidden" name="userId" value="${centerId}">
+                            <input id="centerRegBtnCN" type="submit" class="centerRegBtn" value="취소" />
+                        </form>
+                        <form name="recruitmentRegister" method="get" action="${pageContext.request.contextPath}/viewCenterReg.do" encType="utf-8">
+                            <input id="centerRegBtnRM" class="centerRegBtn" type="button" value="등록" onClick="fn_process()" />
+                            <input type="hidden" name="centerId" value="${centerId}" />
+                            <hidden></hidden>
+                        </form>
+                    </c:otherwise>
+                </c:choose>
+            </div>
+        </div>
+    </body>
 </html>

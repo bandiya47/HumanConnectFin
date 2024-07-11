@@ -13,6 +13,8 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import java.io.File;
 
+import java.io.FileInputStream;
+import java.io.OutputStream;
 import java.util.*;
 
 
@@ -24,7 +26,7 @@ public class VolunteerDetailControllerImpl implements VolunteerDetailController 
 	@Autowired
 	private VolunteerDetailVO volunteerDetailVO ;
 
-	private static final String CURR_IMAGE_REPO_PATH = "c:\\spring\\upload_volunteer";
+	private static final String CURR_IMAGE_REPO_PATH = "c:\\spring\\image_repo";
 
 	@Override
 	@RequestMapping(value= "/viewVolunteerDetail.do", method = RequestMethod.GET)
@@ -210,5 +212,26 @@ public class VolunteerDetailControllerImpl implements VolunteerDetailController 
 			}
 		}
 		return fileList;
+	}
+	@Override
+	@RequestMapping("/volDownload")
+	public void download(@RequestParam("imageFileName") String imageFileName,
+						 HttpServletResponse response) throws Exception {
+		OutputStream out = response.getOutputStream();
+		String downFile = CURR_IMAGE_REPO_PATH + "/" + imageFileName;
+		File file = new File(downFile);
+
+		response.setHeader("Cache-Control", "no-cache");
+		response.addHeader("Content-disposition", "attachment; filename=" + imageFileName);
+		FileInputStream in = new FileInputStream(file);
+		byte[] buffer = new byte[1024 * 8];
+		while (true) {
+			int count = in.read(buffer);
+			if (count == -1)
+				break;
+			out.write(buffer, 0, count);
+		}
+		in.close();
+		out.close();
 	}
 }

@@ -7,7 +7,7 @@ import java.util.List;
 public interface CenterMainService {
     List<CenterMainVO> getRecruitmentList(String centerId, int page, int size);
 
-    List<CenterMainVO> getVolunteerList(String centerId);
+    List<CenterMainVO> getVolunteerList(String centerId, int page, int size);
 
     List<CenterMainVO> getAdoptionList(String centerId, int offset, int size);
 
@@ -16,6 +16,8 @@ public interface CenterMainService {
     int updateVolunteerStatus(String userId, int status, String rejectReason, String centerId, String resNo);
 
     int getTotalRecruitments(String centerId);
+
+    int getTotalVolunteers(String centerId);
 
     int getTotalAdoptions(String centerId);
 }

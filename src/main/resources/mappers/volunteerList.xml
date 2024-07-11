@@ -20,7 +20,7 @@
         <result property="vState" column="v_state" />
     </resultMap>
 
-    <select id="getVolunteerList" resultMap="volunteerListResult" >
+    <select id="getVolunteerList" resultMap="volunteerListResult">
         <![CDATA[
             SELECT
                 v_no,
@@ -37,10 +37,13 @@
                 volunteer v
             ORDER BY
                 v_rstart_date
-
+            OFFSET #{offset} ROWS FETCH NEXT #{size} ROWS ONLY
         ]]>
     </select>
 
-
-
+    <select id="getVolunteerCount" resultType="int">
+        <![CDATA[
+            SELECT COUNT(*) FROM volunteer v
+        ]]>
+    </select>
 </mapper>

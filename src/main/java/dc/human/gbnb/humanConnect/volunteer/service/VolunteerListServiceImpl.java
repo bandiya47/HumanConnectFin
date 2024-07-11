@@ -14,7 +14,13 @@ public class VolunteerListServiceImpl implements VolunteerListService {
     private VolunteerDAO volunteerDAO;
 
     @Override
-    public List<VolunteerListVO> getVolunteerList(String userId) throws Exception {
-        return volunteerDAO.getVolunteerList(userId);
+    public List<VolunteerListVO> getVolunteerList(int page, int size) throws Exception {
+        int offset = (page - 1) * size;
+        return volunteerDAO.getVolunteerList(offset, size);
+    }
+
+    @Override
+    public int getVolunteerCount() throws Exception {
+        return volunteerDAO.getVolunteerCount();
     }
 }

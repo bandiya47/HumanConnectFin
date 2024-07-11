@@ -8,14 +8,14 @@
     <resultMap id="recruitmentResultMap" type="dc.human.gbnb.humanConnect.center.vo.CenterRecruitListVO">
         <result property="rNum" column="V_NO"/>
         <result property="rTitle" column="V_TITLE"/>
-        <result property="rRegiDate" column="CREATED_DATE"/>
+        <result property="rRegiDate" column="CREATED_DATE1"/>
         <result property="rRegiAmnt" column="V_REG_AMNT"/>
     </resultMap>
 
     <select id="getRecruitmentList" resultMap="recruitmentResultMap">
         SELECT V_NO,
                V_TITLE,
-               TO_CHAR(CREATED_DATE, 'YYYY.MM.DD') AS CREATED_DATE,
+               TO_CHAR(CREATED_DATE, 'YYYY.MM.DD') AS CREATED_DATE1,
                V_REG_AMNT
           FROM VOLUNTEER
          WHERE CREATED_ID = #{centerId}

@@ -168,9 +168,9 @@ public class CenterListControllerImpl implements CenterListController {
 		System.out.println("Response code: " + conn.getResponseCode());
 		BufferedReader rd;
 		if (conn.getResponseCode() >= 200 && conn.getResponseCode() <= 300) {
-			rd = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+			rd = new BufferedReader(new InputStreamReader(conn.getInputStream(),StandardCharsets.UTF_8));
 		} else {
-			rd = new BufferedReader(new InputStreamReader(conn.getErrorStream()));
+			rd = new BufferedReader(new InputStreamReader(conn.getErrorStream(),StandardCharsets.UTF_8));
 		}
 
 		StringBuilder sb = new StringBuilder();

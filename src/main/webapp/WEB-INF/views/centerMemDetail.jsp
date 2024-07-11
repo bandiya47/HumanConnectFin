@@ -10,12 +10,16 @@
     <style>
         html, body {
             background-color: white !important;
+            font-family: 'MangoDdobak-B' !important;
         }
     </style>
 </head>
 <body class="adminMemDetailBody">
 <header class="adminMemDetailHeader">
-    <img src="${pageContext.request.contextPath}/img/logo.png" alt="로고">
+    <img src="${pageContext.request.contextPath}/img/logo.png" alt="로고" onclick="adminMain()">
+    <form action="logout" method="post">
+       <button class="adminBtn" type="submit" value="">로그아웃</button>
+    </form>
 </header>
 <div class="adminMemDetailContainer">
     <div class="adminMemDetailSidebar">
@@ -91,6 +95,13 @@
 
         document.body.appendChild(form);
         form.submit();
+    }
+    function adminMain() {
+        const logoutForm = document.createElement('form');
+        logoutForm.method = 'get';
+        logoutForm.action = '${pageContext.request.contextPath}/adminMain';
+        document.body.appendChild(logoutForm);
+        logoutForm.submit();
     }
 </script>
 </body>
