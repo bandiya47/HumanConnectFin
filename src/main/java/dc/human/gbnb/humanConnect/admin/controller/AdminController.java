@@ -6,7 +6,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 public interface AdminController {
-    ModelAndView showMemberList(@RequestParam(value = "searchQuery", required = false) String searchQuery);
+    ModelAndView showMemberList(@RequestParam(value = "searchQuery", required = false) String searchQuery,
+                                @RequestParam(value = "page", defaultValue = "1") int page,
+                                @RequestParam(value = "size", defaultValue = "20") int size);
     ModelAndView showMemberDetail(@RequestParam("u_id") String u_id);
     String updateMember(MemberVO memberVO);
     String deleteMember(@RequestParam("u_id") String u_id);

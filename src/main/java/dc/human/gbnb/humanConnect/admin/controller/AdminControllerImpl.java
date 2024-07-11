@@ -21,16 +21,23 @@ public class AdminControllerImpl implements AdminController {
 
     @Override
     @GetMapping("/adminMain")
-    public ModelAndView showMemberList(@RequestParam(value = "searchQuery", required = false) String searchQuery) {
+    public ModelAndView showMemberList(@RequestParam(value = "searchQuery", required = false) String searchQuery,
+                                       @RequestParam(value = "page", defaultValue = "1") int page,
+                                       @RequestParam(value = "size", defaultValue = "20") int size) {
         ModelAndView mav = new ModelAndView("adminMain");
         List<MemberVO> memberList;
         if (searchQuery != null && !searchQuery.isEmpty()) {
-            memberList = memberService.searchMembers(searchQuery);
+            memberList = memberService.searchMembers(searchQuery, page, size);
         } else {
-            memberList = memberService.listMembers();
+            memberList = memberService.listMembers(page, size);
         }
+        int totalRecords = searchQuery != null && !searchQuery.isEmpty() ? memberService.countSearchedMembers(searchQuery) : memberService.countAllMembers();
+        int totalPages = (int) Math.ceil((double) totalRecords / size);
+
         mav.addObject("memberList", memberList);
         mav.addObject("searchQuery", searchQuery);
+        mav.addObject("currentPage", page);
+        mav.addObject("totalPages", totalPages);
         return mav;
     }
 

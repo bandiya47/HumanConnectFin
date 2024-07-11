@@ -19,7 +19,7 @@
 <body>
 
 <header>                        <!--헤더-->
-    <div class="neviCenterBack"><img src="${pageContext.request.contextPath}/img/imsiback.jpg" alt=""></div>
+    <div class="neviCenterBack"><img src="${pageContext.request.contextPath}/img/headerbg.jpg" alt=""></div>
     <div class="neviCenterFor">
         <div class="neviCenterTop">   <!--최상단-->
             <div>

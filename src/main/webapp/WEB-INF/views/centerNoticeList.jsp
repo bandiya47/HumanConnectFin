@@ -14,15 +14,16 @@
     <title>HumanConnect 공지사항</title>
     <link rel="stylesheet" href="./css/style.css">
 </head>
-    <jsp:include page="neviCenter.jsp" />
+<jsp:include page="neviCenter.jsp" />
+<body>
     <!-- 공지사항 목록 및 삭제 -->
-    <div class="volNoticeListWholeContainer">
+    <div class="centerNoticeListWholeContainer">
         <form id="noticeListForm" method="post" enctype="multipart/form-data"
                 action="${pageContext.request.contextPath}/deleteNotices.do" style="display:block">
-            <div class="volNoticeListDiv">
+            <div class="centerNoticeListDiv">
                 <h2>공지사항</h2>
                 <div class="noticeListSomeDiv">
-                    <table class="volNoticeListTable">
+                    <table class="centerNoticeListTable">
                         <thead>
                             <tr>
                                 <th width="10%">No</th>
@@ -35,13 +36,21 @@
                             <tbody>
                                 <tr>
                                     <td>
-                                        <a href="${pageContext.request.contextPath}/viewCenterNoticeDetail.do?nNumber=${item.nNumber}&centerId=${centerId}">
-                                            ${item.nNumber}
-                                        </a>
-                                    </td>
-                                    <td>${item.nTitle}</td>
-                                    <td>${item.uId}</td>
-                                    <td>${item.nDate}</td>
+                                        <a href="${pageContext.request.contextPath}/viewVolNoticeDetail.do?nNumber=${item.nNumber}&userId=${userId}">
+                                        ${item.nNumber}
+                                      </td>
+                                      <td>
+                                        <a href="${pageContext.request.contextPath}/viewVolNoticeDetail.do?nNumber=${item.nNumber}&userId=${userId}">
+                                        ${item.nTitle}
+                                      </td>
+                                      <td>
+                                        <a href="${pageContext.request.contextPath}/viewVolNoticeDetail.do?nNumber=${item.nNumber}&userId=${userId}">
+                                        ${item.uId}
+                                      </td>
+                                      <td>
+                                        <a href="${pageContext.request.contextPath}/viewVolNoticeDetail.do?nNumber=${item.nNumber}&userId=${userId}">
+                                        ${item.nDate}
+                                      </td>
                                 </tr>
                             </tbody>
                         </c:forEach>

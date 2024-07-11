@@ -18,11 +18,18 @@
             searchQueryInput.value = '';
             searchQueryInput.closest('form').submit();
         }
+        function logout() {
+            const logoutForm = document.createElement('form');
+            logoutForm.method = 'post';
+            logoutForm.action = '${pageContext.request.contextPath}/logout';
+            document.body.appendChild(logoutForm);
+            logoutForm.submit();
+        }
     </script>
 </head>
 <body class="adminCenterMemBody">
 <header class="adminCenterMemHeader">
-    <img src="${pageContext.request.contextPath}/img/logo.png" alt="로고">
+    <img src="${pageContext.request.contextPath}/img/logo.png" alt="로고" onclick="logout()">
 </header>
 <div class="adminCenterMemContainer">
     <div class="adminCenterMemSidebar">

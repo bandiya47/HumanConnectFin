@@ -14,7 +14,20 @@ import java.util.Map;
 
 
 public interface CenterRegController {
-	public ModelAndView viewCenterReg(HttpServletRequest request, HttpServletResponse response,@RequestParam("centerId") String centerId, @RequestParam("v_no") int v_no) throws Exception;
+	public ModelAndView viewCenterReg(
+			HttpServletRequest request, HttpServletResponse response,
+			@RequestParam("centerId") String centerId,
+			@RequestParam("v_no") int v_no,
+			@RequestParam(value = "page", defaultValue = "1") int page,
+			@RequestParam(value = "size", defaultValue = "7") int size) throws Exception;
+	ModelAndView handlePostRequest(
+			@RequestParam("action") String action,
+			@RequestParam("userId") String userId,
+			@RequestParam("centerId") String centerId,
+			@RequestParam("section") String section,
+			@RequestParam("resNo") String resNo,
+			@RequestParam(value = "rejectReason", required = false) String rejectReason
+	);
 	public ModelAndView centerReg(HttpServletRequest request, HttpServletResponse response, @RequestParam("centerId") String centerId) throws Exception;
 	public List<CenterRegVO> addCenterReg(@ModelAttribute("info") CenterRegVO centerRegVO, HttpServletRequest request, HttpServletResponse response) throws Exception;
 	public List<CenterRegVO> updateCenterReg(@ModelAttribute("info") CenterRegVO centerRegVO, HttpServletRequest request, HttpServletResponse response) throws Exception;

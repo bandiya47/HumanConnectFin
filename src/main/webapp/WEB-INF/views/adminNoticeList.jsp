@@ -16,21 +16,22 @@
      <style>
             html, body {
                 background-color: white !important;
+                font-family: 'MangoDdobak-B';
             }
      </style>
- <script>
-        function resetSearch() {
-            const searchQueryInput = document.querySelector('input[name="searchQuery"]');
-            searchQueryInput.value = '';
-            searchQueryInput.closest('form').submit();
-        }
-        function logout() {
-            const logoutForm = document.createElement('form');
-            logoutForm.method = 'post';
-            logoutForm.action = '${pageContext.request.contextPath}/logout';
-            document.body.appendChild(logoutForm);
-            logoutForm.submit();
-        }
+     <script>
+            function resetSearch() {
+                const searchQueryInput = document.querySelector('input[name="searchQuery"]');
+                searchQueryInput.value = '';
+                searchQueryInput.closest('form').submit();
+            }
+            function logout() {
+                const logoutForm = document.createElement('form');
+                logoutForm.method = 'post';
+                logoutForm.action = '${pageContext.request.contextPath}/logout';
+                document.body.appendChild(logoutForm);
+                logoutForm.submit();
+            }
     </script>
 </head>
 <body class="noticeListBody">
@@ -47,8 +48,8 @@
         </ul>
     </div>
     <div class="adminNoticeListWholeContainer">
+        <div class="adminMainSearch-box" id="adminMainSearch-box">
         <h1>공지사항</h1>
-        <div class="adminMainSearch-box">
             <form action="${pageContext.request.contextPath}/adminMain" method="get">
                 <input type="text" name="searchQuery" placeholder="검색어 입력" value="${param.searchQuery}">
                 <input type="submit" value="검색">
@@ -82,13 +83,21 @@
                                 <a href="${pageContext.request.contextPath}/viewNoticeDetail.do?nNumber=${item.nNumber}">
                                   ${item.nNumber}
                               </td>
-                              <td>${item.nTitle}</td>
-                              <td>${item.uId}</td>
-                              <td>${item.nDate}</td>
+                              <td>
+                                <a href="${pageContext.request.contextPath}/viewNoticeDetail.do?nNumber=${item.nNumber}">
+                                ${item.nTitle}
+                              </td>
+                              <td>
+                                <a href="${pageContext.request.contextPath}/viewNoticeDetail.do?nNumber=${item.nNumber}">
+                                ${item.uId}
+                              </td>
+                              <td>
+                              <a href="${pageContext.request.contextPath}/viewNoticeDetail.do?nNumber=${item.nNumber}">
+                                ${item.nDate}
+                              </td>
                               <td>
                                 <form>
                                     <input type="checkbox" class="deleteCheckbox" name="nNumbers" value="${item.nNumber}">
-                                    </input>
                                 </form>
                               </td>
                            </tr>
@@ -175,6 +184,7 @@
         function showNoticeForm() {
             document.getElementById('noticeReg').style.display = 'block';
             document.getElementById('noticeListForm').style.display = 'none';
+            document.getElementById('adminMainSearch-box').style.display = 'none';
         }
 
         function showNoticeDetail() {

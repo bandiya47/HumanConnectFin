@@ -57,7 +57,7 @@
             </div>
             <div class="paginationNotice">
                 <c:if test="${currentPage > 1}">
-                    <a href="${contextPath}/centerNoticeList.do?centerId=${centerId}&page=${currentPage - 1}">&laquo; 이전</a>
+                    <a href="${contextPath}/volNoticeList.do?userId=${userId}&page=${currentPage - 1}">&laquo; 이전</a>
                 </c:if>
                 <c:forEach begin="1" end="${totalPages}" var="i">
                     <c:choose>
@@ -65,12 +65,12 @@
                             <span class="active">${i}</span>
                         </c:when>
                         <c:otherwise>
-                            <a href="${contextPath}/centerNoticeList.do?centerId=${centerId}&page=${i}">${i}</a>
+                            <a href="${contextPath}/volNoticeList.do?userId=${userId}&page=${i}">${i}</a>
                         </c:otherwise>
                     </c:choose>
                 </c:forEach>
                 <c:if test="${currentPage < totalPages}">
-                    <a href="${contextPath}/centerNoticeList.do?centerId=${centerId}&page=${currentPage + 1}">다음 &raquo;</a>
+                    <a href="${contextPath}/volNoticeList.do?userId=${userId}&page=${currentPage + 1}">다음 &raquo;</a>
                 </c:if>
             </div>
         </div>

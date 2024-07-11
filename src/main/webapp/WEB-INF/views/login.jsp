@@ -15,16 +15,23 @@
         function showPopup() {
             var width = 400;
             var height = 300;
-            var left = (window.innerWidth - (width+300)) / 2 + window.screenX;
-            var top = (window.innerHeight - (height+100)) / 2 + window.screenY;
+            var left = (window.innerWidth - (width)) / 2 + window.screenX;
+            var top = (window.innerHeight - (height)) / 2 + window.screenY;
             window.open("loginPopup", "a", "width=" + width + ", height=" + height + ", left=" + left + ", top=" + top);
         }
         function idPopup() {
             var width = 550;
-            var height = 480;
-            var left = (window.innerWidth - (width+280)) / 2 + window.screenX;
-            var top = (window.innerHeight - (height+80)) / 2 + window.screenY;
+            var height = 500;
+            var left = (window.innerWidth - (width)) / 2 + window.screenX;
+            var top = (window.innerHeight - (height)) / 2 + window.screenY;
             window.open("findId", "a", "width=" + width + ", height=" + height + ", left=" + left + ", top=" + top);IO
+        }
+        function pwdPopup() {
+            var width = 550;
+            var height = 500;
+            var left = (window.innerWidth - (width)) / 2 + window.screenX;
+            var top = (window.innerHeight - (height)) / 2 + window.screenY;
+            window.open("viewFindPw.do", "a", "width=" + width + ", height=" + height + ", left=" + left + ", top=" + top);IO
         }
         function showAlert(msg) {
             alert(msg);
@@ -72,9 +79,7 @@
             </form>
             <div class="loginOpt">
                 <button class="loginRegBtn" onclick="idPopup();">아이디 찾기 |</button>
-                <form action="join" method="get">
-                    <button class="loginRegBtn" type="submit">비밀번호 찾기 |</button>
-                </form>
+                <button class="loginRegBtn" onclick="pwdPopup();"> 비밀번호 재설정 |</button>
                 <form action="join" method="get">
                    <button class="loginRegBtn" type="submit">회원가입 |</button>
                 </form>

@@ -11,18 +11,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HumanConnect 공지사항</title>
+    <title>HumanConnect 공지사항 상세 정보</title>
     <link rel="stylesheet" href="./css/style.css">
     <style>
         html, body {
             background-color: white !important;
         }
     </style>
-</head>
-<body class="noticeListBody">
-
-<body>
- <script>
+    <script>
         function resetSearch() {
             const searchQueryInput = document.querySelector('input[name="searchQuery"]');
             searchQueryInput.value = '';
@@ -35,7 +31,20 @@
             document.body.appendChild(logoutForm);
             logoutForm.submit();
         }
+
+        function showNoticeForm() {
+            document.getElementById('noticeReg').style.display = 'block';
+            document.getElementById('noticeListForm').style.display = 'none';
+        }
+
+        function goNoticeList() {
+                  window.location.href = "${pageContext.request.contextPath}/adminNoticeList.do";
+        }
+
     </script>
+</head>
+<body class="noticeListBody">
+
 <header class="adminMainHeader">
     <img src="${pageContext.request.contextPath}/img/logo.png" alt="로고" onclick="logout()">
 </header>
@@ -52,7 +61,6 @@
     <c:if test="${noticeDetail == 'ViewNoticeDetail'}">
      <form id="noticeDetailForm" name="viewNoticeDetail" method="post"
             action="${pageContext.request.contextPath}/viewNoticeDetail" encType="UTF-8">
-            <p>1234</p>
      </c:if>
         <div class="noticeDetailBody" id="noticeDetail" style="display:block;"
                     action="${pageContext.request.contextPath}/viewNoticeDetail.do" >
@@ -60,19 +68,23 @@
                 <form id="noticeDetailForm" method="post" enctype="multipart/form-data">
 
                     <div class="adminNoticeDetailDiv">
-                        <h1>공지사항 상세페이지</h1>
+                        <h2>공지사항 상세페이지</h2>
                         <div class="buttonContainer3">
-                            <table id="noticeDetailTable" class="noticeDetailTable">
+                            <table id="adminNoticeDetailTable" class="noticeDetailTable">
                                 <tbody>
                                     <tr height="15%">
-                                        <th width="20%">제목</th>
-                                        <td id="detailTitle" width="80%">
+                                        <th width="10%">제목</th>
+                                        <td id="detailTitle" width="90%">
                                             ${noticeList.nTitle}
                                         </td>
                                     </tr>
                                     <tr height="75%">
                                         <th>내용</th>
-                                        <td id="detailContent">${noticeList.nContent}</td>
+                                        <td id="detailContent">
+                                            <pre>
+                                                ${noticeList.nContent}
+                                            </pre>
+                                        </td>
                                     </tr>
                                     <tr height="10%">
                                         <th>첨부 파일</th>
@@ -86,22 +98,6 @@
                 </form>
             </div>
         </div>
-
-    <script type="text/javascript">
-
-        <!--공지사항 등록 페이지-->
-        function showNoticeForm() {
-            document.getElementById('noticeReg').style.display = 'block';
-            document.getElementById('noticeListForm').style.display = 'none';
-        }
-
-        function goNoticeList() {
-                  window.location.href = "${pageContext.request.contextPath}/adminNoticeList.do";
-        }
-
-
-    </script>
-
 
 </body>
 </html>

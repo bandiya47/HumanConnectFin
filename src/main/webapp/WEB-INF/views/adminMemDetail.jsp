@@ -10,15 +10,25 @@
     <style>
         html, body {
             background-color: white !important;
+            font-family:
         }
     </style>
+    <script>
+        function logout() {
+            const logoutForm = document.createElement('form');
+            logoutForm.method = 'post';
+            logoutForm.action = '${pageContext.request.contextPath}/logout';
+            document.body.appendChild(logoutForm);
+            logoutForm.submit();
+        }
+    </script>
 </head>
 <body class="adminMemDetailBody">
 <header class="adminMemDetailHeader">
-    <img src="${pageContext.request.contextPath}/img/logo.png" alt="로고">
+    <img src="${pageContext.request.contextPath}/img/logo.png" alt="로고" onclick="logout()">
 </header>
-<div class="adminMemDetailContainer">
-    <div class="adminMemDetailSidebar">
+<div class="adminMainContainer">
+    <div class="adminMainSidebar">
         <h3>관리자<br>페이지</h3>
         <ul>
             <li class="active"><a href="${pageContext.request.contextPath}/adminMain">봉사회원정보 조회</a></li>
@@ -40,7 +50,7 @@
                 </tr>
                 <tr>
                     <td>비밀번호</td>
-                    <td colspan="2"><input type="text" id="u_pwd" value="${member.u_pwd}"></td>
+                    <td colspan="2"><input type="password" id="u_pwd" value="${member.u_pwd}" readonly></td>
                 </tr>
                 <tr>
                     <td>주소</td>

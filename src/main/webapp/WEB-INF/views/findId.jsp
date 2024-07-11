@@ -7,7 +7,15 @@
 <title>아이디 찾기</title>
    <link rel="stylesheet" type="text/css" href="/css/style.css">
    <script>
+        const minWidth = 550;
+        const minHeight = 800;
 
+        // 팝업 창이 로드되었을 때 크기 조정
+        window.onload = function() {
+            if (window.innerWidth < minWidth || window.innerHeight < minHeight) {
+                window.resizeTo(minWidth, minHeight);
+            }
+        };
 
     // 이름,이메일 누락시 알림
         function validateForm() {

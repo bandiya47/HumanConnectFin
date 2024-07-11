@@ -455,8 +455,13 @@
 	             });
 
          	}
+            function showRejectReason(id) {
+                document.getElementById('reject-reason-' + id).style.display = 'block';
+            }
 
-
+            function hideRejectReason(id) {
+                document.getElementById('reject-reason-' + id).style.display = 'none';
+            }
 
            </script>
     </head>
@@ -548,8 +553,8 @@
                     </div>
                     <c:choose>
                         <c:when test="${empty recruitmentList}">
-                            <div class="centerRegDiv2">
-                                <table>
+                            <div class="centerRegDiv5">
+                                <table class="volListT">
                                     <thead>
                                         <tr>
                                             <th width="15%">ID</th>
@@ -567,8 +572,9 @@
                             </div>
                         </c:when>
                         <c:otherwise>
-                            <div class="centerRegDiv2">
-                                <table>
+                            <h3>봉사자 리스트</h3>
+                            <div class="centerRegDiv5">
+                                <table class="volListT">
                                     <thead>
                                         <tr>
                                             <th width="15%">ID</th>
@@ -635,6 +641,12 @@
                                         </c:forEach>
                                     </tbody>
                                 </table>
+                                <div class="centerRecListPagination">
+                                    <c:forEach begin="1" end="${totalPages}" var="i">
+                                        <a href="${pageContext.request.contextPath}/viewCenterReg.do?centerId=${centerId}&page=${i}"
+                                           class="${i == currentPage ? 'active' : ''}">${i}</a>
+                                    </c:forEach>
+                                </div>
                             </div>
                         </c:otherwise>
                     </c:choose>

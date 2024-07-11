@@ -40,7 +40,7 @@
                 </tr>
                 <tr>
                     <td>비밀번호</td>
-                    <td colspan="2"><input type="text" id="c_pwd" value="${centerMember.c_pwd}"></td>
+                    <td colspan="2"><input type="password" id="c_pwd" value="${centerMember.c_pwd}"></td>
                 </tr>
                 <tr>
                     <td>주소</td>

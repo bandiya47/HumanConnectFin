@@ -8,9 +8,11 @@ import java.util.List;
 
 @Mapper
 public interface MemberDAO {
-	List<MemberVO> selectAllMemberList();
+	List<MemberVO> selectAllMemberList(@Param("offset") int offset, @Param("size") int size);
 	MemberVO selectMemberById(@Param("u_id") String u_id);
 	int updateMember(MemberVO memberVO);
 	int deleteMember(@Param("u_id") String u_id);
-	List<MemberVO> searchMembers(@Param("searchQuery") String searchQuery);
+	List<MemberVO> searchMembers(@Param("searchQuery") String searchQuery, @Param("offset") int offset, @Param("size") int size);
+	int countAllMembers();
+	int countSearchedMembers(@Param("searchQuery") String searchQuery);
 }

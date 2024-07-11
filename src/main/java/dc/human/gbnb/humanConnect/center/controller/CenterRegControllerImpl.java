@@ -1,6 +1,9 @@
 package dc.human.gbnb.humanConnect.center.controller;
 
 import dc.human.gbnb.humanConnect.center.service.CenterMainService;
+import dc.human.gbnb.humanConnect.center.service.CenterRecruitListService;
+import dc.human.gbnb.humanConnect.center.vo.CenterMainVO;
+import dc.human.gbnb.humanConnect.center.vo.CenterRecruitListVO;
 import dc.human.gbnb.humanConnect.center.vo.CenterRegVO;
 import dc.human.gbnb.humanConnect.center.service.CenterRegService;
 import jakarta.servlet.http.HttpServletRequest;
@@ -26,6 +29,9 @@ public class CenterRegControllerImpl implements CenterRegController {
 	private CenterMainService centerMainService;
 
 	@Autowired
+	private CenterRecruitListService centerRecruitListService;
+
+	@Autowired
 	private CenterRegVO centerRegVO ;
 
 	private static final String CURR_IMAGE_REPO_PATH = "c:\\spring\\image_repo";
@@ -34,11 +40,16 @@ public class CenterRegControllerImpl implements CenterRegController {
 	@RequestMapping(value= "/viewCenterReg.do", method = RequestMethod.GET)
 	public ModelAndView viewCenterReg(HttpServletRequest request, HttpServletResponse response,
 								  @RequestParam("centerId") String centerId,
-								  @RequestParam("v_no") int v_no) throws Exception {
+								  @RequestParam("v_no") int v_no,
+								  @RequestParam(value = "page", defaultValue = "1") int page,
+								  @RequestParam(value = "size", defaultValue = "7") int size) throws Exception {
 
 
 		List<CenterRegVO> Result = centerRegService.listIdCenterReg(centerId);
 		List<CenterRegVO> Result2 = centerRegService.listCenterReg(v_no);
+		List<CenterMainVO> recruitmentList = centerMainService.getRecruitmentList(centerId, page, size);
+		int totalRecords = centerMainService.getTotalRecruitments(centerId);
+		int totalPages = (int) Math.ceil((double) totalRecords / size);
 		System.out.println(Result2.get(0).getvTitle());
 		ModelAndView mav = new ModelAndView("/centerReg");
 
@@ -47,11 +58,49 @@ public class CenterRegControllerImpl implements CenterRegController {
 		mav.addObject("recruitmentList", centerRegService.getRegRecruitmentList(v_no));
 		mav.addObject("centerList2",Result);
 		mav.addObject("centerList",Result2);
+		mav.addObject("recruitmentList", recruitmentList);
+		mav.addObject("totalPages", totalPages);
 		mav.addObject("centerId", centerId);
 		mav.addObject("v_no", v_no);
 		return mav;
 	}
 
+	@Override
+	@PostMapping("/viewCenterReg.do")
+	public ModelAndView handlePostRequest(
+			@RequestParam("action") String action,
+			@RequestParam("userId") String userId,
+			@RequestParam("centerId") String centerId,
+			@RequestParam("section") String section,
+			@RequestParam(value = "rejectReason", required = false) String rejectReason,
+			@RequestParam("resNo") String resNo
+	) {
+		int updateRow = 0;
+
+		if ("approve".equals(action)) {
+			if ("recruitment".equals(section)) {
+				updateRow = centerMainService.updateRecruitmentStatus(userId, 1, null, centerId, resNo);
+			}
+		} else if ("reject".equals(action)) {
+			if ("recruitment".equals(section)) {
+				updateRow = centerMainService.updateRecruitmentStatus(userId, 2, rejectReason, centerId, resNo);
+			}
+		} else if ("complete".equals(action)) {
+			if ("recruitment".equals(section)) {
+				updateRow = centerMainService.updateRecruitmentStatus(userId, 3, null, centerId, resNo);
+			}
+		}
+
+		ModelAndView mav = new ModelAndView("redirect:/centerRecruitList");
+		mav.addObject("centerId", centerId);
+		if (updateRow > 0) {
+			mav.addObject("message", "수정되었습니다");
+		} else {
+			mav.addObject("message", "다시 확인해주세요");
+		}
+
+		return mav;
+	}
 
 
 

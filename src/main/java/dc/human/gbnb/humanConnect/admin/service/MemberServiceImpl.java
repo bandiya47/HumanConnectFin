@@ -16,8 +16,9 @@ public class MemberServiceImpl implements MemberService {
 	private MemberDAO memberDAO;
 
 	@Override
-	public List<MemberVO> listMembers() {
-		return memberDAO.selectAllMemberList();
+	public List<MemberVO> listMembers(int page, int size) {
+		int offset = (page - 1) * size;
+		return memberDAO.selectAllMemberList(offset, size);
 	}
 
 	@Override
@@ -36,7 +37,18 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public List<MemberVO> searchMembers(String searchQuery) {
-		return memberDAO.searchMembers(searchQuery);
+	public List<MemberVO> searchMembers(String searchQuery, int page, int size) {
+		int offset = (page - 1) * size;
+		return memberDAO.searchMembers(searchQuery, offset, size);
+	}
+
+	@Override
+	public int countAllMembers() {
+		return memberDAO.countAllMembers();
+	}
+
+	@Override
+	public int countSearchedMembers(String searchQuery) {
+		return memberDAO.countSearchedMembers(searchQuery);
 	}
 }

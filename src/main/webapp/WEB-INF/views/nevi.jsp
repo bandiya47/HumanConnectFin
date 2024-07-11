@@ -20,7 +20,7 @@
 <body>
 
 <header>                        <!--헤더-->
-    <div class="neviBack"><img src="./img/imsiback.jpg" alt=""></div>
+    <div class="neviBack"><img src="./img/headerbg.jpg" alt=""></div>
     <div class="neviFor">
         <div class="neviTop">   <!--최상단-->
             <div>

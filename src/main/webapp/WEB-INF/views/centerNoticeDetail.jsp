@@ -12,16 +12,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HumanConnect 공지사항</title>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
+    <link rel="stylesheet" href="./css/style.css">
 </head>
 <body class="noticeListBody">
     <jsp:include page="neviCenter.jsp" />
     <!-- 상세 공지글 -->
     <div class="noticeDetailBody" id="noticeDetail" style="display:block;" action="${pageContext.request.contextPath}/viewNoticeDetail.do">
-        <div class="volNoticeDetailWholeContainer">
+        <div class="centerNoticeDetailWholeContainer">
             <form id="noticeDetailForm" method="post" enctype="multipart/form-data">
-                <div class="volNoticeDetailDiv">
-                    <h1>공지사항 상세페이지</h1>
+                <div class="centerNoticeDetailDiv">
+                    <h2>공지사항 상세페이지</h2>
                     <div class="buttonContainer3">
                         <table id="noticeDetailTable" class="noticeDetailTable">
                             <tbody>
@@ -33,7 +33,11 @@
                                 </tr>
                                 <tr height="75%">
                                     <th>내용</th>
-                                    <td id="detailContent">${noticeList.nContent}</td>
+                                    <td id="detailContent">
+                                        <pre>
+                                            ${noticeList.nContent}
+                                        </pre>
+                                    </td>
                                 </tr>
                                 <tr height="10%">
                                     <th>첨부 파일</th>
