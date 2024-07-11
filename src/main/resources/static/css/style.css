@@ -2130,20 +2130,20 @@ vertical-align:middle;
 
             }
 
-            .centerListDiv .volunteerDetailTable{
+            .centerListDiv .centerListTable{
                 margin: 5px auto;
                 border-top: 2px solid  #8B4513;
                 border-bottom: 2px solid  #8B4513;
                 width: 980px;
                 background-color:white;
             }
-            .centerListDiv .volunteerDetailTable tr td{
+            .centerListDiv .centerListTable tr td{
                 padding: 5px;
                 border-bottom: 1px solid #FDECCB;
                 vertical-align: middle;
                 font-size:18px;
             }
-            .centerListDiv .volunteerDetailTable .volunteerDetailTd{
+            .centerListDiv .centerListTable .centerListTd{
                 border-right: 1px solid #8B4513;
                 background-color: #AC8668;
                 color:white;
