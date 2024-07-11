@@ -62,7 +62,7 @@ public class MypageControllerImpl implements MypageController {
 									HttpServletRequest request,
 									HttpServletResponse response) throws Exception {
 		ModelAndView mav = new ModelAndView();
-		String userId = mypageVO.getU_id();    //u_id를 useId라고 선언
+		String userId = mypageVO.getU_id();
 		try {
 			int saveResult = 0;
 			saveResult = mypageService.updateUserDetails(mypageVO);
@@ -70,13 +70,13 @@ public class MypageControllerImpl implements MypageController {
 				mypageVO = mypageService.privacyList(userId);
 				mav.addObject("myinfo", mypageVO);
 				mav.addObject("userId", userId);
-				mav.setViewName("mypagePrivacyCheck"); //privacyList 랑 같은
+				mav.setViewName("mypagePrivacyCheck");
 			} else {
 				mav.setViewName("mypagePrivacyEdit");
 				mypageVO = mypageService.privacyList(userId);
 				//jsp 안에 객체 추가
 				mav.addObject("myinfo", mypageVO);
-				mav.addObject("userId", userId);    //전 페이지 그대로
+				mav.addObject("userId", userId);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

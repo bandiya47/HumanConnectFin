@@ -51,26 +51,26 @@
                         </tr>
                         <tr>
                             <th>비밀번호</th>
-                            <td><input type="password" id="c_pwd" name="c_pwd" value="${CMyinfo.c_pwd}"></td>
+                            <td><input type="password" id="c_pwd" name="c_pwd" value="${CMyinfo.c_pwd}" required></td>
                         </tr>
                         <tr>
                             <th>비밀번호 확인</th>
-                            <td><input type="password" id="confirmPwd" name="confirmPwd" value="${CMyinfo.c_pwd}"></td>
+                            <td><input type="password" id="confirmPwd" name="confirmPwd" value="${CMyinfo.c_pwd}" required></td>
                         </tr>
                         <tr>
                             <th rowspan="2">주소</th>
-                            <td><input type="text" name="c_addr1" value="${CMyinfo.c_addr1}"></td>
+                            <td><input type="text" name="c_addr1" value="${CMyinfo.c_addr1}" required></td>
                         </tr>
                         <tr>
                             <td>상세주소. 표 확인해보기</td>
                         </tr>
                         <tr>
                             <th>이메일</th>
-                            <td><input type="text" name="c_email" value="${CMyinfo.c_email}"></td>
+                            <td><input type="text" name="c_email" value="${CMyinfo.c_email}" required></td>
                         </tr>
                         <tr>
                             <th>전화번호</th>
-                            <td><input type="text" name="c_phone" value="${CMyinfo.c_phone}"></td>
+                            <td><input type="text" name="c_phone" value="${CMyinfo.c_phone}" required></td>
                         </tr>
                     </table>
                 </div>
