@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>아이디 찾기</title>
-   <link rel="stylesheet" type="text/css" href="/css/style.css">
+   <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/style.css">
    <script>
         const minWidth = 550;
         const minHeight = 800;
@@ -34,7 +34,7 @@
 </head>
 <body class="find">
     <a href="index.jsp">
-        <img src="img/logo.png" class="find_logo">
+        <img src="${pageContext.request.contextPath}/img/logo.png">
     </a>
     <br>
     <div class="find_container">

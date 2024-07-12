@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>아이디 찾기 결과</title>
-<link rel="stylesheet" type="text/css" href="./css/style.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/style.css">
 <script type="text/javascript">
     function closeWindow() {
         window.close(); // 현재 창 닫기
@@ -15,7 +15,7 @@
 </head>
 <body class="find">
     <a href="index.jsp">
-        <img src="img/logo.png" class="find_logo">
+        <img src="${pageContext.request.contextPath}/img/logo.png" class="find_logo2">
     </a>
     <br>
     <div class="find_Rcontainer">

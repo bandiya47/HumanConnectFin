@@ -30,18 +30,13 @@ public class findPwControllerImpl implements findPwController {
             HttpSession session) {
         String result;
         try {
-            logger.info("Received request: userId=" + userId + ", userName=" + userName + ", userEmail=" + userEmail);
             result = loginFindPwService.findPw(userId, userName, userEmail);
-            logger.info("Result from service: " + result);
             if (result != null) {
-                logger.info("User found: " + result);
                 return result;
             } else {
-                logger.warning("User not found.");
                 return "no";
             }
         } catch (Exception ex) {
-            logger.severe("Exception: " + ex.getMessage());
         }
         return "no";
     }

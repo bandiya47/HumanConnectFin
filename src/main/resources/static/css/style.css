@@ -1836,17 +1836,11 @@ vertical-align:middle;
 }}
 /**조인 끝~~*****************************************************************************************************************/
 /**파인드 시작~~*****************************************************************************************************************/
-      .find_logo {
+      .find_logo2 {
            width : 450px;
-		   margin: 50px auto 0;
-		   flex-direction: column;
-		   justify-content: space-between;
-		   padding: 20px;
+		   margin: 0 auto;
 		   cursor: pointer;
 		   display: flex;
-		   align-items: center;
-           justify-content: center;
-           max-width: 100%;
         }
         .find {
             background-color: #FDECCB;
@@ -1856,6 +1850,10 @@ vertical-align:middle;
             display: grid;
             place-items: center;
             font-family: 'MangoDdobak-B';
+        }
+        .find img {
+            width: 450px;
+            margin: 0 auto;
         }
         .find_container {
             background-color: #fff;
