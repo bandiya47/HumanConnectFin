@@ -7,6 +7,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>아이디 찾기 결과</title>
 <link rel="stylesheet" type="text/css" href="./css/style.css">
+<script type="text/javascript">
+    function closeWindow() {
+        window.close(); // 현재 창 닫기
+    }
+</script>
 </head>
 <body class="find">
     <a href="index.jsp">
@@ -31,7 +36,7 @@
         %>
         <a href="findId" class="find_button">다시 시도</a>
         <a href="viewFindPw.do" class="find_button">비밀번호 재설정</a>
-        <a href="login" class="find_button">로그인 하기</a>
+        <a href="javascript:closeWindow()" class="find_button">로그인 하기</a>
     </div>
 </body>
 </html>

@@ -12,6 +12,7 @@ public interface CenterMemberDAO {
     List<CenterMemberVO> searchCenterMembers(@Param("searchQuery") String searchQuery, @Param("offset") int offset, @Param("size") int size);
     CenterMemberVO selectCenterMemberById(String c_id);
     void updateCenterMember(CenterMemberVO centerMember);
+    void resetCenterPW(CenterMemberVO centerMember);
     void deleteCenterMember(String c_id);
     int countAllCenterMembers();
     int countSearchedCenterMembers(String searchQuery);

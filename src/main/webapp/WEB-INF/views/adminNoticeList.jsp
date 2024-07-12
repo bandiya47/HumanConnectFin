@@ -50,7 +50,7 @@
             <li class="active"><a href="${pageContext.request.contextPath}/adminNoticeList.do">고객센터</a></li>
         </ul>
     </div>
-    <div class="adminNoticeListWholeContainer">
+    <div class="adminNoticeListWholeContainer2" id="adminNoticeListWholeContainer2">
         <div class="adminMainSearch-box" id="adminMainSearch-box">
         <h1>공지사항</h1>
             <form action="${pageContext.request.contextPath}/adminMain" method="get">
@@ -123,7 +123,7 @@
 
 
     <!--새 글 작성-->
-    <div class="noticeListBody" id="noticeReg" style="display:none;">
+    <div class="adminNoticeListBody" id="noticeReg" style="display:none;">
         <div class="adminNoticeListWholeContainer">
             <form id="noticeRegForm" method="post" enctype="multipart/form-data"
                         action="${pageContext.request.contextPath}/addNotice">
@@ -132,39 +132,28 @@
                     <h1>공지사항 등록</h1>
                     <div class="buttonContainer2">
                         <table class="noticeRegTable">
-                            <tr>
-                                <td width="25%">
-                                    공지 타입
-                                </td>
-                                <td width="25%">
-                                    공지사항
-                                </td>
-                                <td width="25%">
-                                    작성자
-                                </td>
-                                <td width="25%">
-                                    관리자
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
+                            <tr height="30px">
+                                <th>
                                     제목
-                                </td>
+                                </th>
                                 <td colspan="5">
                                     <label for="noticeTitle"></label>
-                                    <input type="text" id="noticeTitle" name="noticeTitle" required>
+                                    <input type="text" id="noticeTitle" name="noticeTitle" placeholder="제목을 입력 해주세요." required>
                                 </td>
                             </tr>
                             <tr>
-                                <td colspan="6">
+                                <th>
+                                    내용
+                                </th>
+                                <td colspan="5">
                                     <label for="noticeContent"></label>
                                     <textarea id="noticeContent" name="noticeContent" placeholder="공지사항을 입력 해주세요." required></textarea>
                                 </td>
                             </tr>
                             <tr>
-                                <td>
+                                <th>
                                     첨부파일
-                                </td>
+                                </th>
                                 <td colspan="5" background-color="white" class="click_fileUpload">
                                    <label for="nAttachPath" class="click_fileUpload_label">파일 선택</label>
                                    <input type="file" id="nAttachPath" name="nAttachPath" class="hidden_file_input">
@@ -188,14 +177,15 @@
             document.getElementById('noticeReg').style.display = 'block';
             document.getElementById('noticeListForm').style.display = 'none';
             document.getElementById('adminMainSearch-box').style.display = 'none';
+            document.getElementById('adminNoticeListWholeContainer2').style.display = 'none';
         }
 
         function showNoticeDetail() {
-                window.location.href = "${pageContext.request.contextPath}/viewNoticeDetail.do";
-            }
+            window.location.href = "${pageContext.request.contextPath}/viewNoticeDetail.do";
+        }
 
         function goNoticeList() {
-                          window.location.href = "${pageContext.request.contextPath}/adminNoticeList.do";
+            window.location.href = "${pageContext.request.contextPath}/adminNoticeList.do";
         }
 
         <!--공지사항 등록 실행-->

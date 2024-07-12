@@ -50,7 +50,7 @@
                 $('serviceCode').html('<h1>' + vServiceCode + '</h1>');
 
                 $('#file').remove();
-                $('file').html('<h1>' + vUploadFilePath + '</h1>');
+                 $( 'file' ).html(  '<h1><a href="/CenterDownload?imageFileName='+vUploadFilePath+'">'+vUploadFilePath+'</a></h1>' );
 
                 $('#info').remove();
                 if (vInfo == "없음") {
@@ -205,84 +205,195 @@
             form.submit();
         }
 
-        function fn_process() {
-            var _uId = "${centerId}";
-            var _title = $("#title").val();
-            var _startDate = $("#startDate").val();
-            var _endDate = $("#endDate").val();
-            var _startTime = $("#startTime").val();
-            var _endTime = $("#endTime").val();
-            var _rStartDate = $("#rStartDate").val();
-            var _rEndDate = $("#rEndDate").val();
-            var _vWorkingDay = "";
-            if ($("#work1").prop("checked")) _vWorkingDay += $("#work1").val() + " ";
-            if ($("#work2").prop("checked")) _vWorkingDay += $("#work2").val() + " ";
-            if ($("#work3").prop("checked")) _vWorkingDay += $("#work3").val() + " ";
-            if ($("#work4").prop("checked")) _vWorkingDay += $("#work4").val() + " ";
-            if ($("#work5").prop("checked")) _vWorkingDay += $("#work5").val() + " ";
-            if ($("#work6").prop("checked")) _vWorkingDay += $("#work6").val() + " ";
-            if ($("#work7").prop("checked")) _vWorkingDay += $("#work7").val() + " ";
+        function fn_process(){
+                           var _uId = "${centerId}";
+        	               var _title=$("#title").val();
+        	               var _startDate=$("#startDate").val();
+        	               var _endDate=$("#endDate").val();
+        	               var _startTime=$("#startTime").val();
+        	               var _endTime=$("#endTime").val();
+        	               var _rStartDate=$("#rStartDate").val();
+        	               var _rEndDate=$("#rEndDate").val();
 
-            var _vRegAmnt = $("#vRegAmnt").val();
-            var _serviceCode = $("#serviceCode").val();
-            var _file = $("#file").val();
-            var _info = $("#info").val().replace(/\n/g, "<br>");
 
-            if (_title == '') {
-                alert("제목을 입력하세요");
-                return;
-            } else if (_startDate == '' || _endDate == '') {
-                alert("봉사시간을 입력하세요");
-                return;
-            } else if (_startTime == '' || _endTime == '') {
-                alert("봉사시간을 입력하세요");
-                return;
-            } else if (_rStartDate == '' || _rEndDate == '') {
-                alert("모집기간을 입력하세요");
-                return;
-            } else if (_vWorkingDay == '') {
-                alert("봉사요일을 체크하세요");
-                return;
-            } else if (_vRegAmnt == '') {
-                alert("모집인원을 입력하세요");
-                return;
-            } else if (_serviceCode == '') {
-                alert("봉사분야를 체크하세요");
-                return;
-            } else if (_info == '') {
-                _info = "없음";
-            }
+        	               var _vWorkingDay = "";
+        	               var _work1=$("#work1").prop("checked");
+        	               var _work2=$("#work2").prop("checked");
+        	               var _work3=$("#work3").prop("checked");
+        	               var _work4=$("#work4").prop("checked");
+        	               var _work5=$("#work5").prop("checked");
+        	               var _work6=$("#work6").prop("checked");
+        	               var _work7=$("#work7").prop("checked");
+        	               if(_work1==1){
+        	                    _vWorkingDay +=$("#work1").val();
+        	                    _vWorkingDay +=" ";
+        	               }
+        	               if(_work2==1){
+        	                    _vWorkingDay +=$("#work2").val();
+        	                    _vWorkingDay +=" ";
+        	               }
+        	               if(_work3==1){
+                                _vWorkingDay +=$("#work3").val();
+                                _vWorkingDay +=" ";
+        	               }
+        	               if(_work4==1){
+                                _vWorkingDay +=$("#work4").val();
+                                _vWorkingDay +=" ";
+        	               }
+        	               if(_work5==1){
+                                _vWorkingDay +=$("#work5").val();
+                                _vWorkingDay +=" ";
+        	               }
+        	               if(_work6==1){
+                                _vWorkingDay +=$("#work6").val();
+                                _vWorkingDay +=" ";
+        	               }
+        	               if(_work7==1){
+                                _vWorkingDay +=$("#work7").val();
+                                _vWorkingDay +=" ";
+                           }
 
-            var form = document.createElement("form");
-            form.setAttribute("method", "post");
-            form.setAttribute("action", "${contextPath}/addCenterReg.do");
+        	               var _vRegAmnt=$("#vRegAmnt").val();
+        	               var _serviceCode=$("#serviceCode").val();
+        	               var _file=$("#file").val();
+        	               var _info=$("#info").val().replace(/\n/g, "<br>");
 
-            var inputs = [
-                { name: "vTitle", value: _title },
-                { name: "vStartDate", value: _startDate },
-                { name: "vEndDate", value: _endDate },
-                { name: "vStartTime", value: _startTime },
-                { name: "vLastTime", value: _endTime },
-                { name: "vRStartDate", value: _rStartDate },
-                { name: "vREndDate", value: _rEndDate },
-                { name: "vWorkingDay", value: _vWorkingDay },
-                { name: "vRegAmnt", value: _vRegAmnt },
-                { name: "vServiceCode", value: _serviceCode },
-                { name: "vInfo", value: _info },
-                { name: "uId", value: _uId }
-            ];
 
-            inputs.forEach(function(input) {
-                var inputElement = document.createElement("input");
-                inputElement.setAttribute("type", "hidden");
-                inputElement.setAttribute("name", input.name);
-                inputElement.setAttribute("value", input.value);
-                form.appendChild(inputElement);
-            });
+        	               if(_title==''){
+        	                     alert("제목을 입력하세요");
+        	                     return;
+        	               }else if(_startDate=='' || _endDate=='' ){
+        	                   alert("봉사시간을 입력하세요");
+        	                   return;
+        	               }else if(_startTime=='' || _endTime=='' ){
+        	                   alert("봉사시간을 입력하세요");
+        	                   return;
+        	               }else if(_rStartDate=='' || _rEndDate=='' ){
+        	                   alert("모집기간을 입력하세요");
+        	                   return;
+        	               }else if(_vWorkingDay==''){
+        	                   alert("봉사요일을 체크하세요");
+        	                   return;
+        	               }else if(_vRegAmnt=='' ){
+        	                   alert("모집인원을 입력하세요");
+        	                   return;
+        	               }else if(_serviceCode=='' ){
+        	                   alert("봉사분야를 체크하세요");
+        	                   return;
+        	               }else if(_file){
+        	                   var formData = new FormData();
+                               var inputFile = $("input[name='vUploadFilePath']");
+                               var files = inputFile[0].files;
+                               formData.append("uploadFile", files[0]);
 
-            document.body.appendChild(form);
-            form.submit();
-        }
+                               if(_info=='' ){
+                                   _info="없음";
+                               }
+
+                               $.ajax({
+                                     url: "${contextPath}/upload",
+                                     type: "POST",
+                                     data: formData,
+                                     contentType: false,
+                                     processData: false,
+                                     success:function (data,textStatus){
+                                       alert("파일 업로드에 성공했습니다.");
+                                     },
+                                     error:function(data,textStatus){
+                                         alert("파일 업로드에 실패했습니다.");
+                                     },
+                               });
+
+        	               }else if(_file=='' ){
+        	            	   _file="없음";
+        	            	   if(_info=='' ){
+        	            		   _info="없음";
+        	            	   }
+        	               }else if(_info=='' ){
+        	            	   _info="없음";
+        	            	   }
+
+        	               $.ajax({
+        	                   type:"post",
+        	                   async:true,
+        	                   url:"${contextPath}/addCenterReg.do",
+        	                   dataType:"json",
+        	                   data: {
+                                      vTitle: _title,
+                                      vStartDate: _startDate,
+                                      vEndDate: _endDate,
+                                      vStartTime: _startTime,
+                                      vLastTime: _endTime,
+                                      vRStartDate: _rStartDate,
+                                      vREndDate: _rEndDate,
+                                      vWorkingDay: _vWorkingDay,
+                                      vRegAmnt: _vRegAmnt,
+                                      vServiceCode: _serviceCode,
+                                      vUploadFilePath: _file,
+                                      vInfo: _info,
+                                      uId: _uId
+        	                	 },
+        	                   success:function (data,textStatus){
+        	                        var v_no = data[0].v_no;
+                                    var vTitle = data[0].vTitle;
+                                    var vStartDate = data[0].vStartDate;
+                                    var vEndDate = data[0].vEndDate;
+                                    var vStartTime = data[0].vStartTime;
+                                    var vLastTime = data[0].vLastTime;
+                                    var vRStartDate = data[0].vRStartDate;
+                                    var vREndDate = data[0].vREndDate;
+                                    var vWorkingDay = data[0].vWorkingDay;
+                                    var vServiceCode = data[0].vServiceType;
+                                    var vRegAmnt = data[0].vRegAmnt;
+                                    var vUploadFilePath = data[0].vUploadFilePath;
+                                    var vInfo = data[0].vInfo;
+
+
+                                    document.getElementById("centerRegBtnCN").value = "확인";
+                                    document.getElementById("centerRegBtnRM").value = "수정";
+                                    document.getElementById("centerRegBtnRM").type="submit";
+
+                                    $( 'hidden' ).html( '<input type="hidden" name="v_no" value="'+v_no+'"/>' );
+
+                                    $( 'h2' ).html( '<h1>'+vTitle+'</h1>' );
+
+                                    $('#vDate').remove();
+                                    $( 'vDate' ).html( '<h1>' + vStartDate + ' ~ ' + vEndDate + '</h1>' );
+
+                                    $('#vTime').remove();
+                                    $( 'vTime' ).html( '<h1>' + vStartTime + ' ~ ' + vLastTime + '</h1>' );
+
+                                    $('#rDate').remove();
+                                    $( 'rDate' ).html( '<h1>' + vRStartDate + ' ~ ' + vREndDate + '</h1>' );
+
+                                    $('#work').remove();
+                                    $( 'work' ).html( '<h1>' + vWorkingDay + '</h1>' );
+
+                                    $('#vRegAmnt').remove();
+                                    $( 'vRegAmnt' ).html( '<h1>' + vRegAmnt + '</h1>' );
+
+                                    $('#serviceCode').remove();
+                                    $( 'serviceCode' ).html( '<h1>' + vServiceCode + '</h1>' );
+
+                                    $('#file').remove();
+                                    $( 'file' ).html( '<h1><a href="/CenterDownload?imageFileName='+vUploadFilePath+'">'+vUploadFilePath+'</a></h1>'  );
+
+                                    $('#info').remove();
+                                    if( vInfo == "없음" ){
+                                    $( 'info' ).html( '<h1>' + vInfo + '</h1>' );
+                                    }else{
+                                    $( 'info' ).html( '<h1 style="text-align : left">' + vInfo + '</h1>' );
+                                    }
+
+        	                   },
+        	                   error:function(data,textStatus){
+        	                      alert("에러가 발생했습니다.");
+        	                   },
+        	                   complete:function(data,textStatus){
+        	                   }
+        	             });
+
+                 	}
 
         function showRejectReason(id) {
             document.getElementById('reject-reason-' + id).style.display = 'block';

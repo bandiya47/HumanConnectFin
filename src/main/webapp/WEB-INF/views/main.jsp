@@ -110,6 +110,7 @@
                             <th>봉사시작일</th>
                             <th>봉사종료일</th>
                             <th>역할</th>
+                            <th>상태</th>
                         </tr>
                         <c:choose>
                             <c:when test="${empty myVolunteerList}">
@@ -147,7 +148,31 @@
                                             <input type="hidden" name="vReg_no" value="${vo.vreg_no}">
                                                 <button type="submit" class="firstStackBtn">${vo.service_type}</button>
                                             </form>
-
+                                        </td>
+                                        <td>
+                                            <form action="/viewRegVolunteerDetail.do" method="get">
+                                                <input type="hidden" name="userId" value="${userId}">
+                                                <input type="hidden" name="vReg_no" value="${vo.vreg_no}">
+                                                <button type="submit" class="firstStackBtn">
+                                                    <c:choose>
+                                                        <c:when test="${vo.status == 0}">
+                                                            승인대기
+                                                        </c:when>
+                                                        <c:when test="${vo.status == 1}">
+                                                            승인
+                                                        </c:when>
+                                                        <c:when test="${vo.status == 2}">
+                                                            거절됨: ${vo.rejectReason}
+                                                        </c:when>
+                                                        <c:when test="${vo.status == 3}">
+                                                            봉사완료
+                                                        </c:when>
+                                                        <c:otherwise>
+                                                            상태 불명
+                                                        </c:otherwise>
+                                                    </c:choose>
+                                                </button>
+                                            </form>
                                         </td>
                                     </tr>
                                 </c:forEach>

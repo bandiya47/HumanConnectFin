@@ -9,6 +9,7 @@ public interface CenterMemberService {
     List<CenterMemberVO> searchCenterMembers(String searchQuery, int page, int size);
     CenterMemberVO getCenterMemberById(String c_id);
     void updateCenterMember(CenterMemberVO centerMember);
+    void resetCenterPW(CenterMemberVO centerMember);
     void deleteCenterMember(String c_id);
     int countAllCenterMembers();
     int countSearchedCenterMembers(String searchQuery);

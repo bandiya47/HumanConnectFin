@@ -105,6 +105,15 @@
                 WHERE C_ID = #{oldCId}
         ]]>
     </update>
+    <update id="resetCenterPW" parameterType="dc.human.gbnb.humanConnect.admin.vo.CenterMemberVO">
+        <![CDATA[
+            UPDATE CENTER_MNG_TABLE
+                SET C_PWD = '0000',
+                    UPDATED_DATE = SYSDATE,
+                    UPDATED_ID = 'admin'
+              WHERE C_ID = #{oldCId}
+        ]]>
+    </update>
 
     <delete id="deleteCenterMember" parameterType="String">
         <![CDATA[

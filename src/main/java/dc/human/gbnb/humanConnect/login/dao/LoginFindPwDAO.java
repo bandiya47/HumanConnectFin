@@ -11,10 +11,9 @@ public interface LoginFindPwDAO {
 
     public int updateFindPw(String userId,String userPw) throws DataAccessException;
 
-    public String selectFindPw(@Param("userId") String userId, @Param("userName") String userName, @Param("userEmail") String userEmail, @Param("userPhone") String userPhone) throws DataAccessException;
+    public String selectFindPw(@Param("userId") String userId, @Param("userName") String userName, @Param("userEmail") String userEmail) throws DataAccessException;
 
     String selectFindPw(String userId);
     String selectFindName(String userName);
     String selectFindEmail(String userEmail);
-    String selectFindPh(String userPhone);
 }

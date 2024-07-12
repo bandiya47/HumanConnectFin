@@ -76,7 +76,7 @@
 	<insert id="insertCenterReg" parameterType="centerRegVO">
 		<![CDATA[
 		 insert into volunteer(C_ID,V_TITLE,V_START_DATE,V_END_DATE,V_START_TIME,V_LAST_TIME,V_RSTART_DATE,V_REND_DATE,V_WORKING_DAY,SERVICE_CODE,V_REG_AMNT,V_MAX_AMNT,V_STATE,V_UPLOAD_FILE_PATH,V_INFO,CREATED_ID,CREATED_DATE)
-		 values(#{uId},#{vTitle},#{vStartDate},#{vEndDate},#{vStartTime},#{vLastTime},#{vRStartDate},#{vREndDate},#{vWorkingDay},#{vServiceCode},#{vRegAmnt},0,1,#{vUploadFilePath},#{vInfo},#{uId},SYSDATE)
+		 values(#{uId},#{vTitle},#{vStartDate},#{vEndDate},#{vStartTime},#{vLastTime},#{vRStartDate},#{vREndDate},#{vWorkingDay},#{vServiceCode},#{vRegAmnt},0,1,#{vUploadFilePath,jdbcType=VARCHAR},#{vInfo},#{uId},SYSDATE)
 		]]>
 	</insert>
 

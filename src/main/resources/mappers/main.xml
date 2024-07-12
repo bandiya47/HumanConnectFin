@@ -19,10 +19,10 @@
         <result property="c_name" column="C_NAME"/>
         <result property="c_phone" column="C_PHONE"/>
         <result property="c_addr1" column="C_ADDR1"/>
-
         <result property="visit_date" column="VISIT_DATE"/>
         <result property="visit_time" column="VISIT_TIME"/>
-
+        <result property="rejectReason" column="rejectReason"/>
+        <result property="status" column="status"/>
     </resultMap>
 
     <select id="getMyVolunteerList" resultMap="MainVOResultMap"
@@ -36,7 +36,9 @@
             v.VREG_END_DATE,    <!--vol 봉사종료일-->
             s.service_type,     <!--봉사 타입-->
             c.C_NAME,           <!--보호소 이름-->
-            c.C_PHONE           <!--보호소 번호-->
+            c.C_PHONE,          <!--보호소 번호-->
+            a.REG_RESULT as status,
+            a.REJECT_RS as rejectReason
         FROM
             volunteer_reg v
         INNER JOIN
@@ -48,6 +50,9 @@
         INNER JOIN
             service_type_table s
             ON s.service_code = r.service_code
+        INNER JOIN
+            ACCEPTION_RES A ON
+            V.VREG_NO = A.VREG_NO
         WHERE
             v.u_id=#{u_id}
     </select>

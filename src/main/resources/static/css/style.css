@@ -1685,12 +1685,12 @@ vertical-align:middle;
 /**조인 시작~~*****************************************************************************************************************/
 .joinLogo {
     align-items: center;
-    margin-left: 25%;
-    margin-right: 25%;
-    margin-top: 5%;
-    margin-bottom: 3%;
-    width: 50%;
-    height: 20%;
+    margin: 0 auto;
+    width: 600px;
+}
+.joinWholeContainer {
+    margin: 0 auto;
+    width : 750px;
 }
 
 .joinText, .joinCheckBox, .join_ChkIdBtn {
@@ -1822,6 +1822,18 @@ vertical-align:middle;
 .join_Available {
     color: green;
 }
+.hidden-text {
+    text-align: left;
+    display: none;
+    color: blue;
+    font-style: italic;
+    margin-left: 50px;
+}
+
+.error {
+  color: red;
+  font-weight: bold;
+}}
 /**조인 끝~~*****************************************************************************************************************/
 /**파인드 시작~~*****************************************************************************************************************/
       .find_logo {
@@ -2683,6 +2695,8 @@ vertical-align:middle;
             display: flex;
             width: 100%;
             margin: 0 auto;
+            border-bottom: 1px solid black;
+            border-right: 1px solid black;
         }
 
         .adminMainSidebar {
@@ -3092,6 +3106,8 @@ vertical-align:middle;
             display: flex;
             width: 100%;
             margin: 0 auto;
+            border-right: 1px solid black;
+            border-bottom: 1px solid black;
         }
 
         .adminCenterMemSidebar {
@@ -3321,6 +3337,7 @@ vertical-align:middle;
             display: flex;
             width: 100%;
             margin: 0 auto;
+            border-bottom: 1px solid black;
         }
 
         .adminMemDetailSidebar {
@@ -3873,12 +3890,24 @@ vertical-align:middle;
             border-radius: 5px;
             cursor: pointer;
             transition: background-color 0.3s ease;
-            background-color: #2b5d7c; /* 어드민 메인 페이지와 어울리도록 색상 변경 */
+            background-color: #2b5d7c;
             color: white;
         }
-
+        .resetButton {
+            padding: 5px 10px;
+            font-size: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            background-color: #2b5d7c;
+            color: white;
+        }
+        .resetButton:hover {
+            background-color: #204160;
+        }
         .adminMemDetailActionButtons button:hover {
-            background-color: #204160; /* 어드민 메인 페이지와 어울리도록 색상 변경 */
+            background-color: #204160;
         }
 /**********************************************AdminMemDetail*************************************************/
 /**volNoticeList 시작~~*****************************************************************************************************************/
@@ -3987,31 +4016,53 @@ vertical-align:middle;
 
 /**centerNoticeList 끝~~*****************************************************************************************************************/
 /**adminNoticeList 시작~~*****************************************************************************************************************/
-.noticeListBody{
+.noticeListBody {
     font-family: 'MangoDdobak-B';
     margin: 0 auto;
     padding: 0;
     background: white;
     width: 1250px;
 }
+
+.adminNoticeListBody {
+    font-family: 'MangoDdobak-B';
+    margin: 0 auto;
+    padding: 0;
+    background: white;
+    width: 1250px;
+    height: 600px;
+}
+
 .adminNoticeListWholeContainer {
     flex: 1;
     padding: 10px;
     border-right: 1px solid #000;
 }
+
+.adminNoticeListWholeContainer2 {
+    flex: 1;
+    padding: 10px;
+    border-right: 1px solid #000;
+}
+
 .adminMainSearch-box h1 {
     font-size: 24px;
     font-weight: bold;
     text-align: left;
 }
+
 .adminNoticeListDiv table {
     width: 100%;
     border-collapse: collapse;
     table-layout: fixed;
 }
-.adminMainTableContainer table, .adminMainTableContainer th, .adminMainTableContainer td {
-            border: 1px solid #000;
+
+.adminMainTableContainer table,
+.adminMainTableContainer th,
+.adminMainTableContainer td {
+    border: 1px solid #000;
 }
+
 .adminNoticeListTable th {
     background-color: #2B5D7C;
     vertical-align: middle;
@@ -4020,17 +4071,22 @@ vertical-align:middle;
     padding: 10px;
     font-size: 16px;
 }
-.adminNoticeListTable th, .adminNoticeListTable td {
+
+.adminNoticeListTable th,
+.adminNoticeListTable td {
     font-size: 16px;
     padding: 10px;
     text-align: center;
     word-break: break-word;
+    border: 1px solid black;
 }
+
 .adminNoticeListTable td a {
     text-decoration: none;
     color: #000;
     display: block;
 }
+
 .adminNoticeListTable tbody tr:nth-child(even) {
     background-color: #d9e2ec;
 }
@@ -4093,6 +4149,7 @@ vertical-align:middle;
     cursor: pointer;
     vertical-align: middle;
 }
+
 #noticeTitle {
     font-family: 'MangoDdobak-B';
     src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2405-3@1.1/MangoDdobak-B.woff2') format('woff2');
@@ -4101,8 +4158,11 @@ vertical-align:middle;
     width: 600px;
     height: 40px;
     vertical-align: middle;
+    justify-content: left;
+    margin-left: 20px; /* 여기에 margin-left 추가 */
 }
-#noticeContent{
+
+#noticeContent {
     font-family: 'MangoDdobak-B';
     src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2405-3@1.1/MangoDdobak-B.woff2') format('woff2');
     border: none;
@@ -4115,42 +4175,57 @@ vertical-align:middle;
     vertical-align: middle;
     resize: none;
 }
+
 .noticeListTable td input[type="checkbox"] {
     width: 20px;
     height: 20px;
 }
-.adminNoticeRegDiv h1{
+
+.adminNoticeRegDiv h1 {
     font-size: 24px;
     font-weight: bold;
     text-align: center;
     margin: 30px 0px 30px 0px;
 }
-.noticeRegTable td{
+
+.noticeRegTable th {
     text-align: center;
     vertical-align: middle;
     font-size: 16px;
+    border: 1px solid black;
 }
+
+.noticeRegTable td {
+    text-align: left;
+    vertical-align: middle;
+    font-size: 16px;
+    border: 1px solid black;
+}
+
 input::placeholder {
-    text-align: center:
     vertical-align: middle;
 }
-.noticeTitle, .noticeWriter {
+
+.noticeTitle,
+.noticeWriter {
     border: none;
-    background-color: rgb(172,134,104,0.0);
+    background-color: rgba(172, 134, 104, 0.0);
     color: black;
     font-size: 17px;
     font-weight: 700;
     vertical-align: middle;
     text-decoration: none;
 }
+
 .noticeRegTitle {
     background-color: #AC8668;
-        color: white;
-        font-weight: 700;
-        font-size: 22px;
-        vertical-align: middle;
-        height: 50px;
+    color: white;
+    font-weight: 700;
+    font-size: 22px;
+    vertical-align: middle;
+    height: 50px;
 }
+
 .noticeRegContent {
     font-size: 20px;
     vertical-align: middle;
@@ -4159,12 +4234,13 @@ input::placeholder {
 .hidden_file_input {
     display: none;
 }
+
 .click_fileUpload_label {
     display: inline-block;
     cursor: pointer;
     padding: 10px 20px;
     color: white;
-    background-color: rgb(32,65,96);
+    background-color: rgb(32, 65, 96);
     border-radius: 5px;
     font-size: 15px;
     font-weight: 500;
@@ -4172,6 +4248,7 @@ input::placeholder {
     margin-left: 30px;
     margin-right: 30px;
 }
+
 #file-name {
     font-size: 15px;
     vertical-align: middle;
@@ -4181,8 +4258,10 @@ input::placeholder {
     display: inline-block;
     margin-top: 20px;
 }
-.paginationNotice a, .paginationNotice span {
-    background-color: rgb(70,57,51);
+
+.paginationNotice a,
+.paginationNotice span {
+    background-color: rgb(70, 57, 51);
     color: white;
     float: left;
     padding: 8px 16px;
@@ -4191,12 +4270,14 @@ input::placeholder {
     border: 1px solid #ddd;
     margin: 0 4px;
 }
+
 .paginationNotice a:hover {
-    background-color: rgb(172,134,104);
+    background-color: rgb(172, 134, 104);
     pointer: pointer;
 }
+
 .paginationNotice .active {
-    background-color: rgb(253,111,43);
+    background-color: rgb(253, 111, 43);
     color: white;
     border: 1px solid #FEAB82;
 }
@@ -4222,7 +4303,7 @@ input::placeholder {
 .centerNoticeDetailWholeContainer {
     text-align: center;
     margin: auto;
-    width: 1100px;
+    width: 1000px;
 }
 
 .adminNoticeDetailDiv h2{
@@ -4239,10 +4320,10 @@ input::placeholder {
    margin: 5px;
    text-align: center;
    width: 100%;
-  /* border: 1px solid;*/
    margin: 2px;
    border-collapse: collapse;
    font-size: 15px;
+   table-layout: fixed;
 }
 
 .centerNoticeDetailTable,
@@ -4254,13 +4335,26 @@ input::placeholder {
     padding: 20px;
     margin-bottom: 20px;
 }
-
+#detailTitle {
+    padding-left: 30px;
+    width: 700px;
+    border: none;
+    font-family: 'MangoDdobak-B';
+    box-sizing: border-box;
+}
 #detailTitle, #detailAttach {
     height: 50px;
     vertical-align: middle;
     font-size: 20px;
+    margin-left: 3px;
 }
-.noticeDetailTable th{
+.tempTd{
+    text-align: left;
+}
+#detailTitle.editable, #detailContent.editable {
+    border: 1px solid #000; /* 수정 모드에서만 보더 적용 */
+}
+.noticeDetailTable th {
     font-weight: 700;
     font-size: 22px;
     vertical-align: middle;
@@ -4268,7 +4362,7 @@ input::placeholder {
 }
 .centerNoticeDetailTable, tr, td {
     background-color: white;
-    text-align: center:
+    text-align: center;
     vertical-align: middle;
 }
 pre {
@@ -4280,12 +4374,20 @@ pre {
     padding-left: 30px;
     font-size: 20px;
     height: auto;
+    width: 700px;
+    font-family: 'MangoDdobak-B';
+    overflow: hidden;
+    resize: none;
+    border: none;
+}
+#detailContent.editable {
+    border: 1px solid #000; /* 수정 모드에서만 보더 적용 */
 }
 .buttonContainer1 {
     text-align: right;
     margin-right: 30px;
 }
-.buttonContainer1>button{
+.buttonContainer1>button {
     font-family: 'MangoDdobak-B';
     font-size: 15px;
     font-style: bold;
@@ -4332,6 +4434,24 @@ pre {
     margin-right: 40px;
     margin-top: 20px;
     border-radius: 4px;
+}
+.aNDBtn {
+    font-family: 'MangoDdobak-B';
+    font-size: 20px;
+    font-style: bold;
+    border-style: none;
+    width: 80px;
+    height: 40px;
+    color: white;
+    background-color: rgb(32,65,96);
+    cursor: pointer;
+    vertical-align: middle;
+    margin-right: 40px;
+    margin-top: 20px;
+    border-radius: 4px;
+}
+.aNDBtn:hover {
+    background-color: #AC8668;
 }
 .click_fileUpload_label:hover,
 .buttonContainer1>button:hover,

@@ -38,6 +38,10 @@ public class CenterMemberServiceImpl implements CenterMemberService {
     }
 
     @Override
+    @Transactional
+    public void resetCenterPW(CenterMemberVO centerMember) { centerMemberDAO.resetCenterPW(centerMember); }
+
+    @Override
     public void deleteCenterMember(String c_id) {
         centerMemberDAO.deleteCenterMember(c_id);
     }

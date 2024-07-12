@@ -14,8 +14,8 @@ public class LoginFindPwServiceImpl implements LoginFindPwService {
     private LoginFindPwDAO loginFindPwDAO;
 
     @Override
-    public String findPw(String userId, String userName, String userEmail, String userPhone) {
-        return loginFindPwDAO.selectFindPw(userId, userName, userEmail, userPhone);
+    public String findPw(String userId, String userName, String userEmail) {
+        return loginFindPwDAO.selectFindPw(userId, userName, userEmail);
     }
 
     @Override

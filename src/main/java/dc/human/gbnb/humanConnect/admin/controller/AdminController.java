@@ -16,6 +16,7 @@ public interface AdminController {
                                       @RequestParam(value = "page", defaultValue = "1") int page,
                                       @RequestParam(value = "size", defaultValue = "10") int size);
     ModelAndView showCenterMemberDetail(@RequestParam("c_id") String c_id);
-    String updateCenterMember(@RequestParam("oldCId") String oldCId, CenterMemberVO centerMember);
+    ModelAndView updateCenterMember(@RequestParam("oldCId") String oldCId, CenterMemberVO centerMember);
+    public ModelAndView resetCenterPW(@RequestParam("oldCId") String oldCId, CenterMemberVO centerMember);
     String deleteCenterMember(@RequestParam("c_id") String c_id);
 }

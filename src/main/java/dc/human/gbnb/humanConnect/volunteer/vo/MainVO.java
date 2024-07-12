@@ -18,6 +18,8 @@ public class MainVO {
 	private String service_type;
 	private String visit_time;
 	private String visit_date;
+	private int status;
+	private String rejectReason;
 	//private String v_state;
 	//
 
@@ -141,6 +143,11 @@ public class MainVO {
 		this.service_type = service_type;
 	}
 
+	public String getRejectReason() {	return rejectReason; }
 
+	public void setRejectReason(String rejectReason) {	this.rejectReason = rejectReason; }
 
+	public int getStatus() {	return status; }
+
+	public void setStatus(int status) {	this.status = status; }
 }

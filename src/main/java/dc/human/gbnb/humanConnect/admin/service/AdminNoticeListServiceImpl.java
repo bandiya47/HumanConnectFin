@@ -43,4 +43,8 @@ public class AdminNoticeListServiceImpl implements AdminNoticeListService {
     public AdminNoticeListVO getLatestNotice() throws Exception {
         return adminNoticeListDAO.getLatestNotice();
     }
+
+    public void updateNotice(AdminNoticeListVO notice) throws Exception {
+        adminNoticeListDAO.updateNotice(notice);
+    }
 }

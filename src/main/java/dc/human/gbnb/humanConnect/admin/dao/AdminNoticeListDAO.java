@@ -25,4 +25,6 @@ public interface AdminNoticeListDAO {
     AdminNoticeListVO getNoticeDetail(int nNumber) throws DataAccessException;
 
     AdminNoticeListVO getLatestNotice() throws DataAccessException;
+
+    void updateNotice(AdminNoticeListVO notice) throws Exception;
 }

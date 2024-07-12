@@ -14,6 +14,7 @@ public interface AdminNoticeListService {
 
     AdminNoticeListVO getNoticeDetail(int nNumber) throws Exception;
 
-
     AdminNoticeListVO getLatestNotices() throws Exception;
+
+    void updateNotice(AdminNoticeListVO notice) throws Exception;
 }

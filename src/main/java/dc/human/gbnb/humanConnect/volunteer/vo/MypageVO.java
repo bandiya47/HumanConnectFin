@@ -30,6 +30,9 @@ public class MypageVO {
 	private String vreg_end_date;
 	private String service_type;
 
+	private int status;
+	private String rejectReason;
+
 
 
 
@@ -210,7 +213,6 @@ public class MypageVO {
 		this.service_type = service_type;
 	}
 
-
 	public int getVreg_no() {
 		return vreg_no;
 	}
@@ -219,6 +221,11 @@ public class MypageVO {
 		this.vreg_no = vreg_no;
 	}
 
+	public int getStatus() {	return status; }
 
+	public void setStatus(int status) {	this.status = status; }
 
+	public String getRejectReason() {	return rejectReason; }
+
+	public void setRejectReason(String rejectReason) {	this.rejectReason = rejectReason; }
 }

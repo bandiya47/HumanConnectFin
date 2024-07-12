@@ -43,6 +43,8 @@
         <result property="c_addr1" column="c_addr1" />
         <result property="c_addr2" column="c_addr2" />
         <result property="c_email" column="c_email" />
+        <result property="rejectReason" column="rejectReason"/>
+        <result property="status" column="status"/>
 
 
 
@@ -98,17 +100,19 @@
     <select id="getMypageVolunteerList" resultMap="privacyResult"
             parameterType="String">
         SELECT
-            v.U_ID,             <!--사용자 아이디-->
-            v.VREG_NO,
-            v.V_NO,<!--봉사 번호-->
-            r.V_TITLE,          <!--봉사글 제목-->
-            v.VREG_START_DATE,  <!--vol 봉사시작일-->
-            v.VREG_END_DATE,    <!--vol 봉사종료일-->
-            s.service_type,     <!--봉사 타입-->
-            c.C_NAME,           <!--보호소 이름-->
-            c.C_PHONE           <!--보호소 번호-->
+        v.U_ID,             <!--사용자 아이디-->
+        v.V_NO,             <!--봉사 번호-->
+        v.VREG_NO,
+        r.V_TITLE,          <!--봉사글 제목-->
+        v.VREG_START_DATE,  <!--vol 봉사시작일-->
+        v.VREG_END_DATE,    <!--vol 봉사종료일-->
+        s.service_type,     <!--봉사 타입-->
+        c.C_NAME,           <!--보호소 이름-->
+        c.C_PHONE,          <!--보호소 번호-->
+        a.REG_RESULT as status,
+        a.REJECT_RS as rejectReason
         FROM
-            volunteer_reg v
+        volunteer_reg v
         INNER JOIN
         CENTER_MNG_TABLE c
         ON c.C_ID = v.C_ID
@@ -118,7 +122,10 @@
         INNER JOIN
         service_type_table s
         ON s.service_code = r.service_code
+        INNER JOIN
+        ACCEPTION_RES A ON
+        V.VREG_NO = A.VREG_NO
         WHERE
-            v.u_id=#{u_id}
+        v.u_id=#{u_id}
     </select>
 </mapper>

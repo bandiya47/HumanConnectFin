@@ -91,6 +91,18 @@
         ]]>
     </select>
 
+    <update id="updateNotice" parameterType="AdminNoticeListVO">
+        <![CDATA[
+        UPDATE customer_notice
+        SET
+            n_title = #{nTitle},
+            n_content = #{nContent},
+            updated_date = sysdate,
+            updated_id = '관리자'
+        WHERE
+            n_number = #{nNumber}
+        ]]>
+    </update>
 
 </mapper>
 

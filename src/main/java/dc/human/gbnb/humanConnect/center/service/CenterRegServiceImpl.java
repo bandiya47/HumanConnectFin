@@ -16,7 +16,7 @@ import java.util.Map;
 
 @Service("centerRegService")
 @Transactional(propagation = Propagation.REQUIRED)
-public class CenterRegServiceImpl implements CenterRegService {
+public class  CenterRegServiceImpl implements CenterRegService {
 	@Autowired
 	private CenterRegDAO centerRegDAO;
 

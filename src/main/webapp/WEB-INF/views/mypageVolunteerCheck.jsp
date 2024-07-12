@@ -50,6 +50,7 @@
                             <th>봉사시작일</th>
                             <th>봉사종료일</th>
                             <th>역할</th>
+                            <th>상태</th>
                         </tr>
 
                         <c:choose>
@@ -88,7 +89,31 @@
                                             <input type="hidden" name="vReg_no" value="${vol.vreg_no}">
                                                 <button type="submit" class="firstStackBtn">${vol.service_type}</button>
                                             </form>
-
+                                        </td>
+                                        <td>
+                                            <form action="/viewRegVolunteerDetail.do" method="get">
+                                                <input type="hidden" name="userId" value="${userId}">
+                                                <input type="hidden" name="vReg_no" value="${vol.vreg_no}">
+                                                <button type="submit" class="firstStackBtn">
+                                                    <c:choose>
+                                                        <c:when test="${vol.status == 0}">
+                                                            승인대기
+                                                        </c:when>
+                                                        <c:when test="${vol.status == 1}">
+                                                            승인
+                                                        </c:when>
+                                                        <c:when test="${vol.status == 2}">
+                                                            거절됨: ${vol.rejectReason}
+                                                        </c:when>
+                                                        <c:when test="${vol.status == 3}">
+                                                            봉사완료
+                                                        </c:when>
+                                                        <c:otherwise>
+                                                            상태 불명
+                                                        </c:otherwise>
+                                                    </c:choose>
+                                                </button>
+                                            </form>
                                         </td>
                                     </tr>
                                 </c:forEach>

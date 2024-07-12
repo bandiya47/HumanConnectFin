@@ -10,7 +10,6 @@ public interface findPwController {
             @RequestParam(name="userId") String userId,
             @RequestParam(name="userName") String userName,
             @RequestParam(name="userEmail") String userEmail,
-            @RequestParam(name="userPhone") String userPhone,
             HttpSession session);
     public String rePw(
             @RequestParam(name="userId") String userId,

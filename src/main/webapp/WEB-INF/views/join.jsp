@@ -15,34 +15,19 @@
                 var submitButton = document.getElementById('submitBtn');
                 submitButton.disabled = !checkbox.checked;
             }
-         // 비밀번호 확인
-            function validatePassword() {
-                var u_Pwd = document.getElementsByName("u_Pwd")[0].value;
-                var u_PwdConfirm = document.getElementsByName("u_PwdConfirm")[0].value;
-                var passwordError = document.getElementById("passwordError");
-
-                if (u_Pwd !== u_PwdConfirm) {
-                    passwordError.textContent = "※ 비밀번호가 같지 않습니다!";
-                    passwordError.style.color = "red";
-                    return false;
-                } else {
-                    passwordError.textContent = "";
-                }
-                return true;
-            }
 
             // 폼 유효성 검사
             function validateForm() {
-                if (!validatePassword()) {
-                    return false;
-                }
 
-                var u_Name = document.getElementsByName("u_Name")[0].value;
-                var u_Sex = document.querySelector('input[name="u_Sex"]:checked'); // Radio 버튼 체크된 값 가져오기
-                var u_Bdate = document.getElementsByName("u_Bdate")[0].value;
-                var u_Id = document.getElementsByName("u_Id")[0].value;
-                var u_Phone = document.getElementsByName("u_Phone")[0].value;
-                var u_Email = document.getElementsByName("u_Email")[0].value;
+
+                var u_Name = document.getElementById('u_Name').value.trim();
+                // Radio 버튼 체크된 값 가져오기
+                var u_Bdate = document.getElementById('u_Bdate').value.trim();
+                var u_Id = document.getElementById('u_Id').value.trim();
+                var u_Pwd = document.getElementById('inputField2').value.trim();
+                var u_PwdConfirm = document.getElementById('confirmPassword').value.trim();
+                var u_Phone = document.getElementById('inputField1').value.trim();
+                var u_Email = document.getElementById('inputField3').value.trim();
 
                 // 각 필드가 비어있는지 확인하여 경고창 출력
                 if (u_Name.trim() === "") {
@@ -57,16 +42,17 @@
                     alert("아이디를 입력해주세요.");
                     return false;
                 }
+
+                if (u_Pwd !== u_PwdConfirm) {
+                    alert("비밀번호가 같지 않습니다");
+                    return false;
+                }
                 if (u_Phone.trim() === "") {
                     alert("휴대폰번호를 입력해주세요.");
                     return false;
                 }
                 if (u_Email.trim() === "") {
                     alert("이메일을 입력해주세요.");
-                    return false;
-                }
-                if (u_Sex === null) {
-                    alert("성별을 선택해주세요.");
                     return false;
                 }
 
@@ -109,27 +95,33 @@
         <a href="${pageContext.request.contextPath}/">
             <img src="/img/logo.png" class="joinLogo">
         </a>
-        <form action="join" method="post" onsubmit="return validateForm()">
+        <div class="joinWholeContainer">
+        <form action="join" method="post" onSubmit="return validateForm()">
             <div class="joinContainer1">
-                <input type="text" name="u_Name" placeholder="이름 *" class="joinText" required>
+                <input type="text" id="u_Name" name="u_Name" placeholder="이름 *" class="joinText" >
             </div>
             <div class="joinContainer2">
                 <input type="radio" name="u_Sex" value="M" class="joinCheckBox" checked> Male
                 <input type="radio" name="u_Sex" value="F" class="joinCheckBox"> Female
             </div>
             <div class="joinContainer1">
-                <input type="text" name="u_Bdate" placeholder="생년월일 *" class="joinText" required>
+                <input type="text" id="u_Bdate" name="u_Bdate" placeholder="생년월일 *" class="joinText" >
             </div>
+
             <div class="joinContainer3">
-                <input type="text" id="u_Id" name="u_Id" class="joinId" placeholder="아이디 *" required>
+                <input type="text" id="u_Id" name="u_Id" class="joinId" placeholder="아이디 *" >
                 <button type="button" onclick="checkUserId()" class="join_ChkIdBtn">아이디 중복 검사</button>
             </div>
             <div class="joinContainer1">
-                <input type="password" id="u_Pwd" name="u_Pwd" placeholder="비밀번호 *" class="joinText" required>
+                <input id="inputField2" type="password" name="u_Pwd" placeholder="비밀번호 *" class="joinText" >
             </div>
+            <div id="hiddenText2" class="hidden-text">비밀번호는 최소 8자 이상이어야 합니다.</div>
+            <p id="errorText2" class="hidden-text error"></p>
             <div class="joinContainer1">
-                <input type="password" id="u_PwdConfirm" name="u_PwdConfirm" placeholder="비밀번호 확인 *" class="joinText" required>
+                <input type="password" id="confirmPassword" name="u_PwdConfirm" placeholder="비밀번호 확인 *" class="joinText" >
             </div>
+            <div id="hiddenText3" class="hidden-text">확인을 위해 새 비밀번호를 다시 입력해주세요.</div>
+            <p id="errorText3" class="hidden-text error"></p>
             <div class="joinContainer1">
                 <span id="passwordError" class="error-message"></span>
             </div>
@@ -140,11 +132,20 @@
                 <input type="text" name="u_Addr2" placeholder="상세 주소" class="joinText">
             </div>
             <div class="joinContainer1">
-                <input type="text" name="u_Email" placeholder="이메일 *" class="joinText" required>
+                <input id="inputField3" type="text" name="u_Email" placeholder="이메일 *" class="joinText" >
             </div>
+            <div id="hiddenText4" class="hidden-text">[test@gmail.com] 형식으로 입력해주세요.</div>
+            <p id="errorText4" class="hidden-text error"></p>
+
+
+
             <div class="joinContainer1">
-                <input type="text" name="u_Phone" placeholder="휴대폰번호 *" class="joinText" required>
+                <input id="inputField1" type="text" name="u_Phone" placeholder="휴대폰번호 *" class="joinText" >
+
             </div>
+            <div id="hiddenText1" class="hidden-text">[010-0000-0000] 형식으로 입력해주세요.</div>
+            <p id="errorText1" class="hidden-text error"></p>
+
             <div class="joinContainer">
                 <h1 class="joinH1">약관 동의</h1>
                 <div class="joinTerms">
@@ -214,5 +215,99 @@
            </div>
         </div>
     </form>
+    <div>
+    <script>
+        const inputFields = [
+          { input: document.getElementById('inputField1'), error: document.getElementById('errorText1'), hiddenText: document.getElementById('hiddenText1') },
+          { input: document.getElementById('inputField2'), error: document.getElementById('errorText2'), hiddenText: document.getElementById('hiddenText2') },
+          { input: document.getElementById('confirmPassword'), error: document.getElementById('errorText3'), hiddenText: document.getElementById('hiddenText3') },
+          { input: document.getElementById('inputField3'), error: document.getElementById('errorText4'), hiddenText: document.getElementById('hiddenText4') }
+        ];
+
+        // 입력값을 검사하는 함수들을 정의합니다
+        function validatePhoneNumber(input) {
+          // 전화번호 형식 검사 (xxx-xxxx-xxxx)
+          const pattern = /^\d{3}-\d{4}-\d{4}$/;
+          return pattern.test(input);
+        }
+
+        function validatePassword(input) {
+          // 비밀번호 길이 검사 (최소 8자 이상)
+          return input.length >= 8;
+        }
+
+        function validateEmail(input) {
+          // 이메일 형식 검사
+          const pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+          return pattern.test(input);
+        }
+
+        // 각 input 필드에 포커스 이벤트를 설정합니다
+        inputFields.forEach((field) => {
+          const inputField = field.input;
+          const errorText = field.error;
+          const hiddenText = field.hiddenText;
+
+          inputField.addEventListener('focus', () => {
+            // 다른 숨겨진 텍스트 숨기기
+            inputFields.forEach((otherField) => {
+              if (otherField.hiddenText !== hiddenText) {
+                otherField.hiddenText.style.display = 'none';
+              }
+            });
+
+            hiddenText.style.display = 'block';
+          });
+
+          // blur 이벤트로도 처리 (입력 필드를 벗어날 때)
+          inputField.addEventListener('blur', () => {
+            const inputValue = inputField.value.trim();
+            let isValid = false;
+            let errorMessage = '';
+
+            // 입력값 유효성 검사
+            switch (inputField.id) {
+              case 'inputField1':
+                isValid = validatePhoneNumber(inputValue);
+                errorMessage = '전화번호 형식이 올바르지 않습니다.';
+                break;
+              case 'inputField2':
+                isValid = validatePassword(inputValue);
+                errorMessage = '비밀번호는 형식이 올바르지 않습니다.';
+                break;
+              case 'confirmPassword':
+                  // 비밀번호 확인 값과 비교
+                  const passwordValue = document.getElementById('inputField2').value.trim();
+                  isValid = inputValue === passwordValue;
+                  errorMessage = '비밀번호가 일치하지 않습니다.';
+                  break;
+              case 'inputField3':
+                isValid = validateEmail(inputValue);
+                errorMessage = '이메일 형식이 올바르지 않습니다.';
+                break;
+            }
+
+            // 오류 메시지 표시
+            if (!isValid) {
+              errorText.textContent = errorMessage;
+              errorText.style.display = 'block';
+            } else {
+              errorText.style.display = 'none';
+            }
+          });
+        });
+
+    // 문서의 클릭 이벤트를 처리하여 숨겨진 텍스트를 숨깁니다
+    document.addEventListener('click', (event) => {
+      const clickedElement = event.target;
+
+      // 다른 작업을 했을 때 숨겨진 텍스트 숨기기
+      if (!clickedElement.matches('#inputField1, #inputField2, #confirmPassword, #inputField3')) {
+        inputFields.forEach((field) => {
+          field.hiddenText.style.display = 'none';
+        });
+      }
+    });
+    </script>
 </body>
 </html>

@@ -44,7 +44,10 @@
                 </tr>
                 <tr>
                     <td>비밀번호</td>
-                    <td colspan="2"><input type="password" id="c_pwd" value="${centerMember.c_pwd}"></td>
+                    <td colspan="2">
+                        <input type="password" id="c_pwd" value="${centerMember.c_pwd}" readonly>
+                        <button type="button" class="resetButton" onclick="resetCenterPW('${centerMember.c_id}')">초기화</button>
+                    </td>
                 </tr>
                 <tr>
                     <td>주소</td>
@@ -63,12 +66,18 @@
             </table>
         </div>
         <div class="adminMemDetailActionButtons">
-            <button type="button" class="updateButton" onclick="updateCenterMember('${centerMember.c_id}')">수정</button>
-                        <button type="button" class="deleteButton" onclick="deleteCenterMember('${centerMember.c_id}')">삭제</button>
+            <button type="button" class="updateButton" onclick="confirmUpdate('${centerMember.c_id}')">수정</button>
+            <button type="button" class="deleteButton" onclick="deleteCenterMember('${centerMember.c_id}')">삭제</button>
         </div>
     </div>
 </div>
 <script>
+     function confirmUpdate() {
+        if (confirm("이대로 수정하시겠습니까?")) {
+            updateCenterMember();
+        }
+     }
+
     function updateCenterMember() {
         const oldCId = document.getElementById("oldCId").value;
         const c_id = document.getElementById("c_id").value;
@@ -96,12 +105,52 @@
         document.body.appendChild(form);
         form.submit();
     }
+
+    function resetCenterPW() {
+        if (confirm("비밀번호를 리셋하시겠습니까?")) {
+            const oldCId = document.getElementById("oldCId").value;
+            const c_id = document.getElementById("c_id").value;
+
+            const form = document.createElement('form');
+            form.method = 'post';
+            form.action = `${contextPath}/resetCenterPW`;
+
+            const inputs = { oldCId, c_id };
+
+            for (const name in inputs) {
+                const input = document.createElement('input');
+                input.type = 'hidden';
+                input.name = name;
+                input.value = inputs[name];
+                form.appendChild(input);
+            }
+
+            document.body.appendChild(form);
+            form.submit();
+        }
+    }
+
     function adminMain() {
         const logoutForm = document.createElement('form');
         logoutForm.method = 'get';
         logoutForm.action = '${pageContext.request.contextPath}/adminMain';
         document.body.appendChild(logoutForm);
         logoutForm.submit();
+    }
+
+    function deleteCenterMember(c_id) {
+        if (confirm("정말로 회원을 삭제하시겠습니까?")) {
+            const form = document.createElement('form');
+            form.method = 'post';
+            form.action = `${contextPath}/deleteCenterMember`;
+            const input = document.createElement('input');
+            input.type = 'hidden';
+            input.name = 'c_id';
+            input.value = c_id;
+            form.appendChild(input);
+            document.body.appendChild(form);
+            form.submit();
+        }
     }
 </script>
 </body>

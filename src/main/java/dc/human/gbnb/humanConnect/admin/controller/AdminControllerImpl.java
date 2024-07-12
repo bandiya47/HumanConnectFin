@@ -96,10 +96,13 @@ public class AdminControllerImpl implements AdminController {
 
     @Override
     @PostMapping("/updateCenterMember")
-    public String updateCenterMember(@RequestParam("oldCId") String oldCId, CenterMemberVO centerMember) {
+    public ModelAndView updateCenterMember(@RequestParam("oldCId") String oldCId, CenterMemberVO centerMember) {
         centerMember.setOldCId(oldCId); // oldCId 설정
         centerMemberService.updateCenterMember(centerMember);
-        return "redirect:/adminCenterMem";
+        ModelAndView mav = new ModelAndView("redirect:/centerMemberDetail");
+        mav.addObject("c_id", centerMember.getC_id());
+        mav.addObject("message", "수정되었습니다.");
+        return mav;
     }
 
     @Override
@@ -107,5 +110,16 @@ public class AdminControllerImpl implements AdminController {
     public String deleteCenterMember(@RequestParam("c_id") String c_id) {
         centerMemberService.deleteCenterMember(c_id);
         return "redirect:/adminCenterMem";
+    }
+
+    @Override
+    @PostMapping("/resetCenterPW")
+    public ModelAndView resetCenterPW(@RequestParam("oldCId") String oldCId, CenterMemberVO centerMember) {
+        centerMember.setOldCId(oldCId); // oldCId 설정
+        centerMemberService.resetCenterPW(centerMember);
+        ModelAndView mav = new ModelAndView("redirect:/centerMemberDetail");
+        mav.addObject("c_id", centerMember.getC_id());
+        mav.addObject("message", "비밀번호가 초기화되었습니다.");
+        return mav;
     }
 }

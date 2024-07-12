@@ -60,7 +60,6 @@
             var _findPw = $("#findPw").val();
             var _findName = $("#findName").val();
             var _findEmail = $("#findEmail").val();
-            var _findPh = $("#findPh").val();
             alert("찾으려는 유저의 아이디 : " + _findPw);
 
             $.ajax({
@@ -71,8 +70,7 @@
                 data: {
                     userId: _findPw,
                     userName: _findName,
-                    userEmail: _findEmail,
-                    userPhone: _findPh
+                    userEmail: _findEmail
                 },
                 success: function (Result) {
                     if (Result == 'no') {
@@ -167,9 +165,6 @@
             </div>
             <div class="findContainer">
                 <input id="findEmail" type="text" name="userEmail" placeholder="이메일 *" class="find_text">
-            </div>
-            <div class="findContainer">
-                <input id="findPh" type="text" name="userPhone" placeholder="전화번호 *" class="find_text">
             </div>
             <div class="findContainer1">
                 <input id="centerRegBtnRM" class="find_button" type="button" value="확인" onClick="fn_process()" />
