@@ -60,7 +60,6 @@
             var _findPw = $("#findPw").val();
             var _findName = $("#findName").val();
             var _findEmail = $("#findEmail").val();
-            alert("찾으려는 유저의 아이디 : " + _findPw);
 
             $.ajax({
                 type: "post",
@@ -108,8 +107,6 @@
         function fn_process2() {
             var _chId = $("#chId").val();
             var _chPw = $("#chPw").val();
-            alert("유저의 아이디 : " + _chId);
-            alert("바뀐 유저의 비밀번호 : " + _chPw);
 
             $.ajax({
                 type: "post",

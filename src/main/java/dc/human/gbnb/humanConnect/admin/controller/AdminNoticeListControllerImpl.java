@@ -24,15 +24,24 @@ public class AdminNoticeListControllerImpl implements AdminNoticeListController 
     @Autowired
     private AdminNoticeListService adminNoticeListService;
 
+    private static final int PAGE_SIZE = 10;
+
     private static final String CURR_IMAGE_REPO_PATH = "c:\\spring\\image_repo";
 
     @Override
     @GetMapping("/adminNoticeList.do")
-    public ModelAndView adminNoticeList() throws Exception {
+    public ModelAndView adminNoticeList(@RequestParam(value = "page", defaultValue = "1") int page) throws Exception {
+        int totalNotices = adminNoticeListService.getTotalNoticeCount();
+        int totalPages = (int) Math.ceil((double) totalNotices / PAGE_SIZE);
+        int offset = (page - 1) * PAGE_SIZE;
+
+        List<AdminNoticeListVO> adminNoticeList = adminNoticeListService.getNoticeList(PAGE_SIZE, offset);
+
         ModelAndView mav = new ModelAndView();
-        List<AdminNoticeListVO> adminNoticeList = adminNoticeListService.getNoticeList();
         mav.setViewName("adminNoticeList");
         mav.addObject("adminNoticeList", adminNoticeList);
+        mav.addObject("currentPage", page);
+        mav.addObject("totalPages", totalPages);
         return mav;
     }
 
@@ -122,21 +131,21 @@ public class AdminNoticeListControllerImpl implements AdminNoticeListController 
     }
 
     @Override
-    @RequestMapping(value="/noticeUpload",method = RequestMethod.POST)
+    @RequestMapping(value = "/noticeUpload", method = RequestMethod.POST)
     @ResponseBody
     public Map upload(MultipartHttpServletRequest multipartRequest, HttpServletResponse response)
-            throws Exception{
+            throws Exception {
         multipartRequest.setCharacterEncoding("utf-8");
         Map map = new HashMap();
-        Enumeration enu=multipartRequest.getParameterNames();
-        while(enu.hasMoreElements()){
-            String name=(String)enu.nextElement();
-            String value=multipartRequest.getParameter(name);
+        Enumeration enu = multipartRequest.getParameterNames();
+        while (enu.hasMoreElements()) {
+            String name = (String) enu.nextElement();
+            String value = multipartRequest.getParameter(name);
             //System.out.println(name+", "+value);
-            map.put(name,value);
+            map.put(name, value);
         }
 
-        List fileList= fileProcess(multipartRequest);
+        List fileList = fileProcess(multipartRequest);
         map.put("fileList", fileList);
 //		ModelAndView mav = new ModelAndView();
 //		mav.addObject("map", map);
@@ -146,22 +155,22 @@ public class AdminNoticeListControllerImpl implements AdminNoticeListController 
     }
 
 
-    private List<String> fileProcess(MultipartHttpServletRequest multipartRequest) throws Exception{
-        List<String> fileList= new ArrayList<String>();
+    private List<String> fileProcess(MultipartHttpServletRequest multipartRequest) throws Exception {
+        List<String> fileList = new ArrayList<String>();
         Iterator<String> fileNames = multipartRequest.getFileNames();
-        while(fileNames.hasNext()){
+        while (fileNames.hasNext()) {
             String fileName = fileNames.next();
             MultipartFile mFile = multipartRequest.getFile(fileName);
-            String originalFileName=mFile.getOriginalFilename();
+            String originalFileName = mFile.getOriginalFilename();
             fileList.add(originalFileName);
-            File file = new File(CURR_IMAGE_REPO_PATH +"\\"+ fileName);
-            if(mFile.getSize()!=0){ //File Null Check
-                if(! file.exists()){ //경로상에 파일이 존재하지 않을 경우
-                    if(file.getParentFile().mkdirs()){ //경로에 해당하는 디렉토리들을 생성
+            File file = new File(CURR_IMAGE_REPO_PATH + "\\" + fileName);
+            if (mFile.getSize() != 0) { //File Null Check
+                if (!file.exists()) { //경로상에 파일이 존재하지 않을 경우
+                    if (file.getParentFile().mkdirs()) { //경로에 해당하는 디렉토리들을 생성
                         file.createNewFile(); //이후 파일 생성
                     }
                 }
-                mFile.transferTo(new File(CURR_IMAGE_REPO_PATH +"\\"+ originalFileName)); //임시로 저장된 multipartFile을 실제 파일로 전송
+                mFile.transferTo(new File(CURR_IMAGE_REPO_PATH + "\\" + originalFileName)); //임시로 저장된 multipartFile을 실제 파일로 전송
             }
         }
         return fileList;

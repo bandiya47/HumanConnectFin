@@ -2689,8 +2689,22 @@ vertical-align:middle;
             border-bottom: 1px solid #000;
             align-items: center;
             padding: 10px 0;
+            width: 1250px;
         }
-
+        .adminNoticeMainHeader {
+            display: flex;
+            justify-content: center;
+            border-bottom: 1px solid #000;
+            align-items: center;
+            padding: 10px 0;
+            width: 1250px;
+            background-color: white;
+        }
+        .adminNoticeMainHeader img {
+            width: 280px; /* 로고 크기 */
+            height: 100px;
+            cursor: pointer;
+        }
         .adminMainHeader img {
             width: 280px; /* 로고 크기 */
             height: 100px;
@@ -2699,7 +2713,7 @@ vertical-align:middle;
 
         .adminMainContainer {
             display: flex;
-            width: 100%;
+            width: 1250px;
             margin: 0 auto;
             border-bottom: 1px solid black;
             border-right: 1px solid black;
@@ -3089,6 +3103,7 @@ vertical-align:middle;
             align-items: center;
             padding: 10px 0;
             position: relative;
+            background: white;
         }
         .adminBtn {
             position: absolute;
@@ -3505,6 +3520,8 @@ vertical-align:middle;
            align-items: center;
            padding: 10px 0;
            position: relative;
+           width: 1250px;
+           background-color: white;
        }
        .adminBtn {
            position: absolute;
@@ -3755,7 +3772,20 @@ vertical-align:middle;
            border-radius: 5px;
            cursor: pointer;
        }
-
+       .adminNotBtn {
+          position: absolute;
+          right: 25px; /* 오른쪽 끝으로 위치 */
+          top: 11.3%;
+          transform: translateY(-50%);
+          margin: 0;
+          font-family: 'MangoDdobak-B' !important;
+          padding: 5px 10px;
+          border: none;
+          background-color: #204160;
+          color: white;
+          border-radius: 5px;
+          cursor: pointer;
+       }
         .adminMemDetailHeader img {
             width: 280px; /* 로고 크기 */
             height: 100px;
@@ -4055,23 +4085,13 @@ vertical-align:middle;
 
 /**centerNoticeList 끝~~*****************************************************************************************************************/
 /**adminNoticeList 시작~~*****************************************************************************************************************/
-.noticeListBody {
-    font-family: 'MangoDdobak-B';
-    margin: 0 auto;
-    padding: 0;
-    background: white;
-    width: 1100px;
-}
-
 .adminNoticeListBody {
     font-family: 'MangoDdobak-B';
     margin: 0 auto;
     padding: 0;
     background: white;
-    width: 1100px;
-    height: 600px;
+    width: 1250px;
 }
-
 .adminNoticeListWholeContainer {
     flex: 1;
     padding: 10px;
@@ -4101,7 +4121,9 @@ vertical-align:middle;
 .adminMainTableContainer td {
     border: 1px solid #000;
 }
-
+.adminNoticeListTable {
+    width: 100%;
+}
 .adminNoticeListTable th {
     background-color: #2B5D7C;
     vertical-align: middle;
@@ -4340,15 +4362,20 @@ input::placeholder {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 1100px;
+    width: 920px;
+    background-color: white;
 }
-.adminNoticeDetailWholeContainer,
+
 .volNoticeDetailWholeContainer,
 .centerNoticeDetailWholeContainer {
     text-align: center;
     margin: 0 auto;
     width: 1100px;
     background-color: #FAECC5;
+}
+.adminNoticeDetailWholeContainer{
+    width: 920px;
+    background-color: white;
 }
 
 .adminNoticeDetailDiv h2{
@@ -4360,11 +4387,11 @@ input::placeholder {
 
 /* 공지사항 상세페이지 */
 
-.adminNoticeListDiv>div>table, .adminNoticeRegDiv>div>table,
+.adminNoticeRegDiv>div>table,
 .noticeDetailTable, .centerNoticeDetailTable {
    margin: 5px;
    text-align: center;
-   width: 1100px;
+   width: 900px;
    margin: 2px;
    border-collapse: collapse;
    font-size: 15px;
@@ -4457,6 +4484,7 @@ pre {
 .buttonContainer1 {
     text-align: right;
     margin-right: 30px;
+    margin-bottom: 10px;
 }
 .buttonContainer1>button {
     font-family: 'MangoDdobak-B';

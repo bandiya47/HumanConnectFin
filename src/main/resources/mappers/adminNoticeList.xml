@@ -6,92 +6,88 @@
 <mapper namespace="dc.human.gbnb.humanConnect.admin.dao.AdminNoticeListDAO">
 
     <resultMap id="noticeListResult" type="dc.human.gbnb.humanConnect.admin.vo.AdminNoticeListVO">
-        <result property="nNumber" column="n_number" />
-        <result property="nType" column="n_type" />
-        <result property="nTitle" column="n_title" />
-        <result property="uId" column="u_id" />
+        <result property="nNumber" column="n_number"/>
+        <result property="nType" column="n_type"/>
+        <result property="nTitle" column="n_title"/>
+        <result property="uId" column="u_id"/>
         <result property="nDate" column="n_date"/>
-        <result property="nContent" column="n_content" />
-        <result property="nAttachPath" column="n_attach_path" />
-        <result property="CreatedDate" column="created_date" />
-        <result property="CreatedId" column="created_id" />
-        <result property="UpdatedDate" column="updated_date" />
-        <result property="UpdatedId" column="updated_id" />
+        <result property="nContent" column="n_content"/>
+        <result property="nAttachPath" column="n_attach_path"/>
+        <result property="CreatedDate" column="created_date"/>
+        <result property="CreatedId" column="created_id"/>
+        <result property="UpdatedDate" column="updated_date"/>
+        <result property="UpdatedId" column="updated_id"/>
     </resultMap>
 
-
-<!--    공지사항 목록-->
-    <select id="getNoticeList" resultMap="noticeListResult" >
+    <!-- 공지사항 목록 조회 -->
+    <select id="getNoticeList" parameterType="map" resultMap="noticeListResult">
         <![CDATA[
-            SELECT
-                n_number,
-                n_type,
-                n_title,
-                u_id,
-                n_date,
-                n_content,
-                n_attach_path,
-                created_date,
-                created_id,
-                updated_date,
-                updated_id
-            FROM
-                customer_notice
-            ORDER BY
-                n_number desc
+        SELECT
+            n_number,
+            n_type,
+            n_title,
+            u_id,
+            n_date,
+            n_content,
+            n_attach_path,
+            created_date,
+            created_id,
+            updated_date,
+            updated_id
+        FROM
+            customer_notice
+        ORDER BY
+            n_number desc
+        OFFSET #{offset} ROWS FETCH NEXT #{limit} ROWS ONLY
         ]]>
     </select>
 
-<!--    공지사항 게시글 삭제-->
-    <delete id="deleteNotices" parameterType="map">
-        DELETE FROM customer_notice
-        WHERE n_number IN
-        <foreach collection="nNumbers" item="item" index="index" open="(" separator="," close=")">
-                #{item}
-        </foreach>
-    </delete>
+    <!-- 공지사항 총 개수 조회 -->
+    <select id="getTotalNoticeCount" resultType="int">
+        SELECT COUNT(*) FROM customer_notice
+    </select>
 
-<!--    공지사항 등록-->
-    <insert id="insertNotice" parameterType="AdminNoticeListVO">
+    <!-- 공지사항 상세 조회 -->
+    <select id="getNoticeDetail" parameterType="int" resultMap="noticeListResult">
+        <![CDATA[
+        SELECT
+            n_number,
+            n_type,
+            n_title,
+            u_id,
+            n_date,
+            n_content,
+            n_attach_path,
+            created_date,
+            created_id,
+            updated_date,
+            updated_id
+        FROM
+            customer_notice
+        WHERE
+            n_number = #{nNumber}
+        ]]>
+    </select>
+
+    <!-- 공지사항 추가 -->
+    <insert id="insertNotice" parameterType="dc.human.gbnb.humanConnect.admin.vo.AdminNoticeListVO">
         <![CDATA[
         INSERT INTO customer_notice (n_type, n_title, u_id, n_date, n_content, n_attach_path, created_date, created_id)
         VALUES ('1', #{nTitle}, 'admin', sysdate, #{nContent}, #{nAttachPath, jdbcType=VARCHAR}, sysdate, '관리자')
         ]]>
     </insert>
 
-    <select id="getNoticeDetail" resultMap="noticeListResult" >
-        <![CDATA[
-            SELECT
-                n_number,
-                n_title,
-                u_id,
-                n_date,
-                n_content,
-                n_attach_path
-            FROM
-                customer_notice
-            WHERE
-                n_number = #{nNumber}
-        ]]>
-    </select>
+    <!-- 공지사항 삭제 -->
+    <delete id="deleteNotices" parameterType="map">
+        DELETE FROM customer_notice
+        WHERE n_number IN
+        <foreach collection="nNumbers" item="item" index="index" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </delete>
 
-    <select id="getLatestNotice" resultMap="noticeListResult" >
-        <![CDATA[
-            SELECT
-                n_number,
-                n_title,
-                u_id,
-                n_date,
-                n_content,
-                n_attach_path
-            FROM
-                customer_notice
-            WHERE
-                n_number = (SELECT MAX(n_number) FROM customer_notice)
-        ]]>
-    </select>
-
-    <update id="updateNotice" parameterType="AdminNoticeListVO">
+    <!-- 공지사항 수정 -->
+    <update id="updateNotice" parameterType="dc.human.gbnb.humanConnect.admin.vo.AdminNoticeListVO">
         <![CDATA[
         UPDATE customer_notice
         SET
@@ -104,5 +100,21 @@
         ]]>
     </update>
 
-</mapper>
+    <!-- 최신 공지사항 조회 -->
+    <select id="getLatestNotice" resultMap="noticeListResult">
+        <![CDATA[
+        SELECT
+            n_number,
+            n_title,
+            u_id,
+            n_date,
+            n_content,
+            n_attach_path
+        FROM
+            customer_notice
+        WHERE
+            n_number = (SELECT MAX(n_number) FROM customer_notice)
+        ]]>
+    </select>
 
+</mapper>

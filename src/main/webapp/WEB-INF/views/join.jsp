@@ -227,7 +227,7 @@
         // 입력값을 검사하는 함수들을 정의합니다
         function validatePhoneNumber(input) {
           // 전화번호 형식 검사 (xxx-xxxx-xxxx)
-          const pattern = /^\d{3}-\d{4}-\d{4}$/;
+          const pattern = /^\d{3}\d{4}\d{4}$/;
           return pattern.test(input);
         }
 

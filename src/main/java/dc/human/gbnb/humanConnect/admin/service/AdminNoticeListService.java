@@ -6,7 +6,9 @@ import java.util.List;
 
 public interface AdminNoticeListService {
 
-    List<AdminNoticeListVO> getNoticeList() throws Exception;
+    List<AdminNoticeListVO> getNoticeList(int limit, int offset) throws Exception;
+    
+    int getTotalNoticeCount() throws Exception;
 
     void deleteNotices(List<Integer> nNumbers) throws Exception;
 

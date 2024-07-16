@@ -79,6 +79,7 @@
                                                             <input type="hidden" name="action" value="approve">
                                                             <input type="hidden" name="section" value="recruitment">
                                                             <input type="hidden" name="resNo" value="${vo.resNo}">
+                                                            <input type="hidden" name="page" value="${currentPage}">
                                                             <button class="centerMainApprv" type="submit">승인</button>
                                                         </form>
                                                         <form method="post" action="${pageContext.request.contextPath}/centerRecruitList">
@@ -87,6 +88,7 @@
                                                             <input type="hidden" name="action" value="reject">
                                                             <input type="hidden" name="section" value="recruitment">
                                                             <input type="hidden" name="resNo" value="${vo.resNo}">
+                                                            <input type="hidden" name="page" value="${currentPage}">
                                                             <button class="centerMainRej" type="button" onclick="showRejectReason('${vo.userId}_recruitment')">거절</button>
                                                         </form>
                                                     </div>
@@ -97,6 +99,7 @@
                                                             <input type="hidden" name="action" value="reject">
                                                             <input type="hidden" name="section" value="recruitment">
                                                             <input type="hidden" name="resNo" value="${vo.resNo}">
+                                                            <input type="hidden" name="page" value="${currentPage}">
                                                             <input class="centerMainRR" type="text" name="rejectReason" placeholder="거절 사유를 입력하세요" />
                                                             <button class="centerRR" type="submit">O</button>
                                                             <button class="centerRR" type="button" onclick="hideRejectReason('${vo.userId}_recruitment')">X</button>
@@ -110,6 +113,7 @@
                                                         <input type="hidden" name="action" value="complete">
                                                         <input type="hidden" name="section" value="recruitment">
                                                         <input type="hidden" name="resNo" value="${vo.resNo}">
+                                                        <input type="hidden" name="page" value="${currentPage}">
                                                         <button class="centerMainVolBtn" type="submit">봉사완료</button>
                                                     </form>
                                                 </c:when>

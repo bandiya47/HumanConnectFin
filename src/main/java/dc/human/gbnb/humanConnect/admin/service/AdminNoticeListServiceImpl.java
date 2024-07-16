@@ -6,7 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service("adminNoticeListService")
 public class AdminNoticeListServiceImpl implements AdminNoticeListService {
@@ -15,8 +17,17 @@ public class AdminNoticeListServiceImpl implements AdminNoticeListService {
     private AdminNoticeListDAO adminNoticeListDAO;
 
 
-    public List<AdminNoticeListVO> getNoticeList() throws Exception {
-        return adminNoticeListDAO.getNoticeList();
+    @Override
+    public List<AdminNoticeListVO> getNoticeList(int limit, int offset) throws Exception {
+        Map<String, Object> params = new HashMap<>();
+        params.put("limit", limit);
+        params.put("offset", offset);
+        return adminNoticeListDAO.getNoticeList(params);
+    }
+
+    @Override
+    public int getTotalNoticeCount() throws Exception {
+        return adminNoticeListDAO.getTotalNoticeCount();
     }
 
     public void deleteNotices(List<Integer> nNumbers) throws Exception {
@@ -37,7 +48,7 @@ public class AdminNoticeListServiceImpl implements AdminNoticeListService {
     }
 
     public AdminNoticeListVO getLatestNotices() throws Exception {
-        return  adminNoticeListDAO.getLatestNotice();
+        return adminNoticeListDAO.getLatestNotice();
     }
 
     public AdminNoticeListVO getLatestNotice() throws Exception {

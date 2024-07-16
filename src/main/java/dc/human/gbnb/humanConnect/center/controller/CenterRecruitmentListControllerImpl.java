@@ -42,7 +42,8 @@ public class CenterRecruitmentListControllerImpl implements CenterRecruitmentLis
             @RequestParam("centerId") String centerId,
             @RequestParam("section") String section,
             @RequestParam(value = "rejectReason", required = false) String rejectReason,
-            @RequestParam("resNo") String resNo
+            @RequestParam("resNo") String resNo,
+            @RequestParam(value = "page", defaultValue = "1") int page
     ) {
         int updateRow = 0;
 
@@ -60,8 +61,7 @@ public class CenterRecruitmentListControllerImpl implements CenterRecruitmentLis
             }
         }
 
-        ModelAndView mav = new ModelAndView("redirect:/centerVolRecruitList");
-        mav.addObject("centerId", centerId);
+        ModelAndView mav = new ModelAndView("redirect:/centerRecruitList?centerId=" + centerId + "&page=" + page);
         if (updateRow > 0) {
             mav.addObject("message", "수정되었습니다");
         } else {

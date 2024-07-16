@@ -1,18 +1,13 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<c:set var="contextPath" value="${pageContext.request.contextPath}"  />
-<%@ page import="jakarta.servlet.http.HttpSession"%>
-<%@ page import="jakarta.servlet.http.HttpServletRequest"%>
-<%@ page import="dc.human.gbnb.humanConnect.admin.vo.AdminNoticeListVO"%>
-
+<c:set var="contextPath" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HumanConnect 공지사항</title>
-    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="${contextPath}/css/style.css">
      <style>
             html, body {
                 background-color: white !important;
@@ -34,7 +29,7 @@
             }
     </script>
 </head>
-<body class="noticeListBody">
+<body class="adminNoticeListBody">
 <header class="adminMainHeader">
     <img src="${pageContext.request.contextPath}/img/logo.png" alt="로고" onclick="adminMain()">
     <form action="logout" method="post">
@@ -56,13 +51,12 @@
             <form action="${pageContext.request.contextPath}/adminMain" method="get">
                 <input type="text" name="searchQuery" placeholder="검색어 입력" value="${param.searchQuery}">
                 <input type="submit" value="검색">
-                <img src="${pageContext.request.contextPath}/img/reset.png" alt="초기화" onclick="resetSearch()">
+                <img src="${contextPath}/img/reset.png" alt="초기화" onclick="resetSearch()">
             </form>
         </div>
 
-
         <form id="noticeListForm" method="post" enctype="multipart/form-data"
-                action="${pageContext.request.contextPath}/deleteNotices.do" style="display:block">
+                action="${contextPath}/deleteNotices.do" style="display:block">
         <div class="adminNoticeListDiv">
             <div class="buttonContainer1">
                     <button class="noticeRegButton" name="noticeReg" value="새 글" type="button" onclick="showNoticeForm()">새 글</button>
@@ -83,19 +77,19 @@
                        <tbody>
                            <tr>
                               <td>
-                                <a href="${pageContext.request.contextPath}/viewNoticeDetail.do?nNumber=${item.nNumber}">
+                                <a href="${contextPath}/viewNoticeDetail.do?nNumber=${item.nNumber}">
                                   ${item.nNumber}
                               </td>
                               <td>
-                                <a href="${pageContext.request.contextPath}/viewNoticeDetail.do?nNumber=${item.nNumber}">
+                                <a href="${contextPath}/viewNoticeDetail.do?nNumber=${item.nNumber}">
                                 ${item.nTitle}
                               </td>
                               <td>
-                                <a href="${pageContext.request.contextPath}/viewNoticeDetail.do?nNumber=${item.nNumber}">
+                                <a href="${contextPath}/viewNoticeDetail.do?nNumber=${item.nNumber}">
                                 ${item.uId}
                               </td>
                               <td>
-                              <a href="${pageContext.request.contextPath}/viewNoticeDetail.do?nNumber=${item.nNumber}">
+                              <a href="${contextPath}/viewNoticeDetail.do?nNumber=${item.nNumber}">
                                 ${item.nDate}
                               </td>
                               <td>
@@ -109,24 +103,32 @@
                 </table>
             </div>
             <div class="adminMainPagination">
-               <span class="active">1</span>
-               <a href="test?page=2">2</a>
-               <a href="test?page=3">3</a>
-               <a href="test?page=4">4</a>
-               <a href="test?page=5">5</a>
-               <a href="test?page=6">6</a>
-               <a href="test?page=2">다음 &raquo;</a>
+                <c:if test="${currentPage > 1}">
+                    <a href="${contextPath}/adminNoticeList.do?page=${currentPage - 1}">이전</a>
+                </c:if>
+                <c:forEach var="i" begin="1" end="${totalPages}">
+                    <c:choose>
+                        <c:when test="${i == currentPage}">
+                            <span class="active">${i}</span>
+                        </c:when>
+                        <c:otherwise>
+                            <a href="${contextPath}/adminNoticeList.do?page=${i}">${i}</a>
+                        </c:otherwise>
+                    </c:choose>
+                </c:forEach>
+                <c:if test="${currentPage < totalPages}">
+                    <a href="${contextPath}/adminNoticeList.do?page=${currentPage + 1}">다음</a>
+                </c:if>
             </div>
        </div>
       </form>
    </div>
 
-
     <!--새 글 작성-->
     <div class="adminNoticeListBody" id="noticeReg" style="display:none;">
         <div class="adminNoticeListWholeContainer">
             <form id="noticeRegForm" method="post" enctype="multipart/form-data"
-                        action="${pageContext.request.contextPath}/addNotice">
+                        action="${contextPath}/addNotice">
 
                 <div class="adminNoticeRegDiv">
                     <h1>공지사항 등록</h1>
@@ -169,10 +171,7 @@
         </div>
     </div>
 
-
     <script type="text/javascript">
-
-        <!--공지사항 등록 페이지-->
         function showNoticeForm() {
             document.getElementById('noticeReg').style.display = 'block';
             document.getElementById('noticeListForm').style.display = 'none';
@@ -181,43 +180,40 @@
         }
 
         function showNoticeDetail() {
-            window.location.href = "${pageContext.request.contextPath}/viewNoticeDetail.do";
+            window.location.href = "${contextPath}/viewNoticeDetail.do";
         }
 
         function goNoticeList() {
-            window.location.href = "${pageContext.request.contextPath}/adminNoticeList.do";
+            window.location.href = "${contextPath}/adminNoticeList.do";
         }
 
-        <!--공지사항 등록 실행-->
         function submitNotice() {
             const title = document.getElementById('noticeTitle').value;
             const content = document.getElementById('noticeContent').value.replace(/\n/g, "<br>");
             const file = document.getElementById('nAttachPath').files[0];
 
             const formData = new FormData();
-                formData.append('noticeTitle', title);
-                formData.append('noticeContent', content);
-                formData.append('nAttachPath', file);
+            formData.append('noticeTitle', title);
+            formData.append('noticeContent', content);
+            formData.append('nAttachPath', file);
 
             fetch("${contextPath}/addNotice", {
-            method: 'POST',
-            body: formData
+                method: 'POST',
+                body: formData
             })
-            .then(response => response.JSON()) // JSON 응답 파싱
+            .then(response => response.JSON())
             .then(result => {
-            if (result === "addNotice_success") {
-              window.location.href = `./viewNoticeDetail.do?nNumber=${result.nNumber}`;
-            } else {
-              alert("공지사항 등록 실패");
-            }
+                if (result === "addNotice_success") {
+                    window.location.href = `./viewNoticeDetail.do?nNumber=${result.nNumber}`;
+                } else {
+                    alert("공지사항 등록 실패");
+                }
             })
             .catch(error => {
-            console.error('Error:', error);
+                console.error('Error:', error);
             });
-            }
+        }
 
-
-        <!--공지사항 삭제-->
         function deleteSelectedNotices() {
             const checkboxes = document.querySelectorAll('input[name="nNumbers"]:checked');
             const selectedNumbers = Array.from(checkboxes).map(checkbox => parseInt(checkbox.value));
@@ -230,7 +226,7 @@
                     headers: {
                         'Content-Type': 'application/json'
                     },
-                    body: JSON.stringify({nNumbers: selectedNumbers }) // JSON.stringify 사용
+                    body: JSON.stringify({nNumbers: selectedNumbers })
                 })
                 .then(response => response.text())
                 .then(result => {
@@ -238,8 +234,7 @@
                     if (result === "success") {
                         window.location.reload();
                     } else {
-                        alert("공지글 삭제 성공");
-                        goNoticeList();
+                        alert("공지글 삭제 실패");
                     }
                 })
                 .catch(error => {
@@ -251,24 +246,20 @@
         }
 
         function handleNoticeItemClick(event) {
-                 const nNumber = event.target.dataset.nNumber;
-                 const detailUrl = `/detail?nNumber=${nNumber}`;
-                   window.location.href = detailUrl;
-               }
+            const nNumber = event.target.dataset.nNumber;
+            const detailUrl = `/detail?nNumber=${nNumber}`;
+            window.location.href = detailUrl;
+        }
 
-       const noticeList = document.querySelectorAll('.notice-item');
-       noticeList.forEach(item => {
-         item.addEventListener('click', handleNoticeItemClick);
-       });
+        const noticeList = document.querySelectorAll('.notice-item');
+        noticeList.forEach(item => {
+            item.addEventListener('click', handleNoticeItemClick);
+        });
 
-       document.getElementById('nAttachPath').addEventListener('change', function() {
-           var fileName = this.files[0] ? this.files[0].name : '선택된 파일 없음';
-           document.getElementById('file-name').textContent = fileName;
-       });
-
+        document.getElementById('nAttachPath').addEventListener('change', function() {
+            var fileName = this.files[0] ? this.files[0].name : '선택된 파일 없음';
+            document.getElementById('file-name').textContent = fileName;
+        });
     </script>
-
-
 </body>
 </html>
-

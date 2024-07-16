@@ -94,12 +94,12 @@
         });
     </script>
 </head>
-<body class="noticeListBody">
+<body>
 
-<header class="adminMainHeader">
+<header class="adminNoticeMainHeader">
     <img src="${contextPath}/img/logo.png" alt="로고" onclick="adminMain()">
     <form action="logout" method="post">
-       <button class="adminBtn" type="submit" value="">로그아웃</button>
+       <button class="adminNotBtn" type="submit" value="">로그아웃</button>
     </form>
 </header>
 <div class="adminMainContainer">

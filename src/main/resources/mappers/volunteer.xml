@@ -1,48 +1,48 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper
-      PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="dc.human.gbnb.humanConnect.center.dao.CenterRegDAO">
-	<resultMap id="listCenterRegResult" type="centerRegVO">
-		<result property="uId" column="C_ID" />
-		<result property="v_no" column="V_NO" />
-		<result property="vTitle" column="V_TITLE" />
-		<result property="vStartDate" column="V_START_DATE" />
-		<result property="vEndDate" column="V_END_DATE" />
-		<result property="vStartTime" column="V_START_TIME" />
-		<result property="vLastTime" column="V_LAST_TIME" />
-		<result property="vRStartDate" column="V_RSTART_DATE" />
-		<result property="vREndDate" column="V_REND_DATE" />
-		<result property="vWorkingDay" column="V_WORKING_DAY" />
-		<result property="vServiceCode" column="SERVICE_CODE" />
-		<result property="vRegAmnt" column="V_REG_AMNT" />
-		<result property="vUploadFilePath" column="V_UPLOAD_FILE_PATH" />
-		<result property="vInfo" column="V_INFO" />
-		<result property="vServiceType" column="service_type" />
-	</resultMap>
+    <resultMap id="listCenterRegResult" type="centerRegVO">
+        <result property="uId" column="C_ID"/>
+        <result property="v_no" column="V_NO"/>
+        <result property="vTitle" column="V_TITLE"/>
+        <result property="vStartDate" column="V_START_DATE"/>
+        <result property="vEndDate" column="V_END_DATE"/>
+        <result property="vStartTime" column="V_START_TIME"/>
+        <result property="vLastTime" column="V_LAST_TIME"/>
+        <result property="vRStartDate" column="V_RSTART_DATE"/>
+        <result property="vREndDate" column="V_REND_DATE"/>
+        <result property="vWorkingDay" column="V_WORKING_DAY"/>
+        <result property="vServiceCode" column="SERVICE_CODE"/>
+        <result property="vRegAmnt" column="V_REG_AMNT"/>
+        <result property="vUploadFilePath" column="V_UPLOAD_FILE_PATH"/>
+        <result property="vInfo" column="V_INFO"/>
+        <result property="vServiceType" column="service_type"/>
+    </resultMap>
 
-	<resultMap id="vNoCenterRegResult" type="centerRegVO">
-			<result property="v_no" column="v_no" />
-	</resultMap>
+    <resultMap id="vNoCenterRegResult" type="centerRegVO">
+        <result property="v_no" column="v_no"/>
+    </resultMap>
 
-	<resultMap id="listIdCenterRegResult" type="centerRegVO">
-		<result property="cName" column="C_NAME" />
-		<result property="cAddr1" column="C_ADDR1" />
-		<result property="cAddr2" column="C_ADDR2" />
-	</resultMap>
+    <resultMap id="listIdCenterRegResult" type="centerRegVO">
+        <result property="cName" column="C_NAME"/>
+        <result property="cAddr1" column="C_ADDR1"/>
+        <result property="cAddr2" column="C_ADDR2"/>
+    </resultMap>
 
-	<resultMap id="getCenterRegResult" type="dc.human.gbnb.humanConnect.center.vo.CenterMainVO">
-		<result property="userId" column="userId" />
-		<result property="name" column="name" />
-		<result property="phone" column="phone" />
-		<result property="status" column="status" />
-		<result property="resNo" column="resNo"/>
-		<result property="rejectReason" column="rejectReason" />
-	</resultMap>
+    <resultMap id="getCenterRegResult" type="dc.human.gbnb.humanConnect.center.vo.CenterMainVO">
+        <result property="userId" column="userId"/>
+        <result property="name" column="name"/>
+        <result property="phone" column="phone"/>
+        <result property="status" column="status"/>
+        <result property="resNo" column="resNo"/>
+        <result property="rejectReason" column="rejectReason"/>
+    </resultMap>
 
-	<select id="selectCenterRegList" parameterType="int" resultMap="listCenterRegResult">
-		<![CDATA[
+    <select id="selectCenterRegList" parameterType="int" resultMap="listCenterRegResult">
+        <![CDATA[
 		   SELECT
 		    v.C_ID,
 		    v.V_NO,
@@ -65,23 +65,24 @@
 			ON s.service_code = v.service_code
 		    WHERE v.V_NO =#{v_no}
 		]]>
-	</select>
+    </select>
 
-	<select id="selectVNoCenterReg" resultMap="vNoCenterRegResult">
-      <![CDATA[
+    <select id="selectVNoCenterReg" resultMap="vNoCenterRegResult">
+        <![CDATA[
         select max(v_no) as v_no from volunteer
       ]]>
-	</select>
+    </select>
 
-	<insert id="insertCenterReg" parameterType="centerRegVO">
-		<![CDATA[
+    <insert id="insertCenterReg" parameterType="centerRegVO">
+        <![CDATA[
 		 insert into volunteer(C_ID,V_TITLE,V_START_DATE,V_END_DATE,V_START_TIME,V_LAST_TIME,V_RSTART_DATE,V_REND_DATE,V_WORKING_DAY,SERVICE_CODE,V_REG_AMNT,V_MAX_AMNT,V_STATE,V_UPLOAD_FILE_PATH,V_INFO,CREATED_ID,CREATED_DATE)
 		 values(#{uId},#{vTitle},#{vStartDate},#{vEndDate},#{vStartTime},#{vLastTime},#{vRStartDate},#{vREndDate},#{vWorkingDay},#{vServiceCode},#{vRegAmnt},0,1,#{vUploadFilePath,jdbcType=VARCHAR},#{vInfo},#{uId},SYSDATE)
-		]]>
-	</insert>
 
-	<update id="updateCenterReg" parameterType="centerRegVO">
-		<![CDATA[
+		]]>
+    </insert>
+
+    <update id="updateCenterReg" parameterType="centerRegVO">
+        <![CDATA[
 		 update volunteer set
 		 V_TITLE = #{vTitle},
 		 V_START_DATE = #{vStartDate},
@@ -98,19 +99,19 @@
          UPDATED_DATE = SYSDATE
          where v_no = #{v_no}
 		]]>
-	</update>
+    </update>
 
-	<select id="selectCenterRegIdList" parameterType="String" resultMap="listIdCenterRegResult">
-		<![CDATA[
+    <select id="selectCenterRegIdList" parameterType="String" resultMap="listIdCenterRegResult">
+        <![CDATA[
 		   SELECT
 			C_NAME, C_ADDR1, C_ADDR2
 			FROM CENTER_MNG_TABLE
 		    WHERE C_ID = #{centerId}
 		]]>
-	</select>
+    </select>
 
-	<select id="getRecruitmentList" resultMap="getCenterRegResult" parameterType="map">
-		<![CDATA[
+    <select id="getRecruitmentList" resultMap="getCenterRegResult" parameterType="map">
+        <![CDATA[
 			SELECT U.U_ID as userId,
 			U.U_NAME as name,
 			U.U_PHONE as phone,
@@ -128,10 +129,10 @@
 			ORDER BY V.CREATED_DATE DESC
 			OFFSET #{offset} ROWS FETCH NEXT #{limit} ROWS ONLY
   		]]>
-	</select>
+    </select>
 
-	<select id="getTotalRecruitments" resultType="int">
-		<![CDATA[
+    <select id="getTotalRecruitments" resultType="int">
+        <![CDATA[
        		SELECT COUNT(*)
             FROM VOLUNTEER_USER U
             JOIN VOLUNTEER_REG R ON R.U_ID = U.U_ID
@@ -140,10 +141,10 @@
             JOIN CENTER_MNG_TABLE C ON C.C_ID = V.C_ID
             WHERE C.C_ID = #{centerId} AND R.V_TYPE = 0
         ]]>
-	</select>
+    </select>
 
-	<update id="updateRecruitmentStatus" parameterType="map">
-		<![CDATA[
+    <update id="updateRecruitmentStatus" parameterType="map">
+        <![CDATA[
 			UPDATE ACCEPTION_RES
            SET REG_RESULT = #{status},
                REJECT_RS = #{rejectReason, jdbcType=VARCHAR},
@@ -152,29 +153,29 @@
          WHERE U_ID = #{userId}
            AND VREG_NO = #{resNo}
 		]]>
-	</update>
-<!--	<update id="updateMember" parameterType="memberVO">-->
-<!--     <![CDATA[-->
-<!--	     update t_member-->
-<!--	     set pwd=#{pwd}, name=#{name}, email=#{email}-->
-<!--	     where-->
-<!--	     id=#{id}-->
-<!--      ]]>-->
-<!--	</update>-->
+    </update>
+    <!--	<update id="updateMember" parameterType="memberVO">-->
+    <!--     <![CDATA[-->
+    <!--	     update t_member-->
+    <!--	     set pwd=#{pwd}, name=#{name}, email=#{email}-->
+    <!--	     where-->
+    <!--	     id=#{id}-->
+    <!--      ]]>-->
+    <!--	</update>-->
 
-<!--	<delete id="deleteMember" parameterType="String">-->
-<!--	<![CDATA[-->
-<!--	   delete from  t_member-->
-<!--	   where-->
-<!--	   id=#{id}-->
-<!--	]]>-->
-<!--	</delete>-->
-<!--	<select id="loginById" resultType="memberVO"-->
-<!--		parameterType="memberVO">-->
-<!--	<![CDATA[-->
-<!--		select * from t_member	-->
-<!--		where id=#{id} and pwd=#{pwd}		-->
-<!--	]]>-->
-<!--	</select>-->
+    <!--	<delete id="deleteMember" parameterType="String">-->
+    <!--	<![CDATA[-->
+    <!--	   delete from  t_member-->
+    <!--	   where-->
+    <!--	   id=#{id}-->
+    <!--	]]>-->
+    <!--	</delete>-->
+    <!--	<select id="loginById" resultType="memberVO"-->
+    <!--		parameterType="memberVO">-->
+    <!--	<![CDATA[-->
+    <!--		select * from t_member	-->
+    <!--		where id=#{id} and pwd=#{pwd}		-->
+    <!--	]]>-->
+    <!--	</select>-->
 
 </mapper>
