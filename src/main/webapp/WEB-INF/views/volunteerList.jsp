@@ -5,25 +5,12 @@
 <%@ page import="jakarta.servlet.http.HttpSession"%>
 <%@ page import="jakarta.servlet.http.HttpServletRequest"%>
 <%@ page import="dc.human.gbnb.humanConnect.volunteer.vo.VolunteerListVO"%>
-
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>HumanConnect</title>
-
-<link rel="stylesheet" href="./css/style.css">
-</head>
-<body class="volListBody">
-
-
 <!DOCTYPE html>
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HumanConnect 봉사신청 리스트</title>
+    <title>Human Connect</title>
 
     <link rel="stylesheet" type="text/css" href="./css/style.css">
     <script>

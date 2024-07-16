@@ -7,6 +7,7 @@
 <html>
 <head>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/style.css">
+    <title>Human Connect</title>
 </head>
 <body>
 <jsp:include page="nevi.jsp" />

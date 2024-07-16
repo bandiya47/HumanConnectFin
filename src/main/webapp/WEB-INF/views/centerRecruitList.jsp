@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>내가 올린 모집</title>
+<title>Human Connect</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
 </head>
 <body class="centerRecBody">
