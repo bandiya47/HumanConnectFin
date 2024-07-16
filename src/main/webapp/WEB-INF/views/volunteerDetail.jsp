@@ -113,9 +113,7 @@
 <html>
     <head>
         <link rel="stylesheet" type="text/css" href="/css/style.css">
-        <style>
-
-        </style>
+        <title>Human Connect</title>
     </head>
     <html>
     <body>
