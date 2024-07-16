@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+		PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="dc.human.gbnb.humanConnect.admin.dao.MemberDAO">
+	<resultMap id="memResult" type="dc.human.gbnb.humanConnect.admin.vo.MemberVO">
+		<result property="u_id" column="u_id"/>
+		<result property="u_name" column="u_name"/>
+		<result property="u_sex" column="u_sex"/>
+		<result property="u_bdate" column="u_bdate"/>
+		<result property="u_pwd" column="u_pwd"/>
+		<result property="u_addr1" column="u_addr1"/>
+		<result property="u_addr2" column="u_addr2"/>
+		<result property="u_email" column="u_email"/>
+		<result property="u_phone" column="u_phone"/>
+	</resultMap>
+
+	<select id="selectAllMemberList" resultMap="memResult">
+		<![CDATA[
+            SELECT *
+            FROM (SELECT A.*, ROWNUM AS RNUM
+                  FROM (SELECT * FROM volunteer_user WHERE u_type = 1 ORDER BY u_id) A
+                  WHERE ROWNUM <= #{offset} + #{size})
+            WHERE RNUM > #{offset}
+        ]]>
+	</select>
+
+	<select id="selectMemberById" parameterType="String" resultMap="memResult">
+		<![CDATA[
+            SELECT * FROM volunteer_user WHERE u_id = #{u_id}
+        ]]>
+	</select>
+
+	<insert id="insertMember" parameterType="dc.human.gbnb.humanConnect.admin.vo.MemberVO">
+		<![CDATA[
+            INSERT INTO volunteer_user(u_id, u_name, u_pwd, u_email, u_phone)
+            VALUES(#{u_id}, #{u_name}, #{u_pwd}, #{u_email}, #{u_phone})
+        ]]>
+	</insert>
+
+	<update id="updateMember" parameterType="dc.human.gbnb.humanConnect.admin.vo.MemberVO">
+		<![CDATA[
+            UPDATE volunteer_user
+            SET u_pwd=#{u_pwd}, u_name=#{u_name}, u_email=#{u_email}, u_addr1=#{u_addr1}, u_addr2=#{u_addr2}, u_phone=#{u_phone}, u_sex=#{u_sex}, u_bdate=#{u_bdate}
+            WHERE u_id=#{u_id}
+        ]]>
+	</update>
+
+	<delete id="deleteMember" parameterType="String">
+		<![CDATA[
+            DELETE FROM volunteer_user
+            WHERE u_id=#{u_id}
+        ]]>
+	</delete>
+
+	<select id="searchMembers" parameterType="String" resultMap="memResult">
+		<![CDATA[
+            SELECT *
+            FROM (SELECT A.*, ROWNUM AS RNUM
+                  FROM (SELECT * FROM volunteer_user
+                        WHERE u_type = 1
+                          AND (u_name LIKE '%' || #{searchQuery} || '%' OR u_id LIKE '%' || #{searchQuery} || '%')
+                        ORDER BY u_id) A
+                  WHERE ROWNUM <= #{offset} + #{size})
+            WHERE RNUM > #{offset}
+        ]]>
+	</select>
+
+	<select id="countAllMembers" resultType="int">
+		<![CDATA[
+            SELECT COUNT(*) FROM volunteer_user WHERE u_type = 1
+        ]]>
+	</select>
+
+	<select id="countSearchedMembers" parameterType="String" resultType="int">
+		<![CDATA[
+            SELECT COUNT(*) FROM volunteer_user
+            WHERE u_type = 1
+              AND (u_name LIKE '%' || #{searchQuery} || '%' OR u_id LIKE '%' || #{searchQuery} || '%')
+        ]]>
+	</select>
+</mapper>

@@ -40,7 +40,7 @@ footer, header, hgroup, menu, nav, section {
 body {
 	line-height: 1;
 	margin: 0 auto;
-
+    background-color: #FAECC5;
 }
 ol, ul {
 	list-style: none;
@@ -59,7 +59,7 @@ table {
 }
 
 :root{
-		background-color:#FDECCB;
+		background-color:#FAECC5;
 }
 
 /**리셋끝~~*****************************************************************************************************************/
@@ -71,6 +71,7 @@ table {
 header{
     margin: 0 auto -100px;
     width: 1250px;
+    background-color: #FAECC5;
 }
 
 .neviFor{
@@ -85,6 +86,7 @@ header{
     height: 280px;
     z-index: 1; 
     position: relative;
+    background-color: #FAECC5;
     >img{
         width: 1250px;
         height: 280px;
@@ -155,7 +157,7 @@ header{
         }
     }
     span:nth-child(2){
-        margin-left: 310px;                               /* 네비바 항목 위치 */  
+        margin-left: 480px;                               /* 네비바 항목 위치 */
         align-items: center;
         >ul{
             list-style-type: none;                        /* 형식 점을 없애기 위해 설정 */
@@ -184,7 +186,9 @@ header{
         }
     }
 }
-
+.tempTd4 {
+    text-align: left;
+}
 /* .mainBack{
     background-image: url(../img/imsiback.jpg);
     width: 1250px;
@@ -207,12 +211,12 @@ header{
 
 .neviCenterBack{
     width: 1250px;
-    height: 280px;						/*네비뒷배경 크기 1 -2랑 맞춰야함*/
+    height: 250px;						/*네비뒷배경 크기 1 -2랑 맞춰야함*/
     z-index: 1; 
     position: relative;
     >img{
         width: 1250px;
-        height: 280px;					/*네비뒷배경 크기 2 -1이랑 맞춰야함*/
+        height: 250px;					/*네비뒷배경 크기 2 -1이랑 맞춰야함*/
     }
 }
 
@@ -287,7 +291,7 @@ header{
         }
     }
     span:nth-child(2){
-        margin-left: 210px;                               /* 네비바 항목 위치 */  
+        margin-left: 180px;                               /* 네비바 항목 위치 */
         align-items: center;
         >ul{
             list-style-type: none;                        /* 형식 점을 없애기 위해 설정 */
@@ -400,7 +404,7 @@ header{
     max-width: 450px;
     margin-top: 30px;
     padding: 12px;
-    background-color: #FEAB82; 
+    background-color: #EC9343;
     color: white;
     font-size : 18pt;
     border: none;
@@ -410,7 +414,7 @@ header{
 }
 
 .indexChange button:hover {
-    background-color: #F1A580; /* 호버 시 버튼 배경 색상 */
+    background-color: #D87A2B; /* 호버 시 버튼 배경 색상 */
  
 }
 /**********************************************인덱스***************************************************/
@@ -474,27 +478,29 @@ header{
     width: 400px;
     margin: 15px auto 0;
     text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .loginRegBtn {
-    float : right;
-    margin-right : -5px;
+    margin-right: -5px;
     border: none;
     background-color: #FDECCB;
     color: #838383;
     cursor: pointer;
 }
 .loginRegBtn:hover {
-    text-decoration-line:underline;
+    text-decoration-line: underline;
 }
 /**********************************************센터메인*************************************************/
 .centerBody, .centerHtml {
     margin: 0;
     padding: 0;
     font-family: 'MangoDdobak-B';
-    background-color: #FDECCB;
+    background-color: ##FAECC5;
 }
 .centerMain {
-    width : 1100px;
+    width : 1000px;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
@@ -607,7 +613,7 @@ header{
 .centerRR {
    padding: 5px 10px;
     font-size: 12px;
-    border: none;
+    border: 1px solid #aeaeae;
     border-radius: 5px;
     cursor: pointer;
 }
@@ -657,6 +663,137 @@ header{
 
 .centerMainRegisterButton:hover {
     background-color: #D87A2B;
+}
+
+.centerBody, .centerHtml {
+	margin: 0;
+	padding: 0;
+	font-family: 'MangoDdobak-B';
+	background-color: ##FAECC5;
+}
+
+.centerMain {
+	width: 1100px;
+	margin: 0 auto;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	padding: 20px;
+}
+
+.centerSection {
+	margin-bottom: 20px;
+}
+
+.centerSection h2 {
+	font-family: 'NEXONFootballGothicBA1';
+	font-size: 40px;
+	border-bottom: 2px solid #333;
+	padding-bottom: 10px;
+	margin-bottom: 25px;
+}
+
+.centerBox {
+	background-color: #fff;
+	padding: 20px;
+	border: 1px solid #ddd;
+	border-radius: 5px;
+	margin: 20px auto;
+}
+
+.centerBox h3 {
+	margin: 10px auto;
+	font-family: 'NEXONFootballGothicBA1';
+	font-weight: bold;
+	font-size: 40px;
+	text-align: center;
+	padding: 10px 0;
+}
+
+.centerBox table {
+	width: 100%;
+	border-collapse: collapse;
+	font-size: 22px;
+}
+
+.centerBox table th {
+	background-color: #463933;
+	vertical-align: middle;
+	color: white;
+	font-weight: bold;
+	padding: 15px;
+}
+
+.centerBox table td {
+	font-size: 18px;
+	border: none;
+	height: 40px;
+	text-align: center;
+	vertical-align: middle;
+	border-bottom: 1px solid #aaa;
+}
+
+.centerNoData {
+	text-align: center;
+	color: #888;
+}
+
+.centerMainBtn {
+	border: none;
+	font-family: 'MangoDdobak-B';
+	border-radius: 5px;
+	font-size: 15px;
+	font-weight: bold;
+	width: 100px;
+	height: 40px;
+	background-color: #EC9343;
+	color: #fff;
+	cursor: pointer;
+	margin: 5px auto;
+}
+
+.centerMainBtn:hover {
+	background-color: #D87A2B;
+}
+
+.centerlistViewAllCont {
+	display: flex;
+	justify-content: flex-end;
+	margin-top: 10px;
+}
+
+.centerlistViewAll {
+	float: right;
+	text-decoration: none;
+	border: none;
+	background-color: #fff;
+}
+
+.centerlistViewAll:hover {
+	cursor: pointer;
+}
+.centerRecListPagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.centerRecListPagination a {
+    margin: 0 5px;
+    padding: 8px 16px;
+    text-decoration: none;
+    border: 1px solid #ddd;
+    color: #333;
+}
+
+.centerRecListPagination a:hover {
+    background-color: #ddd;
+}
+
+.centerRecListPagination a.active {
+    background-color: #FEAB82;
+    color: white;
+    border: 1px solid #FEAB82;
 }
 /**********************************************센터메인*************************************************/
 /**********************************************센터모집인원*************************************************/
@@ -761,6 +898,169 @@ header{
 }
 /**********************************************센터모집인원*************************************************/
 /**임시~~*****************************************************************************************************************/
+
+        .mypageBody{
+
+        font-family: 'MangoDdobak-B';
+
+        }
+
+
+        .mypageMain {
+            margin: 60px auto 0;
+            width: 980px;
+        }
+
+        .mypageMainTitle {
+            font-size: 27px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            font-family: 'NEXONFootballGothicBA1';
+        }
+        .mypageMainTitle2{
+            font-size: 27px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            font-family: 'NEXONFootballGothicBA1';
+        }
+
+
+        .mypageMainTitle > img {
+            width: 27px;
+            height: 27px;
+        }
+
+        .mypageMainFirstStack {
+        }
+
+        .mypageMainFirstMiddle {
+            width: 980px;
+            border: gray solid 1px;
+            border-radius: 5px;
+            background-color: white;
+        }
+
+        .mypageMainFirstMiddle > div > table {
+            width: 100%;
+            border-collapse: collapse;
+            font-family: 'MangoDdobak-B';
+            font-size: 20px;
+        }
+
+        .mypageMainFirstMiddle tbody > tr > th {
+            background-color: #463933;
+            vertical-align: middle;
+            color: white;
+            font-weight: bold;
+            padding: 15px;
+            text-align: center;
+        }
+
+        .mypageMainFirstMiddle tbody > tr > td {
+            border: none;
+            font-size: 18px;
+            height: 80px;
+            text-align: center;
+            vertical-align: middle;
+            border-bottom: 1px solid #aaa;
+        }
+
+        .mypageNav {
+            overflow: hidden;
+            position: fixed;
+            top: 0;
+            right: 0;
+            height: 100%;
+            width: 300px;
+            transform: translateX(300px);
+            transition: transform 0.3s ease-in-out;
+            background: rgba(255, 255, 255, 0.9);
+            z-index: 1;
+        }
+
+        .mypageNav.mypageNav-open {
+            transform: translateX(0);
+        }
+
+        .mypageMenuBtn {
+            position: fixed;
+            top: 50%;
+            right: 20px;
+            padding: 10px;
+            background: rgba(0, 0, 0, 0.6);
+            border-radius: 5px;
+            cursor: pointer;
+            z-index: 2;
+            transform: translateY(-50%);
+        }
+
+        .mypageLine {
+            width: 30px;
+            height: 3px;
+            background-color: white;
+            margin: 6px 0;
+            transition: 0.4s;
+        }
+
+        .mypageLine.cross1 {
+            transform: rotate(-45deg) translate(-7px, 6px);
+        }
+
+        .mypageLine.cross2 {
+            opacity: 0;
+        }
+
+        .mypageLine.cross3 {
+            transform: rotate(45deg) translate(-8px, -8px);
+        }
+
+        .mypageNavLinks {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+        .mypageNavLinksBtn{
+            border:none;
+            background-color:transparent;
+            margin: 20px 0;
+            text-decoration: none;
+            font-family: sans-serif;
+            color: rgba(0, 0, 0, 0.9);
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 1.2rem;
+            transition: color 0.3s;
+            cursor:pointer;
+        }
+        .mypageNavLinksBtn:hover {
+            color: rgba(0, 0, 0, 0.5);
+        }
+
+        .fade-in {
+            opacity: 1;
+        }
+
+        .mypageLink {
+            margin: 20px 0;
+            text-decoration: none;
+            font-family: sans-serif;
+            color: rgba(0, 0, 0, 0.9);
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 20px;
+            transition: color 0.3s;
+            cursor:default;
+
+        }
+
+
+
 .mypage{
     
     margin: 50px auto 0;
@@ -797,6 +1097,9 @@ header{
 
 /*============개인정보 수정페이지===========*/
 .mypagePrivacyEdit{
+     font-family: 'MangoDdobak-B';
+     font-size: 15px;
+
     width: 100%;
     
     >table{
@@ -804,21 +1107,20 @@ header{
         text-align: left;
         width: 100%;
         border: 1px solid;
-        margin: 2px;
+
         
     }
 }
 
 
 .mypagePrivacyEditTable {
-    width: 500px;
+    width: 600px;
+    height:330px;
     border-collapse: collapse;
     margin: 20px auto 0;
     font-size: 15px;
     text-align: center;
-    >tr>td>input{
-        border: red;
-    }
+
 }
 .mypagePrivacyEditTable th, table td {
 padding: 12px;
@@ -840,7 +1142,9 @@ vertical-align:middle;
         display: flex;
         align-items : center;
         justify-content: center;
-        width: 20%;
+        width: 80px;
+        font-family: 'MangoDdobak-B';
+        font-sizq:16px;
         padding: 10px;
         background-color: #EC9343;
         color: #fff;
@@ -859,9 +1163,10 @@ vertical-align:middle;
     }
 
     .mypagePrivacyEditBtnC{
-        width:500px;
+        width:770px;
         display: flex;
         justify-content: flex-end;
+        padding-top:30px;
     }
 
     .mypagePrivacyEditWithdraw{
@@ -869,7 +1174,6 @@ vertical-align:middle;
         background-color: transparent;
         cursor: pointer;
         color: #555;
-        
     }
 
 
@@ -878,51 +1182,53 @@ vertical-align:middle;
 /*============개인정보 확인페이지===========*/
 
 
-.mypagePrivacyCheck{
-    width: 100%;
-    
-    >table{
-        margin: 10px 10px 10px 10px;
-        text-align: left;
+    .mypagePrivacyCheck{
         width: 100%;
-        border: 1px solid;
-        margin: 2px;
-        
+
+        >table{
+            margin: 10px 10px 10px 10px;
+            text-align: left;
+            width: 100%;
+            border: 1px solid;
+            margin: 2px;
+
+        }
     }
-}
 
 
-.mypagePrivacyCheckTable {
-    width: 500px;
-    border-collapse: collapse;
-    margin: 20px 0 0;
-    font-size: 15px;
-    text-align: center;
-    >tr>td>input{
-        border: red;
-    }
-}
-.mypagePrivacyCheckTable th, table td {
-padding: 12px;
-border: 1px solid #ddd;
-}
-.mypagePrivacyCheckTable th {
-width: 25%;
-background-color: #AC8668;
-color : white;
-vertical-align:middle;
-}
-.mypagePrivacyCheckTable td {
-    background-color: white;
-    vertical-align:middle;
-    }
+    .mypagePrivacyCheckTable {
+        width: 600px;
+        height:330px;
+        border-collapse: collapse;
+        margin: 20px auto 0;
+        font-size: 15px;
+        text-align: center;
+
+    }.mypagePrivacyCheckTable th, .mypagePrivacyCheckTable td {
+         padding: 12px;
+         border: 1px solid #ddd;
+     }
+
+     .mypagePrivacyCheckTable th {
+         width: 25%;
+         background-color: #AC8668;
+         color: white;
+         vertical-align: middle;
+     }
+
+     .mypagePrivacyCheckTable td {
+         background-color: white;
+         vertical-align: middle;
+     }
+
+
 
 
     .mypagePrivacyCheckBtn {
         display: flex;
-        align-items : center;
+        align-items : right;
         justify-content: center;
-        width: 20%;
+        font-family: 'MangoDdobak-B';
         padding: 10px;
         background-color: #EC9343;
         color: #fff;
@@ -931,24 +1237,31 @@ vertical-align:middle;
         border-radius: 5px;
         cursor: pointer;
         margin-top: 17px;
+        margin-right:5px;
+        width:80px;
+        font-size:16px;
+        float: right;
         >img{
             width: 15px;
             margin-right: 5px;
         }
     }
-    
+    .mypagePrivacyCheckBtnC{
+        width: 605px;
+        margin: 0 auto;
+    }
+
     .mypagePrivacyCheckBtn:hover {
         background-color:#D87A2B;
     }
 
-    .mypagePrivacyCheckBtnC{
-        width:500px;
-        display: flex;
-        justify-content: flex-end;
-    }
+
 
     
-
+    .mypageChkBtnContainer{
+        width: 610px;
+        margin: 0 auto;
+    }
 
 
 
@@ -958,22 +1271,28 @@ vertical-align:middle;
 /*============비밀번호 입력 페이지===========*/
 
 .mypagePrivacyPw{
+    margin-top:20px;
    >div{
-    margin-left: 20px;      /*안내 및 비밀번호 입력창 위치 : 왼쪽마진*/
+      margin:auto;      /*안내 및 비밀번호 입력창 위치 : 왼쪽마진*/
    }
 
 }
 .mypagePrivacyPwNoti{
+
     background-color: white;
-    width: 420px;
+    width: 550px;
     border-radius: 15px;
-    padding: 30px;
+    padding: 50px;
+    margin:auto;
+
+
 
     >div:nth-child(1){
         color: gray;          /*안내 메시지 폰트색상*/
-        font-size: 17px;          /*안내 메시지 폰트size*/
-        margin-top: 0px;       /*안내 메시지 위치_윗마진*/
+        font-size: 25px;          /*안내 메시지 폰트size*/
+        margin-top: 20px;       /*안내 메시지 위치_윗마진*/
         margin-bottom: 10px;    /*비밀번호 입력창 위치*/
+        margin-left: 50px;
     }
     
     
@@ -1009,13 +1328,14 @@ vertical-align:middle;
 
 
 .mypagePrivacyPwInputPW2{    /*비밀번호입력창*/
-    margin: 0;
+
+    margin-left: 50px;
+    margin-top:  40px;        /*비밀번호입력창 위치*/
     padding: 0;
     box-sizing: border-box;
     position: relative;
     width: 300px;
-    /* margin-left: 50px; */
-    margin-top: 40px;        /*비밀번호입력창 위치*/
+
     >input{
         font-size: 15px;
         color: #222222;
@@ -1067,7 +1387,7 @@ vertical-align:middle;
 .mypagePrivacyPwCheckBtn1 {
     width: 100px;
     height : 40px;
-    margin: 20px 310px 0;   /*위 가운데정렬 */
+    margin: 35px 420px 0;   /*위 가운데정렬 */
     display: block;
     background-color: #EC9343;
     color : #ffffff;
@@ -1075,6 +1395,8 @@ vertical-align:middle;
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    font-family: 'MangoDdobak-B';
+    font-size : 20px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1105,21 +1427,24 @@ vertical-align:middle;
 }
 
 .mainTitle{                             /*큰제목*/
-    font-size: 27px;
-    font-weight: bold; 
+    font-family: 'NEXONFootballGothicBA1';
+    font-size : 40px;
+    font-weight: bold;
     margin-bottom: 10px;                /*큰제목 아래 간격*/
     /*테스트용
     width: 980px;
     border: 1px solid black;*/
-    
+
+
     >img{
-        width: 27px;
-        height: 27px;
-    }  
+        width: 30px;
+        height: 30px;
+
+    }
 }
 
 .mainAllBtn{                            /*전체보기*/
-    width: 820px;
+    width: 980px;
     height: 30px;
     /* border: gray solid 1px; */
     /* background-color: white; */
@@ -1137,11 +1462,12 @@ vertical-align:middle;
 
 
 .mainFirstStack{                          /*1층 봉사신청내역*/
-    display: flex;
-    
+   /* display: flex;*/
+
+
 }
 .mainFirstMiddle{
-    width: 820px;
+    width: 980px;
     border: gray solid 1px;
     border-radius: 5px;
     background-color: white;
@@ -1152,7 +1478,7 @@ vertical-align:middle;
 	    font-size : 20px;
         tbody{
             >tr>th {
-                background-color : #463933;      
+                background-color : #463933;
                 vertical-align : middle;
                 color : white;
                 font-weight : bold;
@@ -1165,18 +1491,31 @@ vertical-align:middle;
 		    text-align: center;
 		    vertical-align : middle;
 		    border-bottom : 1px solid #aaa;
+
 	        }
         }
     }
 }
 
+        .firstStackBtn{
+                 font-size : 18px;
+                 height:100%
+                 width:100%;
+                 font-family: 'MangoDdobak-B';
+                 border:none;
+                 background-color:transparent;
+                 cursor:pointer;
+
+                }
+
+
 .mainFirstSide{
-    width: 30px;   
+    width: 30px;
     >form>button{                              /*shortcut1*/
         width: 150px;
         height: 150px;       /*높이*/
         border: gray solid 1px;
-        border-radius: 5px; 
+        border-radius: 5px;
         cursor: pointer;
         margin-left: 10px;      /*본문과 왼쪽 마진*/
         background-image: url('../img/Shortcut1.png'); /* 배경 이미지 경로 설정 */
@@ -1191,10 +1530,11 @@ vertical-align:middle;
 
 
 .mainSecondStack{                          /*2층 입양상담신청내역*/
-    display: flex;
+   /* display: flex;*/
+   margin-bottom: 10px;
 }
 .mainSecondMiddle{
-    width: 820px;
+    width: 980px;
     border: gray solid 1px;
     border-radius: 5px;
     background-color: white;
@@ -1203,9 +1543,10 @@ vertical-align:middle;
 	    border-collapse: collapse;
 	    font-family: 'MangoDdobak-B';
 	    font-size : 20px;
+
         tbody{
             >tr>th {
-                background-color : #463933;      
+                background-color : #463933;
                 vertical-align : middle;
                 color : white;
                 font-weight : bold;
@@ -1223,12 +1564,12 @@ vertical-align:middle;
     }
 }
 .mainSecondSide{
-    width: 30px;   
+    width: 30px;
     >form>button{                              /*shortcut1*/
         width: 150px;
         height: 150px;       /*높이*/
         border: gray solid 1px;
-        border-radius: 5px; 
+        border-radius: 5px;
         cursor: pointer;
         margin-left: 10px;      /*본문과 왼쪽 마진*/
         background-image: url('../img/Shortcut2.png'); /* 배경 이미지 경로 설정 */
@@ -1239,37 +1580,20 @@ vertical-align:middle;
     }
 }
 
-
-.mainThirdStack{                          /*2층 입양상담신청내역*/
-    display: flex;
+.mainSecondThirdMargin{
+    width: 980px;
+    height: 30px;
+    border: none;
+    background: transparent;
 }
-.mainThirdMiddle{
-    width: 820px;
-    border: gray solid 1px;
-    border-radius: 5px;
-    background-color: white;
-}
-.mainSlideContainer{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    >div{
-        width: 230px;
-        height: 230px;
-        border: gray solid 1px;
-        margin: 5px 5px 5px 5px;
-    }
-}
-
-
 
 .mainThirdSide{
-    width: 30px;   
+    width: 30px;
     >form>button{                              /*shortcut1*/
         width: 150px;
         height: 150px;       /*높이*/
         border: gray solid 1px;
-        border-radius: 5px; 
+        border-radius: 5px;
         cursor: pointer;
         margin-left: 10px;      /*본문과 왼쪽 마진*/
         background-image: url('../img/Shortcut3.png'); /* 배경 이미지 경로 설정 */
@@ -1280,120 +1604,190 @@ vertical-align:middle;
     }
 }
 
-
-
-.mainFourthStack{                          /*2층 입양상담신청내역*/
+.mainvoListNoData{
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #888;
+}
+.mainFourthStack { /*4층 */
     display: flex;
 }
-.MainFourthMiddle{
-    width: 820px;
+.MainFourthMiddle {
+    width: 980px;
     border: gray solid 1px;
     border-radius: 5px;
     background-color: white;
-    
-}
-.mainFourthSide{
-    width: 30px;   
-    >form>button{                              /*shortcut1*/
-        width: 150px;
-        height: 150px;       /*높이*/
-        border: gray solid 1px;
-        border-radius: 5px; 
-        cursor: pointer;
-        margin-left: 10px;      /*본문과 왼쪽 마진*/
-        background-image: url('../img/Shortcut4.png'); /* 배경 이미지 경로 설정 */
-        background-size: cover; /* 배경 이미지 크기 조정 */
-        background-position: center; /* 배경 이미지 위치 조정 */
-        background-repeat: no-repeat; /* 배경 이미지 반복 방지 */
-        background-color: white;    /* 배경색//이미지가 투명임 */
-    }
 }
 
-
-
-
-
-
-
-
-
-
-.mainVolist{
-    /* display: flex; */
-    display: inline-block;
-    >button{
-        width: 250px;
-        background-color: transparent;
-        border: 1px solid black;
-        cursor: pointer;
-        padding: 10px;
-    }
+.mainFourthSide {
+    width: 30px;
 }
+.mainFourthSide > form > button { /*shortcut1*/
+    width: 150px;
+    border: gray solid 1px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 10px; /*본문과 왼쪽 마진*/
+    background-image: url('../img/Shortcut4.png'); /* 배경 이미지 경로 설정 */
+    background-size: cover; /* 배경 이미지 크기 조정 */
+    background-position: center; /* 배경 이미지 위치 조정 */
+    background-repeat: no-repeat; /* 배경 이미지 반복 방지 */
+    background-color: white; /* 배경색//이미지가 투명임 */
+}
+
+.mainVolistContainer { /*volist 컨테이너*/
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: auto; /* 유동적인 높이 */
+}
+
+.mainVolist { /*안에 div*/
+    width: 300px;
+    margin: 15px 5px 15px 5px; /*위 오 아 왼*/
+    height: auto; /* 유동적인 높이 */
+}
+
+.mainVolistTb {
+    vertical-align: middle;
+    border: none;
+    font-family: 'MangoDdobak-B';
+    font-size: 15px;
+    width: 100%;
+
+}
+.mainVolistTb > tbody {
+    border: none;
+}
+.mainVolistTb > tbody > tr > th {
+    background-color: #463933;
+    vertical-align: middle;
+    padding: 15px;
+    border: none;
+}
+.mainVolistTb > tbody > tr > td {
+    font-size: 18px;
+    height: auto; /* 유동적인 높이 */
+    text-align: center;
+    vertical-align: middle;
+    border: none;
+    justify-content: center;
+    font-family: 'MangoDdobak-B';
+    font-size: 15px;
+}
+.mainVolistTb > tbody > tr > td:first-child {
+    width: 20%; /* 모집마감 td의 width를 늘림 */
+}
+.mainVolistBtn {
+    border: none;
+    background-color: transparent;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    font-family: 'MangoDdobak-B';
+    font-size: 15px;
+}
+
 /**메인끝~~*****************************************************************************************************************/
 /**조인 시작~~*****************************************************************************************************************/
 .joinLogo {
     align-items: center;
-    margin-left: 25%;
-    margin-right: 25%;
-    margin-top: 5%;
-    margin-bottom: 3%;
-    width: 50%;
-    height: 20%;
+    margin: 0 auto;
+    width: 600px;
 }
+.joinWholeContainer {
+    margin: 0 auto;
+    width : 750px;
+}
+
+.joinText, .joinCheckBox, .join_ChkIdBtn {
+    font-family: 'MangoDdobak-B';
+}
+
 .joinText {
     width: 650px;
     height: 50px;
-    margin: 10px;    
-    margin-left: 11%;
-    margin-right: 10%;
-    align-content: center;
-    align-items: center;
-   
+    margin: 10px auto;
+    display: block;
 }
+
+.joinContainer3 {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 10px auto;
+    width: 650px;
+}
+
 .joinId {
-    width: 400px;
-    height: 30px;
-    margin: 10px;    
-    margin-left: 11%;
-    margin-right: 10%;
-    align-content: center;
-    align-items: center;
-  
+    flex-grow: 1;
+    height: 50px;
+    margin-right: 10px;
+    margin-left: -3px;
+    font-family: 'MangoDdobak-B';
 }
-.joinIdCheck {
-    height: 30px;
-    width: 100px;
-    margin-left: -5px;
-    margin-right: 10%;
+
+.join_ChkIdBtn {
+    width: 150px;
+    height: 50px;
+    padding: 0;
+    color: white;
+    background-color: #EC9343;
+    border: none;
+    cursor: pointer;
+    border-radius: 3px;
+    font-family: 'MangoDdobak-B';
 }
+
+.join_ChkIdBtn:hover {
+    background-color: #D87A2B;
+}
+
 .joinCheckBox {
     margin: 5px;
     text-align: left;
 }
+
 .joinBody {
     font-family: Arial, sans-serif;
-    margin: 0px;
+    margin: 0;
     background-color: #FDECCB;
-      text-align: center;
+    text-align: center;
 }
-.joinBody.maxWidth {
-    max-width: 1000px;
-}
-.joinBody.maxheight {
-    max-height: 1400px;
-}
+
 .joinContainer {
     max-width: 600px;
     margin: 0 auto;
     text-align: left;
 }
+
+.joinContainer1, .joinContainer2, .joinContainer3 {
+    max-width: 90%;
+    height: auto;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.joinContainer2 {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 650px;
+    margin: 10px auto;
+}
+.joinContainer2 label {
+    margin-right: 10px; /* 라벨과 체크박스 사이의 간격 */
+}
 .joinH1 {
     text-align: center;
     font-size: 20pt;
-    font-style: bold;
-    margin-top: 10px;
-    margin-bottom: 15px; 
+    font-weight: bold;
+    margin: 10px 0;
 }
+
 .joinTerms {
     border: 1px solid #ccc;
     padding: 10px;
@@ -1401,10 +1795,12 @@ vertical-align:middle;
     height: 200px;
     overflow-y: scroll;
 }
+
 .joinCheckbox {
-    margin-top: 10px;
-    margin-bottom: 10px;
+    margin: 10px 0;
+    text-align: left;
 }
+
 .joinSubmit-btn {
     display: block;
     width: 100%;
@@ -1415,31 +1811,59 @@ vertical-align:middle;
     cursor: pointer;
     margin-bottom: 50px;
 }
+
 .joinSubmit-btn:disabled {
     background-color: #ccc;
     cursor: not-allowed;
 }
+
 .joinSubmit-btn:hover {
-            background-color: #F1A580;
-            font-decoration: none;
-        }
+    background-color: #F1A580;
+}
+
+#join_IdMessage {
+    margin-top: 5px;
+}
+
+.join_Duplicate {
+    color: red;
+}
+
+.join_Available {
+    color: green;
+}
+.hidden-text {
+    text-align: left;
+    display: none;
+    color: blue;
+    font-style: italic;
+    margin-left: 50px;
+}
+
+.error {
+  color: red;
+  font-weight: bold;
+}}
 /**조인 끝~~*****************************************************************************************************************/
 /**파인드 시작~~*****************************************************************************************************************/
-      .find_logo {
+      .find_logo2 {
            width : 450px;
-		   margin: 150px auto 0;
-		   display: flex;
-		   flex-direction: column;
-		   justify-content: space-between;
-		   padding: 20px;
+		   margin: 0 auto;
 		   cursor: pointer;
+		   display: flex;
         }
         .find {
-            font-family: Arial, sans-serif;
             background-color: #FDECCB;
             align-items: center;
             height: 100vh;
             margin: 0;
+            display: grid;
+            place-items: center;
+            font-family: 'MangoDdobak-B';
+        }
+        .find img {
+            width: 450px;
+            margin: 0 auto;
         }
         .find_container {
             background-color: #fff;
@@ -1447,18 +1871,48 @@ vertical-align:middle;
             border-radius: 10px;
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
             width: 450px;
-            margin-left: 32%;
-            margin-right: 32%;
+            margin-left: 30%;
+            margin-right: 30%;
+            margin-top: -40px;
+            text-align: center;
+            margin: 20px auto;
+            height: auto;
+            white-space: normal;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            font-family: 'MangoDdobak-B';
+        }
+        .findContainer {
+            max-width: 75%;
+            height: auto;
+            margin: 15px auto;
+            text-align: left;
+            font-family: 'MangoDdobak-B';
+            margin-left: 26%;
+            margin-right: 19%
+        }
+        .findContainer1 {
+            max-width: 75%;
+            height: auto;
+            margin: 15px auto;
+            text-align: left;
+            font-family: 'MangoDdobak-B';
+            margin-left: 21%;
+            margin-right: 19%
         }
         .find_bold {
             text-align: center;
             margin-bottom: 20px;
+            margin-left : -10px;
             font-size: 25pt;
             text-decoration: bold;
+            font-family: 'MangoDdobak-B';
         }
         .find_label {
             display: block;
             margin-bottom: 5px;
+            font-family: 'MangoDdobak-B';
         }
         .find_input[type="text"],
         .find_input[type="email"] {
@@ -1468,6 +1922,7 @@ vertical-align:middle;
             border: 1px solid #ccc;
             border-radius: 5px;
             margin-left: 3%;
+            font-family: 'MangoDdobak-B';
         }
         .find_button {
             width: 100%;
@@ -1478,15 +1933,19 @@ vertical-align:middle;
             border-radius: 5px;
             cursor: pointer;
             margin-top: 30px;
-              text-decoration: none;
+            text-decoration: none;
+            font-family: 'MangoDdobak-B';
         }
         .find_button:hover {
             background-color: #F1A580;
             font-decoration: none;
+            font-family: 'MangoDdobak-B';
         }
         .find_Text {
            margin: 50px;
            font-size: 15pt;
+           text-align: center;
+           font-family: 'MangoDdobak-B';
         }
         .find_Rcontainer {
             background-color: #fff;
@@ -1496,118 +1955,85 @@ vertical-align:middle;
             width: 450px;
             margin-left: 32%;
             margin-right: 32%;
+            margin-top: -40px;
             text-align: center;
+            font-family: 'MangoDdobak-B';
         }
         .find_buttton:disable {
            background-color: #ccc;
           cursor: not-allowed;
+          font-family: 'MangoDdobak-B';
         }
+        .find_text {
+            width : 85%;
+            height : 35px;
+            text-align : center;
+            margin-top : -20px;
+            font-family: 'MangoDdobak-B';
+        }
+        .find_tex {
+        font-size : 13pt;
+        font-family: 'MangoDdobak-B';
+        text-align: center;
+        }
+        .find_Pcontainer {
+                    background-color: #fff;
+                    padding: 30px 25px 30px 0px;
+                    border-radius: 10px;
+                    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+                    width: 450px;
+                    margin-left:  0%;
+                    margin-right: 30%;
+                    text-align: center;
+                    margin: 20px auto;
+                    margin-top:-50px;
+                    margin-bottom: 70px;
+                    padding: 15px;
+                    height: 150px;
+                    white-space: normal;
+                    align-items: center;
+                    justify-content: center;
+                    text-align: center;
+                    font-family: 'MangoDdobak-B';
+                }
+        .find_PPcontainer {
+                    background-color: #fff;
+                    padding: 40px 30px 40px 30px;
+                    border-radius: 10px;
+                    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+                    width: 450px;
+                    margin-left: 0%;
+                    margin-right: 30%;
+                    text-align: center;
+                    margin: 20px auto;
+                    margin-bottom: 40px;
+                    padding: 15px;
+                    height: auto;
+                    white-space: normal;
+                    align-items: center;
+                    justify-content: center;
+                    text-align: center;
+                    font-family: 'MangoDdobak-B';
+         }
+         .find_PPPcontainer {
+                     background-color: #fff;
+                     padding: 30px;
+                     border-radius: 10px;
+                     box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+                     width: 450px;
+                     margin-left: 0%;
+                     margin-right: 30%;
+                     margin-bottom: 20px;
+                     text-align: center;
+                     margin: 20px auto;
+                     height: auto;
+                     white-space: normal;
+                     align-items: center;
+                     justify-content: center;
+                     text-align: center;
+                     font-family: 'MangoDdobak-B';
+                 }
 /**파인드 끝~~*****************************************************************************************************************/
-/**리셋 패스워드 시작~~*****************************************************************************************************************/
-      .reset_logo {
-            align-items: center;
-            margin-left: 30%;
-            margin-right: 25%;
-            margin-top: 4%;
-            margin-bottom: 3%;
-            width: 40%;
-            height: 17%;
-        }
-        .reset {
-            font-family: Arial, sans-serif;
-            background-color: #FDECCB;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-        }
-        .reset_container {
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-            width: 450px;
-            margin-left: 32%;
-            margin-right: 32%;
-        }
-        .reset_bold {
-            text-align: center;
-            margin-bottom: 20px;
-            font-size: 25pt;
-            text-decoration: bold;
-        }
-        .reset_label {
-            display: block;
-            margin-bottom: 5px;
-        }
-        .reset_input[type="text"],
-        .reset_input[type="password"] {
-            width: 90%;
-            padding: 10px;
-            margin-bottom: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            margin-left: 3%;
-        }
-        .reset_button {
-            width: 100%;
-            padding: 10px;
-            background-color: #FEAB82;;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            margin-top: 30px;
-              text-decoration: none;
-        }
-        .reset_button:hover {
-            background-color: #F1A580;
-            font-decoration: none;
-        }
-        .reset_button:disable {
-           background-color: #ccc;
-          cursor: not-allowed;
-        }
-        .reset_Text {
-           margin: 50px;
-           font-size: 15pt;
-        }
-        .reset_Rcontainer {
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-            width: 450px;
-            margin-left: 32%;
-            margin-right: 32%;
-            text-align: center;
-        }
-        .result_buttons {
-          display: flex;
-          justify-content: space-around;
-          margin-top: 20px;
-      }
-
-      .result_button {
-          display: inline-block;
-          padding: 10px 20px;
-          margin: 5px;
-          background-color: #FEAB82; /* 버튼 배경색 */
-          color: white; /* 버튼 텍스트 색 */
-          text-align: center;
-          text-decoration: none;
-          font-size: 16px;
-          border-radius: 5px;
-          transition: background-color 0.3s ease;
-      }
-
-      .result_button:hover {
-          background-color: #F1A580; /* 호버 시 버튼 배경색 */
-      }
-      .result_message {
-         margin: 30px;
-         font-size: 15pt;
-         text-align: center;
-      }
 /**리셋 패스워드 끝~~*****************************************************************************************************************/
 
 
@@ -1616,31 +2042,40 @@ vertical-align:middle;
 .volListBody{
  	margin: 0 auto;
     padding: 0;
-    font-family: Arial, sans-serif;
     background-color: #FDECCB;
+    font-family: 'MangoDdobak-B';
 }
 .volunteerListWholeContainer {
    text-align: center;
-   margin: auto;
-   width: 980px;
+   margin: 0 auto;
+   width: 1100px;
    /*border: 1px black solid;*/
    /* background-color:red; */
 }
 /* 봉사 카테고리 필터 css */
 .volunteerListCategoryContainer>button, .filter-btn {
+   width: 100px;
    margin: 5px;
    padding: 10px;
    border: none;
    border-radius: 5px;
    cursor: pointer;
+   color: white;
+   font-size: 15px;
+   font-weight: 500;
 }
 
-.volunteerListCategory-btn {
+.volunteerListCategoryContainer >button {
+	   background-color: rgb(172,134,104);
+}
+
+.volunteerListCategoryContainer-btn {
    background-color: #ffe282;
    color: rgb(0, 0, 0);
 }
 
 .filter-btn {
+/*    background-color: rgb(172,134,104); */
    background-color: #8b8b8b;
    color: rgb(22, 22, 22);
    position: relative;
@@ -1662,33 +2097,40 @@ vertical-align:middle;
    right: -5px;
 }
 /* input type 필터 */
-.voluntteerListFilterInput {
-   font-size: 13px;
+.volunteerListFilterInput {
+   text-align: center;
 }
 
-.voluntteerListFilterInput input, select {
-   font-size: 11px;
+.volunteerListFilterInput>td,
+.volunteerListFilterInput>tr {
+   border: none;
+   justify-content: center;
+}
+.volunteerListFilterInput td {
+   font-size: 14px;
 }
 
-.voluntteerListFilterInput tr td {
-   padding: 0px 45px 0px 0px;
-}
-
-.voluntteerListFilterInput {
+.volunteerListFilterInput input, select, option {
+   content-align: middle;
+   height: 20px;
    padding-left: 20px;
+   font-size: 11px;
+   border: 0.5px lightgray solid;
+   border-radius: 3px;
 }
+
+
 /* 구인리스트 */
 .volunteerListVolRecruitList>p {
-	width:980px;
+	width:1100px;
  	border: none;
-    border-bottom: 2px solid rgb(53, 110, 119);
-    
-   
+    border-bottom: 2px solid black;
    text-align: left;
    padding: 10px 0px 10px 0px;
    margin: 20px auto;
    font-weight:bold;
-   font-size:20px;
+   font-size:40px;
+   font-family: 'NEXONFootballGothicBA1';
 }
 
 .volunteerListvolunteerRecruitList>table {
@@ -1698,23 +2140,38 @@ vertical-align:middle;
    border: 1px solid;
    margin: 2px;
 }
+
 .volListFTable {
         width: 100%;
         border-collapse: collapse;
         margin: 20px auto;
-        font-size: 15px;
+        font-size: 18px;
         text-align: center;
+}
+.volListFTable a {
+        text-decoration-line: none;
+        color: black;
+        cursor: pointer;
 }
 .volListFTable th, table td {
     padding: 12px;
     border: 1px solid #ddd;
+    vertical-align: middle;
 }
 .volListFTable th {
-    background-color: #AC8668;
+    background-color: #463933;
     color : white;
     vertical-align:middle;
+    text-align: center;
+    font-size: 18px;
 }
-.volListFTable tbody tr:nth-child(even) {
+.volListNo{
+    text-align: center;
+}
+.volListSer{
+    text-align: center;
+}
+.volListFTable>tbody>tr:nth-child(even) {
     background-color: #f9f9f9;
 }
 .volListLink {
@@ -1737,6 +2194,7 @@ vertical-align:middle;
 }
 .pagination a:hover {
     background-color: #ddd;
+    pointer: pointer;
 }
 .pagination .active {
     background-color: #FEAB82;
@@ -1764,7 +2222,6 @@ vertical-align:middle;
                 font-size: 40px;
                 padding: 5px;
                 margin: 10px 0px 30px 0px;
-                background-color: #f7cb71;
                 color:black;
                 
             }
@@ -1777,56 +2234,59 @@ vertical-align:middle;
 			    font-size: 40px;
 			    
 			}
-            
+            .centerRegBox {
+                background-color: #fff;
+                padding: 20px;
+                border: 1px solid #ddd;
+                border-radius: 5px;
+                margin: 20px auto;
+            }
             
             .centerRegDiv .centerRegTable{
                 margin: 5px auto;
-                border-top: 2px solid  #8B4513;
-                border-bottom: 2px solid  #8B4513;;
-                width: 1100px;
+                width: 980px;
                 background-color:white;
                 font-size:18px;
             }
             .centerRegDiv .centerRegTable tr td{
                 padding: 5px;
-                border-bottom: 1px solid #FDECCB;
-                
             }
             .centerRegDiv .centerRegTable .centerRegTd{
-                border-right: 1px solid #8B4513;
-                background-color:  #AC8668;;
+                background-color:  #463933;;
                 color:white;
+                height: 50px;
                 vertical-align: middle;
                 font-size:22px;
-                
+                justify-content: center;
+                display: flex;
+                align-items: center;
             }
             .centerRegDiv .centerRegDiv2{
                 padding: 10px;
-                border: 2px solid #8B4513;
+                border: 2px solid #000;
                 margin: 20px auto;
-                width: 1077px;
+                width: 980px;
                 margin-bottom:20px;
                 background-color:white;
-                
+                box-sizing: border-box;
             }
             .centerRegDateLeft{
                 border: none;
                 background-color: white;
                 font-size: 14px;
-                margin-left: -50px;
+                margin-left: 0px;
                 cursor: pointer;
             }
             .centerRegDateRight{
                 border: none;
                 background-color: white;
                 font-size: 14px;
-                margin-right: -50px;
+                margin-right: 20px;
                 cursor: pointer;
             }
             .centerRegBtn{
             	width:200px;
             	height:45px;
-            	margin-bottom:20px;
 			    background-color : #EC9343; 
 			    color: white;
 			    border: none;
@@ -1835,17 +2295,19 @@ vertical-align:middle;
 			    transition: background-color 0.3s ease;
 			    font-size:18px;
 			    font-family: 'MangoDdobak-B';
+
 			            	
             }
             .centerRegBtn:hover{
             	background-color : #D87A2B ; 
             }
             .centerRegDiv2 textarea {
-			    width: 1000px;
+			    width: 950px;
 			    height: 6.25em;
 			    border: none;
 			    resize: none;
 			    background-color:white;
+			    box-sizing: border-box;
 			}
 			.centerRegTitle{
 				width: 800px;
@@ -1854,24 +2316,23 @@ vertical-align:middle;
 			    text-align:center;
 			    font-size:40px;
 			    margin-bottom:5px;
-			    background-color: #f7cb71;;
-			    
+			    border-bottom: 3x solid #aaa;
 			}
 			.centervRegAmnt{
 				width: 250px;
 				height: 20px;
 			    border: none;
-			    text-align:center;
+			    text-align:left;
 			    margin-bottom:5px;
 			    background-color: white;
 			}
 			.centerRegDiv h2 input::placeholder{
-				color:#8B4513;
+				color:#aaa;
 				font-size: 40px;
 				font-family: 'MangoDdobak-B';
 			}
 			.centerRegDiv input::placeholder{
-				color:#8B4513;
+				color:#aaa;
 				font-size: 18px;
 				font-family: 'MangoDdobak-B';
 			}
@@ -1880,94 +2341,160 @@ vertical-align:middle;
 			}
 		
 			.centerRegDiv2 textarea::placeholder{
-				color:#8B4513;
+				color:#aaa;
 				font-size:18px;
 				font-family: 'MangoDdobak-B';
 			}
+			.button-container {
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+            }
+            .centerRegDiv5 {
+                padding: 10px;
+                border: 2px solid #000;
+                margin: 20px auto;
+                width: 980px;
+                background-color: white;
+                box-sizing: border-box;
+            }
+            .volListT {
+                width: 100%;
+                border-collapse: collapse;
+                text-align: center;
+                margin: 0 auto;
+            }
+            .volListT th {
+                background-color:  #463933;;
+                font-size: 22px;
+                color: white;
+            }
+            .volListT th, .volListT td {
+                border: 1px solid #ddd;
+                padding: 8px;
+                text-align: center;
+                height: 50px;
+                vertical-align: middle;
+            }
 
 
 /**센터레그 끝~~*****************************************************************************************************************/
 
 /**봉사상세 시작~~*****************************************************************************************************************/
-
-            .volunteerDetailDiv{
-                text-align: center;
-                margin: auto;
-                width: 1100px;
-                font-family: 'MangoDdobak-B';
-                >div{
-                width:1100px;
-                margin:0 auto 35px;
-                justify-content:center;
-                border:1px solid #aeaeae;
-                }
-            }
-            .volunteerDetailDiv h2{
-                font-size: 40px;
-                font-family: 'NEXONFootballGothicBA1';                
-                padding: 5px;
-                margin: 20px auto 20px;                
-                color:black;
-            }
-            .volunteerDetailDiv h3 {
-            	font-family: 'NEXONFootballGothicBA1';
-			    border-bottom : 2px solid #333;
-			    padding-bottom : 10px;
-			    margin-bottom : 20px;
-			    text-align: left;
-			    font-size: 40px;
-			    
-			}
-            
-            .volunteerDetailDiv .volunteerDetailTable{
-                margin: 5px auto;
-                border-top: 2px solid  #8B4513;
-                border-bottom: 2px solid  #8B4513;
-                width: 980px;
-                background-color:white;
-            }
-            .volunteerDetailDiv .volunteerDetailTable tr td{
-                padding: 5px;
-                border-bottom: 1px solid #FDECCB;
-                vertical-align: middle;
-                font-size:18px;
-            }
-            .volunteerDetailDiv .volunteerDetailTable .volunteerDetailTd{
-                border-right: 1px solid #8B4513;
-                background-color: #AC8668;
-                color:white;
-                vertical-align: middle;
-                font-size:22px;
-                padding:20px 15px;
-            }
-            .volunteerDetailDiv .volunteerDetailDiv2{
-                padding: 10px;
-                border: 2px solid #8B4513;
-                margin: 20px auto;
-                width: 960px;
-                margin-bottom:20px;
-                background-color:white;
-                font-size:18px;
-                
-            }
-            
-            .volunteerDetailBtn{
-            	width:200px;
-            	height:45px;
-            	margin-bottom:20px;
-			    background-color : #EC9343;
-			    color: white;
-			    border: none;
-			    border-radius: 5px;
-			    cursor: pointer;
-			    transition: background-color 0.3s ease;
-			    font-size:18px;
-			    font-family: 'MangoDdobak-B';
-			            	
-            }
-            .volunteerDetailBtn:hover{
-            	background-color : #D87A2B ;
-            }
+.volunteerDetailDiv {
+    text-align: center;
+    margin: 0 auto;
+    width: 1100px;
+    font-family: 'MangoDdobak-B';
+}
+.centerListBox {
+    background-color: #fff;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin: 20px auto;
+}
+.volunteerDetailDiv h2 {
+    font-size: 40px;
+    font-family: 'NEXONFootballGothicBA1';
+    padding: 5px;
+    margin: 20px auto 20px;
+    color: black;
+}
+.volunteerDetailDiv h3 {
+    font-family: 'NEXONFootballGothicBA1';
+    border-bottom: 2px solid #333;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    text-align: left;
+    font-size: 40px;
+}
+.volunteerDetailTable {
+    margin: 5px auto;
+    width: 980px;
+    background-color: white;
+    border-collapse: collapse;
+    font-size: 22px;
+}
+.volunteerDetailTh {
+    text-align: center;
+    background-color: #463933;
+    vertical-align: middle;
+    color: white;
+    font-weight: bold;
+    padding: 15px;
+    border: none;
+    border-bottom:1px solid #aaa;
+}
+.volunteerDetailTd {
+    font-size: 18px;
+    border: none;
+    height: 60px;
+    text-align: center;
+    vertical-align: middle;
+    border-bottom: 1px solid #aaa;
+}
+.volunteerDetailInput {
+    border: none;
+    background-color: white;
+    cursor: pointer;
+    font-size: 18px;
+    font-family: 'MangoDdobak-B';
+    color: inherit;
+}
+.volunteerDetailInput:focus {
+    outline: none;
+}
+.pagination {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+}
+.volunteerDetailDiv2 {
+    padding: 10px;
+    border: 2px solid #8B4513;
+    margin: 20px auto;
+    width: 960px;
+    margin-bottom: 20px;
+    background-color: white;
+    font-size: 18px;
+}
+.volunteerDetailBtn {
+    width: 200px;
+    height: 45px;
+    margin-bottom: 20px;
+    background-color: #EC9343;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 18px;
+    font-family: 'MangoDdobak-B';
+}
+.volunteerDetailBtn:hover {
+    background-color: #D87A2B;
+}
+.volunteerDetailDiv2 textarea {
+    width: 950px;
+    height: 6.25em;
+    border: none;
+    resize: none;
+    background-color: white;
+}
+.volunteerDetailDiv2 textarea, input:focus {
+    outline: none;
+}
+.volunteerDetailDiv2 textarea::placeholder {
+    color: #8B4513;
+    font-size: 18px;
+    font-family: 'MangoDdobak-B';
+}
+.volunteerDetailDiv input::placeholder {
+    color: #8B4513;
+    font-size: 18px;
+    font-family: 'MangoDdobak-B';
+}
 /**봉사상세 끝~~*****************************************************************************************************************/
 /**봉사신청 시작~~*****************************************************************************************************************/
             .volunteerRegDiv{
@@ -2072,3 +2599,2054 @@ vertical-align:middle;
 				font-family: 'MangoDdobak-B';
 			}
 /**봉사신청 끝~~*****************************************************************************************************************/
+/**********************************************입양동물리스트*************************************************/
+            .volAnimalListMain {
+                width: 1100px;
+                margin: 0 auto;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                padding: 20px;
+            }
+            .volAnimalListList {
+                margin-top: 20px;
+            }
+            .volAnimalListList h2 {
+                border-bottom: 1px solid black;
+                padding: 5px;
+                font-size: 40px;
+                font-weight: bold;
+                margin: 10px auto;
+                font-family: 'NEXONFootballGothicBA1';
+            }
+            .volAnimalListAnimal-list {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-between;
+            }
+            .volAnimalListAnimal-card {
+                background-color: white;
+                font-family: 'MangoDdobak-B';
+                font-size: 15px;
+                border: 1px solid #000;
+                border-radius: 5px;
+                width: 24%;
+                margin-bottom: 20px;
+                padding: 10px;
+                box-sizing: border-box;
+                text-align: left;
+                height: 350px;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+            }
+            .volAnimalListAnimal-card img {
+                max-width: 100%;
+                height: 150px;
+                border-radius: 5px;
+            }
+            .volAnimalListPagination {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin: 0 auto;
+                list-style: none;
+                padding: 0;
+            }
+            .volAnimalListPagination li {
+                display: inline-block;
+                margin: 0 5px;
+            }
+            .volAnimalListPagination a {
+                text-decoration: none;
+                color: black;
+                padding: 5px 10px;
+                border: 1px solid #ddd;
+                border-radius: 5px;
+                display: inline-block;
+                box-sizing: border-box;
+            }
+            .volAnimalListPagination a:hover {
+                background-color: #ddd;
+            }
+            .volAnimalListPagination .active a {
+                background-color: #FEAB82;
+                color: white;
+                border-radius: 5px;
+            }
+            .volAnimalListPagination a.disabled {
+                color: #ddd;
+                pointer-events: none;
+            }
+/**********************************************입양동물리스트*************************************************/
+/**********************************************AdminMain*************************************************/
+.adminMainBody {
+            font-family: Arial, sans-serif;
+            margin: 0 auto;
+            padding: 0;
+            background: white;
+            width: 1250px;
+        }
+
+        .adminMainHeader {
+            display: flex;
+            justify-content: center;
+            border-bottom: 1px solid #000;
+            align-items: center;
+            padding: 10px 0;
+            width: 1250px;
+        }
+        .adminNoticeMainHeader {
+            display: flex;
+            justify-content: center;
+            border-bottom: 1px solid #000;
+            align-items: center;
+            padding: 10px 0;
+            width: 1250px;
+            background-color: white;
+        }
+        .adminNoticeMainHeader img {
+            width: 280px; /* 로고 크기 */
+            height: 100px;
+            cursor: pointer;
+        }
+        .adminMainHeader img {
+            width: 280px; /* 로고 크기 */
+            height: 100px;
+            cursor: pointer;
+        }
+
+        .adminMainContainer {
+            display: flex;
+            width: 1250px;
+            margin: 0 auto;
+            border-bottom: 1px solid black;
+            border-right: 1px solid black;
+        }
+
+        .adminMainSidebar {
+            width: 180px; !important
+            height: 100vh;
+            border-right: 1px solid #000;
+            border-left: 1px solid #000;
+            padding: 20px 0;
+            box-sizing: border-box;
+            font-family: 'MangoDdobak-B' !important;
+        }
+
+        .adminMainSidebar h3 {
+            margin: 0 auto;
+            text-align: center;
+            padding: 20px;
+            font-size: 30px;
+        }
+
+        .adminMainSidebar ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .adminMainSidebar li {
+            margin: 0 auto;
+            padding: 20px 0;
+            border-top: 1px solid #ccc;
+            text-align: center;
+        }
+
+        .adminMainSidebar li a {
+            text-decoration: none;
+            color: #000;
+            display: block;
+        }
+        .adminMainSidebar li:last-child {
+            border-bottom: 1px solid #ccc;
+        }
+        .adminMainSidebar li:hover, .adminMainSidebar li.active {
+            background-color: #e0e0e0;
+        }
+
+        .adminMainSidebar .adminMainSubmenu {
+            background-color: #fff;
+            margin: 0 auto;
+            padding: 0;
+            border: none;
+        }
+
+        .adminMain1Sidebar .submenu li {
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 10px;
+            border: none;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .adminMainSidebar .adminMainSubmenu li:last-child {
+            border-bottom: none;
+        }
+
+        .adminMainSidebar .adminMainSubmenu li a {
+            text-decoration: none;
+            color: #000;
+            display: block;
+        }
+
+        .adminMainContent {
+            flex: 1;
+            padding: 10px;
+            border-right: 1px solid #000;
+        }
+
+        .adminMainContent h1 {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .adminMainSearch-box {
+            text-align: right;
+            margin-bottom: 20px;
+        }
+
+        .adminMainSearch-box input[type="text"] {
+            padding: 5px;
+            width: 200px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .adminMainSearch-box input[type="submit"] {
+            padding: 5px 10px;
+            border: none;
+            background-color: #204160;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .adminMainSearch-box input[type="submit"]:hover {
+            background-color: #102a40;
+        }
+
+        .adminMainTableContainer {
+            width: 100%;
+            overflow-x: auto; /* 가로 스크롤 추가 */
+            border: 1px solid #000;
+        }
+
+        .adminMainTableContainer table {
+            width: 100%;
+            border-collapse: collapse;
+            table-layout: fixed;
+        }
+
+        .adminMainTableContainer table, .adminMainTableContainer th, .adminMainTableContainer td {
+            border: 1px solid #000;
+        }
+        .adminMainTableContainer th {
+            background-color: #2b5d7c;
+            vertical-align: middle;
+            color: white;
+            font-weight: bold;
+            padding: 15px;
+        }
+        .adminMainTableContainer th, .adminMainTableContainer td {
+            padding: 10px;
+            text-align: center;
+            word-break: break-word;
+        }
+        .adminMainTableContainer td a {
+            text-decoration: none;
+            color: #000;
+            display: block;
+        }
+        .adminMainTableContainer tbody tr:nth-child(even) {
+            background-color: #d9e2ec;
+        }
+
+        .adminMainTableContainer tbody tr:nth-child(odd) {
+            background-color: #f4f8fb;
+        }
+
+        .adminMainTableContainer tbody tr:hover {
+            background-color: #d3e0ea;
+            cursor: pointer;
+        }
+
+        .adminMainPagination {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .adminMainPagination a {
+            margin: 0 5px;
+            padding: 5px 10px;
+            text-decoration: none;
+            border: 1px solid #000;
+            border-radius: 5px;
+            color: #204160;
+        }
+
+        .adminMainPagination a.active {
+            background-color: #204160;
+            color: #fff;
+        }
+
+        .adminMainPagination a:hover {
+            background-color: #102a40;
+            color: white;
+        }
+
+        .adminMainActionButtons {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .adminMainActionButtons button {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 0 10px;
+            background-color: #204160;
+            color: white;
+        }
+
+        .adminMainActionButtons button:hover {
+            background-color: #102a40;
+        }
+
+        .adminMainSearch-box img {
+            width: 20px;
+            cursor: pointer;
+            vertical-align: middle;
+        }
+/**********************************************AdminMain*************************************************/
+/**********************************************AdminMemDetail*************************************************/
+.adminMemDetailBody {
+            font-family: Arial, sans-serif;
+            margin: 0 auto;
+            padding: 0;
+            background-color: white;
+            width: 1250px;
+        }
+
+        .adminMemDetailHeader {
+            display: flex;
+            justify-content: center;
+            border-bottom: 1px solid #000;
+            align-items: center;
+            padding: 10px 0;
+        }
+
+        .adminMemDetailHeader img {
+            width: 280px; /* 로고 크기 */
+            height: 100px;
+            cursor: pointer;
+        }
+
+        .adminMemDetailContainer {
+            display: flex;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        .adminMemDetailSidebar {
+            width: 180px;
+            height: 100vh;
+            border-right: 1px solid #000;
+            border-left: 1px solid #000;
+            padding: 20px 0;
+            box-sizing: border-box;
+        }
+
+        .adminMemDetailSidebar h3 {
+            margin: 0 auto;
+            text-align: center;
+            padding: 20px;
+            font-size: 30px;
+        }
+
+        .adminMemDetailSidebar ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .adminMemDetailSidebar li {
+            margin: 0 auto;
+            padding: 20px 0;
+            border-top: 1px solid #ccc;
+            text-align: center;
+        }
+
+        .adminMemDetailSidebar li a {
+            text-decoration: none;
+            color: #000;
+            display: block;
+        }
+
+        .adminMemDetailSidebar li:last-child {
+            border-bottom: 1px solid #ccc;
+        }
+
+        .adminMemDetailSidebar li:hover, .adminMemDetailSidebar li.active {
+            background-color: #e0e0e0;
+        }
+
+        .adminMemDetailSidebar .adminMemDetailSubmenu {
+            background-color: #fff;
+            margin: 0 auto;
+            padding: 0;
+            border: none;
+        }
+
+        .adminMemDetailSidebar .adminMemDetailSubmenu li {
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 10px;
+            border: none;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .adminMemDetailSidebar .adminMemDetailSubmenu li:last-child {
+            border-bottom: none;
+        }
+
+        .adminMemDetailSidebar .adminMemDetailSubmenu li a {
+            text-decoration: none;
+            color: #000;
+            display: block;
+        }
+
+        .adminMemDetailContent {
+            flex: 1;
+            padding: 10px;
+            border-right: 1px solid #000;
+        }
+
+        .adminMemDetailContent h1 {
+            font-size: 24px;
+            font-weight: bold;
+            margin: 10px auto;
+            text-align: center;
+        }
+
+        .adminMemDetailDetails-box {
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .adminMemDetailDetails-box label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .adminMemDetailDetails-box .info {
+            margin-bottom: 10px;
+        }
+
+        .adminMemDetailDetails-box table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .adminMemDetailDetails-box table, th, td {
+            border: 1px solid #000;
+            text-align: left;
+        }
+
+        .adminMemDetailDetails-box th, td {
+            padding: 10px;
+            text-align: left;
+        }
+        .adminMemDetailDetails-box input[type="password"]{
+            text-align: left;
+        }
+        .adminMemDetailDetails-box input[type="text"] {
+            width: 100%;
+            border: none;
+            border-bottom: 1px solid #ccc;
+            padding: 5px;
+            box-sizing: border-box;
+        }
+
+        .adminMemDetailActionButtons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .adminMemDetailActionButtons button {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            background-color: #2b5d7c; /* 어드민 메인 페이지와 어울리도록 색상 변경 */
+            color: white;
+        }
+
+        .adminMemDetailActionButtons button:hover {
+            background-color: #204160; /* 어드민 메인 페이지와 어울리도록 색상 변경 */
+        }
+/**********************************************AdminMemDetail*************************************************/
+/**adminCenterMem 시작~~*****************************************************************************************************************/
+.adminCenterMemBody {
+            font-family: 'MangoDdobak-B';
+            margin: 0 auto;
+            padding: 0;
+            background: white;
+            width: 1250px;
+        }
+
+        .adminCenterMemHeader {
+            display: flex;
+            justify-content: center;
+            border-bottom: 1px solid #000;
+            align-items: center;
+            padding: 10px 0;
+            position: relative;
+            background: white;
+        }
+        .adminBtn {
+            position: absolute;
+            right: 10px; /* 오른쪽 끝으로 위치 */
+            top: 82%;
+            transform: translateY(-50%);
+            margin: 0;
+            font-family: 'MangoDdobak-B' !important;
+            padding: 5px 10px;
+            border: none;
+            background-color: #204160;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .adminCenterMemHeader img {
+            width: 280px; /* 로고 크기 */
+            height: 100px;
+            cursor: pointer;
+        }
+
+        .adminCenterMemContainer {
+            display: flex;
+            width: 100%;
+            margin: 0 auto;
+            border-right: 1px solid black;
+            border-bottom: 1px solid black;
+        }
+
+        .adminCenterMemSidebar {
+            width: 180px;
+            height: 100vh;
+            border-right: 1px solid #000;
+            border-left: 1px solid #000;
+            padding: 20px 0;
+            box-sizing: border-box;
+        }
+
+        .adminCenterMemSidebar h3 {
+            margin: 0 auto;
+            text-align: center;
+            padding: 20px;
+            font-size: 30px;
+        }
+
+        .adminCenterMemSidebar ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .adminCenterMemSidebar li {
+            margin: 0 auto;
+            padding: 20px 0;
+            border-top: 1px solid #ccc;
+            text-align: center;
+        }
+
+        .adminCenterMemSidebar li a {
+            text-decoration: none;
+            color: #000;
+            display: block;
+        }
+        .adminCenterMemSidebar li:last-child {
+            border-bottom: 1px solid #ccc;
+        }
+        .adminCenterMemSidebar li:hover, .adminCenterMemSidebar li.active {
+            background-color: #e0e0e0;
+        }
+
+        .adminCenterMemSidebar .adminCenterMemSubmenu {
+            background-color: #fff;
+            margin: 0 auto;
+            padding: 0;
+            border: none;
+        }
+
+        .adminCenterMemSidebar .adminCenterMemSubmenu li {
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 10px;
+            border: none;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .adminCenterMemSidebar .adminCenterMemSubmenu li:last-child {
+            border-bottom: none;
+        }
+
+        .adminCenterMemSidebar .adminCenterMemSubmenu li a {
+            text-decoration: none;
+            color: #000;
+            display: block;
+        }
+
+        .adminCenterMemContent {
+            flex: 1;
+            padding: 10px;
+            border-right: 1px solid #000;
+        }
+
+        .adminCenterMemContent h1 {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .adminCenterMemSearch-box {
+            text-align: right;
+            margin-bottom: 20px;
+        }
+
+        .adminCenterMemSearch-box input[type="text"] {
+            padding: 5px;
+            width: 200px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .adminCenterMemSearch-box input[type="submit"] {
+            padding: 5px 10px;
+            border: none;
+            background-color: #204160;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .adminCenterMemSearch-box input[type="submit"]:hover {
+            background-color: #102a40;
+        }
+
+        .adminCenterMemSearch-box img {
+            width: 20px;
+            cursor: pointer;
+            vertical-align: middle;
+        }
+
+        .adminCenterMemTableContainer {
+            width: 100%;
+            overflow-x: auto; /* 가로 스크롤 추가 */
+            border: 1px solid #000;
+        }
+
+        .adminCenterMemTableContainer table {
+            width: 100%;
+            border-collapse: collapse;
+            table-layout: fixed;
+        }
+
+        .adminCenterMemTableContainer table, .adminCenterMemTableContainer th, .adminCenterMemTableContainer td {
+            border: 1px solid #000;
+        }
+        .adminCenterMemTableContainer th {
+            background-color: #2b5d7c;
+            vertical-align: middle;
+            color: white;
+            font-weight: bold;
+            padding: 15px;
+        }
+        .adminCenterMemTableContainer th, .adminCenterMemTableContainer td {
+            padding: 10px;
+            text-align: center;
+            word-break: break-word;
+        }
+        .adminCenterMemTableContainer td a {
+            text-decoration: none;
+            color: #000;
+            display: block;
+        }
+        .adminCenterMemTableContainer td:nth-child(4) {
+            font-size: 11px;
+        }
+        .adminCenterMemTableContainer tbody tr:nth-child(even) {
+            background-color: #d9e2ec;
+        }
+
+        .adminCenterMemTableContainer tbody tr:nth-child(odd) {
+            background-color: #f4f8fb;
+        }
+
+        .adminCenterMemTableContainer tbody tr:hover {
+            background-color: #d3e0ea;
+            cursor: pointer;
+        }
+
+        .adminCenterMemPagination {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .adminCenterMemPagination a {
+            margin: 0 5px;
+            padding: 5px 10px;
+            text-decoration: none;
+            border: 1px solid #000;
+            border-radius: 5px;
+            color: #204160;
+        }
+
+        .adminCenterMemPagination a.active {
+            background-color: #204160;
+            color: #fff;
+        }
+
+        .adminCenterMemPagination a:hover {
+            background-color: #102a40;
+            color: white;
+        }
+
+        .adminCenterMemActionButtons {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .adminCenterMemActionButtons button {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 0 10px;
+            background-color: #204160;
+            color: white;
+        }
+
+        .adminCenterMemActionButtons button:hover {
+            background-color: #102a40;
+        }
+/**adminCenterMem 끝~~*****************************************************************************************************************/
+/**centerMemDetail 시작~~*****************************************************************************************************************/
+         .adminMemDetailBody {
+            font-family: Arial, sans-serif;
+            margin: 0 auto;
+            padding: 0;
+            background-color: white;
+            width: 1250px;
+            font-family: 'MangoDdobak-B';
+         }
+
+        .adminMemDetailHeader {
+            display: flex;
+            justify-content: center;
+            border-bottom: 1px solid #000;
+            align-items: center;
+            padding: 10px 0;
+        }
+
+        .adminMemDetailHeader img {
+            width: 280px; /* 로고 크기 */
+            height: 100px;
+            cursor: pointer;
+        }
+
+        .adminMemDetailContainer {
+            display: flex;
+            width: 100%;
+            margin: 0 auto;
+            border-bottom: 1px solid black;
+        }
+
+        .adminMemDetailSidebar {
+            width: 180px;
+            height: 100vh;
+            border-right: 1px solid #000;
+            border-left: 1px solid #000;
+            padding: 20px 0;
+            box-sizing: border-box;
+        }
+
+        .adminMemDetailSidebar h3 {
+            margin: 0 auto;
+            text-align: center;
+            padding: 20px;
+            font-size: 30px;
+        }
+
+        .adminMemDetailSidebar ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .adminMemDetailSidebar li {
+            margin: 0 auto;
+            padding: 20px 0;
+            border-top: 1px solid #ccc;
+            text-align: center;
+        }
+
+        .adminMemDetailSidebar li a {
+            text-decoration: none;
+            color: #000;
+            display: block;
+        }
+
+        .adminMemDetailSidebar li:last-child {
+            border-bottom: 1px solid #ccc;
+        }
+
+        .adminMemDetailSidebar li:hover, .adminMemDetailSidebar li.active {
+            background-color: #e0e0e0;
+        }
+
+        .adminMemDetailSidebar .adminMemDetailSubmenu {
+            background-color: #fff;
+            margin: 0 auto;
+            padding: 0;
+            border: none;
+        }
+
+        .adminMemDetailSidebar .adminMemDetailSubmenu li {
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 10px;
+            border: none;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .adminMemDetailSidebar .adminMemDetailSubmenu li:last-child {
+            border-bottom: none;
+        }
+
+        .adminMemDetailSidebar .adminMemDetailSubmenu li a {
+            text-decoration: none;
+            color: #000;
+            display: block;
+        }
+
+        .adminMemDetailContent {
+            flex: 1;
+            padding: 10px;
+            border-right: 1px solid #000;
+        }
+
+        .adminMemDetailContent h1 {
+            font-size: 24px;
+            font-weight: bold;
+            margin: 10px auto;
+            text-align: center;
+        }
+
+        .adminMemDetailDetails-box {
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .adminMemDetailDetails-box label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .adminMemDetailDetails-box .info {
+            margin-bottom: 10px;
+        }
+
+        .adminMemDetailDetails-box table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .adminMemDetailDetails-box table, th, td {
+            border: 1px solid #000;
+        }
+
+        .adminMemDetailDetails-box th, td {
+            padding: 10px;
+            text-align: left;
+        }
+
+        .adminMemDetailDetails-box input[type="text"] {
+            width: 100%;
+            border: none;
+            border-bottom: 1px solid #ccc;
+            padding: 5px;
+            box-sizing: border-box;
+        }
+
+        .adminMemDetailActionButtons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .adminMemDetailActionButtons button {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            background-color: #2b5d7c; /* 어드민 메인 페이지와 어울리도록 색상 변경 */
+            color: white;
+        }
+
+        .adminMemDetailActionButtons button:hover {
+            background-color: #204160; /* 어드민 메인 페이지와 어울리도록 색상 변경 */
+        }
+
+/**centerMemDetail 끝~~*****************************************************************************************************************/
+/**********************************************AdminNotice*************************************************/
+.adminMainBody {
+            font-family: Arial, sans-serif;
+            margin: 0 auto;
+            padding: 0;
+            background: white;
+            width: 1250px;
+        }
+
+        .adminMainHeader {
+           display: flex;
+           justify-content: center;
+           border-bottom: 1px solid #000;
+           align-items: center;
+           padding: 10px 0;
+           position: relative;
+           width: 1250px;
+           background-color: white;
+       }
+       .adminBtn {
+           position: absolute;
+           right: 10px; /* 오른쪽 끝으로 위치 */
+           top: 82%;
+           transform: translateY(-50%);
+           margin: 0;
+           font-family: 'MangoDdobak-B' !important;
+           padding: 5px 10px;
+           border: none;
+           background-color: #204160;
+           color: white;
+           border-radius: 5px;
+           cursor: pointer;
+       }
+
+        .adminMainHeader img {
+            width: 280px; /* 로고 크기 */
+            height: 100px;
+            cursor: pointer;
+        }
+
+        .adminMainSidebar {
+            width: 180px; !important
+            height: 100vh;
+            border-right: 1px solid #000;
+            border-left: 1px solid #000;
+            padding: 20px 0;
+            box-sizing: border-box;
+            font-family: 'MangoDdobak-B';
+        }
+
+        .adminMainSidebar h3 {
+            margin: 0 auto;
+            text-align: center;
+            padding: 20px;
+            font-size: 30px;
+        }
+
+        .adminMainSidebar ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .adminMainSidebar li {
+            margin: 0 auto;
+            padding: 20px 0;
+            border-top: 1px solid #ccc;
+            text-align: center;
+        }
+
+        .adminMainSidebar li a {
+            text-decoration: none;
+            color: #000;
+            display: block;
+        }
+        .adminMainSidebar li:last-child {
+            border-bottom: 1px solid #ccc;
+        }
+        .adminMainSidebar li:hover, .adminMainSidebar li.active {
+            background-color: #e0e0e0;
+        }
+
+        .adminMainSidebar .adminMainSubmenu {
+            background-color: #fff;
+            margin: 0 auto;
+            padding: 0;
+            border: none;
+        }
+
+        .adminMain1Sidebar .submenu li {
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 10px;
+            border: none;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .adminMainSidebar .adminMainSubmenu li:last-child {
+            border-bottom: none;
+        }
+
+        .adminMainSidebar .adminMainSubmenu li a {
+            text-decoration: none;
+            color: #000;
+            display: block;
+        }
+
+        .adminMainContent {
+            flex: 1;
+            padding: 10px;
+            border-right: 1px solid #000;
+        }
+
+        .adminMainContent h1 {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .adminMainSearch-box {
+            text-align: right;
+            margin-bottom: 20px;
+        }
+
+        .adminMainSearch-box input[type="text"] {
+            padding: 5px;
+            width: 200px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .adminMainSearch-box input[type="submit"] {
+            padding: 5px 10px;
+            border: none;
+            background-color: #204160;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .adminMainSearch-box input[type="submit"]:hover {
+            background-color: #102a40;
+        }
+
+        .adminMainTableContainer {
+            width: 100%;
+            overflow-x: auto; /* 가로 스크롤 추가 */
+            border: 1px solid #000;
+        }
+
+        .adminMainTableContainer table {
+            width: 100%;
+            border-collapse: collapse;
+            table-layout: fixed;
+        }
+
+        .adminMainTableContainer table, .adminMainTableContainer th, .adminMainTableContainer td {
+            border: 1px solid #000;
+        }
+        .adminMainTableContainer th {
+            background-color: #2b5d7c;
+            vertical-align: middle;
+            color: white;
+            font-weight: bold;
+            padding: 15px;
+        }
+        .adminMainTableContainer th, .adminMainTableContainer td {
+            padding: 10px;
+            text-align: center;
+            word-break: break-word;
+        }
+        .adminMainTableContainer td a {
+            text-decoration: none;
+            color: #000;
+            display: block;
+        }
+        .adminMainTableContainer tbody tr:nth-child(even) {
+            background-color: #d9e2ec;
+        }
+
+        .adminMainTableContainer tbody tr:nth-child(odd) {
+            background-color: #f4f8fb;
+        }
+
+        .adminMainTableContainer tbody tr:hover {
+            background-color: #d3e0ea;
+            cursor: pointer;
+        }
+
+        .adminMainPagination {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .adminMainPagination a {
+            margin: 0 5px;
+            padding: 5px 10px;
+            text-decoration: none;
+            border: 1px solid #000;
+            border-radius: 5px;
+            color: #204160;
+        }
+
+        .adminMainPagination a.active {
+            background-color: #204160;
+            color: #fff;
+        }
+
+        .adminMainPagination a:hover {
+            background-color: #102a40;
+            color: white;
+        }
+
+        .adminMainActionButtons {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .adminMainActionButtons button {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 0 10px;
+            background-color: #204160;
+            color: white;
+        }
+
+        .adminMainActionButtons button:hover {
+            background-color: #102a40;
+        }
+
+        .adminMainSearch-box img {
+            width: 20px;
+            cursor: pointer;
+            vertical-align: middle;
+        }
+/**********************************************AdminNotice*************************************************/
+/**********************************************AdminMemDetail*************************************************/
+.adminMemDetailBody {
+            font-family: Arial, sans-serif;
+            margin: 0 auto;
+            padding: 0;
+            background-color: white;
+            width: 1250px;
+        }
+
+        .adminMemDetailHeader {
+            display: flex;
+            justify-content: center;
+            border-bottom: 1px solid #000;
+            align-items: center;
+            padding: 10px 0;
+            position: relative;
+        }
+       .adminBtn {
+           position: absolute;
+           right: 10px; /* 오른쪽 끝으로 위치 */
+           top: 82%;
+           transform: translateY(-50%);
+           margin: 0;
+           font-family: 'MangoDdobak-B' !important;
+           padding: 5px 10px;
+           border: none;
+           background-color: #204160;
+           color: white;
+           border-radius: 5px;
+           cursor: pointer;
+       }
+       .adminNotBtn {
+          position: absolute;
+          right: 25px; /* 오른쪽 끝으로 위치 */
+          top: 11.3%;
+          transform: translateY(-50%);
+          margin: 0;
+          font-family: 'MangoDdobak-B' !important;
+          padding: 5px 10px;
+          border: none;
+          background-color: #204160;
+          color: white;
+          border-radius: 5px;
+          cursor: pointer;
+       }
+        .adminMemDetailHeader img {
+            width: 280px; /* 로고 크기 */
+            height: 100px;
+            cursor: pointer;
+        }
+
+        .adminMemDetailContainer {
+            display: flex;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        .adminMemDetailSidebar {
+            width: 180px;
+            height: 100vh;
+            border-right: 1px solid #000;
+            border-left: 1px solid #000;
+            padding: 20px 0;
+            box-sizing: border-box;
+        }
+
+        .adminMemDetailSidebar h3 {
+            margin: 0 auto;
+            text-align: center;
+            padding: 20px;
+            font-size: 30px;
+        }
+
+        .adminMemDetailSidebar ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .adminMemDetailSidebar li {
+            margin: 0 auto;
+            padding: 20px 0;
+            border-top: 1px solid #ccc;
+            text-align: center;
+        }
+
+        .adminMemDetailSidebar li a {
+            text-decoration: none;
+            color: #000;
+            display: block;
+        }
+
+        .adminMemDetailSidebar li:last-child {
+            border-bottom: 1px solid #ccc;
+        }
+
+        .adminMemDetailSidebar li:hover, .adminMemDetailSidebar li.active {
+            background-color: #e0e0e0;
+        }
+
+        .adminMemDetailSidebar .adminMemDetailSubmenu {
+            background-color: #fff;
+            margin: 0 auto;
+            padding: 0;
+            border: none;
+        }
+
+        .adminMemDetailSidebar .adminMemDetailSubmenu li {
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 10px;
+            border: none;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .adminMemDetailSidebar .adminMemDetailSubmenu li:last-child {
+            border-bottom: none;
+        }
+
+        .adminMemDetailSidebar .adminMemDetailSubmenu li a {
+            text-decoration: none;
+            color: #000;
+            display: block;
+        }
+
+        .adminMemDetailContent {
+            flex: 1;
+            padding: 10px;
+            border-right: 1px solid #000;
+        }
+
+        .adminMemDetailContent h1 {
+            font-size: 24px;
+            font-weight: bold;
+            margin: 10px auto;
+            text-align: center;
+        }
+
+        .adminMemDetailDetails-box {
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .adminMemDetailDetails-box label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .adminMemDetailDetails-box .info {
+            margin-bottom: 10px;
+        }
+
+        .adminMemDetailDetails-box table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .adminMemDetailDetails-box table, th, td {
+            border: 1px solid #000;
+        }
+
+        .adminMemDetailDetails-box th, td {
+            padding: 10px;
+            text-align: left;
+        }
+
+        .adminMemDetailDetails-box input[type="text"] {
+            width: 100%;
+            border: none;
+            border-bottom: 1px solid #ccc;
+            padding: 5px;
+            box-sizing: border-box;
+        }
+
+        .adminMemDetailActionButtons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .adminMemDetailActionButtons button {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            background-color: #2b5d7c;
+            color: white;
+        }
+        .resetButton {
+            padding: 5px 10px;
+            font-size: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            background-color: #2b5d7c;
+            color: white;
+        }
+        .resetButton:hover {
+            background-color: #204160;
+        }
+        .adminMemDetailActionButtons button:hover {
+            background-color: #204160;
+        }
+/**********************************************AdminMemDetail*************************************************/
+/**volNoticeList 시작~~*****************************************************************************************************************/
+.noticeListBody{
+ 	margin: 0 auto;
+    width: 1100px;
+    font-family: 'MangoDdobak-B';
+    background-color: #FAECC5;
+    text-align: center;
+}
+.volnoticeDetailBody {
+    margin: 0 auto;
+    padding: 0;
+    font-family: 'MangoDdobak-B';
+    background-color: #FAECC5;
+    width: 1100px;
+    display: inline-block;
+}
+.volNoticeListWholeContainer {
+    text-align: center;
+    width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.centerNoticeDetailDiv {
+    width: 1100px;
+    margin: 0 auto;
+}
+.volNoticeListDiv>h2,
+.volNoticeDetailDiv>h2,
+.centerNoticeDetailDiv>h2{
+    font-family: 'NEXONFootballGothicBA1';
+    width:1100px;
+ 	border: none;
+    border-bottom: 1px solid black;
+    text-align: left;
+    padding: 5px;
+    margin: 0px auto 20px;
+    font-weight:bold;
+    font-size:40px;
+    padding-top: 20px;
+}
+.volNoticeDetailDiv {
+    background-color: #FAECC5;
+    margin: 0 auto;
+    width: 1100px;
+}
+.volNoticeListTable {
+    width: 100%;
+}
+.volNoticeListTable>thead>tr>th {
+    font-family: 'MangoDdobak-B';
+    background-color : #463933;
+    vertical-align : middle;
+    color : white;
+    font-weight : bold;
+    padding : 15px;
+    text-align: center;
+}
+.volNoticeListTable>tbody>tr>td{
+    font-family: 'MangoDdobak-B';
+    text-align: center;
+    vertical-align: middle;
+    height: 25px;
+}
+.volNoticeListTable>tbody>tr>td>a{
+    font-family: 'MangoDdobak-B';
+    text-align: center;
+    vertical-align: middle;
+    color: black;
+    text-decoration: none;
+}
+.volNoticeListTable tbody tr:hover {
+  background-color: rgb(256,236,203);
+}
+.volNoticeDetailContainer {
+    margin: 0 auto;
+    width: 1100px;
+}
+/**volNoticeList 끝~~*****************************************************************************************************************/
+/**centerNoticeList 시작~~*****************************************************************************************************************/
+.noticeListBody{
+ 	margin: 0 auto;
+    padding: 0;
+    font-family: 'MangoDdobak-B';
+    background-color: #FAECC5;
+    width: 1100px;
+}
+.centerNoticeListWholeContainer {
+    text-align: center;
+    margin: auto;
+    width: 1100px;
+}
+.centerNoticeListDiv>h2,
+ .centerNoticeListDiv>h2 {
+    font-family: 'NEXONFootballGothicBA1';
+    width:1100px;
+ 	border: none;
+    border-bottom: 1px solid black;
+    text-align: left;
+    padding: 5px;
+    margin: 20px auto 20px;
+    font-weight:bold;
+    font-size:40px;
+}
+.centerNoticeListTable {
+    width: 100%;
+}
+.centerNoticeListTable>thead>tr>th {
+    font-family: 'MangoDdobak-B';
+    background-color : #463933;
+    vertical-align : middle;
+    color : white;
+    font-weight : bold;
+    padding : 15px;
+    text-align: center;
+}
+.centerNoticeListTable>tbody>tr>td{
+    font-family: 'MangoDdobak-B';
+    text-align: center;
+    vertical-align: middle;
+    height: 25px;
+}
+.centerNoticeListTable>tbody>tr>td>a{
+    font-family: 'MangoDdobak-B';
+    text-align: center;
+    vertical-align: middle;
+    color: black;
+    text-decoration: none;
+}
+.centerNoticeListTable tbody tr:hover {
+  background-color: rgb(256,236,203);
+}
+
+/**centerNoticeList 끝~~*****************************************************************************************************************/
+/**adminNoticeList 시작~~*****************************************************************************************************************/
+.adminNoticeListBody {
+    font-family: 'MangoDdobak-B';
+    margin: 0 auto;
+    padding: 0;
+    background: white;
+    width: 1250px;
+}
+.adminNoticeListWholeContainer {
+    flex: 1;
+    padding: 10px;
+    border-right: 1px solid #000;
+}
+
+.adminNoticeListWholeContainer2 {
+    flex: 1;
+    padding: 10px;
+    border-right: 1px solid #000;
+}
+
+.adminMainSearch-box h1 {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: left;
+}
+
+.adminNoticeListDiv table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+
+.adminMainTableContainer table,
+.adminMainTableContainer th,
+.adminMainTableContainer td {
+    border: 1px solid #000;
+}
+.adminNoticeListTable {
+    width: 100%;
+}
+.adminNoticeListTable th {
+    background-color: #2B5D7C;
+    vertical-align: middle;
+    color: white;
+    font-weight: bold;
+    padding: 10px;
+    font-size: 16px;
+}
+
+.adminNoticeListTable th,
+.adminNoticeListTable td {
+    font-size: 16px;
+    padding: 10px;
+    text-align: center;
+    word-break: break-word;
+    border: 1px solid black;
+}
+
+.adminNoticeListTable td a {
+    text-decoration: none;
+    color: #000;
+    display: block;
+}
+
+.adminNoticeListTable tbody tr:nth-child(even) {
+    background-color: #d9e2ec;
+}
+
+.adminNoticeListTable tbody tr:nth-child(odd) {
+    background-color: #f4f8fb;
+}
+
+.adminNoticeListTable tbody tr:hover {
+    background-color: #d3e0ea;
+    cursor: pointer;
+}
+
+.adminMainPagination {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.adminMainPagination a {
+    margin: 0 5px;
+    padding: 5px 10px;
+    text-decoration: none;
+    border: 1px solid #000;
+    border-radius: 5px;
+    color: #204160;
+}
+
+.adminMainPagination a.active {
+    background-color: #204160;
+    color: #fff;
+}
+
+.adminMainPagination a:hover {
+    background-color: #102a40;
+    color: white;
+}
+
+.adminMainActionButtons {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.adminMainActionButtons button {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 0 10px;
+    background-color: #204160;
+    color: white;
+}
+
+.adminMainActionButtons button:hover {
+    background-color: #102a40;
+}
+
+.adminMainSearch-box img {
+    width: 20px;
+    cursor: pointer;
+    vertical-align: middle;
+}
+
+#noticeTitle {
+    font-family: 'MangoDdobak-B';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2405-3@1.1/MangoDdobak-B.woff2') format('woff2');
+    font-size: 20px;
+    border: none;
+    width: 600px;
+    height: 40px;
+    vertical-align: middle;
+    justify-content: left;
+    margin-left: 20px; /* 여기에 margin-left 추가 */
+}
+
+#noticeContent {
+    font-family: 'MangoDdobak-B';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2405-3@1.1/MangoDdobak-B.woff2') format('woff2');
+    border: none;
+    width: 90%;
+    height: auto;
+    text-align: left;
+    padding-left: 30px;
+    padding-top: 30px;
+    font-size: 22px;
+    vertical-align: middle;
+    resize: none;
+}
+
+.noticeListTable td input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+}
+
+.adminNoticeRegDiv h1 {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    margin: 30px 0px 30px 0px;
+}
+
+.noticeRegTable th {
+    text-align: center;
+    vertical-align: middle;
+    font-size: 16px;
+    border: 1px solid black;
+}
+
+.noticeRegTable td {
+    text-align: left;
+    vertical-align: middle;
+    font-size: 16px;
+    border: 1px solid black;
+}
+
+input::placeholder {
+    vertical-align: middle;
+}
+
+.noticeTitle,
+.noticeWriter {
+    border: none;
+    background-color: rgba(172, 134, 104, 0.0);
+    color: black;
+    font-size: 17px;
+    font-weight: 700;
+    vertical-align: middle;
+    text-decoration: none;
+}
+
+.noticeRegTitle {
+    background-color: #AC8668;
+    color: white;
+    font-weight: 700;
+    font-size: 22px;
+    vertical-align: middle;
+    height: 50px;
+}
+
+.noticeRegContent {
+    font-size: 20px;
+    vertical-align: middle;
+}
+
+.hidden_file_input {
+    display: none;
+}
+
+.click_fileUpload_label {
+    display: inline-block;
+    cursor: pointer;
+    padding: 10px 20px;
+    color: white;
+    background-color: rgb(32, 65, 96);
+    border-radius: 5px;
+    font-size: 15px;
+    font-weight: 500;
+    content-align: left;
+    margin-left: 30px;
+    margin-right: 30px;
+}
+
+#file-name {
+    font-size: 15px;
+    vertical-align: middle;
+}
+
+.paginationNotice {
+    display: inline-block;
+    margin-top: 20px;
+}
+
+.paginationNotice a,
+.paginationNotice span {
+    background-color: rgb(70, 57, 51);
+    color: white;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+    transition: background-color .3s;
+    border: 1px solid #ddd;
+    margin: 0 4px;
+}
+
+.paginationNotice a:hover {
+    background-color: rgb(172, 134, 104);
+    pointer: pointer;
+}
+
+.paginationNotice .active {
+    background-color: rgb(253, 111, 43);
+    color: white;
+    border: 1px solid #FEAB82;
+}
+
+
+
+
+
+/**  adminNoticeList 끝~~*****************************************************************************************************************/
+
+
+
+
+/**adminNoticeDetail 시작~~*****************************************************************************************************************/
+
+.noticeDetailBody{
+ 	margin: 0 auto;
+    padding: 0;
+    font-family: 'MangoDdobak-B';
+    background-color: #FAECC5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 920px;
+    background-color: white;
+}
+
+.volNoticeDetailWholeContainer,
+.centerNoticeDetailWholeContainer {
+    text-align: center;
+    margin: 0 auto;
+    width: 1100px;
+    background-color: #FAECC5;
+}
+.adminNoticeDetailWholeContainer{
+    width: 920px;
+    background-color: white;
+}
+
+.adminNoticeDetailDiv h2{
+    font-size: 24px;
+    font-weight: bold;
+    margin: 10px auto;
+    text-align: center;
+}
+
+/* 공지사항 상세페이지 */
+
+.adminNoticeRegDiv>div>table,
+.noticeDetailTable, .centerNoticeDetailTable {
+   margin: 5px;
+   text-align: center;
+   width: 900px;
+   margin: 2px;
+   border-collapse: collapse;
+   font-size: 15px;
+   table-layout: fixed;
+}
+
+.centerNoticeDetailTable,
+.noticeDetailTable,
+.noticeRegTable {
+    height: 400px;
+}
+.buttonContainer3 {
+    padding: 20px;
+    margin-bottom: 20px;
+}
+#detailTitle {
+    padding-left: 30px;
+    width: 700px;
+    border: none;
+    font-family: 'MangoDdobak-B';
+    box-sizing: border-box;
+}
+#detailTitle, #detailAttach {
+    height: 50px;
+    vertical-align: middle;
+    font-size: 20px;
+    margin-left: 3px;
+}
+.tempTd{
+    text-align: left;
+}
+#detailTitle.editable, #detailContent.editable {
+    border: 1px solid #000; /* 수정 모드에서만 보더 적용 */
+}
+.noticeDetailTable tbody th {
+    font-weight: 700;
+    font-size: 22px;
+    vertical-align: middle;
+    border-color: rgb(221,221,221);
+    text-align: center;
+    background-color: #463933;
+    color: white;
+}
+.adminNoticeDetailTable th{
+    font-weight: 700;
+    font-size: 22px;
+    vertical-align: middle;
+    border-color: rgb(221,221,221);
+    text-align: center;
+    background-color: #2b5d7c;
+    color: white;
+}
+.centerNoticeDetailTable, tr, td {
+    background-color: white;
+    text-align: center;
+    vertical-align: middle;
+}
+pre {
+    white-space: pre-wrap;
+}
+#detailContent {
+    vertical-align: middle;
+    text-align: left;
+    padding-left: 30px;
+    font-size: 20px;
+    height: auto;
+    width: 700px;
+    font-family: 'MangoDdobak-B';
+    overflow: hidden;
+    resize: none;
+    border: 1px solid #a0a0a0;
+    border-right: none;
+}
+#centerDetailContent {
+    vertical-align: middle;
+    text-align: left;
+    padding-left: 30px;
+    font-size: 20px;
+    height: auto;
+    width: 700px;
+    font-family: 'MangoDdobak-B';
+    overflow: hidden;
+    resize: none;
+    border: none;
+    white-space:pre-wrap;
+}
+#detailContent.editable {
+    border: 1px solid #000; /* 수정 모드에서만 보더 적용 */
+}
+.buttonContainer1 {
+    text-align: right;
+    margin-right: 30px;
+    margin-bottom: 10px;
+}
+.buttonContainer1>button {
+    font-family: 'MangoDdobak-B';
+    font-size: 15px;
+    font-style: bold;
+    border-style: none;
+    width: 50px;
+    height: 30px;
+    color: white;
+    background-color: rgb(32,65,96);
+    cursor: pointer;
+    vertical-align: middle;
+    margin-right: 40px;
+    margin-top: 20px;
+    border-radius: 4px;
+}
+.buttonContainer2 {
+}
+.buttonContainer2>button {
+    font-family: 'MangoDdobak-B';
+    font-size: 20px;
+    font-style: bold;
+    border-style: none;
+    width: 50px;
+    height: 30px;
+    color: white;
+    background-color: rgb(32,65,96);
+    cursor: pointer;
+    vertical-align: middle;
+    margin-right: 40px;
+    margin-top: 20px;
+    border-radius: 4px;
+    float: right;
+}
+.buttonContainer3>button {
+    font-family: 'MangoDdobak-B';
+    font-size: 20px;
+    font-style: bold;
+    border-style: none;
+    width: 80px;
+    height: 40px;
+    color: white;
+    background-color: rgb(32,65,96);
+    cursor: pointer;
+    vertical-align: middle;
+    margin-right: 40px;
+    margin-top: 20px;
+    border-radius: 4px;
+}
+.aNDBtn {
+    font-family: 'MangoDdobak-B';
+    font-size: 20px;
+    font-style: bold;
+    border-style: none;
+    width: 80px;
+    height: 40px;
+    color: white;
+    background-color: rgb(32,65,96);
+    cursor: pointer;
+    vertical-align: middle;
+    margin-right: 40px;
+    margin-top: 20px;
+    border-radius: 4px;
+}
+.aNDBtn:hover {
+    background-color: #AC8668;
+}
+.click_fileUpload_label:hover,
+.buttonContainer1>button:hover,
+.buttonContainer2>button:hover,
+.buttonContainer3>button:hover {
+    background-color: #AC8668;
+}
+.click_fileUpload_label:active,
+.buttonContainer1>button:active,
+.buttonContainer2>button:active,
+.buttonContainer3>button:active {
+    background-color: rgb(253,111,43);
+}
+.noticeListBtn {
+    font-family: 'MangoDdobak-B';
+    font-size: 20px;
+    font-style: bold;
+    border-style: none;
+    width: 80px;
+    height: 40px;
+    color: white;
+    background-color: #EC9343;
+    cursor: pointer;
+    vertical-align: middle;
+    border-radius: 4px;
+    margin: 0 auto;
+    margin-top: 10px;
+    display: block;
+}
+.noticeListBtn:hover {
+    background-color: #D87A2B;
+}
+/**  adminNoticeDetail 끝~~*****************************************************************************************************************/
+/** 조인 리절트 시작~~***************************************************************************************************************/
+.resultLogo {
+    width: 450px;
+    margin: 50px auto;
+    display: block;
+    cursor: pointer;
+    font-family: 'MangoDdobak-B';
+}
+.resultBody {
+    font-family: Arial, sans-serif;
+    background-color: #FDECCB;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-family: 'MangoDdobak-B';
+}
+.resultContainer {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    width: 450px;
+    margin: 0 auto;
+    text-align: center;
+    font-family: 'MangoDdobak-B';
+}
+.resultBold {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 25pt;
+    font-weight: bold;
+    font-family: 'MangoDdobak-B';
+}
+.resultMessage {
+    margin-bottom: 20px;
+    font-size: 18pt;
+    color: #333;
+    font-family: 'MangoDdobak-B';
+}
+.resultButton {
+    width: 250px;
+    padding: 10px;
+    background-color: #EC9343;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 0 auto;
+    text-decoration: none;
+    display: block;
+    text-align: center;
+    font-family: 'MangoDdobak-B';
+}
+.resultButton:hover {
+    background-color: #D87A2B;
+    font-family: 'MangoDdobak-B';
+}
+/**조인 리절트 끝~~************************************************************************************************************************/

@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--!!!!!!!!다오 수정!!!!!!!!!!!!.-->
+<mapper namespace="dc.human.gbnb.humanConnect.volunteer.dao.MypageDAO">
+    <!-- 해당VO 객체와 매핑될 resultMap 정의 -->
+    <resultMap id="privacyResult" type="dc.human.gbnb.humanConnect.volunteer.vo.MypageVO"><!--참고 id 원래는 memResult였음-->
+        <!-- 데이터베이스 컬럼과 VO 객체의 프로퍼티 매핑 -->
+        <!--테이블 컬럼명과 동일하다.-->
+
+        <!--VOLUNTEER_USER 테이블-->
+        <!--개인정보 확인 및 수정-->
+        <result property="u_id" column="u_id" />
+        <result property="u_name" column="u_name" />
+        <result property="u_sex" column="u_sex" />
+        <result property="u_bdate" column="u_bdate" />
+        <result property="u_pwd" column="u_pwd" />
+        <result property="u_addr1" column="u_addr1" />
+        <result property="u_addr2" column="u_addr2" />
+        <result property="u_email" column="u_email" />
+        <result property="u_phone" column="u_phone" />
+
+        <!--VOLUNTEER_REG 테이블-->
+        <!--봉사내역-->
+        <result property="v_no" column="v_no" /><!--hidden으로 불러와야함.-->
+        <result property="vreg_no" column="vreg_no" />
+        <result property="v_title" column="v_title" />          <!--봉사글제목.-->
+        <result property="vreg_end_date" column="vreg_end_date" />
+        <result property="vreg_start_date" column="vreg_start_date" /><!--모집마감일.-->
+        <result property="v_state" column="v_state" />          <!--모집상태.-->
+        <result property="service_type" column="service_type" />
+
+        <!--ADOPT_REG 테이블-->
+        <!--입양상담신청내역-->
+        <result property="c_name" column="c_name" />        <!--신청한 보호소 정보만-->
+
+        <!--CENTER_MNG_TABLE 테이블-->
+        <!--센터 개인정보 확인 및 수정-->
+        <result property="c_id" column="c_id" />
+        <result property="c_name" column="c_name" />
+        <result property="c_pwd" column="c_pwd" />
+        <result property="c_addr1" column="c_addr1" />
+        <result property="c_addr2" column="c_addr2" />
+        <result property="c_email" column="c_email" />
+        <result property="rejectReason" column="rejectReason"/>
+        <result property="status" column="status"/>
+
+
+
+    </resultMap>
+
+
+    <!-- 회원정보 확인 전 비밀번호를 확인하는 쿼리 -->
+    <select id="checkPrivacyPw" resultType="int" parameterType="dc.human.gbnb.humanConnect.volunteer.vo.MypageVO">
+        <![CDATA[
+		select
+		    count(*)
+		from
+		    volunteer_user
+		where
+		    u_id=#{u_id} and u_pwd=#{u_pwd}
+        ]]>
+    </select>
+
+    <!-- 회원 정보를 확인하는 쿼리 -->
+    <select id="selectAllPrivacyList" resultMap="privacyResult">
+        <![CDATA[
+        SELECT
+            u_id, u_name, u_pwd, u_addr1, u_addr2, u_email, u_phone
+        FROM
+            volunteer_user
+        WHERE
+            u_id=#{u_id}
+        ]]>
+    </select>
+
+    <!-- 회원 정보를 업데이트하는 쿼리 -->
+    <update id="updateUserDetails" parameterType="dc.human.gbnb.humanConnect.volunteer.vo.MypageVO">
+        <![CDATA[
+        UPDATE
+            volunteer_user
+        SET
+            u_pwd = #{u_pwd},
+            u_addr1 = #{u_addr1},
+            u_phone = #{u_phone},
+            u_email = #{u_email}
+        WHERE
+            u_id = #{u_id}
+        ]]>
+    </update>
+
+    <!-- 회원을 탈퇴시켜버리는 쿼리 -->
+    <delete id="deletePrivacy" parameterType="String">
+        <![CDATA[
+        DELETE FROM volunteer_user WHERE u_id=#{u_id}
+        ]]>
+    </delete>
+
+    <select id="getMypageVolunteerList" resultMap="privacyResult"
+            parameterType="String">
+        SELECT
+        v.U_ID,             <!--사용자 아이디-->
+        v.V_NO,             <!--봉사 번호-->
+        v.VREG_NO,
+        r.V_TITLE,          <!--봉사글 제목-->
+        v.VREG_START_DATE,  <!--vol 봉사시작일-->
+        v.VREG_END_DATE,    <!--vol 봉사종료일-->
+        s.service_type,     <!--봉사 타입-->
+        c.C_NAME,           <!--보호소 이름-->
+        c.C_PHONE,          <!--보호소 번호-->
+        a.REG_RESULT as status,
+        a.REJECT_RS as rejectReason
+        FROM
+        volunteer_reg v
+        INNER JOIN
+        CENTER_MNG_TABLE c
+        ON c.C_ID = v.C_ID
+        INNER JOIN
+        volunteer r
+        ON r.V_NO = v.V_NO
+        INNER JOIN
+        service_type_table s
+        ON s.service_code = r.service_code
+        INNER JOIN
+        ACCEPTION_RES A ON
+        V.VREG_NO = A.VREG_NO
+        WHERE
+        v.u_id=#{u_id}
+    </select>
+</mapper>

@@ -8,6 +8,7 @@ public class UserVO {
     private String addr; // 사용자 주소 (봉사자 / 센터)
     private String email; // 사용자 이메일 (봉사자 / 센터)
     private String phone; // 사용자 전화번호 (봉사자 / 센터)
+    private int uType;
 
 
     public String getUserId() {
@@ -57,4 +58,8 @@ public class UserVO {
     public void setPhone(String phone) {
         this.phone = phone;
     }
+
+    public int getUType() { return uType; }
+
+    public void setUType(int uType) { this.uType = uType; }
 }

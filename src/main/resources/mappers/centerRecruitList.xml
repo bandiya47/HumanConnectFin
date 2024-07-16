@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="dc.human.gbnb.humanConnect.center.dao.CenterRecruitListDAO">
+
+    <resultMap id="recruitmentResultMap" type="dc.human.gbnb.humanConnect.center.vo.CenterRecruitListVO">
+        <result property="rNum" column="V_NO"/>
+        <result property="rTitle" column="V_TITLE"/>
+        <result property="rRegiDate" column="CREATED_DATE1"/>
+        <result property="rRegiAmnt" column="V_REG_AMNT"/>
+    </resultMap>
+
+    <select id="getRecruitmentList" resultMap="recruitmentResultMap">
+        SELECT V_NO,
+               V_TITLE,
+               TO_CHAR(CREATED_DATE, 'YYYY.MM.DD') AS CREATED_DATE1,
+               V_REG_AMNT
+          FROM VOLUNTEER
+         WHERE CREATED_ID = #{centerId}
+        ORDER BY CREATED_DATE DESC
+    </select>
+</mapper>

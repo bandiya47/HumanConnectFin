@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="dc.human.gbnb.humanConnect.volunteer.dao.MainDAO">
+
+    <resultMap id="MainVOResultMap" type="dc.human.gbnb.humanConnect.volunteer.vo.MainVO">
+        <result property="u_id" column="U_ID"/>
+        <result property="v_no" column="V_NO"/>
+        <result property="vreg_no" column="VREG_NO"/>
+        <result property="v_title" column="V_TITLE"/>
+        <result property="vreg_start_date" column="VREG_START_DATE"/><!--vol 봉사시작일-->
+        <result property="vreg_no" column="VREG_NO"/>
+        <result property="vreg_end_date" column="VREG_END_DATE"/><!--vol 봉사종료일-->
+        <result property="v_rstart_date" column="v_rstart_date"/><!--reg 모집시작일-->
+        <result property="v_rend_date" column="v_rend_date"/><!--reg 모집마감일-->
+        <result property="service_type" column="SERVICE_TYPE"/>
+        <result property="c_name" column="C_NAME"/>
+        <result property="c_phone" column="C_PHONE"/>
+        <result property="c_addr1" column="C_ADDR1"/>
+        <result property="visit_date" column="VISIT_DATE"/>
+        <result property="visit_time" column="VISIT_TIME"/>
+        <result property="rejectReason" column="rejectReason"/>
+        <result property="status" column="status"/>
+    </resultMap>
+
+    <select id="getMyVolunteerList" resultMap="MainVOResultMap"
+            parameterType="String">
+        SELECT
+            v.U_ID,             <!--사용자 아이디-->
+            v.V_NO,             <!--봉사 번호-->
+            v.VREG_NO,
+            r.V_TITLE,          <!--봉사글 제목-->
+            v.VREG_START_DATE,  <!--vol 봉사시작일-->
+            v.VREG_END_DATE,    <!--vol 봉사종료일-->
+            s.service_type,     <!--봉사 타입-->
+            c.C_NAME,           <!--보호소 이름-->
+            c.C_PHONE,          <!--보호소 번호-->
+            a.REG_RESULT as status,
+            a.REJECT_RS as rejectReason
+        FROM
+            volunteer_reg v
+        INNER JOIN
+            CENTER_MNG_TABLE c
+            ON c.C_ID = v.C_ID
+        INNER JOIN
+            volunteer r
+            ON r.V_NO = v.V_NO
+        INNER JOIN
+            service_type_table s
+            ON s.service_code = r.service_code
+        INNER JOIN
+            ACCEPTION_RES A ON
+            V.VREG_NO = A.VREG_NO
+        WHERE
+            v.u_id=#{u_id}
+    </select>
+
+
+    <select id="getApproachVolList" resultMap="MainVOResultMap"
+            parameterType="String">
+        SELECT
+            v.U_ID,             <!--사용자 아이디-->
+            v.V_NO,             <!--봉사 번호-->
+            r.V_TITLE,          <!--봉사글 제목-->
+            r.V_RSTART_DATE,    <!--봉사모집 시작일-->
+            r.V_REND_DATE,      <!--봉사모집 마감일-->
+            v.VREG_START_DATE,  <!--봉사활동 시작일-->
+            v.VREG_END_DATE,    <!--봉사활동 종료일-->
+            s.service_type,     <!--봉사 타입-->
+            c.C_NAME,           <!--보호소 이름-->
+            c.C_PHONE,          <!--보호소 번호-->
+            c.C_ADDR1           <!--보호소 주소-->
+        FROM
+            volunteer_reg v
+        INNER JOIN
+            CENTER_MNG_TABLE c
+            ON c.C_ID = v.C_ID
+        INNER JOIN
+            volunteer r
+            ON r.V_NO = v.V_NO
+        INNER JOIN
+            service_type_table s
+            ON s.service_code = r.service_code
+        ORDER BY
+            r.V_REND_DATE      <!--봉사모집 마감일 기준 정렬-->
+    </select>
+
+
+    <select id="getMyAdoptList" resultMap="MainVOResultMap"
+            parameterType="String">
+        SELECT
+            U_ID,
+            C_NAME,
+            VISIT_DATE,
+            VISIT_TIME
+        FROM
+            adopt_reg
+
+        WHERE
+            u_id=#{userId}
+        ORDER BY
+            VISIT_DATE
+    </select>
+
+
+
+</mapper>

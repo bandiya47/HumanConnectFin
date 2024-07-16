@@ -1,6 +1,8 @@
 package dc.human.gbnb.humanConnect.login.controller;
 
 import dc.human.gbnb.humanConnect.login.vo.UserVO;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,46 +23,56 @@ public class LoginControllerImpl implements LoginController{
         return new ModelAndView("login"); // 로그인 페이지를 반환
     }
 
-    @RequestMapping(method = RequestMethod.POST, value="/login")
+    @RequestMapping(method = RequestMethod.POST, value = "/login")
     public ModelAndView login(
-            @RequestParam(name="userId") String userId,
-            @RequestParam(name="password") String userPassword,
-            HttpSession session
+            @RequestParam(name = "userId") String userId,
+            @RequestParam(name = "password") String userPassword
     ) {
         ModelAndView mav = new ModelAndView();
         try {
-
             String msg = "";
-            String viewName = "";
+            String viewName = "login"; // 기본 뷰 이름을 로그인 페이지로 설정
             UserVO userVO = null;
 
-            System.out.println("userId:"+userId+":userPassword:"+userPassword);
+            System.out.println("userId:" + userId + ":userPassword:" + userPassword);
             String userType = loginService.validateUser(userId, userPassword);
-            System.out.println("userType:"+userType);
+            System.out.println("userType:" + userType);
 
-            if (!"".equals(userType)) {
+            if (userType != null && !userType.isEmpty()) {
                 userVO = loginService.getUserDetails(userId, userType);
-                session.setAttribute("userVO", userVO);
+
                 if ("VOLUNTEER_USER".equals(userType)) {
-                    viewName = "redirect:/main";
-                    //  rdao.getVolList() 추가적으로 작업하세요
-                } else {
+                    if (userVO.getUType() == 1) {
+                        viewName = "redirect:/main";
+                    } else if (userVO.getUType() == 0) {
+                        viewName = "redirect:/adminMain";
+                    }
+                } else if ("CENTER_MNG_TABLE".equals(userType)) {
                     viewName = "redirect:/centerMain";
                 }
             } else {
-                viewName = "login";
-                mav.addObject("error","1");
+                msg = "아이디 또는 비밀번호가 잘못되었습니다.";
+                mav.addObject("errorMessage", msg);
             }
 
-            System.out.println("viewName:"+viewName);
+            System.out.println("viewName:" + viewName);
 
-            mav.addObject("userVO",userVO);
-            mav.addObject("userId",userId);
+            mav.addObject("userVO", userVO);
+            mav.addObject("userId", userId);
             mav.setViewName(viewName);
 
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }
         return mav;
+    }
+
+    @RequestMapping(method = RequestMethod.POST, value = "/logout")
+    public String logout(HttpServletRequest request, HttpServletResponse response) {
+        HttpSession session = request.getSession(false); // 세션이 존재하면 반환, 존재하지 않으면 null 반환
+        if (session != null) {
+            session.invalidate(); // 세션 무효화
+        }
+        return "redirect:/login"; // 로그인 페이지로 리디렉션
     }
 }

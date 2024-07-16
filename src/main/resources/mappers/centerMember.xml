@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="dc.human.gbnb.humanConnect.admin.dao.CenterMemberDAO">
+    <resultMap id="centerMemberResult" type="dc.human.gbnb.humanConnect.admin.vo.CenterMemberVO">
+        <result property="c_id" column="C_ID"/>
+        <result property="c_name" column="C_NAME"/>
+        <result property="c_pwd" column="C_PWD"/>
+        <result property="c_email" column="C_EMAIL"/>
+        <result property="c_phone" column="C_PHONE"/>
+        <result property="c_addr1" column="C_ADDR1"/>
+        <result property="c_addr2" column="C_ADDR2"/>
+        <result property="created_date" column="CREATED_DATE"/>
+        <result property="created_id" column="CREATED_ID"/>
+        <result property="updated_date" column="UPDATED_DATE"/>
+        <result property="updated_id" column="UPDATED_ID"/>
+    </resultMap>
+
+    <select id="selectAllCenterMembers" resultMap="centerMemberResult">
+        <![CDATA[
+        SELECT
+            C_ID,
+            C_NAME,
+            C_PWD,
+            C_EMAIL,
+            C_PHONE,
+            C_ADDR1,
+            C_ADDR2,
+            CREATED_DATE,
+            CREATED_ID,
+            UPDATED_DATE,
+            UPDATED_ID,
+            CASE
+                WHEN REGEXP_LIKE(C_ID, '^[0-9]+') THEN 'zzzzz' || C_ID
+                ELSE C_ID
+            END as LISTORDER
+        FROM CENTER_MNG_TABLE
+        ORDER BY LISTORDER
+        OFFSET #{offset} ROWS FETCH NEXT #{size} ROWS ONLY
+    ]]>
+    </select>
+
+    <select id="searchCenterMembers" parameterType="map" resultMap="centerMemberResult">
+        <![CDATA[
+        SELECT
+            C_ID,
+            C_NAME,
+            C_PWD,
+            C_EMAIL,
+            C_PHONE,
+            C_ADDR1,
+            C_ADDR2,
+            CREATED_DATE,
+            CREATED_ID,
+            UPDATED_DATE,
+            UPDATED_ID,
+            CASE
+                WHEN REGEXP_LIKE(C_ID, '^[0-9]+') THEN 'zzzzz' || C_ID
+                ELSE C_ID
+            END as LISTORDER
+        FROM CENTER_MNG_TABLE
+        WHERE
+            C_NAME LIKE '%' || #{searchQuery} || '%'
+            OR C_ID LIKE '%' || #{searchQuery} || '%'
+            OR C_PHONE LIKE '%' || #{searchQuery} || '%'
+            OR C_EMAIL LIKE '%' || #{searchQuery} || '%'
+        ORDER BY LISTORDER
+        OFFSET #{offset} ROWS FETCH NEXT #{size} ROWS ONLY
+    ]]>
+    </select>
+
+    <select id="selectCenterMemberById" parameterType="String" resultMap="centerMemberResult">
+        <![CDATA[
+            SELECT C_ID,
+                   C_NAME,
+                   C_PWD,
+                   C_EMAIL,
+                   C_PHONE,
+                   C_ADDR1,
+                   C_ADDR2,
+                   CREATED_DATE,
+                   CREATED_ID,
+                   UPDATED_DATE,
+                   UPDATED_ID
+              FROM CENTER_MNG_TABLE
+             WHERE C_ID = #{c_id}
+        ]]>
+    </select>
+
+    <update id="updateCenterMember" parameterType="dc.human.gbnb.humanConnect.admin.vo.CenterMemberVO">
+        <![CDATA[
+            UPDATE CENTER_MNG_TABLE
+                SET
+                    C_ID = #{c_id},
+                    C_NAME = #{c_name},
+                    C_PWD = #{c_pwd},
+                    C_EMAIL = #{c_email},
+                    C_PHONE = #{c_phone},
+                    C_ADDR1 = #{c_addr1},
+                    C_ADDR2 = #{c_addr2},
+                    UPDATED_DATE = SYSDATE,
+                    UPDATED_ID = 'admin'
+                WHERE C_ID = #{oldCId}
+        ]]>
+    </update>
+    <update id="resetCenterPW" parameterType="dc.human.gbnb.humanConnect.admin.vo.CenterMemberVO">
+        <![CDATA[
+            UPDATE CENTER_MNG_TABLE
+                SET C_PWD = '0000',
+                    UPDATED_DATE = SYSDATE,
+                    UPDATED_ID = 'admin'
+              WHERE C_ID = #{oldCId}
+        ]]>
+    </update>
+
+    <delete id="deleteCenterMember" parameterType="String">
+        <![CDATA[
+            DELETE FROM CENTER_MNG_TABLE
+            WHERE C_ID = #{c_id}
+        ]]>
+    </delete>
+
+    <select id="countAllCenterMembers" resultType="int">
+        <![CDATA[
+            SELECT COUNT(*) FROM CENTER_MNG_TABLE
+        ]]>
+    </select>
+
+    <select id="countSearchedCenterMembers" parameterType="String" resultType="int">
+        <![CDATA[
+            SELECT COUNT(*) FROM CENTER_MNG_TABLE
+            WHERE C_NAME LIKE '%' || #{searchQuery} || '%'
+               OR C_ID LIKE '%' || #{searchQuery} || '%'
+               OR C_PHONE LIKE '%' || #{searchQuery} || '%'
+               OR C_EMAIL LIKE '%' || #{searchQuery} || '%'
+        ]]>
+    </select>
+</mapper>

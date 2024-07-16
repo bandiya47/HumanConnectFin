@@ -1,82 +1,88 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HumanConnect</title>
-    <link rel="stylesheet" type="text/css" href="./css/style.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/style.css">
     <script>
-       function goMain() {
-          window.location.href = "mainRequestTest";
-          <!--∞Ê∑Œº≥¡§. ≥™¡ﬂø°º≠∫Ì∏¥¿∏∑Œ πŸ≤„æﬂ«‘/ ºæ≈Õ∏ﬁ¿Œ¿« ∞ÊøÏ ºæ≈Õ∏ﬁ¿Œ¿∏∑Œ πŸ≤Ÿ±‚-->
+       function goMain(centerId) {
+          window.location.href = "centerMain?userId=" + centerId;
+          <!--Í≤ΩÎ°úÏÑ§Ï†ï. ÎÇòÏ§ëÏóê Ïä¨ÎûòÏãúÎ°ú Î∞îÍøîÏïºÌï® / ÏÑºÌÑ∞Î©îÏù∏Ïùò Í≤ΩÏö∞ ÏÑºÌÑ∞Î©îÏù∏ÏúºÎ°ú Î∞îÍæ∏Í∏∞-->
        }
     </script>
-<!--####################css ∞Ê∑Œ πŸ≤Ÿ±‚/ img ∞Ê∑Œ πŸ≤Ÿ±‚####################-->
+<!--####################css Í≤ΩÎ°ú Î∞îÍæ∏Í∏∞/ img Í≤ΩÎ°ú Î∞îÍæ∏Í∏∞####################-->
 </head>
 
 <body>
 
-<header>                        <!--«Ï¥ı-->
-    <div class="neviCenterBack"><img src="./img/imsiback.jpg" alt=""></div>
+<header>                        <!--Ìó§Îçî-->
+    <div class="neviCenterBack"><img src="${pageContext.request.contextPath}/img/headerbg.jpg" alt=""></div>
     <div class="neviCenterFor">
-        <div class="neviCenterTop">   <!--√÷ªÛ¥‹-->
+        <div class="neviCenterTop">   <!--ÏµúÏÉÅÎã®-->
             <div>
-                
-                <button type="button" value="">∑Œ±◊æ∆øÙ</button>
-                <form action="mypagePrivacyCheck.jsp">
-                        <button type="submit" value="">∏∂¿Ã∆‰¿Ã¡ˆ</button>
+
+                <form action="logout" method="post">
+                   <button type="submit" value="">Î°úÍ∑∏ÏïÑÏõÉ</button>
                 </form>
-                
-            
+               <form action="${pageContext.request.contextPath}/showCenterPrivacyPw" method="post" >
+                       <input type="hidden" name="centerId" value="${centerId}">
+                       <button type="submit" value="">ÎßàÏù¥ÌéòÏù¥ÏßÄ</button>
+               </form>
             </div>
         </div>
 
-        <div class="neviCenter">      <!--≥◊∫Ò∞‘¿Ãº«-->
-            <span>              <!--∑Œ∞Ì-->
-                <img src="./img/logo.png" alt="" class="" onclick="goMain()"></span>       
+        <div class="neviCenter">      <!--ÎÑ§ÎπÑÍ≤åÏù¥ÏÖò-->
+            <span>              <!--Î°úÍ≥†-->
+                <img src="${pageContext.request.contextPath}/img/logo.png" alt="" class="" style="cursor:pointer" onclick="goMain('${centerId}')"></span>
             <span>
-                <ul>            <!--≥◊∫Ò∞‘¿Ãº«πŸ-->
+                <ul>            <!--ÎÑ§ÎπÑÍ≤åÏù¥ÏÖòÎ∞î-->
                     <li>
                         <div>
                             <img src="./img/soleWhite.png" alt="" class="">
-                            
-                            <form action="test">
-                                <input type="submit" value="∫¿ªÁΩ≈√ª">
+                            <form name="recruitmentRegister" method="get" action="${pageContext.request.contextPath}/centerReg.do" encType="utf-8">
+                                <input type="hidden" name="userId" value="${userId}">
+                                <input type="hidden" name="centerId" value="${centerId}">
+                                <input type="submit" value="Î™®ÏßëÏöîÍ∞ïÎì±Î°ù">
                             </form>
                         </div>
                     </li>
                     <li>
                         <div>
                             <img src="./img/soleWhite.png" alt="" class="">
-                            <form action="">
-                                <input type="submit" value="∏¡˝Ω≈√ª≥ªø™">
+                            <form name="viewall" method="post" action="/recruitlist" encType="utf-8">
+                                <input type="hidden" name="centerId" value="${centerId}">
+                                <input type="submit" value="Î™®ÏßëÏã†Ï≤≠ÎÇ¥Ïó≠">
                             </form>
                         </div>
-                        
+
                     </li>
                     <li>
                         <div>
                             <img src="./img/soleWhite.png" alt="" class="">
-                            <form action="">
-                                <input type="submit" value="∫¿ªÁΩ≈√ª≥ªø™">
+                            <form method="get" action="${pageContext.request.contextPath}/centerVolunteerList" encType="utf-8">
+                                <input type="hidden" name="centerId" value="${centerId}">
+                                <input type="submit" value="Î¥âÏÇ¨Ïã†Ï≤≠ÎÇ¥Ïó≠">
                             </form>
-                        </div>    
+                        </div>
                     </li>
                     <li>
                         <div>
                             <img src="./img/soleWhite.png" alt="" class="">
-                            <form action="">
-                                <input type="submit" value="¿‘æÁªÛ¥„Ω≈√ª≥ªø™">
+                            <form action="/centerAdoptionList" method="get" encType="utf-8">
+                                <input type="hidden" name="centerId" value="${centerId}">
+                                <input type="submit" value="ÏûÖÏñëÏÉÅÎã¥Ïã†Ï≤≠ÎÇ¥Ïó≠">
                             </form>
-                        </div> 
+                        </div>
                     </li>
                     <li>
                         <div>
                             <img src="./img/soleWhite.png" alt="" class="">
-                            <form action="">
-                                <input type="submit" value="∞Ì∞¥ºæ≈Õ">
+                            <form action="/centerNoticeList.do" method="get">
+                                <input type="hidden" name="centerId" value="${centerId}">
+                                <input type="submit" value="Í≥µÏßÄÏÇ¨Ìï≠">
                             </form>
                         </div>
                     </li>
@@ -85,13 +91,5 @@
         </div>
     </div>
 </header>
-
-
-<!--ø©±‚∫Œ≈Õ æ∆∑° ≥ªøÎ ¡§ªÛ¿˚øÎ µ«¥¬¡ˆ »Æ¿Œ-->
-<div class="main"></div>
-
-
-
-
 </body>
 </html>

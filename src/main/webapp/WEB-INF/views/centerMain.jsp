@@ -1,14 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"
-    isELIgnored="false"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
-<html class="centerHtml" lang="ko">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>센터 메인</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         function showRejectReason(id) {
             document.getElementById('reject-reason-' + id).style.display = 'block';
@@ -18,22 +18,28 @@
             document.getElementById('reject-reason-' + id).style.display = 'none';
         }
 
-        function submitForm(action, userId, section) {
+        function submitForm(action, userId, centerId, section) {
             var form = document.createElement('form');
             form.method = 'post';
             form.action = action;
 
-            var hiddenField = document.createElement('input');
-            hiddenField.type = 'hidden';
-            hiddenField.name = 'userId';
-            hiddenField.value = userId;
+            var hiddenUserId = document.createElement('input');
+            hiddenUserId.type = 'hidden';
+            hiddenUserId.name = 'userId';
+            hiddenUserId.value = userId;
+
+            var hiddenCenterId = document.createElement('input');
+            hiddenCenterId.type = 'hidden';
+            hiddenCenterId.name = 'centerId';
+            hiddenCenterId.value = centerId;
 
             var hiddenSection = document.createElement('input');
             hiddenSection.type = 'hidden';
             hiddenSection.name = 'section';
             hiddenSection.value = section;
 
-            form.appendChild(hiddenField);
+            form.appendChild(hiddenUserId);
+            form.appendChild(hiddenCenterId);
             form.appendChild(hiddenSection);
             document.body.appendChild(form);
             form.submit();
@@ -46,7 +52,7 @@
         <section class="centerSection">
             <h2>모집신청내역</h2>
             <div class="centerBox">
-                <h3>${latestRecruitmentTitle}</h3>
+                <h3>${recruitmentList[0].title}</h3>
                 <table>
                     <thead>
                         <tr>
@@ -60,27 +66,32 @@
                         <c:choose>
                             <c:when test="${empty recruitmentList}">
                                 <tr>
-                                    <td colspan="5" class="centerNoData">표시할 데이터가 없습니다</td>
+                                    <td colspan="4" class="centerNoData">표시할 데이터가 없습니다</td>
                                 </tr>
                             </c:when>
                             <c:otherwise>
-                                <c:forEach var="vo" items="${recruitmentList}">
+                                <c:forEach var="vo" items="${recruitmentList}" end="4">
                                     <tr>
-                                        <td onclick="submitForm('${pageContext.request.contextPath}/RecruitmentMain.jsp', '${vo.userId}')">${vo.userId}</td>
-                                        <td onclick="submitForm('${pageContext.request.contextPath}/RecruitmentMain.jsp', '${vo.userId}')">${vo.name}</td>
-                                        <td onclick="submitForm('${pageContext.request.contextPath}/RecruitmentMain.jsp', '${vo.userId}')">${vo.phone}</td>
+
+                                        <td>${vo.userId}</td>
+                                        <td>${vo.name}</td>
+                                        <td>${vo.phone}</td>
                                         <td>
                                             <c:choose>
                                                 <c:when test="${vo.status == '0'}">
                                                     <div class="centerMainBtnG">
                                                         <form method="post" action="${pageContext.request.contextPath}/centerMain">
                                                             <input type="hidden" name="userId" value="${vo.userId}">
+                                                            <input type="hidden" name="centerId" value="${centerId}">
+                                                            <input type="hidden" name="resNo" value="${vo.resNo}">
                                                             <input type="hidden" name="action" value="approve">
                                                             <input type="hidden" name="section" value="recruitment">
                                                             <button class="centerMainApprv" type="submit">승인</button>
                                                         </form>
                                                         <form method="post" action="${pageContext.request.contextPath}/centerMain">
                                                             <input type="hidden" name="userId" value="${vo.userId}">
+                                                            <input type="hidden" name="centerId" value="${centerId}">
+                                                            <input type="hidden" name="resNo" value="${vo.resNo}">
                                                             <input type="hidden" name="action" value="reject">
                                                             <input type="hidden" name="section" value="recruitment">
                                                             <button class="centerMainRej" type="button" onclick="showRejectReason('${vo.userId}_recruitment')">거절</button>
@@ -89,6 +100,8 @@
                                                     <div id="reject-reason-${vo.userId}_recruitment" style="display:none;">
                                                         <form method="post" action="${pageContext.request.contextPath}/centerMain">
                                                             <input type="hidden" name="userId" value="${vo.userId}">
+                                                            <input type="hidden" name="centerId" value="${centerId}">
+                                                            <input type="hidden" name="resNo" value="${vo.resNo}">
                                                             <input type="hidden" name="action" value="reject">
                                                             <input type="hidden" name="section" value="recruitment">
                                                             <input class="centerMainRR" type="text" name="rejectReason" placeholder="거절 사유를 입력하세요" />
@@ -100,12 +113,15 @@
                                                 <c:when test="${vo.status == '1'}">
                                                     <form method="post" action="${pageContext.request.contextPath}/centerMain">
                                                         <input type="hidden" name="userId" value="${vo.userId}">
+                                                        <input type="hidden" name="centerId" value="${centerId}">
+                                                        <input type="hidden" name="resNo" value="${vo.resNo}">
                                                         <input type="hidden" name="action" value="complete">
+                                                        <input type="hidden" name="section" value="recruitment">
                                                         <button class="centerMainVolBtn" type="submit">봉사완료</button>
                                                     </form>
                                                 </c:when>
                                                 <c:when test="${vo.status == '2'}">
-                                                    <div>거절사유: ${vo.rejectReason}</div>
+                                                    <div>거절됨: ${vo.rejectReason}</div>
                                                 </c:when>
                                                 <c:when test="${vo.status == '3'}">
                                                     <div>봉사완료</div>
@@ -119,12 +135,15 @@
                     </tbody>
                 </table>
                 <div class="centerlistViewAllCont">
-                    <form name="viewall" method="post" action="${pageContext.request.contextPath}/recruitlist" encType="utf-8">
+                    <form name="viewall" method="get" action="${pageContext.request.contextPath}/centerRecruitList" encType="utf-8">
+                        <input type="hidden" name="centerId" value="${centerId}">
                         <button type="submit" class="centerlistViewAll">전체보기&gt;</button>
                     </form>
                 </div>
             </div>
-            <form name="recruitmentRegister" method="post" action="${pageContext.request.contextPath}/centerReg.jsp" encType="utf-8">
+            <form name="recruitmentRegister" method="get" action="${pageContext.request.contextPath}/centerReg.do" encType="utf-8">
+                <input type="hidden" name="userId" value="${userId}">
+                <input type="hidden" name="centerId" value="${centerId}">
                 <button type="submit" class="centerMainRegisterButton">등 록</button>
             </form>
         </section>
@@ -149,23 +168,27 @@
                                 </tr>
                             </c:when>
                             <c:otherwise>
-                                <c:forEach var="vo" items="${volunteerList}">
+                                <c:forEach var="vo" items="${volunteerList}" end="4">
                                     <tr>
-                                        <td onclick="submitForm('${pageContext.request.contextPath}/VolunteerMain.jsp', '${vo.userId}')">${vo.userId}</td>
-                                        <td onclick="submitForm('${pageContext.request.contextPath}/VolunteerMain.jsp', '${vo.userId}')">${vo.name}</td>
-                                        <td onclick="submitForm('${pageContext.request.contextPath}/VolunteerMain.jsp', '${vo.userId}')">${vo.phone}</td>
+                                        <td onclick="submitForm('${pageContext.request.contextPath}/VolunteerMain.jsp', '${vo.userId}', '${centerId}', 'volunteer')">${vo.userId}</td>
+                                        <td onclick="submitForm('${pageContext.request.contextPath}/VolunteerMain.jsp', '${vo.userId}', '${centerId}', 'volunteer')">${vo.name}</td>
+                                        <td onclick="submitForm('${pageContext.request.contextPath}/VolunteerMain.jsp', '${vo.userId}', '${centerId}', 'volunteer')">${vo.phone}</td>
                                         <td>
                                             <c:choose>
                                                 <c:when test="${vo.status == '0'}">
                                                     <div class="centerMainBtnG">
                                                         <form method="post" action="${pageContext.request.contextPath}/centerMain">
                                                             <input type="hidden" name="userId" value="${vo.userId}">
+                                                            <input type="hidden" name="centerId" value="${centerId}">
+                                                            <input type="hidden" name="resNo" value="${vo.resNo}">
                                                             <input type="hidden" name="action" value="approve">
                                                             <input type="hidden" name="section" value="volunteer">
                                                             <button class="centerMainApprv" type="submit">승인</button>
                                                         </form>
                                                         <form method="post" action="${pageContext.request.contextPath}/centerMain">
                                                             <input type="hidden" name="userId" value="${vo.userId}">
+                                                            <input type="hidden" name="centerId" value="${centerId}">
+                                                            <input type="hidden" name="resNo" value="${vo.resNo}">
                                                             <input type="hidden" name="action" value="reject">
                                                             <input type="hidden" name="section" value="volunteer">
                                                             <button class="centerMainRej" type="button" onclick="showRejectReason('${vo.userId}_volunteer')">거절</button>
@@ -174,6 +197,8 @@
                                                     <div id="reject-reason-${vo.userId}_volunteer" style="display:none;">
                                                         <form method="post" action="${pageContext.request.contextPath}/centerMain">
                                                             <input type="hidden" name="userId" value="${vo.userId}">
+                                                            <input type="hidden" name="centerId" value="${centerId}">
+                                                            <input type="hidden" name="resNo" value="${vo.resNo}">
                                                             <input type="hidden" name="action" value="reject">
                                                             <input type="hidden" name="section" value="volunteer">
                                                             <input class="centerMainRR" type="text" name="rejectReason" placeholder="거절 사유를 입력하세요" />
@@ -185,7 +210,10 @@
                                                 <c:when test="${vo.status == '1'}">
                                                     <form method="post" action="${pageContext.request.contextPath}/centerMain">
                                                         <input type="hidden" name="userId" value="${vo.userId}">
+                                                        <input type="hidden" name="centerId" value="${centerId}">
+                                                        <input type="hidden" name="resNo" value="${vo.resNo}">
                                                         <input type="hidden" name="action" value="complete">
+                                                        <input type="hidden" name="section" value="volunteer">
                                                         <button class="centerMainVolBtn" type="submit">봉사완료</button>
                                                     </form>
                                                 </c:when>
@@ -204,7 +232,8 @@
                     </tbody>
                 </table>
                 <div class="centerlistViewAllCont">
-                    <form name="viewall" method="post" action="${pageContext.request.contextPath}/봉사모집리스트" encType="utf-8">
+                    <form name="viewall" method="get" action="${pageContext.request.contextPath}/centerVolunteerList" encType="utf-8">
+                        <input type="hidden" name="centerId" value="${centerId}">
                         <button type="submit" class="centerlistViewAll">전체보기&gt;</button>
                     </form>
                 </div>
@@ -220,7 +249,7 @@
                             <th>ID</th>
                             <th>이름</th>
                             <th>전화번호</th>
-                            <th>상세내용보기</th>
+                            <th>방문날짜</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -231,17 +260,12 @@
                                 </tr>
                             </c:when>
                             <c:otherwise>
-                                <c:forEach var="vo" items="${adoptionList}">
+                                <c:forEach var="vo" items="${adoptionList}" end="4">
                                     <tr>
                                         <td>${vo.userId}</td>
                                         <td>${vo.name}</td>
                                         <td>${vo.phone}</td>
-                                        <td>
-                                            <form method="get" action="${pageContext.request.contextPath}/AdoptionMain.jsp">
-                                                <input type="hidden" name="userId" value="${vo.userId}">
-                                                <button type="submit">상세내용보기</button>
-                                            </form>
-                                        </td>
+                                        <td>${vo.visit_date}</td>
                                     </tr>
                                 </c:forEach>
                             </c:otherwise>
@@ -249,7 +273,8 @@
                     </tbody>
                 </table>
                 <div class="centerlistViewAllCont">
-                    <form name="viewall" method="post" action="${pageContext.request.contextPath}/봉사모집리스트" encType="utf-8">
+                    <form action="/centerAdoptionList" method="get" encType="utf-8">
+                        <input type="hidden" name="centerId" value="${centerId}">
                         <button type="submit" class="centerlistViewAll">전체보기&gt;</button>
                     </form>
                 </div>
