@@ -33,21 +33,21 @@
     <c:set var="careInfo" value="${requestScope.careInfo}" />
     <c:forEach var="careInfoMap" items="${careInfo}">
         <tr>
-            <td class="volunteerDetailTd">보호소 명</td>
+            <td class="volunteerDetailTh">보호소 명</td>
             <td>${careInfoMap.careNm}</td>
         <tr>
 
         <tr>
-            <td class="volunteerDetailTd">주소</td>
+            <td class="volunteerDetailTh">주소</td>
             <td>${careInfoMap.careAddr}</td>
         <tr>
 
         <tr>
-            <td class="volunteerDetailTd">대표번호</td>
+            <td class="volunteerDetailTh">대표번호</td>
             <td>${careInfoMap.careTel}</td>
         </tr>
         <tr>
-            <td class="volunteerDetailTd">구조대상동물</td>
+            <td class="volunteerDetailTh">구조대상동물</td>
             <td>${careInfoMap.saveTrgtAnimal}</td>
         </tr>
         </c:forEach>
@@ -103,54 +103,48 @@
       </div>
     </div>
   </div>
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=28e5917c9e3ed76a6b445116b2d205a7&libraries=services"></script>
+    <script>
+        var mapContainer = document.getElementById('map'),
+            mapOption = {
+                center: new kakao.maps.LatLng(33.450701, 126.570667),
+                level: 3
+            };
 
 
-    	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=28e5917c9e3ed76a6b445116b2d205a7&libraries=services"></script>
-    	<script>
-    		var mapContainer = document.getElementById('map'),
-                mapOption = {
-                    center: new kakao.maps.LatLng(33.450701, 126.570667),
-                    level: 3
-                };
+        var map = new kakao.maps.Map(mapContainer, mapOption);
 
 
-            var map = new kakao.maps.Map(mapContainer, mapOption);
+        var geocoder = new kakao.maps.services.Geocoder();
 
 
-            var geocoder = new kakao.maps.services.Geocoder();
+        geocoder.addressSearch("${requestScope.careInfo[0].careAddr}", function(result, status) {
 
 
-            geocoder.addressSearch("${requestScope.careInfo[0].careAddr}", function(result, status) {
+             if (status === kakao.maps.services.Status.OK) {
+
+                var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
 
 
-                 if (status === kakao.maps.services.Status.OK) {
-
-                    var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
-
-
-                    var marker = new kakao.maps.Marker({
-                        map: map,
-                        position: coords
-                    });
+                var marker = new kakao.maps.Marker({
+                    map: map,
+                    position: coords
+                });
 
 
-                    var infowindow = new kakao.maps.InfoWindow({
-                        content: '<div style="width:150px;text-align:center;padding:6px 0;">${requestScope.careInfo[0].careNm}</div>'
-                    });
-                        infowindow.open(map, marker);
+                var infowindow = new kakao.maps.InfoWindow({
+                    content: '<div style="width:150px;text-align:center;padding:6px 0;">${requestScope.careInfo[0].careNm}</div>'
+                });
+                infowindow.open(map, marker);
 
-
-                        map.setCenter(coords);
-                        }
-                    });
-                    		var mapbtn = document.getElementById('map-btn');
-                    		mapbtn.addEventListener("click", function() {
-                    		var findRoad = $("#findRoad").val();
-                    			window.location = "https://map.kakao.com/?target=car&eName=${requestScope.careInfo[0].careAddr}&sName="+findRoad;
-                    		})
-
-
-    	</script>
-
+                map.setCenter(coords);
+             }
+        });
+        var mapbtn = document.getElementById('map-btn');
+        mapbtn.addEventListener("click", function() {
+        var findRoad = $("#findRoad").val();
+            window.location = "https://map.kakao.com/?target=car&eName=${requestScope.careInfo[0].careAddr}&sName="+findRoad;
+        });
+    </script>
 </body>
 </html>

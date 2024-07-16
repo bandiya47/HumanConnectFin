@@ -14,7 +14,7 @@
     <title>HumanConnect 공지사항</title>
     <link rel="stylesheet" href="./css/style.css">
 </head>
-<body class="noticeListBody">
+<body>
     <jsp:include page="neviCenter.jsp" />
     <!-- 상세 공지글 -->
     <div class="noticeDetailBody" id="noticeDetail" style="display:block;" action="${pageContext.request.contextPath}/viewNoticeDetail.do">
@@ -22,7 +22,7 @@
             <form id="noticeDetailForm" method="post" enctype="multipart/form-data">
                 <div class="centerNoticeDetailDiv">
                     <h2>공지사항 상세페이지</h2>
-                    <div class="buttonContainer3">
+                    <div>
                         <table id="noticeDetailTable" class="noticeDetailTable">
                             <tbody>
                                 <tr height="15%">
@@ -31,12 +31,10 @@
                                         ${noticeList.nTitle}
                                     </td>
                                 </tr>
-                                <tr height="75%">
+                                <tr>
                                     <th>내용</th>
                                     <td id="detailContent">
-                                        <pre>
-                                            ${noticeList.nContent}
-                                        </pre>
+                                       <p id="centerDetailContent" name="nContent">${noticeList.nContent}</p>
                                     </td>
                                 </tr>
                                 <tr height="10%">
@@ -45,7 +43,7 @@
                                 </tr>
                             </tbody>
                         </table>
-                        <button type="button" onclick="goNoticeList()">목록</button>
+                        <button class="noticeListBtn" type="button" onclick="goNoticeList()">목록</button>
                     </div>
                 </div>
             </form>
@@ -56,8 +54,11 @@
         function goNoticeList() {
                   window.location.href = "${pageContext.request.contextPath}/centerNoticeList.do?centerId=${centerId}";
         }
-
-
+        const textarea = textareaRef.current;
+        const hiddenTextarea = hiddenTextareaRef.current;
+        hiddenTextarea.value = value;
+        hiddenTextarea.style.height = 'auto';
+        textarea.style.height = `${hiddenTextarea.scrollHeight}px`;
     </script>
 </body>
 </html>

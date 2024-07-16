@@ -120,7 +120,7 @@
                 <div class="adminNoticeDetailDiv">
                     <h2>공지사항 상세페이지</h2>
                     <div class="buttonContainer3">
-                        <table id="adminNoticeDetailTable" class="noticeDetailTable">
+                        <table id="adminNoticeDetailTable" class="adminNoticeDetailTable">
                             <tbody>
                                 <tr>
                                     <th width="20%">제목</th>

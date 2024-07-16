@@ -36,19 +36,19 @@
                             <tbody>
                                 <tr>
                                     <td>
-                                        <a href="${pageContext.request.contextPath}/viewVolNoticeDetail.do?nNumber=${item.nNumber}&userId=${userId}">
+                                        <a href="${pageContext.request.contextPath}/viewCenterNoticeDetail.do?nNumber=${item.nNumber}&centerId=${centerId}">
                                         ${item.nNumber}
                                       </td>
                                       <td>
-                                        <a href="${pageContext.request.contextPath}/viewVolNoticeDetail.do?nNumber=${item.nNumber}&userId=${userId}">
+                                        <a href="${pageContext.request.contextPath}/viewCenterNoticeDetail.do?nNumber=${item.nNumber}&centerId=${centerId}">
                                         ${item.nTitle}
                                       </td>
                                       <td>
-                                        <a href="${pageContext.request.contextPath}/viewVolNoticeDetail.do?nNumber=${item.nNumber}&userId=${userId}">
+                                        <a href="${pageContext.request.contextPath}/viewCenterNoticeDetail.do?nNumber=${item.nNumber}&centerId=${centerId}">
                                         ${item.uId}
                                       </td>
                                       <td>
-                                        <a href="${pageContext.request.contextPath}/viewVolNoticeDetail.do?nNumber=${item.nNumber}&userId=${userId}">
+                                        <a href="${pageContext.request.contextPath}/viewCenterNoticeDetail.do?nNumber=${item.nNumber}&centerId=${centerId}">
                                         ${item.nDate}
                                       </td>
                                 </tr>

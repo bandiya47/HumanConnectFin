@@ -14,44 +14,40 @@
     <title>HumanConnect 공지사항</title>
     <link rel="stylesheet" href="./css/style.css">
 </head>
-<body class="noticeListBody">
+<body>
     <jsp:include page="nevi.jsp" />
-    <!-- 상세 공지글 -->
-    <div class="noticeDetailBody" id="noticeDetail" style="display:block;"
-                action="${pageContext.request.contextPath}/viewNoticeDetail.do">
-        <div class="volNoticeDetailWholeContainer">
-            <form id="noticeDetailForm" method="post" enctype="multipart/form-data">
-                <div class="volNoticeDetailDiv">
-                    <h2>공지사항 상세페이지</h2>
-                    <div class="buttonContainer3">
-                        <table id="noticeDetailTable" class="noticeDetailTable">
-                            <tbody>
-                                <tr height="15%">
-                                    <th width="10%">제목</th>
-                                    <td id="detailTitle" width="90%">
-                                        ${noticeList.nTitle}
-                                    </td>
-                                </tr>
-                                <tr height="75%">
-                                    <th>내용</th>
-                                    <td id="detailContent">
-                                        <pre>
-                                            ${noticeList.nContent}
-                                        </pre>
-                                    </td>
-                                </tr>
-                                <tr height="10%">
-                                    <th>첨부 파일</th>
-                                    <td id="detailAttach">${noticeList.nAttachPath}</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <button type="button" onclick="goNoticeList()">목록</button>
+    <div class="volNoticeDetailContainer">
+        <div>
+                <form id="noticeDetailForm" method="post" enctype="multipart/form-data">
+                    <div class="volNoticeDetailDiv">
+                        <h2>공지사항 상세페이지</h2>
+                        <div>
+                            <table id="noticeDetailTable" class="noticeDetailTable">
+                                <tbody>
+                                    <tr height="15%">
+                                        <th width="10%">제목</th>
+                                        <td id="detailTitle" width="90%">
+                                            ${noticeList.nTitle}
+                                        </td>
+                                    </tr>
+                                    <tr height="75%">
+                                        <th>내용</th>
+                                        <td id="detailContent">
+                                           <p id="centerDetailContent" name="nContent">${noticeList.nContent}</p>
+                                        </td>
+                                    </tr>
+                                    <tr height="10%">
+                                        <th>첨부 파일</th>
+                                        <td id="detailAttach">${noticeList.nAttachPath}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <button class="noticeListBtn" type="button" onclick="goNoticeList()">목록</button>
+                        </div>
                     </div>
-                </div>
-            </form>
+                </form>
+            </div>
         </div>
-    </div>
 
     <script type="text/javascript">
         function goNoticeList() {

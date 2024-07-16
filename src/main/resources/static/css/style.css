@@ -40,7 +40,7 @@ footer, header, hgroup, menu, nav, section {
 body {
 	line-height: 1;
 	margin: 0 auto;
-
+    background-color: #FAECC5;
 }
 ol, ul {
 	list-style: none;
@@ -71,6 +71,7 @@ table {
 header{
     margin: 0 auto -100px;
     width: 1250px;
+    background-color: #FAECC5;
 }
 
 .neviFor{
@@ -85,6 +86,7 @@ header{
     height: 280px;
     z-index: 1; 
     position: relative;
+    background-color: #FAECC5;
     >img{
         width: 1250px;
         height: 280px;
@@ -184,7 +186,9 @@ header{
         }
     }
 }
-
+.tempTd4 {
+    text-align: left;
+}
 /* .mainBack{
     background-image: url(../img/imsiback.jpg);
     width: 1250px;
@@ -207,12 +211,12 @@ header{
 
 .neviCenterBack{
     width: 1250px;
-    height: 280px;						/*네비뒷배경 크기 1 -2랑 맞춰야함*/
+    height: 250px;						/*네비뒷배경 크기 1 -2랑 맞춰야함*/
     z-index: 1; 
     position: relative;
     >img{
         width: 1250px;
-        height: 280px;					/*네비뒷배경 크기 2 -1이랑 맞춰야함*/
+        height: 250px;					/*네비뒷배경 크기 2 -1이랑 맞춰야함*/
     }
 }
 
@@ -287,7 +291,7 @@ header{
         }
     }
     span:nth-child(2){
-        margin-left: 190px;                               /* 네비바 항목 위치 */
+        margin-left: 180px;                               /* 네비바 항목 위치 */
         align-items: center;
         >ul{
             list-style-type: none;                        /* 형식 점을 없애기 위해 설정 */
@@ -496,7 +500,7 @@ header{
     background-color: ##FAECC5;
 }
 .centerMain {
-    width : 1100px;
+    width : 1000px;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
@@ -949,6 +953,7 @@ header{
             color: white;
             font-weight: bold;
             padding: 15px;
+            text-align: center;
         }
 
         .mypageMainFirstMiddle tbody > tr > td {
@@ -2037,8 +2042,8 @@ vertical-align:middle;
 }
 .volunteerListWholeContainer {
    text-align: center;
-   margin: auto;
-   width: 980px;
+   margin: 0 auto;
+   width: 1100px;
    /*border: 1px black solid;*/
    /* background-color:red; */
 }
@@ -2112,14 +2117,15 @@ vertical-align:middle;
 
 /* 구인리스트 */
 .volunteerListVolRecruitList>p {
-	width:980px;
+	width:1100px;
  	border: none;
-    border-bottom: 2px solid rgb(53, 110, 119);
+    border-bottom: 2px solid black;
    text-align: left;
    padding: 10px 0px 10px 0px;
    margin: 20px auto;
    font-weight:bold;
-   font-size:25px;
+   font-size:40px;
+   font-family: 'NEXONFootballGothicBA1';
 }
 
 .volunteerListvolunteerRecruitList>table {
@@ -2134,7 +2140,7 @@ vertical-align:middle;
         width: 100%;
         border-collapse: collapse;
         margin: 20px auto;
-        font-size: 15px;
+        font-size: 18px;
         text-align: center;
 }
 .volListFTable a {
@@ -2151,6 +2157,8 @@ vertical-align:middle;
     background-color: #463933;
     color : white;
     vertical-align:middle;
+    text-align: center;
+    font-size: 18px;
 }
 .volListNo{
     text-align: center;
@@ -3025,13 +3033,16 @@ vertical-align:middle;
 
         .adminMemDetailDetails-box table, th, td {
             border: 1px solid #000;
+            text-align: left;
         }
 
         .adminMemDetailDetails-box th, td {
             padding: 10px;
             text-align: left;
         }
-
+        .adminMemDetailDetails-box input[type="password"]{
+            text-align: left;
+        }
         .adminMemDetailDetails-box input[type="text"] {
             width: 100%;
             border: none;
@@ -3911,13 +3922,30 @@ vertical-align:middle;
 /**volNoticeList 시작~~*****************************************************************************************************************/
 .noticeListBody{
  	margin: 0 auto;
+    width: 1100px;
+    font-family: 'MangoDdobak-B';
+    background-color: #FAECC5;
+    text-align: center;
+}
+.volnoticeDetailBody {
+    margin: 0 auto;
     padding: 0;
     font-family: 'MangoDdobak-B';
+    background-color: #FAECC5;
+    width: 1100px;
+    display: inline-block;
 }
 .volNoticeListWholeContainer {
     text-align: center;
-    margin: auto;
     width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.centerNoticeDetailDiv {
+    width: 1100px;
+    margin: 0 auto;
 }
 .volNoticeListDiv>h2,
 .volNoticeDetailDiv>h2,
@@ -3928,9 +3956,15 @@ vertical-align:middle;
     border-bottom: 1px solid black;
     text-align: left;
     padding: 5px;
-    margin: 20px auto 20px;
+    margin: 0px auto 20px;
     font-weight:bold;
     font-size:40px;
+    padding-top: 20px;
+}
+.volNoticeDetailDiv {
+    background-color: #FAECC5;
+    margin: 0 auto;
+    width: 1100px;
 }
 .volNoticeListTable {
     width: 100%;
@@ -3942,6 +3976,7 @@ vertical-align:middle;
     color : white;
     font-weight : bold;
     padding : 15px;
+    text-align: center;
 }
 .volNoticeListTable>tbody>tr>td{
     font-family: 'MangoDdobak-B';
@@ -3959,13 +3994,18 @@ vertical-align:middle;
 .volNoticeListTable tbody tr:hover {
   background-color: rgb(256,236,203);
 }
-
+.volNoticeDetailContainer {
+    margin: 0 auto;
+    width: 1100px;
+}
 /**volNoticeList 끝~~*****************************************************************************************************************/
 /**centerNoticeList 시작~~*****************************************************************************************************************/
 .noticeListBody{
  	margin: 0 auto;
     padding: 0;
     font-family: 'MangoDdobak-B';
+    background-color: #FAECC5;
+    width: 1100px;
 }
 .centerNoticeListWholeContainer {
     text-align: center;
@@ -3994,6 +4034,7 @@ vertical-align:middle;
     color : white;
     font-weight : bold;
     padding : 15px;
+    text-align: center;
 }
 .centerNoticeListTable>tbody>tr>td{
     font-family: 'MangoDdobak-B';
@@ -4019,7 +4060,7 @@ vertical-align:middle;
     margin: 0 auto;
     padding: 0;
     background: white;
-    width: 1250px;
+    width: 1100px;
 }
 
 .adminNoticeListBody {
@@ -4027,7 +4068,7 @@ vertical-align:middle;
     margin: 0 auto;
     padding: 0;
     background: white;
-    width: 1250px;
+    width: 1100px;
     height: 600px;
 }
 
@@ -4295,13 +4336,19 @@ input::placeholder {
  	margin: 0 auto;
     padding: 0;
     font-family: 'MangoDdobak-B';
+    background-color: #FAECC5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 1100px;
 }
 .adminNoticeDetailWholeContainer,
 .volNoticeDetailWholeContainer,
 .centerNoticeDetailWholeContainer {
     text-align: center;
-    margin: auto;
-    width: 1000px;
+    margin: 0 auto;
+    width: 1100px;
+    background-color: #FAECC5;
 }
 
 .adminNoticeDetailDiv h2{
@@ -4317,7 +4364,7 @@ input::placeholder {
 .noticeDetailTable, .centerNoticeDetailTable {
    margin: 5px;
    text-align: center;
-   width: 100%;
+   width: 1100px;
    margin: 2px;
    border-collapse: collapse;
    font-size: 15px;
@@ -4352,11 +4399,23 @@ input::placeholder {
 #detailTitle.editable, #detailContent.editable {
     border: 1px solid #000; /* 수정 모드에서만 보더 적용 */
 }
-.noticeDetailTable th {
+.noticeDetailTable tbody th {
     font-weight: 700;
     font-size: 22px;
     vertical-align: middle;
     border-color: rgb(221,221,221);
+    text-align: center;
+    background-color: #463933;
+    color: white;
+}
+.adminNoticeDetailTable th{
+    font-weight: 700;
+    font-size: 22px;
+    vertical-align: middle;
+    border-color: rgb(221,221,221);
+    text-align: center;
+    background-color: #2b5d7c;
+    color: white;
 }
 .centerNoticeDetailTable, tr, td {
     background-color: white;
@@ -4376,7 +4435,21 @@ pre {
     font-family: 'MangoDdobak-B';
     overflow: hidden;
     resize: none;
+    border: 1px solid #a0a0a0;
+    border-right: none;
+}
+#centerDetailContent {
+    vertical-align: middle;
+    text-align: left;
+    padding-left: 30px;
+    font-size: 20px;
+    height: auto;
+    width: 700px;
+    font-family: 'MangoDdobak-B';
+    overflow: hidden;
+    resize: none;
     border: none;
+    white-space:pre-wrap;
 }
 #detailContent.editable {
     border: 1px solid #000; /* 수정 모드에서만 보더 적용 */
@@ -4463,7 +4536,25 @@ pre {
 .buttonContainer3>button:active {
     background-color: rgb(253,111,43);
 }
-
+.noticeListBtn {
+    font-family: 'MangoDdobak-B';
+    font-size: 20px;
+    font-style: bold;
+    border-style: none;
+    width: 80px;
+    height: 40px;
+    color: white;
+    background-color: #EC9343;
+    cursor: pointer;
+    vertical-align: middle;
+    border-radius: 4px;
+    margin: 0 auto;
+    margin-top: 10px;
+    display: block;
+}
+.noticeListBtn:hover {
+    background-color: #D87A2B;
+}
 /**  adminNoticeDetail 끝~~*****************************************************************************************************************/
 /** 조인 리절트 시작~~***************************************************************************************************************/
 .resultLogo {

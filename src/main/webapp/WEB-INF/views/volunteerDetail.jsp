@@ -15,7 +15,7 @@
                       if(job == "View"){
 
                             $( 'mmnt' ).html( '<h1>'+"${volunteerList[0].vMaxAmnt}"+'</h1>' );
-                            $( 'file' ).html( '<h1>'+"${volunteerList[0].vUploadFilePath}"+'</h1>' );
+                            $( 'file' ).html( '<h1><a href="/volDownload?imageFileName=${volunteerList[0].vUploadFilePath}">${volunteerList[0].vUploadFilePath}</a></h1>' );
                             $( 'info' ).html( '<h1>'+"${volunteerList[0].vInfo}"+'</h1>' );
 
                       }else if(job == "Regist"){
@@ -25,7 +25,7 @@
 
                         }else if(job == "ViewReg"){
                             $( 'mmnt' ).html( '<h1>'+"${volunteerList[0].vMaxAmnt}"+'</h1>' );
-                            $( 'file' ).html( '<h1>'+"${volunteerList[0].vUploadFilePath}"+'</h1>' );
+                            $( 'file' ).html( '<h1><a href="/volDownload?imageFileName=${volunteerList[0].vUploadFilePath}">${volunteerList[0].vUploadFilePath}</a></h1>' );
                             $( 'info' ).html( '<h1>'+"${volunteerList[0].vInfo}"+'</h1>' );
                         }else if(job == "Modify"){
                             var vInfo="${volunteerList[0].vInfo}";
@@ -141,7 +141,6 @@
      <c:if test="${job == 'Modify'}">
      <form name="volunteerDetailMod" method="post" action="${pageContext.request.contextPath}/updateVolunteerDetail.do" encType="UTF-8">
      </c:if>
-
     <h3>봉사 상세</h3>
     <div>
         <h2>${volunteerList[0].vTitle}</h2>
@@ -170,7 +169,6 @@
                 <td class="volunteerDetailTh">센터명</td>
                 <td>${volunteerList[0].cName}</td>
             </tr>
-
             <tr>
                 <td class="volunteerDetailTh">봉사장소</td>
                 <td colspan="3">${volunteerList[0].cAddr1} ${volunteerList[0].cAddr2}</td>
@@ -183,16 +181,9 @@
         <div class="volunteerDetailDiv2">
             <info><textarea id="info" name="vInfo" placeholder="상세내용을 입력해주세요."></textarea></info>
         </div>
-
-        </div>
+    </div>
     <div class="button-container" style="border:none">
-                    <form action="/volunteerList.do" method="GET">
-                        <button type="submit" class="volunteerDetailBtn" style="margin-right:10px;">목록으로</button>
-                        <input type="hidden" name="userId" value="${userId}">
-                    </form>
-
-
-        <c:if test="${userType == 1}">
+    <c:if test="${userType == 1}">
             <c:if test="${job == 'View'}">
                 <form name="volunteerDetailReg" method="post" action="${pageContext.request.contextPath}/regVolunteerDetail.do" encType="UTF-8">
                 <input class="volunteerDetailBtn" type="submit" value="신청하기">
@@ -218,20 +209,14 @@
                 </form>
             </c:if>
         </c:if>
-
-
    		<c:if test="${userType ==2}">
         	<button type="button" class="volunteerDetailBtn"  value="목록으로" onClick="location.href='recruitlist'">목록으로</button>
     	</c:if>
-
-
-
-</div>
-
-
+            <form action="/mypageVol" method="GET">
+                <button type="submit" class="volunteerDetailBtn" style="margin-right:10px;">목록으로</button>
+                <input type="hidden" name="userId" value="${userId}">
+            </form>
+        </div>
     </div>
-
-
 </body>
-    </html>
 </html>

@@ -105,11 +105,11 @@
                         </c:choose>
                     </tbody>
                 </table>
-            </div>
-             <div class="pagination">
-                <c:forEach var="i" begin="1" end="${totalPages}">
-                    <a href="${pageContext.request.contextPath}/centerVolunteerList?centerId=${centerId}&page=${i}&size=5" class="${currentPage == i ? 'active' : ''}">${i}</a>
-                </c:forEach>
+                <div class="pagination">
+                    <c:forEach var="i" begin="1" end="${totalPages}">
+                        <a href="${pageContext.request.contextPath}/centerVolunteerList?centerId=${centerId}&page=${i}&size=5" class="${currentPage == i ? 'active' : ''}">${i}</a>
+                    </c:forEach>
+                </div>
             </div>
         </section>
     </main>

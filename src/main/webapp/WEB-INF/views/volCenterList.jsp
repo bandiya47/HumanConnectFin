@@ -19,7 +19,7 @@
 
                         }else if(job == "ViewReg"){
                             $( 'mmnt' ).html( '<h1>'+"${volunteerList[0].vMaxAmnt}"+'</h1>' );
-                            $( 'file' ).html( '<h1>'+"${volunteerList[0].vUploadFilePath}"+'</h1>' );
+                            $( 'file' ).html( '<h1><a href="/volCLDownload?imageFileName=${volunteerList[0].vUploadFilePath}">${volunteerList[0].vUploadFilePath}</a></h1>' );
                             $( 'info' ).html( '<h1 style="text-align:left;">'+"${volunteerList[0].vInfo}"+'</h1>' );
 
                             $('#vDate').remove();
@@ -126,7 +126,7 @@
     </head>
     <html>
     <body>
-	 <jsp:include page="neviCenter.jsp" />
+	 <jsp:include page="nevi.jsp" />
 
      <div class="volunteerDetailDiv">
      <c:if test="${job == 'Regist'}">
@@ -148,7 +148,7 @@
         <h2>${careInfo[0].c_name}${volunteerList[0].cName}</h2>
         <table class="volunteerDetailTable">
             <tr>
-                <td class="volunteerDetailTd">봉사기간</td>
+                <td class="volunteerDetailTh">봉사기간</td>
                 <td>
                 <div id="vDate">
                         <input id="startDate" type="date" name="vStartDate"><vStartDate></vStartDate>
@@ -158,7 +158,7 @@
                 </td>
             </tr>
             <tr>
-                <td class="volunteerDetailTd">봉사시간</td>
+                <td class="volunteerDetailTh">봉사시간</td>
                 <td>
                 <div id="vTime">
                         <input id="startTime" type="time" name="vStartTime">
@@ -168,14 +168,14 @@
                 </td>
             </tr>
             <tr>
-                <td class="volunteerDetailTd">신청인원</td>
+                <td class="volunteerDetailTh">신청인원</td>
                 <td><mmnt><input id="vMaxAmnt" class="volunteerRegAmnt" name="vMaxAmnt" type="text" placeholder="신청인원을 입력해주세요."></mmnt></td>
             </tr>
 
 
 
             <tr>
-                <td class="volunteerDetailTd">첨부파일</td>
+                <td class="volunteerDetailTh">첨부파일</td>
                 <td colspan="3"><file><input id="file" type="file" name="vUploadFilePath"></file></td>
             </tr>
         </table>
@@ -186,11 +186,6 @@
         </div>
 
     <div class="button-container" style="border:none">
-                    <form action="/viewCenterList.do" method="GET">
-                        <button type="submit" class="volunteerDetailBtn" >목록으로</button>
-                        <input type="hidden" name="userId" value="${userId}">
-                    </form>
-
             <c:if test="${job == 'View'}">
                 <form name="volunteerDetailReg" method="post" action="${pageContext.request.contextPath}/regVolunteerDetail.do" encType="UTF-8">
                 <input class="volunteerDetailBtn" type="submit" value="신청하기">
@@ -215,10 +210,13 @@
                 <input type="hidden" name="userId" value="${userId}">
                 </form>
             </c:if>
-
+            <form action="/detailCenterList.do" method="GET">
+                <button type="submit" class="volunteerDetailBtn">돌아가기</button>
+                <input type="hidden" name="userId" value="${userId}">
+                <input type="hidden" name="careNm" value="${careInfo[0].c_name}">
+            </form>
+        </div>
     </div>
-</div>
 
 </body>
-    </html>
 </html>

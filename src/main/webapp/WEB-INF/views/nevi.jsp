@@ -1,5 +1,3 @@
-
-
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="ko">
@@ -24,7 +22,6 @@
     <div class="neviFor">
         <div class="neviTop">   <!--최상단-->
             <div>
-
                 <form action="logout" method="post">
                    <button type="submit" value="">로그아웃</button>
                 </form>
@@ -32,8 +29,6 @@
                     <input type="hidden" name="userId" value="${userId}">
                     <button type="submit" value="">마이페이지</button>
                  </form>
-
-
             </div>
         </div>
 
@@ -86,13 +81,5 @@
         </div>
     </div>
 </header>
-
-
-<!--여기부터 아래 내용 정상적용 되는지 확인-->
-<div class="main"></div>
-
-
-
-
 </body>
 </html>

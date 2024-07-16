@@ -44,7 +44,7 @@
                 </tr>
                 <tr>
                     <td>비밀번호</td>
-                    <td colspan="2">
+                    <td colspan="2" class="tempTd4">
                         <input type="password" id="c_pwd" value="${centerMember.c_pwd}" readonly>
                         <button type="button" class="resetButton" onclick="resetCenterPW('${centerMember.c_id}')">초기화</button>
                     </td>

@@ -36,7 +36,7 @@
 
         <div class="neviCenter">      <!--네비게이션-->
             <span>              <!--로고-->
-                <img src="${pageContext.request.contextPath}/img/logo.png" alt="" class="" onclick="goMain('${centerId}')"></span>
+                <img src="${pageContext.request.contextPath}/img/logo.png" alt="" class="" style="cursor:pointer" onclick="goMain('${centerId}')"></span>
             <span>
                 <ul>            <!--네비게이션바-->
                     <li>
@@ -91,13 +91,5 @@
         </div>
     </div>
 </header>
-
-
-<!--여기부터 아래 내용 정상적용 되는지 확인-->
-<div class="main"></div>
-
-
-
-
 </body>
 </html>

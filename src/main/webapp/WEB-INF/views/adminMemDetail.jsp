@@ -53,7 +53,7 @@
                 </tr>
                 <tr>
                     <td>비밀번호</td>
-                    <td colspan="2"><input type="password" id="u_pwd" value="${member.u_pwd}" readonly></td>
+                    <td colspan="2" class="tempTd4"><input type="password" id="u_pwd" value="${member.u_pwd}" readonly></td>
                 </tr>
                 <tr>
                     <td>주소</td>

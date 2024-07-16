@@ -47,26 +47,41 @@
                     <thead>
                         <tr>
                             <th width="6%">번호</th>
-                            <th width="25%">봉사명</th>
+                            <th width="22%">봉사명</th>
                             <th width="12%">시작일</th>
                             <th width="12%">종료일</th>
                             <th width="12%">모집시작일</th>
                             <th width="12%">모집마감일</th>
-                            <th width="6%">봉사구분</th>
-                            <th width="6%">모집인원</th>
-                            <th width="6%">신청인원</th>
+                            <th width="10%">봉사</th>
+                            <th width="8%">모집</th>
+                            <th width="8%">신청</th>
                         </tr>
                     </thead>
                     <tbody>
                         <c:forEach var="item" items="${volunteerList}">
                             <tr>
-                                <td class="volListNo"><a href="${pageContext.request.contextPath}/viewVolunteerDetail.do?userId=${userId}&v_no=${item.vNo}">${item.vNo}</a></td>
-                                <td><a href="${pageContext.request.contextPath}/viewVolunteerDetail.do?userId=${userId}&v_no=${item.vNo}">${item.vTitle}</a></td>
+                                <td class="volListNo">
+                                    <a href="${pageContext.request.contextPath}/viewVolunteerDetail.do?userId=${userId}&v_no=${item.vNo}">${item.vNo}</a>
+                                </td>
+                                <td>
+                                    <a href="${pageContext.request.contextPath}/viewVolunteerDetail.do?userId=${userId}&v_no=${item.vNo}">${item.vTitle}</a>
+                                </td>
                                 <td>${item.vStartDate}</td>
                                 <td>${item.vEndDate}</td>
                                 <td>${item.vRstartDate}</td>
                                 <td>${item.vRendDate}</td>
-                                <td class="volListSer">${item.serviceCode}</td>
+                                <td class="volListSer">
+                                    <c:choose>
+                                        <c:when test="${item.serviceCode == 1}">청소/배식</c:when>
+                                        <c:when test="${item.serviceCode == 2}">산책</c:when>
+                                        <c:when test="${item.serviceCode == 3}">목욕</c:when>
+                                        <c:when test="${item.serviceCode == 4}">사진촬영</c:when>
+                                        <c:when test="${item.serviceCode == 5}">미용</c:when>
+                                        <c:when test="${item.serviceCode == 6}">이동</c:when>
+                                        <c:when test="${item.serviceCode == 7}">의료</c:when>
+                                        <c:otherwise>알 수 없음</c:otherwise>
+                                    </c:choose>
+                                </td>
                                 <td>${item.vRegAmnt}명</td>
                                 <td>${item.vMaxAmnt}명</td>
                             </tr>
