@@ -67,10 +67,7 @@
                     <form name="updateCenterPrivacy" method="post" action="${pageContext.request.contextPath}/centerUpdatePrivacy">
                         <input type="hidden" name="centerId" value="${centerId}">
                         <div class="mypagePrivacyCheckBtnC">
-                            <button type="submit" name="edit" class="mypagePrivacyCheckBtn">
-
-                                수정
-                            </button>
+                            <button type="submit" name="edit" class="mypagePrivacyCheckBtn">수정</button>
                         </div>
                     </form>
 

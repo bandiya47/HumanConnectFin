@@ -1226,7 +1226,7 @@ vertical-align:middle;
 
     .mypagePrivacyCheckBtn {
         display: flex;
-        align-items : center;
+        align-items : right;
         justify-content: center;
         font-family: 'MangoDdobak-B';
         padding: 10px;
@@ -1240,12 +1240,17 @@ vertical-align:middle;
         margin-right:5px;
         width:80px;
         font-size:16px;
+        float: right;
         >img{
             width: 15px;
             margin-right: 5px;
         }
     }
-    
+    .mypagePrivacyCheckBtnC{
+        width: 605px;
+        margin: 0 auto;
+    }
+
     .mypagePrivacyCheckBtn:hover {
         background-color:#D87A2B;
     }
@@ -1254,8 +1259,8 @@ vertical-align:middle;
 
     
     .mypageChkBtnContainer{
-        display: flex;
-        margin-left:600px;
+        width: 610px;
+        margin: 0 auto;
     }
 
 

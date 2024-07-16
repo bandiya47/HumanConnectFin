@@ -95,20 +95,11 @@
 	            <div class="mypageChkBtnContainer">
                     <form name="privacyEdit" method="post" action="${pageContext.request.contextPath}/updatePrivacy">
                         <input type="hidden" name="userId" value="${userId}">
-
-                            <button type="submit" name="edit" class="mypagePrivacyCheckBtn">
-
-                                수정
-                            </button>
-
+                        <button type="submit" name="edit" class="mypagePrivacyCheckBtn">수정</button>
                     </form>
                     <form name="removePrivacy" method="post" action="${pageContext.request.contextPath}/removePrivacy" onsubmit="return confirmDelete();">
                         <input type="hidden" name="userId" value="${userId}">
-
-                            <button type="submit" name="edit" class="mypagePrivacyCheckBtn">
-                                삭제
-                            </button>
-
+                        <button type="submit" name="edit" class="mypagePrivacyCheckBtn">삭제</button>
                     </form>
                 </div>
 	        </div>
