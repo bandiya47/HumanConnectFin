@@ -1,10 +1,10 @@
 package dc.human.gbnb.humanConnect.volunteer.service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import dc.human.gbnb.humanConnect.volunteer.vo.VolAnimalKindListVO;
 import dc.human.gbnb.humanConnect.volunteer.vo.VolAnimalListVO;
 import dc.human.gbnb.humanConnect.volunteer.vo.VolAnimalSidoListVO;
 import dc.human.gbnb.humanConnect.volunteer.vo.VolAnimalSigunguListVO;
-import dc.human.gbnb.humanConnect.volunteer.vo.VolAnimalKindListVO;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
@@ -72,7 +72,7 @@ public class VolAnimalListServiceImpl implements VolAnimalListService {
                 animalList.add(animal);
             }
 
-            System.out.println("A : "+animalList);
+            System.out.println("A : " + animalList);
             return animalList;
         } catch (Exception e) {
             e.printStackTrace();
@@ -166,7 +166,7 @@ public class VolAnimalListServiceImpl implements VolAnimalListService {
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             conn.setRequestMethod("GET");
 
-            BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream(),StandardCharsets.UTF_8));
+            BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream(), StandardCharsets.UTF_8));
             String inputLine;
             StringBuilder content = new StringBuilder();
             while ((inputLine = in.readLine()) != null) {
@@ -210,7 +210,7 @@ public class VolAnimalListServiceImpl implements VolAnimalListService {
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             conn.setRequestMethod("GET");
 
-            BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream(),StandardCharsets.UTF_8));
+            BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream(), StandardCharsets.UTF_8));
             String inputLine;
             StringBuilder content = new StringBuilder();
             while ((inputLine = in.readLine()) != null) {
