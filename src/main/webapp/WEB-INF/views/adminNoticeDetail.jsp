@@ -108,7 +108,7 @@
         <ul>
             <li><a href="${contextPath}/adminMain">봉사회원정보 조회</a></li>
             <li><a href="${contextPath}/adminCenterMem">센터회원정보 조회</a></li>
-            <li class="active"><a href="${contextPath}/adminNoticeList.do">고객센터</a></li>
+            <li class="active"><a href="${contextPath}/adminNoticeList.do">공지사항</a></li>
         </ul>
     </div>
     <!--상세 공지글-->

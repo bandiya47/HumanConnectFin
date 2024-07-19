@@ -41,7 +41,7 @@
         <ul>
             <li class="active"><a href="${pageContext.request.contextPath}/adminMain">봉사회원정보 조회</a></li>
             <li><a href="${pageContext.request.contextPath}/adminCenterMem">센터회원정보 조회</a></li>
-            <li><a href="${pageContext.request.contextPath}/adminNoticeList.do">고객센터</a></li>
+            <li><a href="${pageContext.request.contextPath}/adminNoticeList.do">공지사항</a></li>
         </ul>
     </div>
     <div class="adminMainContent">
