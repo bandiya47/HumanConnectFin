@@ -108,7 +108,7 @@
         <ul>
             <li><a href="${contextPath}/adminMain">봉사회원정보 조회</a></li>
             <li><a href="${contextPath}/adminCenterMem">센터회원정보 조회</a></li>
-            <li class="active"><a href="${contextPath}/adminNoticeList.do">고객센터</a></li>
+            <li class="active"><a href="${contextPath}/adminNoticeList.do">공지사항</a></li>
         </ul>
     </div>
     <!--상세 공지글-->
@@ -140,11 +140,13 @@
                                 </tr>
                             </tbody>
                         </table>
-                        <button class="aNDBtn" type="button" onclick="goNoticeList()">목록</button>
-                        <button class="aNDBtn" type="button" id="editButton" onclick="enableEditing()">수정</button>
-                        <div id="editButtons" style="display:none;">
-                            <button class="aNDBtn" type="button" onclick="saveNotice()">저장</button>
-                            <button class="aNDBtn" type="button" onclick="cancelEditing()">취소</button>
+                        <div class="adminNoticeBtn">
+                            <button class="aNDBtn" type="button" onclick="goNoticeList()">목록</button>
+                            <button class="aNDBtn" type="button" id="editButton" onclick="enableEditing()">수정</button>
+                            <div id="editButtons" style="display:none;">
+                                <button class="aNDBtn" type="button" onclick="saveNotice()">저장</button>
+                                <button class="aNDBtn" type="button" onclick="cancelEditing()">취소</button>
+                            </div>
                         </div>
                     </div>
                 </div>

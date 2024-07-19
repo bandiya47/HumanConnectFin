@@ -74,8 +74,7 @@
                            </td>
 	                    </tr>
 	                    <tr>
-
-	                         <td>상세주소</td>
+	                         <td>${myinfo.u_addr2}</td>
 	                    </tr>
 	                    <tr>
 	                       <th>이메일</th>

@@ -21,11 +21,11 @@
                 <form id="noticeDetailForm" method="post" enctype="multipart/form-data">
                     <div class="volNoticeDetailDiv">
                         <h2>공지사항 상세페이지</h2>
-                        <div>
+                        <div class="noticeContainer">
                             <table id="noticeDetailTable" class="noticeDetailTable">
                                 <tbody>
                                     <tr height="15%">
-                                        <th width="10%">제목</th>
+                                        <th width="20%">제목</th>
                                         <td id="detailTitle" width="90%">
                                             ${noticeList.nTitle}
                                         </td>
