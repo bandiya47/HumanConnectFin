@@ -17,7 +17,7 @@
 <body>
     <jsp:include page="neviCenter.jsp" />
     <!-- 상세 공지글 -->
-    <div class="noticeDetailBody" id="noticeDetail" style="display:block;" action="${pageContext.request.contextPath}/viewNoticeDetail.do">
+    <div>
         <div class="centerNoticeDetailWholeContainer">
             <form id="noticeDetailForm" method="post" enctype="multipart/form-data">
                 <div class="centerNoticeDetailDiv">
@@ -31,7 +31,7 @@
                                         ${noticeList.nTitle}
                                     </td>
                                 </tr>
-                                <tr>
+                                <tr height="75%">
                                     <th>내용</th>
                                     <td id="detailContent">
                                        <p id="centerDetailContent" name="nContent">${noticeList.nContent}</p>

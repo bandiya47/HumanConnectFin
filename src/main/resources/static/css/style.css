@@ -83,13 +83,13 @@ header{
 
 .neviBack{
     width: 1250px;
-    height: 280px;
+    height: 250px;
     z-index: 1; 
     position: relative;
     background-color: #FAECC5;
     >img{
         width: 1250px;
-        height: 280px;
+        height: 250px;
     }
 }
 
@@ -3092,6 +3092,10 @@ vertical-align:middle;
         .adminMemDetailActionButtons button:hover {
             background-color: #204160; /* 어드민 메인 페이지와 어울리도록 색상 변경 */
         }
+        .adminNoticeBtn {
+            width: 880px;
+            text-align: center;
+        }
 /**********************************************AdminMemDetail*************************************************/
 /**adminCenterMem 시작~~*****************************************************************************************************************/
 .adminCenterMemBody {
@@ -4394,7 +4398,7 @@ input::placeholder {
 /* 공지사항 상세페이지 */
 
 .adminNoticeRegDiv>div>table,
-.noticeDetailTable, .centerNoticeDetailTable {
+.centerNoticeDetailTable {
    margin: 5px;
    text-align: center;
    width: 900px;
@@ -4403,7 +4407,14 @@ input::placeholder {
    font-size: 15px;
    table-layout: fixed;
 }
-
+.noticeDetailTable{
+    margin: 0 auto;
+    text-align: center;
+    width: 900px;
+    border-collapse: collapse;
+    font-size: 15px;
+    table-layout: fixed;
+}
 .centerNoticeDetailTable,
 .noticeDetailTable,
 .noticeRegTable {
@@ -4412,6 +4423,12 @@ input::placeholder {
 .buttonContainer3 {
     padding: 20px;
     margin-bottom: 20px;
+    text-align: center;
+}
+.noticeContainer {
+    margin: 0 auto;
+    width: 1100px;
+    text-align: center;
 }
 #detailTitle {
     padding-left: 30px;
@@ -4419,6 +4436,7 @@ input::placeholder {
     border: none;
     font-family: 'MangoDdobak-B';
     box-sizing: border-box;
+    border-bottom: 1px solid #a0a0a0;
 }
 #detailTitle, #detailAttach {
     height: 50px;
@@ -4468,7 +4486,7 @@ pre {
     font-family: 'MangoDdobak-B';
     overflow: hidden;
     resize: none;
-    border: 1px solid #a0a0a0;
+    border: none;
     border-right: none;
 }
 #centerDetailContent {

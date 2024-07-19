@@ -140,11 +140,13 @@
                                 </tr>
                             </tbody>
                         </table>
-                        <button class="aNDBtn" type="button" onclick="goNoticeList()">목록</button>
-                        <button class="aNDBtn" type="button" id="editButton" onclick="enableEditing()">수정</button>
-                        <div id="editButtons" style="display:none;">
-                            <button class="aNDBtn" type="button" onclick="saveNotice()">저장</button>
-                            <button class="aNDBtn" type="button" onclick="cancelEditing()">취소</button>
+                        <div class="adminNoticeBtn">
+                            <button class="aNDBtn" type="button" onclick="goNoticeList()">목록</button>
+                            <button class="aNDBtn" type="button" id="editButton" onclick="enableEditing()">수정</button>
+                            <div id="editButtons" style="display:none;">
+                                <button class="aNDBtn" type="button" onclick="saveNotice()">저장</button>
+                                <button class="aNDBtn" type="button" onclick="cancelEditing()">취소</button>
+                            </div>
                         </div>
                     </div>
                 </div>

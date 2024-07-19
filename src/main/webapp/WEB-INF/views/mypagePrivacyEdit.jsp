@@ -88,7 +88,7 @@
                         </tr>
 
                         <tr>
-                            <td>상세주소. 표 확인해보기</td>
+                            <td><input type="text" name="u_addr1" value="${myinfo.u_addr2}"></td>
                         </tr>
                         <tr>
                             <th>이메일</th>
